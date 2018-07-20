@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 20 juil. 2018 à 09:33
+-- Généré le :  ven. 20 juil. 2018 à 09:34
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.6
 
@@ -25,22 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admins`
+-- Structure de la table `comments`
 --
 
-DROP TABLE IF EXISTS `admins`;
-CREATE TABLE IF NOT EXISTS `admins` (
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_post` int(11) NOT NULL,
   `pseudo` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `confirmkey` varchar(255) NOT NULL,
-  `confirm` int(1) NOT NULL,
+  `content` text NOT NULL,
   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `pseudo_UNIQUE` (`pseudo`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `publication` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
