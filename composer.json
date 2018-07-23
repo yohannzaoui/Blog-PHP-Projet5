@@ -1,0 +1,14 @@
+{
+    "name": "projet5/blog",
+    "type": "library",
+    "authors": [
+        {
+            "name": "yohannzaoui",
+            "email": "yohannzaoui@gmail.com"
+        }
+    ],
+    "autoload":{
+      "psr-4" : {"BlogFram\\":"lib/BlogFram"}
+    },
+    "require": {}
+}
