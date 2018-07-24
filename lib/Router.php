@@ -1,6 +1,7 @@
 <?php
 
 require_once('views/view.php');
+require_once('lib/Autoloader.php');
 
 class Router {
 
@@ -11,9 +12,7 @@ class Router {
 
         try {
 
-            spl_autoload_register(function($class) {
-                require_once('models/'.$class.'.php');
-            });
+            Autoloader::register();
 
             $url = [];
 
