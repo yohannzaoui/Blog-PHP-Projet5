@@ -5,6 +5,7 @@ class Post {
     private $_id;
     private $_author;
     private $_title;
+    private $_subtitle;
     private $_content;
     private $_creation_date;
     private $_update_date;
@@ -43,6 +44,12 @@ class Post {
         }
     }
 
+    public function setSubtitle($subtitle) {
+        if(is_string($subtitle)) {
+            $this->_subtitle = $subtitle;
+        }
+    }
+
     public function setContent($content) {
         if(is_string($content)) {
             $this->_content = $content;
@@ -67,6 +74,10 @@ class Post {
 
     public function title() {
         return $this->_title;
+    }
+
+    public function subtitle() {
+        return $this->_subtitle;
     }
 
     public function content() {
