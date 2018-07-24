@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="public/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/clean-blog.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="public/bootstrap/css/bootstrap.css" />
     <link href="public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>

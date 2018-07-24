@@ -30,3 +30,7 @@ foreach($posts as $post) : ?>
 
 <?php endforeach ?>
 
+<?php require('contact.php'); ?>
+
+
+
