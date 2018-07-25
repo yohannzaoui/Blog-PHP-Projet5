@@ -33,25 +33,25 @@ class Post {
     }
 
     public function setAuthor($author) {
-        if(is_string($author)) {
+        if(is_string($author) && strlen($author)<=255) {
             $this->_author = $author;
         } 
     }
 
     public function setTitle($title) {
-        if(is_string($title)) {
+        if(is_string($title) && strlen($title)<=255) {
             $this->_title = $title;
         }
     }
 
     public function setSubtitle($subtitle) {
-        if(is_string($subtitle)) {
+        if(is_string($subtitle) && strlen($subtitle)<=255) {
             $this->_subtitle = $subtitle;
         }
     }
 
     public function setContent($content) {
-        if(is_string($content)) {
+        if(is_string($content) && strlen($content)<=10000) {
             $this->_content = $content;
         }
     }

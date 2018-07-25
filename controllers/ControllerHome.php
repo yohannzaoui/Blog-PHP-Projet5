@@ -20,7 +20,7 @@ class ControllerHome {
     private function posts() {
 
         $this->_postManager = new PostManager;
-        $posts = $this->_postManager->getPosts();
+        $posts = $this->_postManager->getRecentPost();
         $this->_view = new View('Home');
         $this->_view->generate(array('posts'=>$posts));
     }
