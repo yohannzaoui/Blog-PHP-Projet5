@@ -1,8 +1,9 @@
 <?php
 
-define('URL', str_replace("index.php","",(isset($_SERVER['HTTPS']) ?"https" : "http")."://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
+//define('URL',str_replace("index.php","",isset($_SERVER['HTTPS'])?"http"))
 
 
-require_once('lib/Router.php');
+
+require_once('system/Router.php');
 $router = new Router;
 $router->routeReq();

@@ -1,14 +1,15 @@
 <?php
 
-$this->_title="Le BLOG";
+$this->_title = "Yohann Zaoui - le Blog";
 
-require('about.php');
+foreach($posts as $post): ?>
 
-require('recent.php');
+<p><?= $post->getId() ?></p>
+<p><?= $post->getAuthor() ?></p>
+<p><?= $post->getTitle() ?></p>
+<p><?= $post->getSubtitle() ?></p>
+<p><?= $post->getContent() ?></p>
+<p><?= $post->getCreation_date() ?></p>
+<p><?= $post->getUpdate_date() ?></p>
 
-require('contact.php');
-
-?>
-
-
-
+<?php endforeach; ?>

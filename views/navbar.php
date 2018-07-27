@@ -11,7 +11,7 @@
           <a class="nav-link" href="Home">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ListPost">Articles</a>
+          <a class="nav-link" href="controllers/ControllerListPost.php">Articles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" target="_blank" href="public/doc/cv_web_yohann_zaoui.pdf">Mon Cv</a>

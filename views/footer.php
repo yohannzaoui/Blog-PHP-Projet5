@@ -1,7 +1,7 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="col-lg-12 col-md-10 mx-auto">
         <ul class="list-inline text-center">
           <li class="list-inline-item">
             <a href="https://twitter.com/yohannzaoui" target="_blank">
