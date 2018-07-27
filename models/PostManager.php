@@ -28,4 +28,16 @@ class PostManager extends Manager
         return $posts;
         $req->closeCursor();
     }
+
+
+    public function getPost($id)
+    {
+        //$posts = [];
+        $req = $this->getDb()->prepare('SELECT * FROM posts WHERE id=?');
+        $req->execute(array($_GET['id']));
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        $post = new Post($data);
+        return $post;
+        $req->closeCursor();
+    }
 }
