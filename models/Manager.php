@@ -6,7 +6,12 @@ abstract class Manager
 
     private static function setDb()
     {
-        self::$_db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8','root','');
+        $host = "localhost";
+        $dbName = "blog";
+        $user = "root";
+        $password ="";
+
+        self::$_db = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8',$user,$password);
         self::$_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 

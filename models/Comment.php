@@ -16,29 +16,12 @@ class Comment
 
   public function hydrate(array $data)
   {
-    if (isset($data['id']))
-    {
-      $this->_id=$data['id'];
-    }
-    if (isset($data['id_post']))
-    {
-      $this->_id_post=$data['id_post'];
-    }
-    if (isset($data['pseudo']))
-    {
-      $this->_pseudo=$data['pseudo'];
-    }
-    if (isset($data['content']))
-    {
-      $this->_content=$data['content'];
-    }
-    if (isset($data['creation_date_fr']))
-    {
-      $this->_creation_date=$data['creation_date_fr'];
-    }
-    if (isset($data['publication']))
-    {
-      $this->_publication=$data['publication'];
+    foreach ($data as $key => $value) {
+      $method = 'set'.ucfirst($key);
+
+      if (method_exists($this,$method)) {
+        $this->$method($value);
+      }
     }
   }
 

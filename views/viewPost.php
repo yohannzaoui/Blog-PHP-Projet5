@@ -51,3 +51,17 @@
         </div>
       </div>
     </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-10 mx-auto">
+        <h2 class="title_center">Les commentaires</h2>
+          <?php foreach($comments as $comment):?>
+            <p>Pseudo : <?=$comment->getPseudo()?></p>
+            <p>Message : <?=$comment->getContent()?></p>
+            <p>Date: <?=$comment->getCreation_date()?></p>
+            <br>
+            <?php endforeach; ?>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,7 @@
 <?php
 
 require_once('system/View.php');
+//require_once('models/CommentManager.php');
 
 class ControllerPost
 {
@@ -25,6 +26,8 @@ class ControllerPost
         {
             $id = htmlspecialchars($_GET['id']);
             $this->_postManager = new PostManager;
+            //$comments = new CommentManager;
+            //$comments->valideComment($id);
             $post = $this->_postManager->getPost($id);
             $this->_view = new View('Post');
             $this->_view->generate(array('post'=>$post));
