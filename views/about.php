@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="titlecenter">A propos</h2>
+  <h2 class="title_center">A propos</h2>
   <div class="alert alert-dark" role="alert">
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">

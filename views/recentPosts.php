@@ -5,7 +5,7 @@
     <div class="col-lg-12 col-md-10 mx-auto">
     <?php foreach($posts as $post): ?>
       <div class="post-preview">
-        <a href="post.php?id=<?=$post->getID()?>">
+        <a href="index.php?url=post&amp;id=<?=$post->getID()?>">
           <h2 class="post-title">
             <?=$post->getTitle();?>
           </h2>
