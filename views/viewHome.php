@@ -2,3 +2,4 @@
 
 <?php require('about.php'); ?>
 <?php require('recentPosts.php'); ?>
+<?php require('contact.php'); ?>
