@@ -1,19 +1,20 @@
 <?php
 
 require_once 'Models/PostManager.php';
+require_once 'Models/CommentManager.php';
 require_once 'system/View.php';
 
-class ControllerPost {
+class ControllerListPosts {
 
-    private $_posts;
+    private $_postManager;
 
     public function __construct() {
-        $this->_posts = new PostManager();
+        $this->_postManager = new PostManager();
     }
 
     // Affiche les détails sur un billet
-    public function billet() {
-        $posts = $this->_posts->getListPosts();
+    public function listPost() {
+        $posts = $this->_postManager->getListPosts();
         $view = new View("ListPosts");
         $view->generer(array('posts' => $posts));
     }

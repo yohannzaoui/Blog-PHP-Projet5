@@ -1,4 +1,4 @@
-<?php $this->_title = "Les article"; ?>
+<?php $this->_title = "Les articles"; ?>
 
 <div class="container">
   <h2 class="title_center">Les articles</h2>

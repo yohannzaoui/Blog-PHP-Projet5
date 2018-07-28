@@ -2,16 +2,20 @@
 
 require_once 'Controllers/ControllerHome.php';
 require_once 'Controllers/ControllerPost.php';
+require_once 'Controllers/ControllerListPosts.php';
 require_once 'system/View.php';
 
 class Routeur {
 
     private $_ctrlHome;
     private $_ctrlPost;
+    private $_ctrllistPost;
 
     public function __construct() {
         $this->_ctrlHome = new ControllerHome();
         $this->_ctrlPost = new ControllerPost();
+        $this->_ctrllistPost = new ControllerListPosts();
+
     }
 
     // Route une requête entrante : exécution l'action associée
@@ -31,6 +35,10 @@ class Routeur {
                     $contenu = $this->getParametre($_POST, 'contenu');
                     $idBillet = $this->getParametre($_POST, 'id');
                     $this->_ctrlPost->commenter($auteur, $contenu, $idBillet);
+                }
+                else if ($_GET['action'] =='listposts') {
+                    $this->_ctrllistPost->listPost();
+
                 }
                 else
                     throw new Exception("Action non valide");
