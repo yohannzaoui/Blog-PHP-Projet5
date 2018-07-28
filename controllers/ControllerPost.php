@@ -6,28 +6,28 @@ require_once 'system/View.php';
 
 class ControllerPost {
 
-    private $billet;
-    private $commentaire;
+    private $_postManager;
+    private $_commentManager;
 
     public function __construct() {
-        $this->billet = new PostManager();
-        $this->commentaire = new CommentManager();
+        $this->_postManager = new PostManager();
+        $this->_commentManager = new CommentManager();
     }
 
     // Affiche les détails sur un billet
-    public function billet($idBillet) {
-        $billet = $this->billet->getBillet($idBillet);
-        $commentaires = $this->commentaire->getCommentaires($idBillet);
-        $vue = new View("Post");
-        $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
+    public function post($idBillet) {
+        $post = $this->_postManager->getBillet($idBillet);
+        $comments = $this->_commentManager->getComments($idBillet);
+        $view = new View("Post");
+        $view->createView(array('post'=> $post, 'comments' => $comments));
     }
 
     // Ajoute un commentaire à un billet
-    public function commenter($auteur, $contenu, $idBillet) {
+    public function comment($auteur, $contenu, $idBillet) {
         // Sauvegarde du commentaire
-        $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
+        $this->_commentManager->addComment($auteur, $contenu, $idBillet);
         // Actualisation de l'affichage du billet
-        $this->billet($idBillet);
+        $this->post($idBillet);
     }
 
 }

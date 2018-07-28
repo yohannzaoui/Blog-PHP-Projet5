@@ -15,7 +15,7 @@ class ControllerHome {
     public function home() {
         $posts = $this->_postManager->getRecentPosts();
         $view = new View("Home");
-        $view->generer(array('posts' => $posts));
+        $view->createView(array('posts' => $posts));
     }
 
 }

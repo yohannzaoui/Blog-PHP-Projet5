@@ -5,39 +5,39 @@ require_once 'Controllers/ControllerPost.php';
 require_once 'Controllers/ControllerListPosts.php';
 require_once 'system/View.php';
 
-class Routeur {
+class Router {
 
     private $_ctrlHome;
     private $_ctrlPost;
-    private $_ctrllistPost;
+    private $_ctrlListPost;
 
     public function __construct() {
         $this->_ctrlHome = new ControllerHome();
         $this->_ctrlPost = new ControllerPost();
-        $this->_ctrllistPost = new ControllerListPosts();
+        $this->_ctrlListPost = new ControllerListPosts();
 
     }
 
     // Route une requête entrante : exécution l'action associée
-    public function routerRequete() {
+    public function routerReq() {
         try {
             if (isset($_GET['action'])) {
                 if ($_GET['action'] == 'post') {
                     $idBillet = intval($this->getParametre($_GET, 'id'));
                     if ($idBillet != 0) {
-                        $this->_ctrlPost->billet($idBillet);
+                        $this->_ctrlPost->post($idBillet);
                     }
                     else
                         throw new Exception("Identifiant de billet non valide");
                 }
-                else if ($_GET['action'] == 'commenter') {
-                    $auteur = $this->getParametre($_POST, 'auteur');
-                    $contenu = $this->getParametre($_POST, 'contenu');
-                    $idBillet = $this->getParametre($_POST, 'id');
-                    $this->_ctrlPost->commenter($auteur, $contenu, $idBillet);
+                else if ($_GET['action'] == 'comment') {
+                    $pseudo = $this->getParametre($_POST, 'pseudo');
+                    $content = $this->getParametre($_POST, 'content');
+                    $idPost = $this->getParametre($_POST, 'id');
+                    $this->_ctrlPost->comment($pseudo, $content, $idPost);
                 }
                 else if ($_GET['action'] =='listposts') {
-                    $this->_ctrllistPost->listPost();
+                    $this->_ctrlListPost->listPost();
 
                 }
                 else
@@ -48,14 +48,14 @@ class Routeur {
             }
         }
         catch (Exception $e) {
-            $this->erreur($e->getMessage());
+            $this->error($e->getMessage());
         }
     }
 
     // Affiche une erreur
-    private function erreur($msgErreur) {
-        $vue = new View("Erreur");
-        $vue->generer(array('msgErreur' => $msgErreur));
+    private function error($msgError) {
+        $view = new View("Error");
+        $view->createView(array('msgError' => $msgError));
     }
 
     // Recherche un paramètre dans un tableau

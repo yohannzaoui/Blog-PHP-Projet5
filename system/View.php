@@ -14,18 +14,18 @@ class View {
     }
 
     // Génère et affiche la vue
-    public function generer($data) {
+    public function createView($data) {
         // Génération de la partie spécifique de la vue
-        $content = $this->generer_file($this->_file, $data);
+        $content = $this->genererate_file($this->_file, $data);
         // Génération du gabarit commun utilisant la partie spécifique
-        $view = $this->generer_file('Views/template.php',
+        $view = $this->genererate_file('Views/template.php',
                 array('title' => $this->_title, 'content' => $content));
         // Renvoi de la vue au navigateur
         echo $view;
     }
 
     // Génère un _file vue et renvoie le résultat produit
-    private function generer_file($_file, $data) {
+    private function genererate_file($_file, $data) {
         if (file_exists($_file)) {
             // Rend les éléments du tableau $data accessibles dans la vue
             extract($data);

@@ -16,7 +16,7 @@ class ControllerListPosts {
     public function listPost() {
         $posts = $this->_postManager->getListPosts();
         $view = new View("ListPosts");
-        $view->generer(array('posts' => $posts));
+        $view->createView(array('posts' => $posts));
     }
 }
 
