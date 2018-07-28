@@ -1,8 +1,20 @@
 <?php
 
-class PostManager extends Manager
-{
+require_once 'Models/Manager.php';
+require_once 'Models/Post.php';
 
+/**
+ * Fournit les services d'accès aux genres musicaux 
+ * 
+ * @author Baptiste Pesquet
+ */
+class PostManager extends Manager {
+
+    /** Renvoie la liste des billets du blog
+     * 
+     * @return PDOStatement La liste des billets
+     */
+    
     public function getRecentPosts()
     {
         $posts = [];
@@ -19,7 +31,7 @@ class PostManager extends Manager
     public function getListPosts()
     {
         $posts = [];
-        $req = $this->getDb()->prepare('SELECT * FROM posts ORDER BY creation_date DESC');
+        $req = $this->getDb()->prepare('SELECT id,author,title,subtitle,creation_date FROM posts ORDER BY creation_date DESC');
         $req->execute();
         while($data = $req->fetch(PDO::FETCH_ASSOC))
         {
@@ -29,14 +41,19 @@ class PostManager extends Manager
         $req->closeCursor();
     }
 
-
-    public function getPost($id)
-    {
-        $req = $this->getDb()->prepare('SELECT * FROM posts WHERE id=?');
-        $req->execute(array($_GET['id']));
-        $data = $req->fetch(PDO::FETCH_ASSOC);
-        $post = new Post($data);
-        return $post;
-        $req->closeCursor();
+    /** Renvoie les informations sur un billet
+     * 
+     * @param int $id L'identifiant du billet
+     * @return array Le billet
+     * @throws Exception Si l'identifiant du billet est inconnu
+     */
+    public function getBillet($idBillet) {
+        $sql = 'SELECT * FROM posts WHERE id=? ';
+        $billet = $this->executeReq($sql, array($idBillet));
+        if ($billet->rowCount() > 0)
+            return $billet->fetch();  // Accès à la première ligne de résultat
+        else
+            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
+
 }

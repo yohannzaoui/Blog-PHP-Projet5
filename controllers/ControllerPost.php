@@ -1,41 +1,34 @@
 <?php
 
-require_once('system/View.php');
-//require_once('models/CommentManager.php');
+require_once 'Models/PostManager.php';
+require_once 'Models/CommentManager.php';
+require_once 'system/View.php';
 
-class ControllerPost
-{
-    private $_postManager;
-    private $_view;
+class ControllerPost {
 
-    public function __construct($url)
-    {
-        if(isset($url) && count($url)>1)
-        {
-            throw new Exception("Page introuvable");
-        }
-        else
-        {
-            $this->posts();
-        }
+    private $billet;
+    private $commentaire;
+
+    public function __construct() {
+        $this->billet = new PostManager();
+        $this->commentaire = new CommentManager();
     }
 
-    private function posts()
-    {
-        if(isset($_GET['id']) && $_GET['id']>0)
-        {
-            $id = htmlspecialchars($_GET['id']);
-            $this->_postManager = new PostManager;
-            //$comments = new CommentManager;
-            //$comments->valideComment($id);
-            $post = $this->_postManager->getPost($id);
-            $this->_view = new View('Post');
-            $this->_view->generate(array('post'=>$post));
-        }
-        else
-        {
-            throw new Exception('Identifiant d\'article incorrect');
-        }
-        
+    // Affiche les détails sur un billet
+    public function billet($idBillet) {
+        $billet = $this->billet->getBillet($idBillet);
+        $commentaires = $this->commentaire->getCommentaires($idBillet);
+        $vue = new View("Post");
+        $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
     }
+
+    // Ajoute un commentaire à un billet
+    public function commenter($auteur, $contenu, $idBillet) {
+        // Sauvegarde du commentaire
+        $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
+        // Actualisation de l'affichage du billet
+        $this->billet($idBillet);
+    }
+
 }
+
