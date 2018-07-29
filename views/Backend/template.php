@@ -6,7 +6,6 @@
         <title><?= $title ?></title>
         <link href="public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" media="screen" href="public/css/style.css" />
         <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         
@@ -14,7 +13,6 @@
     <body>
         
         <?php require_once 'navbar.php'; ?>
-        <?php require_once 'header.php'; ?>
 
         <?= $content ?>
 

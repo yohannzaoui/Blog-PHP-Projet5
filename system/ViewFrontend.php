@@ -42,4 +42,8 @@ class ViewFrontend {
         }
     }
 
+    private function clean($value) {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false);
+    }
+
 }

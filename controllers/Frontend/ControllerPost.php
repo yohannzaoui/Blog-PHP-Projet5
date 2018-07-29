@@ -3,6 +3,7 @@
 require_once 'Models/PostManager.php';
 require_once 'Models/CommentManager.php';
 require_once 'system/ViewFrontend.php';
+require_once 'system/ViewBackend.php';
 
 class ControllerPost {
 

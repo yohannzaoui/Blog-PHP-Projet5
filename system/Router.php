@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Controllers/ControllerHome.php';
-require_once 'Controllers/ControllerPost.php';
-require_once 'Controllers/ControllerListPosts.php';
+require_once 'Controllers/Frontend/ControllerHome.php';
+require_once 'Controllers/Frontend/ControllerPost.php';
+require_once 'Controllers/Frontend/ControllerListPosts.php';
 require_once 'system/ViewFrontend.php';
 
 class Router {
@@ -54,7 +54,7 @@ class Router {
 
     // Affiche une erreur
     private function error($msgError) {
-        $view = new View("Error");
+        $view = new ViewFrontend("Error");
         $view->createView(array('msgError' => $msgError));
     }
 
