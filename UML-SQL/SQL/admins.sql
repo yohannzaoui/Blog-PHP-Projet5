@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 20 juil. 2018 à 09:33
+-- Généré le :  Dim 29 juil. 2018 à 08:05
 -- Version du serveur :  5.7.21
--- Version de PHP :  7.2.6
+-- Version de PHP :  7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,14 +32,10 @@ DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `confirmkey` varchar(255) NOT NULL,
-  `confirm` int(1) NOT NULL,
   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `pseudo_UNIQUE` (`pseudo`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
+  UNIQUE KEY `pseudo_UNIQUE` (`pseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
 
