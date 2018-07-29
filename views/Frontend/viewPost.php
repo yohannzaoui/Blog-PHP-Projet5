@@ -1,4 +1,4 @@
-<?php $this->_titre = "Mon Blog - " . $post['title']; ?>
+<?php $this->_title = "Mon Blog - " . $post['title']; ?>
 
 <div class="container">
       <div class="alert alert-primary" role="alert">

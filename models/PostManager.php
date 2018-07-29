@@ -47,13 +47,13 @@ class PostManager extends Manager {
      * @return array Le billet
      * @throws Exception Si l'identifiant du billet est inconnu
      */
-    public function getBillet($idBillet) {
+    public function getPost($id) {
         $sql = 'SELECT * FROM posts WHERE id=? ';
-        $billet = $this->executeReq($sql, array($idBillet));
-        if ($billet->rowCount() > 0)
-            return $billet->fetch();  // Accès à la première ligne de résultat
+        $post = $this->executeReq($sql, array($id));
+        if ($post->rowCount() > 0)
+            return $post->fetch();  // Accès à la première ligne de résultat
         else
-            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
+            throw new Exception("Aucun billet ne correspond à l'identifiant '$id'");
     }
 
 }

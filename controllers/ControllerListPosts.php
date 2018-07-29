@@ -2,7 +2,7 @@
 
 require_once 'Models/PostManager.php';
 require_once 'Models/CommentManager.php';
-require_once 'system/View.php';
+require_once 'system/ViewFrontend.php';
 
 class ControllerListPosts {
 
@@ -15,7 +15,7 @@ class ControllerListPosts {
     // Affiche les détails sur un billet
     public function listPost() {
         $posts = $this->_postManager->getListPosts();
-        $view = new View("ListPosts");
+        $view = new ViewFrontend("ListPosts");
         $view->createView(array('posts' => $posts));
     }
 }

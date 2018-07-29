@@ -2,7 +2,7 @@
 
 require_once 'Models/PostManager.php';
 require_once 'Models/CommentManager.php';
-require_once 'system/View.php';
+require_once 'system/ViewFrontend.php';
 
 class ControllerPost {
 
@@ -16,9 +16,9 @@ class ControllerPost {
 
     // Affiche les détails sur un billet
     public function post($idBillet) {
-        $post = $this->_postManager->getBillet($idBillet);
+        $post = $this->_postManager->getPost($idBillet);
         $comments = $this->_commentManager->getComments($idBillet);
-        $view = new View("Post");
+        $view = new ViewFrontend("Post");
         $view->createView(array('post'=> $post, 'comments' => $comments));
     }
 

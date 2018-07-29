@@ -1,6 +1,6 @@
 <?php
 
-class View {
+class ViewFrontend {
 
     // Nom du _file associé à la vue
     private $_file;
@@ -10,7 +10,7 @@ class View {
 
     public function __construct($action) {
         // Détermination du nom du _file vue à partir de l'action
-        $this->_file = "Views/view" . $action . ".php";
+        $this->_file = "Views/Frontend/view" . $action . ".php";
     }
 
     // Génère et affiche la vue
@@ -18,7 +18,7 @@ class View {
         // Génération de la partie spécifique de la vue
         $content = $this->genererate_file($this->_file, $data);
         // Génération du gabarit commun utilisant la partie spécifique
-        $view = $this->genererate_file('Views/template.php',
+        $view = $this->genererate_file('Views/Frontend/template.php',
                 array('title' => $this->_title, 'content' => $content));
         // Renvoi de la vue au navigateur
         echo $view;

@@ -3,7 +3,7 @@
 require_once 'Controllers/ControllerHome.php';
 require_once 'Controllers/ControllerPost.php';
 require_once 'Controllers/ControllerListPosts.php';
-require_once 'system/View.php';
+require_once 'system/ViewFrontend.php';
 
 class Router {
 

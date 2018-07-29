@@ -21,13 +21,13 @@ abstract class Manager {
      */
     protected function executeReq($sql, $params = null) {
         if ($params == null) {
-            $resultat = $this->getDb()->query($sql); // exécution directe
+            $result = $this->getDb()->query($sql); // exécution directe
         }
         else {
-            $resultat = $this->getDb()->prepare($sql);  // requête préparée
-            $resultat->execute($params);
+            $result = $this->getDb()->prepare($sql);  // requête préparée
+            $result->execute($params);
         }
-        return $resultat;
+        return $result;
     }
 
     /**
