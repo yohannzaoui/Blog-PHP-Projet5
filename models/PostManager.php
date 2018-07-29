@@ -56,4 +56,14 @@ class PostManager extends Manager {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$id'");
     }
 
+    public function addPost(Post $post)
+  {
+    $req=$this->getDb()->prepare('INSERT INTO posts (title,subtitle,author,content) VALUES (:title,:subtitle,:author,:content)');
+    $req->bindValue(':title',htmlspecialchars($_POST['title']),PDO::PARAM_STR);
+    $req->bindValue(':subtitle',htmlspecialchars($_POST['subtitle']),PDO::PARAM_STR);
+    $req->bindValue(':author',htmlspecialchars($_POST['author']),PDO::PARAM_STR);
+    $req->bindValue(':content',htmlspecialchars($_POST['content']),PDO::PARAM_STR);
+    $req->execute();
+  }
+
 }

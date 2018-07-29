@@ -3,7 +3,6 @@
 require_once 'Models/PostManager.php';
 require_once 'Models/CommentManager.php';
 require_once 'system/ViewFrontend.php';
-require_once 'system/ViewBackend.php';
 
 class ControllerPost {
 
@@ -16,19 +15,19 @@ class ControllerPost {
     }
 
     // Affiche les détails sur un billet
-    public function post($idBillet) {
-        $post = $this->_postManager->getPost($idBillet);
-        $comments = $this->_commentManager->getComments($idBillet);
+    public function post($idPost) {
+        $post = $this->_postManager->getPost($idPost);
+        $comments = $this->_commentManager->getComments($idPost);
         $view = new ViewFrontend("Post");
         $view->createView(array('post'=> $post, 'comments' => $comments));
     }
 
     // Ajoute un commentaire à un billet
-    public function comment($auteur, $contenu, $idBillet) {
+    public function comment($pseudo, $content, $idPost) {
         // Sauvegarde du commentaire
-        $this->_commentManager->addComment($auteur, $contenu, $idBillet);
+        $this->_commentManager->addComment($pseudo, $content, $idPost);
         // Actualisation de l'affichage du billet
-        $this->post($idBillet);
+        $this->post($idPost);
     }
 
 }

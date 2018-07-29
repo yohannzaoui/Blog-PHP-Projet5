@@ -3,18 +3,21 @@
 require_once 'Controllers/Frontend/ControllerHome.php';
 require_once 'Controllers/Frontend/ControllerPost.php';
 require_once 'Controllers/Frontend/ControllerListPosts.php';
-require_once 'system/ViewFrontend.php';
+//require_once 'Controllers/Backend/ControllerAddPost.php';
+//require_once 'system/ViewFrontend.php';
 
 class Router {
 
     private $_ctrlHome;
     private $_ctrlPost;
     private $_ctrlListPost;
+    //private $_ctrlAddpost;
 
     public function __construct() {
-        $this->_ctrlHome = new ControllerHome();
-        $this->_ctrlPost = new ControllerPost();
-        $this->_ctrlListPost = new ControllerListPosts();
+        $this->_ctrlHome = new ControllerHome;
+        $this->_ctrlPost = new ControllerPost;
+        $this->_ctrlListPost = new ControllerListPosts;
+        //$this->_ctrlAddpost = new ControllerAddPost;
 
     }
 
@@ -40,6 +43,9 @@ class Router {
                     $this->_ctrlListPost->listPost();
 
                 }
+                //else if ($_GET['action'] == 'addpost') {
+                    //$this->_ctrlAddpost->AddPost();
+                //}
                 else
                     throw new Exception("Action non valide");
             }
