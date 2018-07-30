@@ -1,5 +1,5 @@
 <?php
-namespace OCFram;
+namespace BLOGFram;
 
 class Page extends ApplicationComponent
 {

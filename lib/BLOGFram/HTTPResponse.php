@@ -1,5 +1,5 @@
 <?php
-namespace OCFram;
+namespace BLOGFram;
 
 class HTTPResponse extends ApplicationComponent
 {

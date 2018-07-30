@@ -1,7 +1,7 @@
 <?php
 namespace App\Frontend;
 
-use \OCFram\Application;
+use \BLOGFram\Application;
 
 class FrontendApplication extends Application
 {

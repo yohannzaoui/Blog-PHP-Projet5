@@ -1,23 +1,25 @@
 <?php
 namespace Entity;
 
-use \OCFram\Entity;
+use \BLOGFram\Entity;
 
 class News extends Entity
 {
   protected $auteur,
             $titre,
+            $soustitre,
             $contenu,
             $dateAjout,
             $dateModif;
 
   const AUTEUR_INVALIDE = 1;
   const TITRE_INVALIDE = 2;
-  const CONTENU_INVALIDE = 3;
+  const SOUS_TITRE_INVALIDE = 3;
+  const CONTENU_INVALIDE = 4;
 
   public function isValid()
   {
-    return !(empty($this->auteur) || empty($this->titre) || empty($this->contenu));
+    return !(empty($this->auteur) || empty($this->titre) || empty($this->soustitre) ||empty($this->contenu));
   }
 
 
@@ -38,6 +40,16 @@ class News extends Entity
     if (!is_string($titre) || empty($titre))
     {
       $this->erreurs[] = self::TITRE_INVALIDE;
+    }
+
+    $this->titre = $titre;
+  }
+
+  public function setSousTitre($soustitre)
+  {
+    if (!is_string($soustitre) || empty($soustitre))
+    {
+      $this->erreurs[] = self::SOUS_TITRE_INVALIDE;
     }
 
     $this->titre = $titre;
@@ -73,6 +85,11 @@ class News extends Entity
   public function titre()
   {
     return $this->titre;
+  }
+
+  public function soustitre()
+  {
+    return $this->soustitre;
   }
 
   public function contenu()

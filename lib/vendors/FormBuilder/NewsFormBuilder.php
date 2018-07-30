@@ -1,11 +1,11 @@
 <?php
 namespace FormBuilder;
 
-use \OCFram\FormBuilder;
-use \OCFram\StringField;
-use \OCFram\TextField;
-use \OCFram\MaxLengthValidator;
-use \OCFram\NotNullValidator;
+use \BLOGFram\FormBuilder;
+use \BLOGFram\StringField;
+use \BLOGFram\TextField;
+use \BLOGFram\MaxLengthValidator;
+use \BLOGFram\NotNullValidator;
 
 class NewsFormBuilder extends FormBuilder
 {

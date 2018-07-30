@@ -1,5 +1,5 @@
 <?php
-namespace OCFram;
+namespace BLOGFram;
 
 abstract class Entity implements \ArrayAccess
 {

@@ -13,17 +13,32 @@
 
 
 
-
-
-<?php
-foreach ($listeNews as $news)
-{
-?>
-  <h2><a href="news-<?= $news['id'] ?>.html"><?= $news['titre'] ?></a></h2>
-  <p><?= nl2br($news['contenu']) ?></p>
-<?php
-}
-?>
+<div class="container">
+  <h2 class="title_center">Articles récents</h2>
+  <div class="alert alert-primary" role="alert">
+  <div class="row">
+    <div class="col-lg-12 col-md-10 mx-auto">
+    <?php foreach ($listeNews as $news) :?>
+      <div class="post-preview">
+        <a href="news-<?= $news['id'] ?>.html">
+          <h2 class="post-title">
+            <?=$news['titre']?>
+          </h2>
+          <h3 class="post-subtitle">
+            <?=$news['soustitre']?>
+          </h3>
+        </a>
+        <p class="post-meta">
+          <?php echo "Ecrit par ".$news['auteur']?>
+          <a href="#"></a>
+          <?php echo "le " .$news['dateAjout']->format('d/m/Y à H\hi')?></p>
+      </div>
+      <hr>
+      <?php endforeach ?>
+    </div>
+  </div>
+</div>
+</div>
 
 
 
@@ -67,7 +82,8 @@ foreach ($listeNews as $news)
             <br>
             <div id="success"></div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+              <button type="submit" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
+              <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
             </div>
           </form>
         </div>
