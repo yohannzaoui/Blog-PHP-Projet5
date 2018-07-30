@@ -29,6 +29,15 @@ class NewsFormBuilder extends FormBuilder
           new NotNullValidator('Merci de spécifier le titre de la news'),
         ],
        ]))
+       ->add(new StringField([
+        'label' => 'Sous titre',
+        'name' => 'soustitre',
+        'maxLength' => 100,
+        'validators' => [
+          new MaxLengthValidator('Le sous-titre spécifié est trop long (100 caractères maximum)', 100),
+          new NotNullValidator('Merci de spécifier le sous-titre de la news'),
+        ],
+       ]))
        ->add(new TextField([
         'label' => 'Contenu',
         'name' => 'contenu',

@@ -52,7 +52,7 @@ class News extends Entity
       $this->erreurs[] = self::SOUS_TITRE_INVALIDE;
     }
 
-    $this->titre = $titre;
+    $this->soustitre = $soustitre;
   }
 
   public function setContenu($contenu)
