@@ -15,12 +15,12 @@
 
 <div class="container">
   <h2 class="title_center">Articles récents</h2>
-  <div class="alert alert-dark" role="alert">
+  <div class="alert alert-primary" role="alert">
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
     <?php foreach ($listeNews as $news) :?>
       <div class="post-preview">
-        <a href="post.php?id=<?=$news['id']?>">
+        <a href="news-<?= $news['id'] ?>.html">
           <h2 class="post-title">
             <?=$news['titre']?>
           </h2>
@@ -82,7 +82,8 @@
             <br>
             <div id="success"></div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+              <button type="submit" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
+              <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
             </div>
           </form>
         </div>

@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-use \OCFram\Manager;
+use \BLOGFram\Manager;
 use \Entity\Comment;
 
 abstract class CommentsManager extends Manager

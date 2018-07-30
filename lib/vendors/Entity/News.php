@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-use \OCFram\Entity;
+use \BLOGFram\Entity;
 
 class News extends Entity
 {
