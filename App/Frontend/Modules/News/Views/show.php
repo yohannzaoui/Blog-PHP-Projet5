@@ -3,7 +3,6 @@
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
       <div class="post-preview">
-        <a href="news-<?= $news['id'] ?>.html">
           <h2 class="post-title">
             <?=$news['titre']?>
           </h2>
@@ -25,11 +24,9 @@
 
 
 
-
-
-
-
-
+<div class="container">
+  <div class="row">
+  <div class="col-lg-12 col-md-10 mx-auto">
 
 
 <p><a href="commenter-<?= $news['id'] ?>.html">Ajouter un commentaire</a></p>
@@ -58,5 +55,6 @@ foreach ($comments as $comment)
 <?php
 }
 ?>
-
-<p><a href="commenter-<?= $news['id'] ?>.html">Ajouter un commentaire</a></p>
+</div>
+</div>
+</div>
