@@ -5,18 +5,15 @@
         <div class="col-lg-6 col-md-10 mx-auto">
           <form action="" method="post">
             <div class="control-group">
-              <div class="form-group floating-label-form-group controls">
                 <label>Pseudo</label>
-                <input type="text" name="login" class="form-control" placeholder="login" id="login" required data-validation-required-message="Entrez votre Pseudo">
+                <input type="text" name="login" class="form-control" placeholder="pseudo" id="login">
                 <p class="help-block text-danger"></p>
-              </div>
             </div>
             <div class="control-group">
-              <div class="form-group floating-label-form-group controls">
+              
                 <label>Mot de passe</label>
-                <input type="password" name="password" class="form-control" placeholder="Mot de passe" id="password" required data-validation-required-message="Entrez votre mot de passe">
+                <input type="password" name="password" class="form-control" placeholder="Mot de passe" id="password">
                 <p class="help-block text-danger"></p>
-              </div>
             </div>
             <br>
             <div id="success"></div>
