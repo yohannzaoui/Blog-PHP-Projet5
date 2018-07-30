@@ -3,7 +3,6 @@
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
       <div class="post-preview">
-        <a href="news-<?= $news['id'] ?>.html">
           <h2 class="post-title">
             <?=$news['titre']?>
           </h2>
@@ -24,19 +23,9 @@
 </div>
 
 
-
-
-
-
-
-
-<p>Par <em><?= $news['auteur'] ?></em>, le <?= $news['dateAjout']->format('d/m/Y à H\hi') ?></p>
-<h2><?= $news['titre'] ?></h2>
-<p><?= nl2br($news['contenu']) ?></p>
-
-<?php if ($news['dateAjout'] != $news['dateModif']) { ?>
-  <p style="text-align: right;"><small><em>Modifiée le <?= $news['dateModif']->format('d/m/Y à H\hi') ?></em></small></p>
-<?php } ?>
+<div class="container">
+  <div class="row">
+  <div class="col-lg-12 col-md-10 mx-auto">
 
 <p><a href="commenter-<?= $news['id'] ?>.html">Ajouter un commentaire</a></p>
 
@@ -64,5 +53,6 @@ foreach ($comments as $comment)
 <?php
 }
 ?>
-
-<p><a href="commenter-<?= $news['id'] ?>.html">Ajouter un commentaire</a></p>
+</div>
+</div>
+</div>
