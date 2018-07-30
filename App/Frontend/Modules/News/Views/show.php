@@ -52,6 +52,7 @@ foreach ($comments as $comment)
   </legend>
   <p><?= nl2br(htmlspecialchars($comment['contenu'])) ?></p>
 </fieldset>
+<hr>
 <?php
 }
 ?>
