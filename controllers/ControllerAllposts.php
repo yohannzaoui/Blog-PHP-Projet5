@@ -3,7 +3,7 @@
 require_once 'system/View.php';
 
 
-class ControllerHome {
+class ControllerAllposts {
 
     private $_postManager;
     private $_view;
@@ -16,15 +16,15 @@ class ControllerHome {
         }
         else {
 
-            $this->RecentPosts();
+            $this->AllPosts();
         }
     }
 
-    private function RecentPosts() {
+    private function AllPosts() {
 
         $this->_postManager = new PostManager;
-        $posts = $this->_postManager->getRecentPosts();
-        $this->_view = new View('Home');
+        $posts = $this->_postManager->getPosts();
+        $this->_view = new View('Allposts');
         $this->_view->generate(array('posts'=>$posts));
     }
 }
