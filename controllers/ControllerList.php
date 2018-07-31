@@ -11,7 +11,6 @@ class ControllerList {
         $this->post = new PostManager();
     }
 
-// Affiche la liste de tous les billets du blog
     public function list() {
         $posts = $this->post->getListPosts();
         $view = new View("List");

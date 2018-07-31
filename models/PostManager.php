@@ -3,17 +3,8 @@
 require_once 'Models/Manager.php';
 require_once 'Models/Post.php';
 
-/**
- * Fournit les services d'accès aux genres musicaux 
- * 
- * @author Baptiste Pesquet
- */
-class PostManager extends Manager {
 
-    /** Renvoie la liste des billets du blog
-     * 
-     * @return PDOStatement La liste des billets
-     */
+class PostManager extends Manager {
 
     public function getRecentPosts()
     {
@@ -25,7 +16,6 @@ class PostManager extends Manager {
             $posts[] = new Post($data);
         }
         return $posts;
-        //$req->closeCursor();
     }
 
     public function getListPosts()
@@ -38,7 +28,6 @@ class PostManager extends Manager {
             $posts[] = new Post($data);
         }
         return $posts;
-        //$req->closeCursor();
     }
 
     public function getPost($id)

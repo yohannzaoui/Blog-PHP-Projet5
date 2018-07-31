@@ -11,7 +11,6 @@ class ControllerHome {
         $this->post = new PostManager();
     }
 
-// Affiche la liste de tous les billets du blog
     public function home() {
         $posts = $this->post->getRecentPosts();
         $view = new View("Home");

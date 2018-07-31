@@ -3,11 +3,7 @@
 require_once 'Models/Manager.php';
 require_once 'Models/Comment.php';
 
-/**
- * Fournit les services d'accès aux genres musicaux 
- * 
- * @author Baptiste Pesquet
- */
+
 class CommentManager extends Manager {
 
     public function valideComment($id) {
@@ -21,10 +17,8 @@ class CommentManager extends Manager {
         return $comments;
  }
 
-    // Ajoute un commentaire dans la base
-    public function addComment($auteur, $contenu, $idBillet) {
+    public function addComment($author, $content, $idPost) {
         $req = $this->getDb()->prepare('INSERT INTO comments(creation_date, pseudo, content, id_post) VALUES (NOW(), ?, ?, ?)');
-        //$date = date(DATE_W3C);  // Récupère la date courante
-        $req->execute(array($auteur, $contenu, $idBillet));
+        $req->execute(array($author, $content, $idPost));
     }
 }

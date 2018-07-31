@@ -7,7 +7,6 @@ abstract class Manager {
 
     protected function getDb() {
         if ($this->_db == null) {
-            // Création de la connexion
             $this->_db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8','root', '',
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }

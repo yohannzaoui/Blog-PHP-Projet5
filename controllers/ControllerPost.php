@@ -8,26 +8,26 @@ class ControllerPost {
 
     private $post;
     private $comment;
+    private $var;
 
     public function __construct() {
         $this->post = new PostManager();
         $this->comment = new CommentManager();
     }
 
-    // Affiche les détails sur un billet
     public function post($id) {
         $post = $this->post->getPost($id);
         $comments = $this->comment->valideComment($id);
         $view = new View("Post");
-        $view->generer(array('post' => $post, 'commentaires' => $comments));
+        $view->generer(array('post' => $post, 'comments' => $comments));
     }
 
-    // Ajoute un commentaire à un billet
-    public function commenter($auteur, $contenu, $idPost) {
-        // Sauvegarde du commentaire
-        $this->commente->addComment($auteur, $contenu, $idPost);
-        // Actualisation de l'affichage du billet
+    public function comment($author, $content, $idPost) {
+        $this->comment->addComment($author, $content, $idPost);
         $this->post($idPost);
+        if(isset($_POST['comment'])) {
+            $sendOk = "Votre commentaire à été envoyé";
+        }
     }
 
 }
