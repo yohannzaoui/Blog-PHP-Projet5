@@ -7,12 +7,13 @@ require_once 'Views/View.php';
 
 class Routeur {
 
-    private $ctrlAccueil;
-    private $ctrlBillet;
+    private $ctrlHome;
+    private $ctrlPost;
+    private $ctrList;
 
     public function __construct() {
-        $this->ctrlAccueil = new ControllerHome();
-        $this->ctrlBillet = new ControllerPost();
+        $this->ctrlHome = new ControllerHome();
+        $this->ctrlPost = new ControllerPost();
         $this->ctrlList = new ControllerList();
     }
 
@@ -20,19 +21,19 @@ class Routeur {
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'billet') {
-                    $idBillet = intval($this->getParametre($_GET, 'id'));
-                    if ($idBillet != 0) {
-                        $this->ctrlBillet->billet($idBillet);
+                if ($_GET['action'] == 'post') {
+                    $idPost = intval($this->getParametre($_GET, 'id'));
+                    if ($idPost != 0) {
+                        $this->ctrlPost->post($idPost);
                     }
                     else
                         throw new Exception("Identifiant de billet non valide");
                 }
-                else if ($_GET['action'] == 'commenter') {
-                    $auteur = $this->getParametre($_POST, 'auteur');
-                    $contenu = $this->getParametre($_POST, 'contenu');
-                    $idBillet = $this->getParametre($_POST, 'id');
-                    $this->ctrlBillet->commenter($auteur, $contenu, $idBillet);
+                else if ($_GET['action'] == 'comment') {
+                    $author = $this->getParametre($_POST, 'author');
+                    $content = $this->getParametre($_POST, 'content');
+                    $idPost = $this->getParametre($_POST, 'id');
+                    $this->ctrlPost->comment($author, $content, $idPost);
                 }
                 else if ($_GET['action'] == 'List') {
                     $this->ctrlList->list();
@@ -41,7 +42,7 @@ class Routeur {
                     throw new Exception("Action non valide");
             }
             else {  // aucune action définie : affichage de l'accueil
-                $this->ctrlAccueil->accueil();
+                $this->ctrlHome->home();
             }
         }
         catch (Exception $e) {
