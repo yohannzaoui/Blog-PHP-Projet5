@@ -55,7 +55,7 @@
           <p><strong><?=$comment->getPseudo() ?></strong> le <?= $comment->getCreation_date() ?></p>
             <p><?=$comment->getContent() ?></p>
             <hr>
-            <?php endforeach ?>
+              <?php endforeach; ?>
         </div>
       </div>
 </div>

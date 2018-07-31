@@ -1,19 +1,21 @@
 <?php
 
+
+
 class CommentManager extends Manager {
 
-
-  public function valideComment($id)
- {
-   $comments = [];
-   $req = $this->getDb()->prepare('SELECT * FROM comments WHERE publication=1 AND id_post=? ORDER BY creation_date DESC');
-   $req->execute(array($id));
-   while ($data = $req->fetch(PDO::FETCH_ASSOC))
-   {
-     $comments[] = new Comment($data);
-   }
-   return $comments;
- }
+ public function valideComment($id)
+    {
+        $req = $this->getDb()->prepare('SELECT * FROM comments WHERE id_post=? AND publication=1 ORDER BY creation_date');
+        $req->execute(array($_GET['id']));
+        while($data = $req->fetch(PDO::FETCH_ASSOC))
+        {
+          $comments[] = new Comment($data);
+        }
+        
+        return $comments;
+        $req->closeCursor();
+    }
 
  public function noValideComment()
 {
