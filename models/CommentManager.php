@@ -1,12 +1,12 @@
 <?php
 
 
-
 class CommentManager extends Manager {
 
  public function valideComment($id)
     {
-        $req = $this->getDb()->prepare('SELECT * FROM comments WHERE id_post=? AND publication=1 ORDER BY creation_date');
+        $comments=[];
+        $req = $this->getDb()->prepare('SELECT * FROM comments WHERE id_post=? AND publication=0 ORDER BY creation_date');
         $req->execute(array($_GET['id']));
         while($data = $req->fetch(PDO::FETCH_ASSOC))
         {
@@ -14,8 +14,8 @@ class CommentManager extends Manager {
         }
         
         return $comments;
-        $req->closeCursor();
     }
+    
 
  public function noValideComment()
 {
