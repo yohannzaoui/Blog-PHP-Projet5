@@ -1,3 +1,5 @@
+<?php $this->_title = $post->getTitle() ; ?>
+
 <div class="container">
       <div class="alert alert-primary" role="alert">
         <div class="row">
