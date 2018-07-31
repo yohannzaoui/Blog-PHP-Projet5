@@ -1,29 +1,26 @@
-<?php $this->_title = "Yohann Zaoui - Les articles"; ?>
-
-
+<?php $this->titre = "les articles"; ?>
 
 <div class="container">
   <h2 class="title_center">Les articles</h2>
   <div class="alert alert-primary" role="alert">
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
-    <?php foreach ($posts as $post) :?>
+    <?php foreach ($billets as $billet) :?>
       <div class="post-preview">
-        <a href="index.php?url=post&amp;id=<?= $post->getId() ?>">
+      <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
           <h2 class="post-title">
-          <p><?=$post->getTitle() ?></p>
+          <p><?=$billet['title'] ?></p>
           </h2>
           <h3 class="post-subtitle">
-          <?=$post->getSubtitle() ?>
+          <?=$billet['subtitle']?>
           </h3>
         </a>
         <p class="post-meta">
-          <?php echo "Ecrit par ".$post->getAuthor()?>
-          <a href="#"></a>
-          <?php echo "le ".$post->getCreation_date() ?></p>
+          <?php echo "Ecrit par ".$billet['author']?>
+          <?php echo "le ".$billet['creation_date'] ?></p>
       </div>
       <hr>
-      <?php endforeach ?>
+            <?php endforeach; ?>
     </div>
   </div>
 </div>

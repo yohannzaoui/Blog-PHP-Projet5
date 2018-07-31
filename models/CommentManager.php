@@ -1,54 +1,26 @@
 <?php
 
-
+require_once 'Models/Manager.php';
+/**
+ * Fournit les services d'accès aux genres musicaux 
+ * 
+ * @author Baptiste Pesquet
+ */
 class CommentManager extends Manager {
 
- public function valideComment($id)
-    {
-        $comments=[];
-        $req = $this->getDb()->prepare('SELECT * FROM comments WHERE id_post=? AND publication=1 ORDER BY creation_date');
-        $req->execute(array($_GET['id']));
-        while($data = $req->fetch(PDO::FETCH_ASSOC))
-        {
-          $comments[] = new Comment($data);
-        }
-        
-        return $comments;
+// Renvoie la liste des commentaires associés à un billet
+    public function getCommentaires($idBillet) {
+        $sql = 'select * from comments'
+                . ' where id_post=?';
+        $commentaires = $this->executerRequete($sql, array($idBillet));
+        return $commentaires;
     }
-    
 
- public function noValideComment()
-{
-  $comments = [];
-  $req = $this->getDb()->query('SELECT id,id_post,pseudo,content,creation_date,publication FROM comments WHERE publication= 0 ORDER BY creation_date DESC');
-  while ($data = $req->fetch(PDO::FETCH_ASSOC))
-  {
-    $comments[] = new Comment($data);
-  }
-  return $comments;
-}
-
-  public function addComment(Comment $comment)
-  {
-    $req=$this->getDb()->prepare('INSERT INTO comments (id_post,pseudo,content,publication) VALUES (:id_post,:pseudo,:content,0)');
-    $req->bindValue(':id_post',htmlspecialchars($_GET['id']),PDO::PARAM_INT);
-    $req->bindValue(':pseudo',htmlspecialchars($_POST['pseudo']),PDO::PARAM_STR);
-    $req->bindValue(':content',htmlspecialchars($_POST['content']),PDO::PARAM_STR);
-
-    $req->execute();
-  }
-
-  public function deleteComment($id)
-  {
-    $req=$this->getDb()->prepare('DELETE FROM comments WHERE id='.$id);
-    $req->execute(array($id));
-  }
-
-  public function validateComment($publication,$id)
-  {
-    $req=$this->getDb()->prepare('UPDATE comments SET publication=:publication WHERE id=:id');
-    $req->bindValue(':id',htmlspecialchars($_GET['id']),PDO::PARAM_INT);
-    $req->bindValue(':publication',htmlspecialchars($_GET['publication']),PDO::PARAM_INT);
-    $req->execute();
-  }
+    // Ajoute un commentaire dans la base
+    public function ajouterCommentaire($auteur, $contenu, $idBillet) {
+        $sql = 'insert into comments(creation_date, pseudo, content, id_post)'
+            . ' values(now(), ?, ?, ?)';
+        //$date = date(DATE_W3C);  // Récupère la date courante
+        $this->executerRequete($sql, array($auteur, $contenu, $idBillet));
+    }
 }
