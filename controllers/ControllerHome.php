@@ -13,7 +13,7 @@ class ControllerHome {
 
 // Affiche la liste de tous les billets du blog
     public function accueil() {
-        $billets = $this->billet->getBillets();
+        $billets = $this->billet->getRecentPosts();
         $vue = new View("Home");
         $vue->generer(array('billets' => $billets));
     }

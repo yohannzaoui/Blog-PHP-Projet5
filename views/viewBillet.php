@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog - " . $billet['title']; ?>
+<?php $this->titre = "Mon Blog - " . $billet->getTitle(); ?>
 
 
 
@@ -8,14 +8,14 @@
           <div class="col-lg-12 col-md-10 mx-auto">
             <div class="post-preview">
             <h2 class="post-title">
-            <?= $billet['title'] ?>
+            <?= $billet->getTitle() ?>
             </h2>
             <h3 class="post-subtitle">
-            <?= $billet['subtitle'] ?>
+            <?= $billet->getSubtitle() ?>
             </h3>
-            <p><?= $billet['content'] ?></p>
+            <p><?= $billet->getContent() ?></p>
             <p class="post-meta">
-            <?php echo 'Article de '.$billet['author'].' le '.$billet['creation_date'].' -- Modifié le '.$billet['update_date'] ?>
+            <?php echo 'Article de '.$billet->getAuthor().' le '.$billet->getCreation_date().' -- Modifié le '.$billet->getCreation_date() ?>
             </p>
             <p><small><a href="index.php?action=List">Retour à la liste d'articles</a></small></p>
           </div>
@@ -46,7 +46,7 @@
          </div>
          <br>
          <div class="form-group">
-            <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
+            <input type="hidden" name="id" value="<?= $billet->getId() ?>" />
            <button type="submit" name="Commenter" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
            <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
          </div>
@@ -57,8 +57,8 @@
      <div class="col-lg-12 col-md-10 mx-auto">
        <h2 class="title_center">Les commentaire</h2>
        <?php foreach($commentaires as $commentaire) : ?>
-          <p><strong><?=$commentaire['pseudo']  ?></strong> le <?= $commentaire['creation_date']  ?></p>
-            <p><?=$commentaire['content']  ?></p>
+          <p><strong><?=$commentaire->getPseudo()  ?></strong> le <?= $commentaire->getCreation_date()  ?></p>
+            <p><?=$commentaire->getContent()  ?></p>
             <hr>
               <?php endforeach; ?>
         </div>

@@ -15,9 +15,9 @@ class ControllerPost {
     }
 
     // Affiche les détails sur un billet
-    public function billet($idBillet) {
-        $billet = $this->billet->getBillet($idBillet);
-        $commentaires = $this->commentaire->getCommentaires($idBillet);
+    public function billet($id) {
+        $billet = $this->billet->getPost($id);
+        $commentaires = $this->commentaire->valideComment($id);
         $vue = new View("Billet");
         $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
     }

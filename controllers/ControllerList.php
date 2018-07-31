@@ -13,7 +13,7 @@ class ControllerList {
 
 // Affiche la liste de tous les billets du blog
     public function list() {
-        $billets = $this->billet->getAll();
+        $billets = $this->billet->getListPosts();
         $vue = new View("List");
         $vue->generer(array('billets' => $billets));
     }

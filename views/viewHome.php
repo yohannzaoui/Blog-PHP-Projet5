@@ -10,17 +10,17 @@
     <div class="col-lg-12 col-md-10 mx-auto">
     <?php foreach ($billets as $billet) :?>
       <div class="post-preview">
-      <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
+      <a href="<?= "index.php?action=billet&id=" . $billet->getId() ?>">
           <h2 class="post-title">
-          <p><?=$billet['title'] ?></p>
+          <p><?=$billet->getTitle() ?></p>
           </h2>
           <h3 class="post-subtitle">
-          <?=$billet['subtitle']?>
+          <?=$billet->getSubtitle()?>
           </h3>
         </a>
         <p class="post-meta">
-          <?php echo "Ecrit par ".$billet['author']?>
-          <?php echo "le ".$billet['creation_date'] ?></p>
+          <?php echo "Ecrit par ".$billet->getAuthor()?>
+          <?php echo "le ".$billet->getCreation_date()?></p>
       </div>
       <hr>
             <?php endforeach; ?>
