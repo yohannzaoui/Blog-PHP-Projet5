@@ -3,7 +3,7 @@
 require_once 'Models/PostManager.php';
 require_once 'Views/View.php';
 
-class ControllerHome {
+class ControllerList {
 
     private $billet;
 
@@ -12,11 +12,10 @@ class ControllerHome {
     }
 
 // Affiche la liste de tous les billets du blog
-    public function accueil() {
-        $billets = $this->billet->getBillets();
-        $vue = new View("Home");
+    public function list() {
+        $billets = $this->billet->getAll();
+        $vue = new View("List");
         $vue->generer(array('billets' => $billets));
     }
 
 }
-
