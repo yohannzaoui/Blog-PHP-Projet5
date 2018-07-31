@@ -20,10 +20,10 @@ class Routeur {
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'billet') {
-                    $idBillet = intval($this->getParametre($_GET, 'id'));
-                    if ($idBillet != 0) {
-                        $this->ctrlBillet->billet($idBillet);
+                if ($_GET['action'] == 'post') {
+                    $idPost = intval($this->getParametre($_GET, 'id'));
+                    if ($idPost != 0) {
+                        $this->ctrlBillet->billet($idPost);
                     }
                     else
                         throw new Exception("Identifiant de billet non valide");
@@ -41,7 +41,7 @@ class Routeur {
                     throw new Exception("Action non valide");
             }
             else {  // aucune action définie : affichage de l'accueil
-                $this->ctrlAccueil->accueil();
+                $this->ctrlAccueil->home();
             }
         }
         catch (Exception $e) {

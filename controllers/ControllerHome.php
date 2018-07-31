@@ -5,17 +5,17 @@ require_once 'Views/View.php';
 
 class ControllerHome {
 
-    private $billet;
+    private $post;
 
     public function __construct() {
-        $this->billet = new PostManager();
+        $this->post = new PostManager();
     }
 
 // Affiche la liste de tous les billets du blog
-    public function accueil() {
-        $billets = $this->billet->getRecentPosts();
-        $vue = new View("Home");
-        $vue->generer(array('billets' => $billets));
+    public function home() {
+        $posts = $this->post->getRecentPosts();
+        $view = new View("Home");
+        $view->generer(array('posts' => $posts));
     }
 
 }

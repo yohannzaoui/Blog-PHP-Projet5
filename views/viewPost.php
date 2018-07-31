@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog - " . $billet->getTitle(); ?>
+<?php $this->titre = "Mon Blog - " . $post->getTitle(); ?>
 
 
 
@@ -8,14 +8,14 @@
           <div class="col-lg-12 col-md-10 mx-auto">
             <div class="post-preview">
             <h2 class="post-title">
-            <?= $billet->getTitle() ?>
+            <?= $post->getTitle() ?>
             </h2>
             <h3 class="post-subtitle">
-            <?= $billet->getSubtitle() ?>
+            <?= $post->getSubtitle() ?>
             </h3>
-            <p><?= $billet->getContent() ?></p>
+            <p><?= $post->getContent() ?></p>
             <p class="post-meta">
-            <?php echo 'Article de '.$billet->getAuthor().' le '.$billet->getCreation_date().' -- Modifié le '.$billet->getCreation_date() ?>
+            <?php echo 'Article de '.$post->getAuthor().' le '.$post->getCreation_date().' -- Modifié le '.$post->getCreation_date() ?>
             </p>
             <p><small><a href="index.php?action=List">Retour à la liste d'articles</a></small></p>
           </div>
@@ -46,7 +46,7 @@
          </div>
          <br>
          <div class="form-group">
-            <input type="hidden" name="id" value="<?= $billet->getId() ?>" />
+            <input type="hidden" name="id" value="<?= $post->getId() ?>" />
            <button type="submit" name="Commenter" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
            <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
          </div>
