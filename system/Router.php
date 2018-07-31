@@ -5,7 +5,7 @@ require_once 'Controllers/ControllerPost.php';
 require_once 'Controllers/ControllerList.php';
 require_once 'Views/View.php';
 
-class Routeur {
+class Router {
 
     private $ctrlHome;
     private $ctrlPost;
@@ -18,7 +18,7 @@ class Routeur {
     }
 
     // Route une requête entrante : exécution l'action associée
-    public function routerRequete() {
+    public function routerReq() {
         try {
             if (isset($_GET['action'])) {
                 if ($_GET['action'] == 'post') {
