@@ -2,7 +2,7 @@
 
 require_once('views/View.php');
 
-class ControllerHome
+class ControllerAll
 {
     private $_postManager;
     private $_view;
@@ -22,8 +22,8 @@ class ControllerHome
     private function posts()
     {
         $this->_postManager = new PostManager;
-        $posts = $this->_postManager->getRecent();
-        $this->_view = new View('Home');
+        $posts = $this->_postManager->getAll();
+        $this->_view = new View('All');
         $this->_view->generate(array('posts'=>$posts));
     }
 }

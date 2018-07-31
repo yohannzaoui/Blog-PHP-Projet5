@@ -1,1 +1,1 @@
-<p><?=$errorMsg?></p>
+<?= $errorMsg ?>
