@@ -1,7 +1,5 @@
 <?php $this->titre = "Mon Blog - " . $post->getTitle(); ?>
 
-
-
 <div class="container">
       <div class="alert alert-primary" role="alert">
         <div class="row">
@@ -24,10 +22,6 @@
 <div class="container">
    <div class="row">
      <div class="col-lg-12 col-md-10 mx-auto">
-       <?php if(isset ($_POST['Comment'])) {
-         echo controllerPost::valideComment();
-       }
-       ?>
        <h2 class="title_center">Ecrire un commentaire</h2>
        <form action="index.php?action=comment" method="post">
          <div class="control-group">
@@ -49,9 +43,9 @@
             <input type="hidden" name="id" value="<?= $post->getId() ?>" />
            <button type="submit" name="Comment" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
            <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
+           <?php if(isset($_POST['Comment'])){echo controllerPost::valideComment();}?>
          </div>
        </form>
-
 
 <div class="container">
    <div class="row">
