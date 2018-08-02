@@ -25,9 +25,6 @@ class ControllerPost {
     public function comment($author, $content, $idPost) {
         $this->comment->addComment($author, $content, $idPost);
         $this->post($idPost);
-        if(isset($_POST['comment'])) {
-            $sendOk = "Votre commentaire à été envoyé";
-        }
     }
 
 }

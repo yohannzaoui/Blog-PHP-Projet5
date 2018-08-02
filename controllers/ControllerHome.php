@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Models/PostManager.php';
 require_once 'Views/View.php';
 
