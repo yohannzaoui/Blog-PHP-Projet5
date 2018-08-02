@@ -1,8 +1,0 @@
-{
-    "autoload": {
-        "psr-4": {
-            "blogControllers\\":"Controllers",
-            "blogModels\\":"Models"
-        }
-    }
-}
