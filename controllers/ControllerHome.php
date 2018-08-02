@@ -15,6 +15,4 @@ class ControllerHome {
         $view = new View("Home");
         $view->generer(array('posts' => $posts));
     }
-
 }
-

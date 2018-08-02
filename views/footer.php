@@ -41,6 +41,6 @@
     </div>
   </div>
   <div class="title_center">
-    <p><small><a href="/admin/">Administration</a></small></p>
+    <p><small><a href="index.php?action=admin">Administration</a></small></p>
   </div>
 </footer>

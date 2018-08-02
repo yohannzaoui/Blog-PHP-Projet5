@@ -13,7 +13,7 @@
             <p class="post-meta">
             <?php echo 'Article de '.$post->getAuthor().' le '.$post->getCreation_date().' -- Modifié le '.$post->getCreation_date() ?>
             </p>
-            <p><small><a href="index.php?action=List">Retour à la liste d'articles</a></small></p>
+            <p><small><a href="index.php?action=list">Retour à la liste d'articles</a></small></p>
           </div>
         </div>
       </div>
@@ -24,6 +24,10 @@
 <div class="container">
    <div class="row">
      <div class="col-lg-12 col-md-10 mx-auto">
+       <?php if(isset ($_POST['Comment'])) {
+         echo controllerPost::valideComment();
+       }
+       ?>
        <h2 class="title_center">Ecrire un commentaire</h2>
        <form action="index.php?action=comment" method="post">
          <div class="control-group">
@@ -47,7 +51,7 @@
            <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
          </div>
        </form>
-       
+
 
 <div class="container">
    <div class="row">
@@ -61,4 +65,3 @@
         </div>
       </div>
 </div>
-

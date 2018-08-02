@@ -1,15 +1,17 @@
 <?php
 
-require_once 'Controllers/ControllerHome.php';
-require_once 'Controllers/ControllerPost.php';
-require_once 'Controllers/ControllerList.php';
+function loadClasses($class) {
+  require 'controllers/'.$class.'.php';
+}
+spl_autoload_register('loadClasses');
 require_once 'Views/View.php';
 
 class Router {
 
-    private $ctrlHome;
-    private $ctrlPost;
-    private $ctrList;
+    private $ctrlHome,
+            $ctrlPost,
+            $ctrList;
+            //$ctrlAdmin;
 
     public function __construct() {
         $this->ctrlHome = new ControllerHome();
@@ -35,9 +37,12 @@ class Router {
                     $idPost = $this->getParametre($_POST, 'id');
                     $this->ctrlPost->comment($author, $content, $idPost);
                 }
-                else if ($_GET['action'] == 'List') {
+                else if ($_GET['action'] == 'list') {
                     $this->ctrlList->list();
                 }
+                //else if ($_GET['action'] == 'admin') {
+                    //$this->ctrlAdmin->admin();
+                //}
                 else
                     throw new Exception("Action non valide");
             }
