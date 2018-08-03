@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Models/PostManager.php';
 require_once 'Views/View.php';
 
@@ -16,6 +15,4 @@ class ControllerHome {
         $view = new View("Home");
         $view->generer(array('posts' => $posts));
     }
-
 }
-

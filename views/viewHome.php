@@ -1,3 +1,5 @@
+
+
 <?php $this->titre = "Mon Blog"; ?>
 
 <?php require('about.php'); ?>

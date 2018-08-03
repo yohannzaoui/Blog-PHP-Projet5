@@ -9,6 +9,7 @@ class ControllerPost {
     private $post;
     private $comment;
     private $var;
+    const VALIDE_COMMENT = "Votre commentaire à été envoyé, il sera affiché après validation.";
 
     public function __construct() {
         $this->post = new PostManager();
@@ -25,10 +26,10 @@ class ControllerPost {
     public function comment($author, $content, $idPost) {
         $this->comment->addComment($author, $content, $idPost);
         $this->post($idPost);
-        if(isset($_POST['comment'])) {
-            $sendOk = "Votre commentaire à été envoyé";
-        }
+    }
+
+    public static function valideComment() {
+      return self::VALIDE_COMMENT;
     }
 
 }
-
