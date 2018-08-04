@@ -3,7 +3,7 @@ function loadClasses($class) {
   require 'controllers/'.$class.'.php';
 }
 spl_autoload_register('loadClasses');
-require_once 'Views/View.php';
+require_once 'System/View.php';
 
 class ControllerAdmin {
 

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Models/PostManager.php';
-require_once 'Views/View.php';
+require_once 'System/View.php';
 
 class ControllerList {
 
