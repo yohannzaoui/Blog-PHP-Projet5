@@ -4,14 +4,16 @@ require_once 'Models/PostManager.php';
 require_once 'Models/CommentManager.php';
 require_once 'System/View.php';
 
-class ControllerPost {
+class ControllerPost
+{
 
     private $post;
     private $comment;
-    private $var;
-    const VALIDE_COMMENT = "Votre commentaire à été envoyé, il sera affiché après validation.";
 
-    public function __construct() {
+    const VALIDE_COMMENT = "Votre commentaire sera affiché après validation.";
+
+    public function __construct()
+    {
         $this->post = new PostManager();
         $this->comment = new CommentManager();
     }

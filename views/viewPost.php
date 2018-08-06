@@ -11,7 +11,7 @@
             <p class="post-meta">
             <?php echo 'Article de '.$post->getAuthor().' le '.$post->getCreation_date().' -- Modifié le '.$post->getCreation_date() ?>
             </p>
-            <p><small><a href="index.php?action=list">Retour à la liste d'articles</a></small></p>
+            <p><small><a href="/index.php/List">Retour à la liste d'articles</a></small></p>
           </div>
         </div>
       </div>
@@ -23,11 +23,11 @@
    <div class="row">
      <div class="col-lg-12 col-md-10 mx-auto">
        <h2 class="title_center">Ecrire un commentaire</h2>
-       <form action="index.php?action=comment" method="post">
+       <form action="" method="post">
          <div class="control-group">
            <div class="form-group floating-label-form-group controls">
              <label for="pseudo">Auteur</label>
-             <input type="text" class="form-control" name="author" placeholder="Votre pseudo" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
+             <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
              <p class="help-block text-danger"></p>
            </div>
          </div>
@@ -43,7 +43,6 @@
             <input type="hidden" name="id" value="<?= $post->getId() ?>" />
            <button type="submit" name="Comment" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
            <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
-           <?php if(isset($_POST['Comment'])){echo controllerPost::valideComment();}?>
          </div>
        </form>
 

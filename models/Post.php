@@ -1,5 +1,7 @@
 <?php
 
+namespace BlogModels;
+
 class Post
 {
   private $_id;

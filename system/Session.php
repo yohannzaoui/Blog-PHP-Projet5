@@ -1,9 +1,11 @@
 <?php
 
+namespace BlogSystem;
+
 /**
  * Classe modélisant la session.
  * Encapsule la superglobale PHP $_SESSION.
- * 
+ *
  * @author Baptiste Pesquet
  */
 class Session
@@ -28,7 +30,7 @@ class Session
 
     /**
      * Ajoute un attribut à la session
-     * 
+     *
      * @param string $nom Nom de l'attribut
      * @param string $valeur Valeur de l'attribut
      */
@@ -39,9 +41,9 @@ class Session
 
     /**
      * Renvoie vrai si l'attribut existe dans la session
-     * 
+     *
      * @param string $nom Nom de l'attribut
-     * @return bool Vrai si l'attribut existe et sa valeur n'est pas vide 
+     * @return bool Vrai si l'attribut existe et sa valeur n'est pas vide
      */
     public function existeAttribut($nom)
     {
@@ -50,7 +52,7 @@ class Session
 
     /**
      * Renvoie la valeur de l'attribut demandé
-     * 
+     *
      * @param string $nom Nom de l'attribut
      * @return string Valeur de l'attribut
      * @throws Exception Si l'attribut n'existe pas dans la session

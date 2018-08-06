@@ -1,5 +1,7 @@
 <?php
 
+namespace BlogModels;
+
 class Comment
 {
   private $_id;

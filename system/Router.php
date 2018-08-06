@@ -1,73 +1,38 @@
 <?php
 
-function loadClasses($class) {
-  require 'controllers/'.$class.'.php';
-}
-spl_autoload_register('loadClasses');
-require_once 'System/View.php';
+namespace BlogSystem;
 
-class Router {
+class Router
+{
+    private $routes = [];
 
-    private $ctrlHome,
-            $ctrlPost,
-            $ctrList;
-            //$ctrlAdmin;
-
-    public function __construct() {
-        $this->ctrlHome = new ControllerHome();
-        $this->ctrlPost = new ControllerPost();
-        $this->ctrlList = new ControllerList();
-    }
-
-    // Route une requête entrante : exécution l'action associée
-    public function routerReq() {
-        try {
-            if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'post') {
-                    $idPost = intval($this->getParametre($_GET, 'id'));
-                    if ($idPost != 0) {
-                        $this->ctrlPost->post($idPost);
-                    }
-                    else
-                        throw new Exception("Identifiant de billet non valide");
-                }
-                else if ($_GET['action'] == 'comment') {
-                    $author = $this->getParametre($_POST, 'author');
-                    $content = $this->getParametre($_POST, 'content');
-                    $idPost = $this->getParametre($_POST, 'id');
-                    $this->ctrlPost->comment($author, $content, $idPost);
-                }
-                else if ($_GET['action'] == 'list') {
-                    $this->ctrlList->list();
-                }
-                //else if ($_GET['action'] == 'admin') {
-                    //$this->ctrlAdmin->admin();
-                //}
-                else
-                    throw new Exception("Action non valide");
-            }
-            else {  // aucune action définie : affichage de l'accueil
-                $this->ctrlHome->home();
-            }
+    public function add(
+        string $method,
+        string $path,
+        string $class,
+        string $action,
+        array $params = []
+    ) {
+        if ($method !== 'GET' && $method !== 'POST') {
+            throw new InvalidArgumentException("$method is not a valid method");
         }
-        catch (Exception $e) {
-            $this->erreur($e->getMessage());
+
+        $this->routes[$path][strtoupper($method)] = [
+            'class' => $class,
+            'action' => $action,
+            'params' => $params,
+        ];
+    }
+
+    public function getController(string $method, string $path)
+    {
+        if (!isset($this->routes[$path][strtoupper($method)])) {
+          http_response_code(404);
+          // APPELER LA VUE ERREUR
+
+          die();
         }
-    }
 
-    // Affiche une erreur
-    private function erreur($msgErreur) {
-        $vue = new View("Erreur");
-        $vue->generer(array('msgErreur' => $msgErreur));
+        return $this->routes[$path][strtoupper($method)];
     }
-
-    // Recherche un paramètre dans un tableau
-    private function getParametre($tableau, $nom) {
-        if (isset($tableau[$nom])) {
-            return $tableau[$nom];
-        }
-        else
-            throw new Exception("Paramètre '$nom' absent");
-    }
-
 }

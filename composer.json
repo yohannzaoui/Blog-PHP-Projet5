@@ -1,0 +1,9 @@
+{
+    "autoload":{
+        "psr-4":{
+            "BlogSystem\\":"System",
+            "BlogControllers\\":"Controllers",
+            "BlogModels\\":"Models"
+        }
+    }
+}
