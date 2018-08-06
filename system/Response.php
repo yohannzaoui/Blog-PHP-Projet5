@@ -13,7 +13,7 @@ class Response
     public function __construct($controller, $action, $params)
     {
         $controller = new $controller;
-        $controller->$action($params);
+        return $controller->$action($params);
     }
 
 

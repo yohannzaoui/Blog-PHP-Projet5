@@ -1,14 +1,9 @@
 <?php
 
-//namespace BlogControllers;
-
-require_once 'Models/PostManager.php';
-require_once 'Models/CommentManager.php';
-require_once 'System/View.php';
+require 'vendor/autoload.php';
 
 class ControllerFrontend
 {
-
     private $postManager;
     private $commentManager;
 
@@ -46,7 +41,6 @@ class ControllerFrontend
     public function comment()
     {
         $this->commentManager->addComment();
-        //$this->post($_GET['id']);
         header('Location:/index.php/post?id='.$_GET['id']);
     }
 

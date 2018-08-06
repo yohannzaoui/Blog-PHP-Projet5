@@ -20,9 +20,9 @@ class CommentManager extends Manager {
     public function addComment()
     {
         $req = $this->getDb()->prepare('INSERT INTO comments(creation_date, pseudo, content, id_post,publication) VALUES (NOW(), :pseudo, :content, :id_post, 1)');
-        $req->bindValue(':id_post',htmlspecialchars($_GET['id']),PDO::PARAM_INT);
-        $req->bindValue(':pseudo',htmlspecialchars($_POST['pseudo']),PDO::PARAM_STR);
-        $req->bindValue(':content',htmlspecialchars($_POST['content']),PDO::PARAM_STR);
+        $req->bindValue(':id_post',htmlspecialchars($_GET['id']),\PDO::PARAM_INT);
+        $req->bindValue(':pseudo',htmlspecialchars($_POST['pseudo']),\PDO::PARAM_STR);
+        $req->bindValue(':content',htmlspecialchars($_POST['content']),\PDO::PARAM_STR);
         $req->execute();
     }
 }

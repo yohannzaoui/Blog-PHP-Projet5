@@ -2,8 +2,6 @@
 
 namespace BlogModels;
 
-//require_once 'Manager.php';
-//require_once 'Post.php';
 require 'vendor/autoload.php';
 
 class PostManager extends Manager {
@@ -45,13 +43,13 @@ class PostManager extends Manager {
         $req->closeCursor();
     }
 
-    public function addPost(Post $post)
+    public function newPost(Post $post)
     {
-      $req=$this->_db->prepare('INSERT INTO posts (title,subtitle,author,content) VALUES (:title,:subtitle,:author,:content)');
-      $req->bindValue(':title',htmlspecialchars($_POST['title']),PDO::PARAM_STR);
-      $req->bindValue(':subtitle',htmlspecialchars($_POST['subtitle']),PDO::PARAM_STR);
-      $req->bindValue(':author',htmlspecialchars($_POST['author']),PDO::PARAM_STR);
-      $req->bindValue(':content',htmlspecialchars($_POST['content']),PDO::PARAM_STR);
+      $req=$this->getdb()->prepare('INSERT INTO posts (title,subtitle,author,content) VALUES (:title,:subtitle,:author,:content)');
+      $req->bindValue(':title',htmlspecialchars($_POST['title']),\PDO::PARAM_STR);
+      $req->bindValue(':subtitle',htmlspecialchars($_POST['subtitle']),\PDO::PARAM_STR);
+      $req->bindValue(':author',htmlspecialchars($_POST['author']),\PDO::PARAM_STR);
+      $req->bindValue(':content',htmlspecialchars($_POST['content']),\PDO::PARAM_STR);
       $req->execute();
     }
 }
