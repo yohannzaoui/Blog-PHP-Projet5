@@ -1,14 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Repository;
+use Core\DBFactory;
+use App\Entity\Post;
 
 //namespace BlogControllers;
 
-//require_once 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 //use BlogFramework;
 
-require_once 'etc/DBFactory.php';
-require_once 'src/Entity/Post.php';
+//require_once 'etc/DBFactory.php';
+//require_once 'src/Entity/Post.php';
 
 class PostRepository extends DBFactory {
 
@@ -18,7 +20,7 @@ class PostRepository extends DBFactory {
         $posts = [];
         $req = $this->getDb()->prepare('SELECT * FROM posts ORDER BY creation_date DESC LIMIT 0,3');
         $req->execute();
-        while($data = $req->fetch(PDO::FETCH_ASSOC)) {
+        while($data = $req->fetch(\PDO::FETCH_ASSOC)) {
 
             $posts[] = new Post($data);
         }

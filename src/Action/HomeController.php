@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 use App\Action\Interfaces\HomeControllerInterface;
 use Core\Request;
 use Core\View;
-use Core\Repository\PostRepository;
+use App\Repository\PostRepository;
 
 final class HomeController implements HomeControllerInterface
 {
@@ -27,7 +27,7 @@ final class HomeController implements HomeControllerInterface
       // Renvoie de la vue.
         $posts = $this->post->getRecentPosts();
         require 'templates/Home/index.php';
-        //$this->view->genererVue(array('posts' => $posts));
+        $this->view->generer(array('posts' => $posts));
         //return $this->view->render('home', ['posts' => $posts]);
     }
 }

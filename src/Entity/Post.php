@@ -1,6 +1,6 @@
 <?php
 
-//namespace BlogControllers;
+namespace App\Entity;
 
 class Post
 {

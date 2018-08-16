@@ -1,8 +1,6 @@
 <?php
+
 namespace Core;
-//namespace BlogFram;
-//require_once 'vendor/autoload.php';
-//require_once 'Configuration.php';
 
 
 class View
@@ -13,28 +11,7 @@ class View
     /** Titre de la vue (défini dans le fichier vue) */
     private $title;
 
-    /**
-     * Constructeur
-     *
-     * @param string $action Action à laquelle la vue est associée
-     * @param string $controleur Nom du contrôleur auquel la vue est associée
-     */
-    public function __construct($action, $controller = "")
-    {
-        // Détermination du nom du fichier vue à partir de l'action et du constructeur
-        // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
-        $file = "Templates/frontend";
-        if ($controller != "") {
-            $file = $file . $controller . "/";
-        }
-        $this->file = $file . $action . ".php";
-    }
 
-    /**
-     * Génère et affiche la vue
-     *
-     * @param array $donnees Données nécessaires à la génération de la vue
-     */
     public function generer($data)
     {
         // Génération de la partie spécifique de la vue
@@ -76,14 +53,7 @@ class View
         }
     }
 
-    /**
-     * Nettoie une valeur insérée dans une page HTML
-     * Doit être utilisée à chaque insertion de données dynamique dans une vue
-     * Permet d'éviter les problèmes d'exécution de code indésirable (XSS) dans les vues générées
-     *
-     * @param string $valeur Valeur à nettoyer
-     * @return string Valeur nettoyée
-     */
+
     private function check($value)
     {
         // Convertit les caractères spéciaux en entités HTML
