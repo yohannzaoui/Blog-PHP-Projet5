@@ -1,45 +1,53 @@
 <?php
 
-//namespace BlogControllers;
+namespace App\Repository;
 
-//require_once 'vendor/autoload.php';
+use Core\DBFactory;
+use App\entity\User;
 
-require_once 'etc/DBFactory.php';
-require_once 'src/Entity/User.php';
-
-
-class UserRepository extends DBFactory {
-
-    /**
-     * Vérifie qu'un utilisateur existe dans la BD
-     *
-     * @param string $login Le login
-     * @param string $mdp Le mot de passe
-     * @return boolean Vrai si l'utilisateur existe, faux sinon
-     */
-    public function connecter($pseudo, $pass)
+class UserRepository extends DBFactory
+{
+    public function addUser($user)
     {
-        $req = $this->getDb()->prepare('SELECT id FROM admins WHERE pseudo=? AND pass=?');
-        $utilisateur = $req->execute(array($pseudo, $pass));
-        return ($utilisateur->rowCount() == 1);
+        extract($user);
+        $sql = 'INSERT INTO users (pseudo, pass) VALUES (?,?)';
+        $this->sql($sql, [$pseudo, $pass]);
     }
 
-    /**
-     * Renvoie un utilisateur existant dans la BD
-     *
-     * @param string $login Le login
-     * @param string $mdp Le mot de passe
-     * @return mixed L'utilisateur
-     * @throws Exception Si aucun utilisateur ne correspond aux paramètres
-     */
-    public function getUtilisateur($pseudo, $pass)
+    public function allUsers()
     {
-        $req = $this->getDb()->prepare('SELECT id FROM admins WHERE pseudo=? AND pass=?');
-        $utilisateur = $req->execute(array($pseudo, $pass));
-        if ($utilisateur->rowCount() == 1)
-            return $utilisateur->fetch();  // Accès à la première ligne de résultat
-        else
-            throw new Exception("Aucun utilisateur ne correspond aux identifiants fournis");
+        $sql= 'SELECT * FROM users';
+        $result = $this->sql($sql);
+        $users = [];
+        foreach ($result as $row) {
+            $userId = $row['id'];
+            $users[$userId] = $this->buildObject($row);
+        }
+        return $users;
     }
 
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM users WHERE id='.$id;
+        $this->sql($sql, [$id]);
+    }
+
+    public function userConnect()
+    {
+        $sql ='SELECT * FROM users WHERE pseudo = ? AND pass = ?';
+        $this->sql($sql, [$pseudo,$pass]);
+        $userExist =$sql->rowCount();
+        if ($userExist == 1) {
+            $userInfo = $sql->fetch();
+        }
+    }
+
+    private function buildObject(array $row)
+    {
+        $user = new User;
+        $user->setId($row['id']);
+        $user->setPseudo($row['pseudo']);
+        $user->setPass($row['pass']);
+        return $user;
+    }
 }

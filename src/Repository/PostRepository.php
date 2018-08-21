@@ -1,65 +1,79 @@
 <?php
 
-namespace App\Repository;
+namespace App\repository;
+
 use Core\DBFactory;
-use App\Entity\Post;
+use App\entity\Post;
 
-//namespace BlogControllers;
-
-require_once 'vendor/autoload.php';
-//use BlogFramework;
-
-//require_once 'etc/DBFactory.php';
-//require_once 'src/Entity/Post.php';
-
-class PostRepository extends DBFactory {
-
-
+class PostRepository extends DBFactory
+{
     public function getRecentPosts()
     {
+        $sql= 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0,3';
+        $result = $this->sql($sql);
         $posts = [];
-        $req = $this->getDb()->prepare('SELECT * FROM posts ORDER BY creation_date DESC LIMIT 0,3');
-        $req->execute();
-        while($data = $req->fetch(\PDO::FETCH_ASSOC)) {
-
-            $posts[] = new Post($data);
+        foreach ($result as $row) {
+            $postId = $row['id'];
+            $posts[$postId] = $this->buildObject($row);
         }
         return $posts;
     }
 
     public function getAll()
     {
+        $sql= 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts ORDER BY creation_date DESC';
+        $result = $this->sql($sql);
         $posts = [];
-        $req = $this->getDb()->prepare('SELECT * FROM posts ORDER BY creation_date DESC');
-        $req->execute();
-        while($data = $req->fetch(PDO::FETCH_ASSOC)) {
-
-            $posts[] = new Post($data);
+        foreach ($result as $row) {
+            $postId = $row['id'];
+            $posts[$postId] = $this->buildObject($row);
         }
         return $posts;
     }
 
-    public function post(int $idPost)
+    public function getPost($id)
     {
-        $posts = [];
-        $req = $this->getDb()->prepare('SELECT * FROM posts WHERE id=?');
-        $req->execute(array($idPost));
-        $data = $req->fetch(PDO::FETCH_ASSOC);
-        $post = new Post($data);
-        return $post;
-        $req->closeCursor();
+        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts WHERE id = ?';
+        $result = $this->sql($sql, [$id]);
+        $row = $result->fetch();
+        if($row){
+            return $this->buildObject($row);
+        } else {
+            echo "Aucun article existant avec cet identifiant";
+        }
+        return $result;
     }
 
-    /**
-     * Renvoie le nombre total de billets
-     *
-     * @return int Le nombre de billets
-     */
-    public function getNombreBillets()
+    public function addPost($post)
     {
-        $sql = 'select count(*) as nbBillets from T_BILLET';
-        $resultat = $this->executerRequete($sql);
-        $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
-        return $ligne['nbBillets'];
+        extract($post);
+        $sql = 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
+        $this->sql($sql, [$title, $subtitle, $author, $content]);
+    }
+
+    public function updatePost($post)
+    {
+        extract($post);
+        $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id='.$id;
+        $this->sql($sql, [$author,$title, $subtitle,$content]);
+    }
+
+    public function deletePost($id)
+    {
+        $sql = 'DELETE FROM posts WHERE id='.$id;
+        $this->sql($sql, [$id]);
+    }
+
+    private function buildObject(array $row)
+    {
+        $post = new Post;
+        $post->setId($row['id']);
+        $post->setAuthor($row['author']);
+        $post->setTitle($row['title']);
+        $post->setSubtitle($row['subtitle']);
+        $post->setContent($row['content']);
+        $post->setCreation_date($row['creation_date_fr']);
+        $post->setUpdate_date($row['update_date_fr']);
+        return $post;
     }
 }

@@ -1,51 +1,64 @@
 <?php
 
-//namespace BlogControllers;
-//require_once 'vendor/autoload.php';
-//use BlogFramework;
+namespace App\repository;
 
-require_once 'etc/DBFactory.php';
-require_once 'src/Entity/Comment.php';
+use Core\DBFactory;
+use App\entity\Comment;
 
-
-class CommentRepository extends DBFactory {
-
-
-    public function getComments(int $idPost) {
+class CommentRepository extends DBFactory
+{
+    public function getCommentsFromPost($idPost)
+    {
+        $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 1 AND id_post = ? ORDER BY creation_date DESC';
+        $result = $this->sql($sql, [$idPost]);
         $comments = [];
-        $req = $this->getDb()->prepare('SELECT id,id_post,pseudo,content,creation_date,publication FROM comments WHERE publication=0 AND id_post='.$idPost);
-        $req->execute(array($idPost));
-        while ($data = $req->fetch(PDO::FETCH_ASSOC))
-        {
-            $comments [] = new Comment($data);
+        foreach ($result as $row) {
+            $commentId = $row['id'];
+            $comments[$commentId] = $this->buildObject($row);
         }
         return $comments;
- }
-
- /*public function getComments(int $idPost) {
-
-     $req = $this->getDb()->prepare('SELECT id,id_post,pseudo,content,creation_date,publication FROM comments WHERE publication=0 AND id_post='.$idPost);
-     $req->execute(array($idPost));
-     $comments = $req->setFetchMode(PDO::FETCH_OBJECT);
-     return $comments;
-}*/
-
-
-    public function addComment($pseudo, $content, $idPost) {
-        $req = $this->getDb()->prepare('INSERT INTO comments (pseudo, content, id_post, publication) values(?, ?, ?,0)');
-        $req->execute(array($pseudo, $content, $idPost));
     }
 
-    /**
-     * Renvoie le nombre total de commentaires
-     *
-     * @return int Le nombre de commentaires
-     */
-    public function getNombreCommentaires()
+    public function addComment($comment)
     {
-        $sql = 'select count(*) as nbCommentaires from comments';
-        $resultat = $this->executerRequete($sql);
-        $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
-        return $ligne['nbCommentaires'];
+        extract($comment);
+        $sql = 'INSERT INTO comments (id_post, pseudo, content, publication, creation_date) VALUES (?,?,?,0,NOW())';
+        $this->sql($sql, [$idPost,$pseudo, $content]);
+    }
+
+    public function getCommentsNoValide()
+    {
+        $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 0 ORDER BY creation_date DESC';
+        $result = $this->sql($sql);
+        $comments = [];
+        foreach ($result as $row) {
+            $commentId = $row['id'];
+            $comments[$commentId] = $this->buildObject($row);
+        }
+        return $comments;
+    }
+
+    public function validateComment($id)
+    {
+        $sql = 'UPDATE comments SET publication=1 WHERE id='.$id;
+        $this->sql($sql, [$id]);
+    }
+
+    public function deleteComment($id)
+    {
+        $sql = 'DELETE FROM comments WHERE id='.$id;
+        $this->sql($sql, [$id]);
+    }
+
+    private function buildObject(array $row)
+    {
+        $comment = new Comment;
+        $comment->setId($row['id']);
+        $comment->setPostId($row['id_post']);
+        $comment->setPseudo($row['pseudo']);
+        $comment->setContent($row['content']);
+        $comment->setCreation_date($row['creation_date_fr']);
+        $comment->setPublication($row['publication']);
+        return $comment;
     }
 }

@@ -1,64 +1,45 @@
 <?php
 
+namespace App\Entity;
+
 class User
 {
+    private $id;
     private $pseudo;
     private $pass;
 
-    public function __construct(array $data)
+    public function setId($id)
     {
-        $this->hydrate($data);
-    }
-
-    public function hydrate(array $data)
-    {
-    foreach ($data as $key => $value) {
-      $method = 'set'.ucfirst($key);
-
-      if (method_exists($this,$method)) {
-        $this->$method($value);
-            }
+        $id=(int)$id;
+        if ($id>0){
+        $this->id=$id;
         }
     }
 
-
-    /**
-     * Get the value of pseudo
-     */
-    public function getPseudo()
-    {
-        return $this->pseudo;
-    }
-
-    /**
-     * Set the value of pseudo
-     *
-     * @return  self
-     */
     public function setPseudo($pseudo)
     {
-        $this->pseudo = $pseudo;
-
-        return $this;
+        if(is_string($pseudo) && strlen($pseudo)<=255){
+            $this->pseudo = $pseudo;
+        }
     }
 
-    /**
-     * Get the value of password
-     */
-    public function getPassword()
+    public function setPass($pass)
     {
-        return $this->password;
+        $this->pass = $pass;
     }
 
-    /**
-     * Set the value of password
-     *
-     * @return  self
-     */
-    public function setPassword($password)
+    public function getPseudo()
     {
-        $this->password = $password;
+        return $this->pseudo; 
+    }
 
-        return $this;
+    public function getPass()
+    {
+        return $this->pass;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }

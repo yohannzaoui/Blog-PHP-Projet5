@@ -1,116 +1,96 @@
 <?php
 
-namespace App\Entity;
+namespace App\entity;
 
 class Post
 {
-  private $_id;
-  private $_author;
-  private $_title;
-  private $_subtitle;
-  private $_content;
-  private $_creation_date;
-  private $_update_date;
+  private $id;
+  private $author;
+  private $title;
+  private $subtitle;
+  private $content;
+  private $creation_date_fr;
+  private $update_date_fr;
 
-  public function __construct(array $data)
-  {
-    $this->hydrate($data);
-  }
-
-  public function hydrate(array $data)
-  {
-    foreach ($data as $key => $value) {
-      $method = 'set'.ucfirst($key);
-
-      if (method_exists($this,$method)) {
-        $this->$method($value);
-      }
-    }
-  }
 
   public function setId($id)
   {
     $id=(int)$id;
-    if ($id>0)
-    {
-      $this->_id=$id;
+    if ($id>0){
+      $this->id=$id;
     }
   }
 
   public function setAuthor($author)
   {
-    if (is_string($author) && strlen($author)<=255)
-    {
-      $this->_author=$author;
+    if (is_string($author) && strlen($author)<=255) {
+      $this->author=$author;
     }
   }
 
   public function setTitle($title)
   {
-    if (is_string($title) && strlen($title)<=255)
-    {
-      $this->_title=$title;
+    if (is_string($title) && strlen($title)<=255) {
+      $this->title=$title;
     }
   }
 
   public function setSubtitle($subtitle)
   {
-    if (is_string($subtitle) && strlen($subtitle)<=255)
-    {
-      $this->_subtitle=$subtitle;
+    if (is_string($subtitle) && strlen($subtitle)<=255) {
+      $this->subtitle=$subtitle;
     }
   }
 
   public function setContent($content)
   {
-    if (is_string($content) && strlen($content)<=10000)
-    {
-      $this->_content=$content;
+    if (is_string($content) && strlen($content)<=10000) {
+      $this->content=$content;
     }
   }
 
-  public function setCreation_date($creation_date)
+  public function setCreation_date($creation_date_fr)
   {
-    $this->_creation_date=$creation_date;
+    $this->creation_date_fr=$creation_date_fr;
   }
 
-  public function setUpdate_date($update_date)
+  public function setUpdate_date($update_date_fr)
   {
-    $this->_update_date=$update_date;
+    $this->update_date_fr=$update_date_fr;
   }
 
   public function getId()
   {
-    return $this->_id;
+    return $this->id;
   }
 
   public function getAuthor()
   {
-    return $this->_author;
+    return $this->author;
   }
 
   public function getTitle()
   {
-    return $this->_title;
+    return $this->title;
   }
 
   public function getSubtitle()
   {
-    return $this->_subtitle;
+    return $this->subtitle;
   }
 
   public function getContent()
   {
-    return $this->_content;
+    return $this->content;
   }
 
   public function getCreation_date()
   {
-    return $this->_creation_date;
+    return $this->creation_date_fr;
   }
 
   public function getUpdate_date()
   {
-    return $this->_update_date;
+    return $this->update_date_fr;
   }
 }

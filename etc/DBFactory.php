@@ -2,19 +2,49 @@
 
 namespace Core;
 
+use PDO;
 
 abstract class DBFactory
 {
-    private static $db;
+    private $connection;
 
-    protected static function getDb()
+    private function checkConnection()
     {
-        if (self::$db === null) {
-            
-            self::$db = new \PDO('mysql:host=localhost;dbname=blog;charset=utf8','root','');
-            self::$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
+        if ($this->connection === null) {
+            return $this->getConnection();
         }
-        return self::$db;
+        return $this->connection;
     }
 
+    private function getConnection()
+    {
+        try
+        {
+            $dsn = Configuration::get("dsn");
+            $login = Configuration::get("login");
+            $password = Configuration::get("password");
+            $this->connection = new PDO($dsn, $login, $password);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $this->connection;
+        }
+
+        catch (\Exception $errorConnection)
+        {
+            die('Erreur de connection : '.$errorConnection->getMessage());
+        }
+
+    }
+
+    public function sql($sql, $parameters = null)
+    {
+        if ($parameters) {
+            $result = $this->checkConnection()->prepare($sql);
+            $result->execute($parameters);
+            return $result;
+        }
+        else {
+            $result = $this->checkConnection()->query($sql);
+            return $result;
+        }
+    }
 }
