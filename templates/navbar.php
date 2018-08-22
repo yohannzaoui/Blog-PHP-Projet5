@@ -15,7 +15,7 @@
           <a class="nav-link" href="index.php?route=all">Articles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" target="_blank" href="../public/doc/cv_web_yohann_zaoui.pdf">Mon Cv</a>
+          <a class="nav-link" target="_blank" href="../doc/cv_web_yohann_zaoui.pdf">Mon Cv</a>
         </li>
       </ul>
     </div>

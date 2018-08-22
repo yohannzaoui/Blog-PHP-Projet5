@@ -40,10 +40,9 @@ class FrontController
 
     public function saveComment($comment)
      {
-        if(isset($comment['submit'])) {
+        if(isset($comment['submit']) && !empty($comment['pseudo']) && !empty($comment['content'])) {
             $commentRepo = $this->commentRepository->addComment($comment);
             header('Location: ../index.php?route=post&id='.$_POST['idPost']);
         }
-        $this->view->render('post', ['comment'=>$comment]);
      }
 }

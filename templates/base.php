@@ -14,10 +14,10 @@
     <meta name="copyright" content="Yohann Zaoui" />
     <meta name="description" content="Blog Yohann Zaoui" />
     <meta name="keywords" content="yohann zaoui, cv, emploi, developpeur php, php, html, css, bootstrap, sql, uml, mysql, symfony, openclassrooms, twitter, linkedin">
-    <link rel="icon" href="../public/images/favicon.png">
+    <link rel="icon" href="../images/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <link href="../public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
