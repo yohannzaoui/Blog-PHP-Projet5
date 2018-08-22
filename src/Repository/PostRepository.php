@@ -4,7 +4,6 @@ namespace App\repository;
 
 use Core\DBFactory;
 use App\entity\Post;
-use App\entity\Comment;
 
 class PostRepository extends DBFactory
 {

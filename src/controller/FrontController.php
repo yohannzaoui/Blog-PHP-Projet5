@@ -42,7 +42,7 @@ class FrontController
      {
         if(isset($comment['submit'])) {
             $commentRepo = $this->commentRepository->addComment($comment);
-            header('Location: ../public/index.php?route=post&idPost='.$_POST['idPost']);
+            header('Location: ../public/index.php?route=post&id='.$_POST['idPost']);
         }
         $this->view->render('post', ['comment'=>$comment]);
      }
