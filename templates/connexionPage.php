@@ -1,4 +1,4 @@
-<?php $this->title = "Inscription membre" ?>
+<?php $this->title = "Connexion membre" ?>
 
 <div class="title_center">
   <h4>Connexion Membre</h4>
