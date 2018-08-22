@@ -4,6 +4,7 @@ namespace App\repository;
 
 use Core\DBFactory;
 use App\entity\Post;
+use App\entity\Comment;
 
 class PostRepository extends DBFactory
 {
@@ -60,7 +61,7 @@ class PostRepository extends DBFactory
 
     public function deletePost($id)
     {
-        $sql = 'DELETE FROM posts WHERE id='.$id;
+        $sql = 'DELETE posts, comments FROM posts INNER JOIN comments ON posts.id=comments.id_post WHERE posts.id='.$id;
         $this->sql($sql, [$id]);
     }
 

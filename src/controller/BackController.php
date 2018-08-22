@@ -125,6 +125,11 @@
         }
      }
 
+     public function connexion()
+     {
+         
+     }
+
      public function deconnexion()
      {
         $this->session->destroy();
