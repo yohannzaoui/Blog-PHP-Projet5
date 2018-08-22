@@ -32,7 +32,6 @@ abstract class DBFactory
         {
             die('Erreur de connection : '.$errorConnection->getMessage());
         }
-
     }
 
     public function sql($sql, $parameters = null)

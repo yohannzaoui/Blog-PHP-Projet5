@@ -5,7 +5,7 @@
     <h3 class="title_center">Modifier article</h3>
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
-            <form action="../public/index.php?route=updatePost" method="post">
+            <form action="../index.php?route=updatePost" method="post">
                 <div class="control-group">
                     <label for="author">Auteur</label>
                     <input type="text" class="form-control" id="author" name="author" value="<?=$post->getAuthor()?>">

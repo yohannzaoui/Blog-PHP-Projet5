@@ -60,6 +60,9 @@ class Router
                 elseif($_GET['route'] === 'updatePost'){
                     $this->backController->updatePost($_POST);
                 }
+                elseif($_GET['route'] === 'deleteAll'){
+                    $this->backController->deleteAll($_GET['id']);
+                }
                 elseif($_GET['route'] === 'deletePost'){
                     $this->backController->deletePost($_GET['id']);
                 }
@@ -71,6 +74,9 @@ class Router
                 }
                 elseif($_GET['route'] === 'deleteUser'){
                     $this->backController->deleteUser($_GET['id']);
+                }
+                elseif($_GET['route'] === 'deconnexion'){
+                    $this->backController->deconnexion();
                 }
                 else{
                     $this->errorController->unknown();

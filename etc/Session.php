@@ -4,7 +4,8 @@ namespace Core;
 
 class Session
 {
-    public function __construct()
+
+    public function start()
     {
         session_start();
     }

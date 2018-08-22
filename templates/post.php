@@ -58,7 +58,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-10 mx-auto">
-            <h2 class="title_center">Les commentaire</h2>
+            <h2 class="title_center">Les commentaires</h2>
             <?php foreach($comments as $comment) : ?>
             <p>
               <strong>

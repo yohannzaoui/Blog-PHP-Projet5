@@ -2,6 +2,10 @@
 
 <?php require_once 'adminNav.php'; ?>
 
+<div class="title_center">
+  <h4>Connexion</h4>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">

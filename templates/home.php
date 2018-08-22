@@ -9,7 +9,7 @@
       <div class="col-lg-12 col-md-10 mx-auto">
         <?php foreach ($posts as $post) : ?>
         <div class="post-preview">
-          <a href="../public/index.php?route=post&id=<?= htmlspecialchars($post->getId()); ?>">
+          <a href="../index.php?route=post&id=<?= htmlspecialchars($post->getId()); ?>">
             <h2 class="post-title">
               <p>
                 <?= $post->getTitle() ?>

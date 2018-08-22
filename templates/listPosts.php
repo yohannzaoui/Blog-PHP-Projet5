@@ -15,7 +15,8 @@
         </p>
         <p><a class="btn btn-primary" href="index.php?route=post&id=<?=$post->getId()?>">Voir l'article</a>
         <a class="btn btn-success" href="index.php?route=editPost&id=<?=$post->getId()?>">Modifier l'article</a>
-        <a class="btn btn-danger" href="index.php?route=deletePost&id=<?=$post->getId()?>">Supprimer l'article</a></p>
+        <a class="btn btn-secondary" href="index.php?route=deletePost&id=<?=$post->getId()?>">Supprimer l'article</a>
+        <a class="btn btn-danger" href="index.php?route=deleteAll&id=<?=$post->getId()?>">Supprimer article et commentaires</a></p>
       </div>
       <hr>
       <?php endforeach; ?>
