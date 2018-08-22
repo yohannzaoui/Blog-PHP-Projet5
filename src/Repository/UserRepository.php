@@ -11,7 +11,7 @@ class UserRepository extends DBFactory
     {
         extract($user);
         $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, level, creation_date) VALUES (?,?,1,NOW())';
+        $sql = 'INSERT INTO users (pseudo, pass, grade, creation_date) VALUES (?,?,1,NOW())';
         $this->sql($sql, [$pseudo, $pass]);
     }
 
@@ -19,7 +19,7 @@ class UserRepository extends DBFactory
     {
         extract($user);
         $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, level, creation_date) VALUES (?,?,2,NOW())';
+        $sql = 'INSERT INTO users (pseudo, pass, grade, creation_date) VALUES (?,?,2,NOW())';
         $this->sql($sql, [$pseudo, $pass]);
     }
 
@@ -75,7 +75,7 @@ class UserRepository extends DBFactory
         $user->setId($row['id']);
         $user->setPseudo($row['pseudo']);
         $user->setPass($row['pass']);
-        $user->setLevel($row['level']);
+        $user->setGrade($row['grade']);
         $user->setCreation_date($row['creation_date_fr']);
         return $user;
     }
