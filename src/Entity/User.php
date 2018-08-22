@@ -7,6 +7,8 @@ class User
     private $id;
     private $pseudo;
     private $pass;
+    private $level;
+    private $creation_date_fr;
 
     public function setId($id)
     {
@@ -28,6 +30,19 @@ class User
         $this->pass = $pass;
     }
 
+    public function setLevel($level)
+    {
+        $level=(int)$level;
+        if ($level==1 || $level==2) {
+            $this->level=$level;
+        }
+    }
+
+    public function setCreation_date($creation_date_fr)
+  {
+    $this->creation_date_fr=$creation_date_fr;
+  }
+
     public function getPseudo()
     {
         return $this->pseudo; 
@@ -41,5 +56,15 @@ class User
     public function getId()
     {
         return $this->id;
+    }
+ 
+    public function getLevel()
+    {
+        return $this->level;
+    }
+ 
+    public function getCreation_date()
+    {
+        return $this->creation_date_fr;
     }
 }

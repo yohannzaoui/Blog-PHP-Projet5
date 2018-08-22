@@ -12,7 +12,7 @@
  {
     private $postRepository;
     private $commentRepository;
-    private $userRepository; 
+    private $userRepository;
     private $view;
     private $session;
 
@@ -107,16 +107,22 @@
         }
      }
 
-     public function addUser($user)
+     public function addAdmin($user)
      {
         if(isset($user['submit'])){
             if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
                 if($_POST['pass'] == $_POST['pass1']){
-                    $userRepo = $this->userRepository->addUser($user);
+                    $userRepo = $this->userRepository->addAdmin($user);
+                    header('Location: ../index.php?route=admin');
                 }
             }
         }
-        header('Location: ../index.php?route=admin');
+     }
+
+     public function listAdmins()
+     {
+         $users = $this->userRepository->allAdmins();
+         $this->view->render('listAdmins', ['users'=>$users]);
      }
 
      public function listUsers()
@@ -125,14 +131,23 @@
          $this->view->render('listUsers', ['users'=>$users]);
      }
 
-     public function deleteUser()
+     public function deleteAdmin()
      {
         if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
-            $userRepo = $this->userRepository->delete($id);
-            header('Location: ../index.php?route=listUsers');
+            $userRepo = $this->userRepository->deleteAdmin($id);
+            header('Location: ../index.php?route=listAdmins');
         }
      }
+
+     public function deleteUser()
+     {
+         if(isset($_GET['id'])){
+            $id = htmlspecialchars($_GET['id']);
+            $userRepo = $this->userRepository->deleteUser($id);
+            header('Location: ../index.php?route=listUsers');
+         }
+     } 
 
      public function connexion()
      {

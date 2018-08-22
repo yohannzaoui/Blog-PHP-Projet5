@@ -1,14 +1,14 @@
-<?php $this->title = "Inscription" ?>
+<?php $this->title = "Inscription membre" ?>
 
 <div class="title_center">
-  <h4>Inscription Administration</h4>
+  <h4>Inscription membre</h4>
 </div>
 
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=addAdmin" method="post">
+      <form action="index.php?route=addUser" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" name="pseudo" class="form-control" value="<?php if (isset($pseudo)) {
@@ -34,5 +34,5 @@
       </form>
 
       <p>Vous avez un compte ?
-        <a href="index.php?route=admin">Connectez vous !</a>
+        <a href="index.php?route=connexionPage">Connectez vous !</a>
       </p>
