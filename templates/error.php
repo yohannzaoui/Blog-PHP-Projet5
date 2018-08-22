@@ -1,5 +1,5 @@
 <?php $this->title = 'Erreur'; ?>
 
 <div class="title_center">
-    <?php echo "<h1>Erreur</h1>"; ?>
+     <h3>Erreur</h3>
 </div>

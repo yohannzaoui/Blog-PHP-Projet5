@@ -1,9 +1,7 @@
-<?php $this->title = "Administration"; ?>
-
-<?php require_once 'adminNav.php'; ?>
+<?php $this->title = "Inscription membre" ?>
 
 <div class="title_center">
-  <h4>Connexion Administration</h4>
+  <h4>Connexion Membre</h4>
 </div>
 
 <div class="container">
@@ -34,7 +32,7 @@
         </div>
       </form>
       <p>Pas de compte ?
-        <a href="index.php?route=registration">Inscrivez vous !</a>
+        <a href="index.php?route=registrationPage">Inscrivez vous !</a>
       </p>
     </div>
   </div>
