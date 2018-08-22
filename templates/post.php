@@ -32,7 +32,7 @@
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
       <h2 class="title_center">Ecrire un commentaire</h2>
-      <form action="../public/index.php?route=saveComment" method="post">
+      <form action="../index.php?route=saveComment" method="post">
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label for="pseudo">Auteur</label>
@@ -50,11 +50,11 @@
         <br>
         <div class="form-group">
           <input type="hidden" name="idPost" value="<?= htmlspecialchars($post->getId()) ?>" />
-          <button type="submit" name="submit" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
-          <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
+          <button type="submit" name="submit" class="btn btn-primary" id="submit">Envoyer</button>
+          <button type="reset" class="btn btn-danger" id="reset">Effacer</button>
         </div>
       </form>
-
+<?php if(isset($var)) { echo $var;} ?>
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-10 mx-auto">
