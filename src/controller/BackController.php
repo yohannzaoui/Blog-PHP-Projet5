@@ -55,7 +55,7 @@
          if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
             $commentRepo = $this->commentRepository->validateComment($id);
-            header('Location: ../public/index.php?route=noValideComment');
+            header('Location: ../index.php?route=noValideComment');
          }
      }
 
@@ -63,7 +63,7 @@
          if(isset($_GET['id'])){
              $id = htmlspecialchars($_GET['id']);
              $commentRepo = $this->commentRepository->deleteComment($id);
-             header('Location: ../public/index.php?route=noValideComment');
+             header('Location: ../index.php?route=noValideComment');
          }
      }
 
@@ -84,18 +84,27 @@
          if(isset($post['submit'])){
              if(!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty(['content'])){
                 $postRepo = $this->postRepository->updatePost($post);
-            header('Location: ../public/index.php?route=post&idPost='.$_POST['id']);
+            header('Location: ../index.php?route=post&id='.$_POST['id']);
              }
+         }
+     }
+
+     public function deleteAll($id)
+     {
+         if(isset($_GET['id'])){
+             $id = htmlspecialchars($_GET['id']);
+             $postRepo = $this->postRepository->deleteAll($id);
+             header('Location: ../index.php?route=listPosts');
          }
      }
 
      public function deletePost($id)
      {
-         if(isset($_GET['id'])){
-             $id = htmlspecialchars($_GET['id']);
-             $postRepo = $this->postRepository->deletePost($id);
-             header('Location: ../public/index.php?route=listPosts');
-         }
+        if(isset($_GET['id'])){
+            $id = htmlspecialchars($_GET['id']);
+            $postRepo = $this->postRepository->deletePost($id);
+            header('Location: ../index.php?route=listPosts');
+        }
      }
 
      public function addUser($user)
@@ -107,7 +116,7 @@
                 }
             }
         }
-        header('Location: ../public/index.php?route=admin');
+        header('Location: ../index.php?route=admin');
      }
 
      public function listUsers()
@@ -121,7 +130,7 @@
         if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
             $userRepo = $this->userRepository->delete($id);
-            header('Location: ../public/index.php?route=listUsers');
+            header('Location: ../index.php?route=listUsers');
         }
      }
 
@@ -133,6 +142,6 @@
      public function deconnexion()
      {
         $this->session->destroy();
-        header('Location: ../public/index.php?route=admin');
+        header('Location: ../index.php?route=admin');
      }
  }

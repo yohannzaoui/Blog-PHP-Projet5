@@ -83,5 +83,4 @@ class Comment
   {
     return $this->publication;
   }
-
 }

@@ -1,1 +1,1 @@
-# Test Blog PHP Projet 5 OpenClassRooms
+# Blog PHP Projet 5 OpenClassRooms

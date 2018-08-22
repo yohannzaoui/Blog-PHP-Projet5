@@ -5,7 +5,7 @@
     <h3 class="title_center">Ajouter article</h3>
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
-            <form method="post" action="../public/index.php?route=savePost">
+            <form method="post" action="../index.php?route=savePost">
                 <div class="control-group">
                     <label for="author">Auteur</label>
                     <input type="text" class="form-control" placeholder="" id="author" name="author" value="<?php

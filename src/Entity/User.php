@@ -11,8 +11,8 @@ class User
     public function setId($id)
     {
         $id=(int)$id;
-        if ($id>0){
-        $this->id=$id;
+        if ($id>0) {
+            $this->id=$id;
         }
     }
 
