@@ -112,7 +112,8 @@
         if(isset($user['submit'])){
             if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
                 if($_POST['pass'] == $_POST['pass1']){
-                    $userRepo = $this->userRepository->addAdmin($user);
+                    $passhash = password_hash($_POST['pass'],PASSWORD_BCRYPT);
+                    $userRepo = $this->userRepository->addAdmin($user,$passhash);
                     header('Location: ../index.php?route=admin');
                 }
             }

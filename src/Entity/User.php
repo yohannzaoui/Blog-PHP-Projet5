@@ -39,9 +39,9 @@ class User
     }
 
     public function setCreation_date($creation_date_fr)
-  {
-    $this->creation_date_fr=$creation_date_fr;
-  }
+    {
+        $this->creation_date_fr=$creation_date_fr;
+    }
 
     public function getPseudo()
     {
