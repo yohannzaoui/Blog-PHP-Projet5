@@ -6,6 +6,7 @@
  use App\Repository\CommentRepository;
  use App\Repository\UserRepository;
  use Core\View;
+ use Core\Session;
  
  class BackController
  {
@@ -13,6 +14,7 @@
     private $commentRepository;
     private $userRepository; 
     private $view;
+    private $session;
 
      public function __construct()
      {
@@ -20,6 +22,7 @@
         $this->commentRepository = new CommentRepository;
         $this->userRepository = new UserRepository;
         $this->view = new View;
+        $this->session = new Session;
      }
 
      public function admin()
@@ -120,5 +123,11 @@
             $userRepo = $this->userRepository->delete($id);
             header('Location: ../public/index.php?route=listUsers');
         }
+     }
+
+     public function deconnexion()
+     {
+        $this->session->destroy();
+        header('Location: ../public/index.php?route=admin');
      }
  }

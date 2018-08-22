@@ -72,6 +72,9 @@ class Router
                 elseif($_GET['route'] === 'deleteUser'){
                     $this->backController->deleteUser($_GET['id']);
                 }
+                elseif($_GET['route'] === 'deconnexion'){
+                    $this->backController->deconnexion();
+                }
                 else{
                     $this->errorController->unknown();
                 }
