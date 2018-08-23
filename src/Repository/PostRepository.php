@@ -70,8 +70,15 @@ class PostRepository extends DBFactory
         $this->sql($sql, [$id]);
     }
 
+    public function countPosts()
+    {
+        $sql = 'SELECT COUNT(*) as nb FROM posts';
+        $data=$this->sql($sql);
+        $line = $data->fetch();
+        return $line['nb'];
+    }
 
-    private function buildObject(array $row)
+    private function buildObject($row)
     {
         $post = new Post;
         $post->setId($row['id']);

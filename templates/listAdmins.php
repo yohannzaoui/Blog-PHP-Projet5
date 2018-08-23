@@ -1,9 +1,15 @@
-<?php $this->title = "Administrateurs" ?>
+<?php $this->title = "Les administrateurs" ?>
 
 <?php require_once 'adminNav.php'; ?>
 
+<h3 class="title_center">Administrateurs</h3>
+<br>
+<h4 class="title_center">Nombre d'administrateurs :
+  <?=$line?>
+</h4>
+<br>
+
 <div class="container">
-  <h3 class="title_center">Administrateurs</h3>
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
     <?php foreach ($users as $user) :?>

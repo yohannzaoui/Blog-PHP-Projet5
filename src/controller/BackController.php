@@ -44,10 +44,11 @@
         $this->view->render('addPost', ['post'=>$post]);
      }
 
-     public function noValideComment()
+     public function listComments()
      {
         $comments = $this->commentRepository->getCommentsNoValide();
-        $this->view->render('noValideComment', ['comments'=>$comments]);
+        $line = $this->commentRepository->countComments();
+        $this->view->render('listComments', ['comments'=>$comments,'line'=>$line]);
      }
 
      public function validateComment($id)
@@ -55,7 +56,7 @@
          if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
             $commentRepo = $this->commentRepository->validateComment($id);
-            header('Location: ../index.php?route=noValideComment');
+            header('Location: ../index.php?route=listComments');
          }
      }
 
@@ -63,7 +64,7 @@
          if(isset($_GET['id']) && !empty($_GET['id'])){
              $id = htmlspecialchars($_GET['id']);
              $commentRepo = $this->commentRepository->deleteComment($id);
-             header('Location: ../index.php?route=noValideComment');
+             header('Location: ../index.php?route=listComments');
          }else {
             $this->view->render('error',['error'=>'Identifiant manquant']);
         }
@@ -72,7 +73,8 @@
      public function listPosts()
      {
         $posts = $this->postRepository->getAll();
-        $this->view->render('listPosts', ['posts'=>$posts]);
+        $line = $this->postRepository->countPosts();
+        $this->view->render('listPosts', ['posts'=>$posts,'line'=>$line]);
      }
 
      public function editPost($id)
@@ -135,13 +137,15 @@
      public function listAdmins()
      {
          $users = $this->userRepository->allAdmins();
-         $this->view->render('listAdmins', ['users'=>$users]);
+         $line = $this->userRepository->countAdmins();
+         $this->view->render('listAdmins', ['users'=>$users, 'line'=>$line]);
      }
 
      public function listUsers()
      {
          $users = $this->userRepository->allUsers();
-         $this->view->render('listUsers', ['users'=>$users]);
+         $line = $this->userRepository->countMembers();
+         $this->view->render('listUsers', ['users'=>$users, 'line'=>$line]);
      }
 
      public function deleteAdmin()
@@ -177,7 +181,7 @@
 
      public function deconnexion()
      {
-        $this->session->destroy();
+        $this->session->sessionDestroy();
         header('Location: ../index.php?route=admin');
      }
  }

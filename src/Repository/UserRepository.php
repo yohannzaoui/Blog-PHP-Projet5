@@ -75,6 +75,22 @@ class UserRepository extends DBFactory
         $this->sql($sql, [$pseudo,$pass]);
     }
 
+    public function countAdmins()
+    {
+        $sql = 'SELECT COUNT(*) as nb FROM users WHERE role = "admin"';
+        $data=$this->sql($sql);
+        $line = $data->fetch();
+        return $line['nb'];
+    }
+
+    public function countMembers()
+    {
+        $sql = 'SELECT COUNT(*) as nb FROM users WHERE role = "member"';
+        $data=$this->sql($sql);
+        $line = $data->fetch();
+        return $line['nb'];
+    }
+
     private function buildObject(array $row)
     {
         $user = new User;

@@ -6,6 +6,6 @@ use Core\Router;
 use Core\Session;
 
 $session = New Session;
-$session->start();
+$session->sessionStart();
 $router = new router;
 $router->run();

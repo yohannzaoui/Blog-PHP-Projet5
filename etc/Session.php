@@ -5,37 +5,37 @@ namespace Core;
 class Session
 {
 
-    public function start()
+    public function sessionStart()
     {
         session_start();
     }
 
     
-    public function destroy()
+    public function sessionDestroy()
     {
         session_destroy();
     }
 
     
-    public function setAttribut($nom, $valeur)
+    public function setSession($name, $value)
     {
-        $_SESSION[$nom] = $valeur;
+        $_SESSION[$name] = $value;
+    }
+
+
+    public function existeSession($name)
+    {
+        return (isset($_SESSION[$name]) && $_SESSION[$name] != "");
     }
 
     
-    public function existeAttribut($nom)
+    public function getSession($name)
     {
-        return (isset($_SESSION[$nom]) && $_SESSION[$nom] != "");
-    }
-
-    
-    public function getAttribut($nom)
-    {
-        if ($this->existeAttribut($nom)) {
-            return $_SESSION[$nom];
+        if ($this->existeAttribut($name)) {
+            return $_SESSION[$name];
         }
         else {
-            throw new Exception("Attribut '$nom' absent de la session");
+            throw new \Exception("Attribut '$name' absent de la session");
         }
     }
 
