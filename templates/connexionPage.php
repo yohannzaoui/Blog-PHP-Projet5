@@ -7,23 +7,22 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="" method="post">
+      <form action="index.php?route=userConnexion" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
-          <input type="text" class="form-control" name="pseudo" id="pseudo" value="<?php if (isset($_COOKIE['pseudo'])) {
-                    echo $_COOKIE['pseudo'];
-                    }?>">
+          <input type="text" class="form-control" name="pseudo" id="pseudo" value="">
           <p class="help-block text-danger"></p>
         </div>
         <div class="control-group">
           <label for="pass">Votre mot de passe</label>
-          <input type="pass" class="form-control" name="pass" id="pass">
+          <input type="password" class="form-control" name="pass" id="pass">
           <p class="help-block text-danger"></p>
         </div>
         <br>
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" name="submit" class="btn btn-primary">Se connecter</button>
+
+          <button type="submit" name="submit" value="userconnect" class="btn btn-primary">Se connecter</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
         <div class="form-check">

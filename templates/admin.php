@@ -1,7 +1,5 @@
 <?php $this->title = "Administration"; ?>
 
-<?php require_once 'adminNav.php'; ?>
-
 <div class="title_center">
   <h4>Connexion Administration</h4>
 </div>
@@ -9,17 +7,15 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="" method="post">
+      <form action="index.php?route=adminConnexion" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
-          <input type="text" class="form-control" name="pseudo" id="pseudo" value="<?php if (isset($_COOKIE['pseudo'])) {
-                    echo $_COOKIE['pseudo'];
-                    }?>">
+          <input type="text" class="form-control" name="pseudo" id="pseudo" value="">
           <p class="help-block text-danger"></p>
         </div>
         <div class="control-group">
           <label for="pass">Votre mot de passe</label>
-          <input type="pass" class="form-control" name="pass" id="pass">
+          <input type="password" class="form-control" name="pass" id="pass">
           <p class="help-block text-danger"></p>
         </div>
         <br>

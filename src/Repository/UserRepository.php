@@ -11,7 +11,7 @@ class UserRepository extends DBFactory
     {
         extract($user);
         $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, grade, creation_date) VALUES (?,?,1,NOW())';
+        $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
         $this->sql($sql, [$pseudo, $pass]);
     }
 
@@ -19,13 +19,13 @@ class UserRepository extends DBFactory
     {
         extract($user);
         $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, grade, creation_date) VALUES (?,?,2,NOW())';
+        $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
         $this->sql($sql, [$pseudo, $pass]);
     }
 
     public function allAdmins()
     {
-        $sql= 'SELECT id,pseudo,pass,level,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE level = 1 ORDER BY id';
+        $sql= 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "admin" ORDER BY id';
         $result = $this->sql($sql);
         $users = [];
         foreach ($result as $row) {
@@ -37,7 +37,7 @@ class UserRepository extends DBFactory
 
     public function allUsers()
     {
-        $sql= 'SELECT id,pseudo,pass,level,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE level = 2 ORDER BY id';
+        $sql= 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "member" ORDER BY id';
         $result = $this->sql($sql);
         $users = [];
         foreach ($result as $row) {
@@ -59,14 +59,20 @@ class UserRepository extends DBFactory
         $this->sql($sql, [$id]);
     }
 
-    public function userConnect()
+    public function adminConnexion($user,$passhash)
     {
-        $sql ='SELECT * FROM users WHERE pseudo = ? AND pass = ?';
+        extract($user);
+        $pass = $passhash;
+        $sql ='SELECT * FROM users WHERE pseudo = ? AND pass = ? AND role = "admin"';
         $this->sql($sql, [$pseudo,$pass]);
-        $userExist =$sql->rowCount();
-        if ($userExist == 1) {
-            $userInfo = $sql->fetch();
-        }
+    }
+
+    public function userConnect($user,$passhash)
+    {
+        extract($user);
+        $pass = $passhash;
+        $sql ='SELECT * FROM users WHERE pseudo = ? AND pass = ? AND role = "member"';
+        $this->sql($sql, [$pseudo,$pass]);
     }
 
     private function buildObject(array $row)
@@ -75,7 +81,7 @@ class UserRepository extends DBFactory
         $user->setId($row['id']);
         $user->setPseudo($row['pseudo']);
         $user->setPass($row['pass']);
-        $user->setGrade($row['grade']);
+        $user->setRole($row['role']);
         $user->setCreation_date($row['creation_date_fr']);
         return $user;
     }

@@ -7,7 +7,7 @@ class User
     private $id;
     private $pseudo;
     private $pass;
-    private $grade;
+    private $role;
     private $creation_date_fr;
 
     public function setId($id)
@@ -30,11 +30,10 @@ class User
         $this->pass = $pass;
     }
 
-    public function setGrade($grade)
+    public function setRole($role)
     {
-        $grade=(int)$grade;
-        if ($grade==1 || $grade==2) {
-            $this->grade=$grade;
+        if(is_string($role) && strlen($role)<=10){
+            $this->role = $role;
         }
     }
 
@@ -58,9 +57,9 @@ class User
         return $this->id;
     }
  
-    public function getGrade()
+    public function getRole()
     {
-        return $this->grade;
+        return $this->role;
     }
  
     public function getCreation_date()

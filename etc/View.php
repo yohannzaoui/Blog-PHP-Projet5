@@ -24,7 +24,7 @@ class View
             return ob_get_clean();
         }
         else {
-            echo 'Fichier vue inexistant';
+            throw new \Exception('Fichier vue inexistant');
         }
     }
 }

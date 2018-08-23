@@ -18,8 +18,9 @@
         $this->view->render('unknown');
      }
 
-     public function error()
+     public function error($error)
      {
-        $this->view->render('error');
+        $this->view->render('error',['error'=>$error]);
      }
  }
+ 

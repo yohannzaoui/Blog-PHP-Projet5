@@ -8,8 +8,9 @@
     <div class="col-lg-12 col-md-10 mx-auto">
     <?php foreach ($users as $user) :?>
       <div class="post-preview">
-          <h4 class="post-title"><?= htmlspecialchars($user->getPseudo()) ?></h4>
-        <p><a class="btn btn-danger" href="index.php?route=deleteAdmin&id=<?=$user->getId()?>">Supprimer l'administrateur</a></p>
+      <h4 class="post-title">Pseudo : <?= htmlspecialchars($user->getPseudo()) ?></h4>
+          <p>Administrateur depuis le : <?= $user->getCreation_date() ?></p>
+        <p><a class="btn btn-danger" href="index.php?route=deleteAdmin&id=<?=$user->getId()?>">Supprimer</a></p>
       </div>
       <hr>
       <?php endforeach; ?>
