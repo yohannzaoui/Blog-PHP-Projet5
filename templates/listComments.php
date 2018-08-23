@@ -1,9 +1,13 @@
 <?php $this->title = "Modération commentaire"; ?>
 
 <?php require_once 'adminNav.php'; ?>
+<h3 class="title_center">Modération commentaire</h3>
+<br>
+<h4 class="title_center">Nombre de commentaire à modérer :
+  <?=$line?>
+</h4>
 
 <div class="container">
-  <h3 class="title_center">Modération commentaire</h3>
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
       <?php foreach ($comments as $comment) : ?>

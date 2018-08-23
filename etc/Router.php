@@ -54,8 +54,8 @@ class Router
                 elseif($_GET['route'] === 'savePost'){
                     $this->backController->savePost($_POST);
                 }
-                elseif($_GET['route'] === 'noValideComment'){
-                    $this->backController->noValideComment();
+                elseif($_GET['route'] === 'listComments'){
+                    $this->backController->listComments();
                 }
                 elseif($_GET['route'] === 'validateComment'){
                     $this->backController->validateComment($_GET['id']);

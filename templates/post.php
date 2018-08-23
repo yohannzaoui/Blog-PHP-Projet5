@@ -32,6 +32,8 @@
   <a href="index.php?route=connexionPage">Connectez vous pour commenter</a>
 </h4>
 
+<?php if(isset($_SESSION['pseudo'], $_SESSION['role'])){ ?>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
@@ -58,6 +60,8 @@
           <button type="reset" class="btn btn-danger" id="reset">Effacer</button>
         </div>
       </form>
+
+      <?php } ?>
 
       <div class="container">
         <div class="row">

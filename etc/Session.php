@@ -22,7 +22,7 @@ class Session
         $_SESSION[$name] = $value;
     }
 
-    
+
     public function existeSession($name)
     {
         return (isset($_SESSION[$name]) && $_SESSION[$name] != "");
