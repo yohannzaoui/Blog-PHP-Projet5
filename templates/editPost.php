@@ -32,6 +32,6 @@
                 <div id="success"></div>
                 <div class="form-group">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($post->getId()) ?>" />
-                    <button type="submit" name="submit" class="btn btn-primary" id="submit">Modifier l'article</button>
+                    <button type="submit" name="submit" value="send" class="btn btn-primary" id="submit">Modifier l'article</button>
                 </div>
             </form>

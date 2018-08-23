@@ -37,9 +37,9 @@
 
      public function savePost($post)
      {
-        if(isset($post['submit'])) {
+        if(isset($post['submit']) && $post['submit'] === 'send') {
             $postRepo = $this->postRepository->addPost($post);
-            header('Location: ../public/index.php?route=all');
+            header('Location: ../index.php?route=all');
         }
         $this->view->render('addPost', ['post'=>$post]);
      }
@@ -60,11 +60,13 @@
      }
 
      public function deleteComment($id){
-         if(isset($_GET['id'])){
+         if(isset($_GET['id']) && !empty($_GET['id'])){
              $id = htmlspecialchars($_GET['id']);
              $commentRepo = $this->commentRepository->deleteComment($id);
              header('Location: ../index.php?route=noValideComment');
-         }
+         }else {
+            $this->view->render('error',['error'=>'Identifiant manquant']);
+        }
      }
 
      public function listPosts()
@@ -81,29 +83,35 @@
 
      public function updatePost($post)
      {
-         if(isset($post['submit'])){
+         if(isset($post['submit']) && $post['submit'] === 'send'){
              if(!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty(['content'])){
                 $postRepo = $this->postRepository->updatePost($post);
-            header('Location: ../index.php?route=post&id='.$_POST['id']);
-             }
+                header('Location: ../index.php?route=post&id='.$_POST['id']);
+             }else {
+                $this->view->render('error',['error'=>'Tous les champs doivent être remplis ']);
+            }
          }
      }
 
      public function deleteAll($id)
      {
-         if(isset($_GET['id'])){
+         if(isset($_GET['id']) && !empty($_GET['id'])){
              $id = htmlspecialchars($_GET['id']);
              $postRepo = $this->postRepository->deleteAll($id);
              header('Location: ../index.php?route=listPosts');
-         }
+         }else {
+            $this->view->render('error',['error'=>'Identifiant manquant']);
+        }
      }
 
      public function deletePost($id)
      {
-        if(isset($_GET['id'])){
+        if(isset($_GET['id']) && !empty($_GET['id']) ){
             $id = htmlspecialchars($_GET['id']);
             $postRepo = $this->postRepository->deletePost($id);
             header('Location: ../index.php?route=listPosts');
+        }else {
+            $this->view->render('error',['error'=>'Identifiant d\'article manquant']);
         }
      }
 
@@ -115,7 +123,11 @@
                     $passhash = password_hash($_POST['pass'],PASSWORD_BCRYPT);
                     $userRepo = $this->userRepository->addAdmin($user,$passhash);
                     header('Location: ../index.php?route=admin');
+                }else {
+                    $this->view->render('error',['error'=>'Les mots de passes ne correspondent pas']);
                 }
+            }else {
+                $this->view->render('error',['error'=>'Les champs sont vides']);
             }
         }
      }
@@ -134,25 +146,33 @@
 
      public function deleteAdmin()
      {
-        if(isset($_GET['id'])){
+        if(isset($_GET['id']) && !empty($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
             $userRepo = $this->userRepository->deleteAdmin($id);
             header('Location: ../index.php?route=listAdmins');
+        }else {
+            $this->view->render('error',['error'=>'Identifiant d\'administrateur manquant']);
         }
      }
 
      public function deleteUser()
      {
-         if(isset($_GET['id'])){
+         if(isset($_GET['id']) && !empty($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
             $userRepo = $this->userRepository->deleteUser($id);
             header('Location: ../index.php?route=listUsers');
-         }
+         }else {
+            $this->view->render('error',['error'=>'Identifiant de membre manquant']);
+        }
      } 
 
-     public function connexion()
+     public function adminConnexion($user)
      {
-         
+         if(isset($_POST['submit']) && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
+            $passhash = password_verify($_POST['pass'],PASSWORD_BCRYPT);
+            $userRepo = $this->userRepository->adminConnexion($user,$passhash);
+            header('Location: ../index.php?route=savePost');
+         }
      }
 
      public function deconnexion()

@@ -50,6 +50,13 @@ class CommentRepository extends DBFactory
         $this->sql($sql, [$id]);
     }
 
+    public function countComments()
+    {
+        $sql = 'SELECT COUNT * as nb FROM comments';
+        $data = $sql->fetch();
+        $nb = $data['nb'];
+    }
+
     private function buildObject(array $row)
     {
         $comment = new Comment;

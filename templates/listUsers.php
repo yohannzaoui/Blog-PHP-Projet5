@@ -10,7 +10,7 @@
       <div class="post-preview">
           <h4 class="post-title">Pseudo : <?= htmlspecialchars($user->getPseudo()) ?></h4>
           <p>Membre depuis le : <?= $user->getCreation_date() ?></p>
-        <p><a class="btn btn-danger" href="index.php?route=deleteUser&id=<?=$user->getId()?>">Supprimer le membre</a></p>
+        <p><a class="btn btn-danger" href="index.php?route=deleteUser&id=<?=$user->getId()?>">Supprimer</a></p>
       </div>
       <hr>
       <?php endforeach; ?>

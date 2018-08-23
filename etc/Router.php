@@ -4,19 +4,19 @@ namespace Core;
 
 use App\controller\FrontController;
 use App\controller\BackController;
-use App\controller\ErrorController;
+use Core\View;
 
 class Router
 {
     private $frontController;
     private $backController;
-    private $errorController;
+    private $view;
 
     public function __construct()
     {
         $this->frontController = new FrontController;
         $this->backController = new BackController;
-        $this->errorController = new ErrorController;
+        $this->view = new View;
     }
 
     public function run()
@@ -41,6 +41,9 @@ class Router
                 }
                 elseif($_GET['route'] === 'addUser'){
                     $this->frontController->addUser($_POST);
+                }
+                elseif($_GET['route'] === 'userConnexion'){
+                    $this->frontController->userConnexion($_POST);
                 }
                 elseif($_GET['route'] === 'admin'){
                     $this->backController->admin();
@@ -90,11 +93,14 @@ class Router
                 elseif($_GET['route'] === 'deleteUser'){
                     $this->backController->deleteUser($_GET['id']);
                 }
+                elseif($_GET['route'] === 'adminConnexion'){
+                    $this->backController->adminConnexion($_POST);
+                }
                 elseif($_GET['route'] === 'deconnexion'){
                     $this->backController->deconnexion();
                 }
                 else{
-                    $this->errorController->unknown();
+                    $this->view->render('error',['error'=>'Page introuvable']);
                 }
             }
             else{
@@ -103,7 +109,7 @@ class Router
         }
         catch (\Exception $e)
         {
-            $this->errorController->error();
+            $this->view->render('error',['error'=>$e]);
         }
     }
 }

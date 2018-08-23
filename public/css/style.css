@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.error_style {
+  text-align: center;
+  color: red;
+}
+
 body {
   font-size: 20px;
   color: #212529;
