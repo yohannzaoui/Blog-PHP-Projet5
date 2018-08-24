@@ -188,7 +188,7 @@ img::-moz-selection {
 }
 
 header.masthead {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   background: no-repeat center center;
   background-color: #868e96;
   background-attachment: scroll;
@@ -212,7 +212,7 @@ header.masthead .overlay {
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
-  padding: 200px 0 150px;
+  padding: 200px 0 30px;
   color: white;
 }
 
@@ -220,7 +220,7 @@ header.masthead .site-heading {
   header.masthead .page-heading,
   header.masthead .post-heading,
   header.masthead .site-heading {
-    padding: 200px 0;
+    padding: 200px 30;
   }
 }
 
@@ -231,24 +231,24 @@ header.masthead .site-heading {
 
 header.masthead .page-heading h1,
 header.masthead .site-heading h1 {
-  font-size: 50px;
-  margin-top: 0;
+  font-size: 30px;
+  margin-top: -70px;
 }
 
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1.1;
   display: block;
-  margin: 10px 0 0;
+  margin: 20px 0 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 @media only screen and (min-width: 768px) {
   header.masthead .page-heading h1,
   header.masthead .site-heading h1 {
-    font-size: 80px;
+    font-size: 50px;
   }
 }
 
