@@ -4,7 +4,7 @@
 
 <div class="container">
   <h2 class="title_center">Articles récents</h2>
-  <div class="alert alert-primary" role="alert">
+  <div class="alert alert-info" role="alert">
     <div class="row">
       <div class="col-lg-12 col-md-10 mx-auto">
         <?php foreach ($posts as $post) : ?>

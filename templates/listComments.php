@@ -3,9 +3,11 @@
 <?php require_once 'adminNav.php'; ?>
 <h3 class="title_center">Modération commentaire</h3>
 <br>
-<h4 class="title_center">Nombre de commentaire à modérer :
-  <?=$line?>
-</h4>
+<div class="title_center">
+<button type="button" class="btn btn-warning">
+Nombre de commentaires à moderer : <span class="badge badge-light"><?=$line?></span>
+</button>
+</div>
 
 <div class="container">
   <div class="row">

@@ -4,9 +4,11 @@
 
 <h3 class="title_center">Membres</h3>
 <br>
-<h4 class="title_center">Nombre de membres :
-  <?=$line?>
-</h4>
+<div class="title_center">
+<button type="button" class="btn btn-warning">
+Nombre de membres : <span class="badge badge-light"><?=$line?></span>
+</button>
+</div>
 <br>
 
 <div class="container">

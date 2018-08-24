@@ -176,6 +176,8 @@
             $passhash = password_verify($_POST['pass'],PASSWORD_BCRYPT);
             $userRepo = $this->userRepository->adminConnexion($user,$passhash);
             header('Location: ../index.php?route=savePost');
+         }else {
+             $this->view->render('error', ['error'=>'Tous les champs doivent être remplis']);
          }
      }
 
