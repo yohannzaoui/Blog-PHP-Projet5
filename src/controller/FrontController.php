@@ -5,7 +5,6 @@ namespace App\controller;
 use App\repository\PostRepository;
 use App\repository\CommentRepository;
 use App\Repository\UserRepository;
-use App\Entity\User;
 use Core\View;
 
 
@@ -96,12 +95,15 @@ class FrontController
 
      public function userConnexion($user)
      {
-         if(isset($user['submit']) && $user['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
-            $userRepo = $this->userRepository->userConnect($user);
-            header('Location: ../index.php?route=all');
+         if(isset($user['submit']) && $user['submit'] === 'send') {
+             if(!empty($user['pseudo']) && !empty($user['pass'])){
+                $userRepo = $this->userRepository->userConnect($user);
+                header('Location: ../index.php?route=all');
+             } else {
+                $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
+             }
+         } else {
+            $this->view->render('error',['error'=>'Le paramètre envoyé est incorrect']);
          }
-         /*else {
-            header('Location: ../index.php?route=all');
-         }*/
      }
 }

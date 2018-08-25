@@ -69,7 +69,8 @@ class UserRepository extends DBFactory
     public function userConnect()
     {
         extract($user);
-        $req = $this->getDb()->prepare('SELECT * FROM users WHERE pseudo =? AND pass=?');
+        $sql = 'SELECT * FROM users WHERE pseudo =? AND pass=?';
+        $req = $this->sql($sql, [$pseudo,$pass]);
         if($req->rowCount() == 1){
             $data = $req->fetch();
             if(password_verify($pass,$data['pass'])) {
@@ -78,7 +79,6 @@ class UserRepository extends DBFactory
         } else {
 
         }
-        
     }
 
     public function countAdmins()

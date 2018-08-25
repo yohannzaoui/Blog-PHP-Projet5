@@ -185,7 +185,7 @@
             $userRepo = $this->userRepository->deleteUser($id);
             header('Location: ../index.php?route=listUsers');
          }else {
-            $this->view->render('error',['error'=>'Identifiant de membre manquant']);
+            $this->view->render('error',['error'=>'Identifiant du membre manquant']);
         }
      } 
 
