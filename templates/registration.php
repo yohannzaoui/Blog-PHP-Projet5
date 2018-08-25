@@ -28,7 +28,7 @@
         <br>
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" id="submit" name="submit">S'inscrire</button>
+          <button type="submit" class="btn btn-primary" id="submit" value="send" name="submit">S'inscrire</button>
           <button type="reset" class="btn btn-danger" id="reset">Effacer</button>
         </div>
       </form>

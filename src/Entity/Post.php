@@ -1,6 +1,6 @@
 <?php
 
-namespace App\entity;
+namespace App\Entity;
 
 class Post
 {
@@ -11,6 +11,25 @@ class Post
   private $content;
   private $creation_date_fr;
   private $update_date_fr;
+
+  /*public function __construct(array $data)
+  {
+    if(!empty($data)){
+      $this->hydrate($data);
+    }
+    
+  }
+
+  public function hydrate(array $data)
+  {
+    foreach ($data as $key => $value) {
+      $method = 'set'.ucfirst($key);
+
+      if (is_callable([$this,$method])) {
+        $this->$method($value);
+      }
+    }
+  }*/
 
 
   public function setId($id)

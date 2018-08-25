@@ -6,26 +6,26 @@ use PDO;
 
 abstract class DBFactory
 {
-    private $connection;
+    private $db;
 
-    private function checkConnection()
+    private function checkDb()
     {
-        if ($this->connection === null) {
-            return $this->getConnection();
+        if ($this->db === null) {
+            return $this->getDb();
         }
-        return $this->connection;
+        return $this->db;
     }
 
-    private function getConnection()
+    private function getDb()
     {
         try
         {
             $dsn = Configuration::get("dsn");
             $login = Configuration::get("login");
             $password = Configuration::get("password");
-            $this->connection = new PDO($dsn, $login, $password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->connection;
+            $this->db = new PDO($dsn, $login, $password);
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $this->db;
         }
 
         catch (\Exception $errorConnection)
@@ -37,12 +37,12 @@ abstract class DBFactory
     public function sql($sql, $parameters = null)
     {
         if ($parameters) {
-            $result = $this->checkConnection()->prepare($sql);
+            $result = $this->checkDb()->prepare($sql);
             $result->execute($parameters);
             return $result;
         }
         else {
-            $result = $this->checkConnection()->query($sql);
+            $result = $this->checkDb()->query($sql);
             return $result;
         }
     }

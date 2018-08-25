@@ -1,12 +1,16 @@
 <?php $this->title = "Modération commentaire"; ?>
 
 <?php require_once 'adminNav.php'; ?>
-<h3 class="title_center">Modération commentaire</h3>
+
+<h4 class="title_center">Modération commentaire</h4>
 <br>
 <div class="title_center">
-<button type="button" class="btn btn-warning">
-Nombre de commentaires à moderer : <span class="badge badge-light"><?=$line?></span>
-</button>
+  <button type="button" class="btn btn-primary">
+    Nombre de commentaires à moderer :
+    <span class="badge badge-light">
+      <?=$line?>
+    </span>
+  </button>
 </div>
 
 <div class="container">

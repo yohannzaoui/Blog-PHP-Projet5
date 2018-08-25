@@ -1,39 +1,31 @@
 <?php $this->title = "Ajouter un article"; ?>
 
 <?php require_once 'adminNav.php'; ?>
+
 <div class="container">
-    <h3 class="title_center">Ajouter article</h3>
+    <h4 class="title_center">Ajouter article</h4>
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
             <form method="post" action="index.php?route=savePost">
                 <div class="control-group">
                     <label for="author">Auteur</label>
-                    <input type="text" class="form-control" placeholder="" id="author" name="author" value="<?php
-            if(isset($post['author'])){
-                echo $post['author'];}
-        ?>">
+                    <input type="text" class="form-control" placeholder="" id="author" name="author" value="">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="title">Titre</label>
-                    <input type="text" class="form-control" placeholder="" id="title" name="title" value="<?php
-            if(isset($post['title'])){
-                echo $post['title'];}
-        ?>">
+                    <input type="text" class="form-control" placeholder="" id="title" name="title" value="">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for subtitle>Sous titre</label>
-                    <input type="text" class="form-control" placeholder="" id="subtitle" name="subtitle" value="<?php
-            if(isset($post['subtitle'])){
-                echo $post['subtitle'];}
-        ?>">
+                    <input type="text" class="form-control" placeholder="" id="subtitle" name="subtitle" value="">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="content">Contenu de l'article</label>
                     <textarea rows="5" class="form-control" placeholder="" id="content" name="content">
-                        <?php if(isset($post['content'])){ echo $post['content']; } ?>
+                        
                     </textarea>
                     <p class="help-block text-danger"></p>
                 </div>

@@ -32,7 +32,7 @@
   <a href="index.php?route=connexionPage">Connectez vous pour commenter</a>
 </h4>
 
-<?php if(isset($_SESSION['pseudo'], $_SESSION['role'])){ ?>
+
 
 <div class="container">
   <div class="row">
@@ -61,7 +61,7 @@
         </div>
       </form>
 
-      <?php } ?>
+      
 
       <div class="container">
         <div class="row">

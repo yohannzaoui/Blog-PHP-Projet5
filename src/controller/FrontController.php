@@ -5,6 +5,7 @@ namespace App\controller;
 use App\repository\PostRepository;
 use App\repository\CommentRepository;
 use App\Repository\UserRepository;
+use App\Entity\User;
 use Core\View;
 
 
@@ -66,24 +67,37 @@ class FrontController
      {
         if(isset($user['submit']) && $user['submit'] === 'send'){
             if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
-                if($_POST['pass'] == $_POST['pass1']){
+                if($_POST['pass'] === $_POST['pass1']){
                     $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
                     $userRepo = $this->userRepository->addUser($user,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 }else {
                     $this->view->render('error',['error'=>'Les mots de passes ne sont pas identique']);
                 }
+            }else {
+                $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
             }
-        }else {
-            $this->view->render('error',['error'=>'Tous les champs doivent être remplis ']);
+        }else{
+            $this->view->render('error',['error'=>'Le paramètre envoyé est incorrect']);
         }
+     }
+
+     public function userConnexionn($user)
+     {
+         if(isset($user['submit']) && $user['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
+            $passhash = password_verify($_POST['pass'],PASSWORD_BCRYPT);
+            $userRepo = $this->userRepository->userConnect($user,$passhash);
+            header('Location: ../index.php?route=all');
+         }
+         /*else {
+            header('Location: ../index.php?route=all');
+         }*/
      }
 
      public function userConnexion($user)
      {
-         if(isset($_POST['submit']) && $_POST['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
-            $passhash = password_verify($_POST['pass'],PASSWORD_BCRYPT);
-            $userRepo = $this->userRepository->userConnect($user,$passhash);
+         if(isset($user['submit']) && $user['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
+            $userRepo = $this->userRepository->userConnect($user);
             header('Location: ../index.php?route=all');
          }
          /*else {

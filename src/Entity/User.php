@@ -10,6 +10,7 @@ class User
     private $role;
     private $creation_date_fr;
 
+
     public function setId($id)
     {
         $id=(int)$id;

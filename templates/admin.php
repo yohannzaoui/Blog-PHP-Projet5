@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-md-10 mx-auto">
+    <div class="col-lg-8 col-md-10 mx-auto">
       <form action="index.php?route=adminConnexion" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>

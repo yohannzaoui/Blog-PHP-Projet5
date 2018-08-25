@@ -5,6 +5,7 @@
  use App\repository\PostRepository;
  use App\Repository\CommentRepository;
  use App\Repository\UserRepository;
+ use App\Entity\Post;
  use Core\View;
  use Core\Session;
  
@@ -43,6 +44,22 @@
         }
         $this->view->render('addPost', ['post'=>$post]);
      }
+
+     /*public function savePost($post)
+     {
+        if(isset($_POST['submit']) && $_POST['submit'] === 'send') {
+            if(!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['author']) && !empty($_POST['content'])) {
+                $post = new Post(['title'=>$_POST['title'],
+                                'subtitle'=>$_POST['subtitle'],
+                                'author'=>$_POST['author'],
+                                'content'=>$_POST['content']
+                                ]);
+                $postRepo = $this->postRepository->addPost($post);
+                header('Location: ../index.php?route=all');
+            }
+        }
+        $this->view->render('addPost');
+     }*/
 
      public function listComments()
      {
@@ -119,9 +136,9 @@
 
      public function addAdmin($user)
      {
-        if(isset($user['submit'])){
+        if(isset($user['submit']) && $user['submit'] === 'send'){
             if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
-                if($_POST['pass'] == $_POST['pass1']){
+                if($_POST['pass'] === $_POST['pass1']){
                     $passhash = password_hash($_POST['pass'],PASSWORD_BCRYPT);
                     $userRepo = $this->userRepository->addAdmin($user,$passhash);
                     header('Location: ../index.php?route=admin');
@@ -131,6 +148,8 @@
             }else {
                 $this->view->render('error',['error'=>'Les champs sont vides']);
             }
+        }else{
+            $this->view->render('error',['error'=>'Le paramètre envoyé est incorrect']);
         }
      }
 
@@ -152,7 +171,7 @@
      {
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
-            $userRepo = $this->userRepository->deleteAdmin($id);
+            $userRepo = $this->userRepository->deleteUser($id);
             header('Location: ../index.php?route=listAdmins');
         }else {
             $this->view->render('error',['error'=>'Identifiant d\'administrateur manquant']);

@@ -2,7 +2,7 @@
 
 <?php require_once 'adminNav.php'; ?>
 <div class="container">
-    <h3 class="title_center">Modifier article</h3>
+    <h4 class="title_center">Modifier article</h4>
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
             <form action="../index.php?route=updatePost" method="post">

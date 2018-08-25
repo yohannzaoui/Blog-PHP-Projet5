@@ -2,12 +2,15 @@
 
 <?php require_once 'adminNav.php'; ?>
 
-<h3 class="title_center">Modifier/Supprimer un articles</h3>
+<h4 class="title_center">Modifier/Supprimer un articles</h4>
 <br>
 <div class="title_center">
-<button type="button" class="btn btn-warning">
-Nombre d'article sur le blog : <span class="badge badge-light"><?=$line?></span>
-</button>
+  <button type="button" class="btn btn-primary">
+    Nombre d'article sur le blog :
+    <span class="badge badge-light">
+      <?=$line?>
+    </span>
+  </button>
 </div>
 <br>
 
