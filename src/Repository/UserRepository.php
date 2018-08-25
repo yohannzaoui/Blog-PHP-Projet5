@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use Core\DBFactory;
 use App\entity\User;
+use PDO;
 
 class UserRepository extends DBFactory
 {
@@ -12,7 +13,7 @@ class UserRepository extends DBFactory
         extract($user);
         $pass = $passhash;
         $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
-        $this->sql($sql, [$pseudo, $pass]);
+        $req=$this->sql($sql, [$pseudo, $pass]);
     }
 
     public function addUser($user,$passhash)
@@ -20,85 +21,88 @@ class UserRepository extends DBFactory
         extract($user);
         $pass = $passhash;
         $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
-        $this->sql($sql, [$pseudo, $pass]);
+        $req=$this->sql($sql, [$pseudo, $pass]);
     }
 
     public function allAdmins()
     {
-        $sql= 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "admin" ORDER BY id';
-        $result = $this->sql($sql);
-        $users = [];
-        foreach ($result as $row) {
-            $userId = $row['id'];
-            $users[$userId] = $this->buildObject($row);
-        }
+        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
+        $req = $this->sql($sql);
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
+        $users = $req->fetchAll();
         return $users;
     }
 
     public function allUsers()
     {
-        $sql= 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "member" ORDER BY id';
-        $result = $this->sql($sql);
-        $users = [];
-        foreach ($result as $row) {
-            $userId = $row['id'];
-            $users[$userId] = $this->buildObject($row);
-        }
+        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "member" ORDER BY creation_date DESC';
+        $req = $this->sql($sql);
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
+        $users = $req->fetchAll();
         return $users;
-    }
-
-    public function deleteAdmin($id)
-    {
-        $sql = 'DELETE FROM users WHERE id='.$id;
-        $this->sql($sql, [$id]);
     }
 
     public function deleteUser($id)
     {
         $sql = 'DELETE FROM users WHERE id='.$id;
-        $this->sql($sql, [$id]);
+        $req=$this->sql($sql, [$id]);
     }
 
     public function adminConnexion($user,$passhash)
     {
         extract($user);
         $pass = $passhash;
-        $sql ='SELECT * FROM users WHERE pseudo = ? AND pass = ? AND role = "admin"';
-        $this->sql($sql, [$pseudo,$pass]);
+        $sql = 'SELECT * FROM users WHERE pseudo = ? AND pass = ? AND role = "admin"';
+        $req = $this->sql($sql, [$pseudo,$pass]);
+        $userexist = $req->rowCount();
+        if($userexist == 1) {
+
+            $userinfo = $req->fetch();
+            $_SESSION['pseudo'] = $userinfo['pseudo'];
+            $_SESSION['role'] = $userinfo['role'];
+        }
+        else {
+            throw new \Exception('Identifiant incorrect');
+        }
     }
 
-    public function userConnect($user,$passhash)
+    public function userConnect()
     {
         extract($user);
-        $pass = $passhash;
-        $sql ='SELECT * FROM users WHERE pseudo = ? AND pass = ? AND role = "member"';
-        $this->sql($sql, [$pseudo,$pass]);
+        $req = $this->getDb()->prepare('SELECT * FROM users WHERE pseudo =? AND pass=?');
+        if($req->rowCount() == 1){
+            $data = $req->fetch();
+            if(password_verify($pass,$data['pass'])) {
+                echo "ok";
+            }
+        } else {
+
+        }
+        
     }
 
     public function countAdmins()
     {
-        $sql = 'SELECT COUNT(*) as nb FROM users WHERE role = "admin"';
-        $data=$this->sql($sql);
-        $line = $data->fetch();
+        $sql= 'SELECT COUNT(*) as nb FROM users WHERE role = "admin"';
+        $line = $this->sql($sql)->fetch();
         return $line['nb'];
     }
 
     public function countMembers()
     {
         $sql = 'SELECT COUNT(*) as nb FROM users WHERE role = "member"';
-        $data=$this->sql($sql);
-        $line = $data->fetch();
+        $line = $this->sql($sql)->fetch();
         return $line['nb'];
     }
 
-    private function buildObject(array $row)
+    private function buildObject($row)
     {
-        $user = new User;
-        $user->setId($row['id']);
-        $user->setPseudo($row['pseudo']);
-        $user->setPass($row['pass']);
-        $user->setRole($row['role']);
-        $user->setCreation_date($row['creation_date_fr']);
+        $comment = new User;
+        $comment->setId($row['id']);
+        $comment->setPseudo($row['pseudo']);
+        $comment->setPass($row['pass']);
+        $comment->setRole($row['role']);
+        $comment->setCreation_date($row['creation_date_fr']);
         return $user;
     }
 }

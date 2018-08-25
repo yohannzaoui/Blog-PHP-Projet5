@@ -4,18 +4,17 @@ namespace App\repository;
 
 use Core\DBFactory;
 use App\entity\Comment;
+use PDO;
 
 class CommentRepository extends DBFactory
 {
     public function getCommentsFromPost($idPost)
     {
-        $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 1 AND id_post = ? ORDER BY creation_date DESC';
-        $result = $this->sql($sql, [$idPost]);
-        $comments = [];
-        foreach ($result as $row) {
-            $commentId = $row['id'];
-            $comments[$commentId] = $this->buildObject($row);
-        }
+        $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 1 AND id_post ='.$idPost.' ORDER BY creation_date DESC';
+        //$req->bindvalue(':idpost',(int)$idPost, PDO::PARAM_INT);
+        $req = $this->sql($sql, [$idPost]);
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Comment::CLASS);
+        $comments = $req->fetchAll();
         return $comments;
     }
 
@@ -23,38 +22,34 @@ class CommentRepository extends DBFactory
     {
         extract($comment);
         $sql = 'INSERT INTO comments (id_post, pseudo, content, publication, creation_date) VALUES (?,?,?,0,NOW())';
-        $this->sql($sql, [$idPost,$pseudo, $content]);
+        $req = $this->sql($sql, [$idPost,$pseudo, $content]);
     }
 
     public function getCommentsNoValide()
     {
         $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 0 ORDER BY creation_date DESC';
-        $result = $this->sql($sql);
-        $comments = [];
-        foreach ($result as $row) {
-            $commentId = $row['id'];
-            $comments[$commentId] = $this->buildObject($row);
-        }
+        $req = $this->sql($sql);
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Comment::CLASS);
+        $comments = $req->fetchAll();
         return $comments;
     }
 
     public function validateComment($id)
     {
         $sql = 'UPDATE comments SET publication=1 WHERE id='.$id;
-        $this->sql($sql, [$id]);
+        $req = $this->sql($sql, [$id]);
     }
 
     public function deleteComment($id)
     {
-        $sql = 'DELETE FROM comments WHERE id='.$id;
-        $this->sql($sql, [$id]);
+        $req = $this->getDb()->prepare('DELETE FROM comments WHERE id='.$id);
+        $req->execute([$id]);
     }
 
     public function countComments()
     {
         $sql = 'SELECT COUNT(*) as nb FROM comments WHERE publication = 0';
-        $data=$this->sql($sql);
-        $line = $data->fetch();
+        $line = $this->sql($sql)->fetch();
         return $line['nb'];
     }
 
