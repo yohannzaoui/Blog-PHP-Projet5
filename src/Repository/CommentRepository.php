@@ -42,8 +42,8 @@ class CommentRepository extends DBFactory
 
     public function deleteComment($id)
     {
-        $req = $this->getDb()->prepare('DELETE FROM comments WHERE id='.$id);
-        $req->execute([$id]);
+        $sql = 'DELETE FROM comments WHERE id='.$id;
+        $req = $this->sql($sql, [$id]);
     }
 
     public function countComments()

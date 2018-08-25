@@ -107,7 +107,7 @@
                 $postRepo = $this->postRepository->updatePost($post);
                 header('Location: ../index.php?route=post&id='.$_POST['id']);
              }else {
-                $this->view->render('error',['error'=>'Tous les champs doivent être remplis ']);
+                $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
             }
          }
      }
@@ -146,7 +146,7 @@
                     $this->view->render('error',['error'=>'Les mots de passes ne correspondent pas']);
                 }
             }else {
-                $this->view->render('error',['error'=>'Les champs sont vides']);
+                $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
             }
         }else{
             $this->view->render('error',['error'=>'Le paramètre envoyé est incorrect']);
