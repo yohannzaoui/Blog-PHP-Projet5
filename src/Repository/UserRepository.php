@@ -63,36 +63,35 @@ class UserRepository extends DBFactory
         $req=$this->sql($sql, ['id'=>$id]);
     }
 
-    public function adminConnexion($user,$passhash)
+    public function adminConnexion($user)
     {
         extract($user);
-        $pass = $passhash;
-        $sql = 'SELECT * FROM users WHERE pseudo = ? AND pass = ? AND role = "admin"';
-        $req = $this->sql($sql, [$pseudo,$pass]);
-        $userexist = $req->rowCount();
-        if($userexist == 1) {
-
-            $userinfo = $req->fetch();
-            $_SESSION['pseudo'] = $userinfo['pseudo'];
-            $_SESSION['role'] = $userinfo['role'];
-        }
-        else {
-            throw new Exception('Identifiant incorrect');
+        $sql = 'SELECT id, pass FROM users WHERE role = "admin" AND pseudo = ?';
+        $req = $this->sql($sql, [$pseudo]);
+        $count = $req->rowCount();
+        if($count > 0) {
+            $data = $req->fetch();
+            if(password_verify($pass, $data['pass'])) {
+                echo "ok";
+            } else {
+            throw new Exception("L'administrateur n'existe pas");
+            }
         }
     }
 
-    public function userConnect()
+    public function userConnect($user)
     {
         extract($user);
-        $sql = 'SELECT * FROM users WHERE pseudo =? AND pass=?';
-        $req = $this->sql($sql, [$pseudo,$pass]);
-        if($req->rowCount() == 1){
+        $sql = 'SELECT id, pass FROM users WHERE role = "member" AND pseudo = ?';
+        $req = $this->sql($sql, [$pseudo]);
+        $count = $req->rowCount();
+        if($count > 0) {
             $data = $req->fetch();
-            if(password_verify($pass,$data['pass'])) {
+            if(password_verify($pass, $data['pass'])) {
                 echo "ok";
+            } else {
+            throw new Exception("Le membre n'existe pas");
             }
-        } else {
-
         }
     }
 

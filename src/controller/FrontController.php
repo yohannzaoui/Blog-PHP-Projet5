@@ -6,6 +6,7 @@ use App\repository\PostRepository;
 use App\repository\CommentRepository;
 use App\Repository\UserRepository;
 use Core\View;
+use Core\Session;
 use Exception;
 
 
@@ -81,18 +82,6 @@ class FrontController
             throw new Exception('Le paramètre envoyé est incorrect');
         }
      }
-
-     /*public function userConnexionn($user)
-     {
-         if(isset($user['submit']) && $user['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
-            $passhash = password_verify($_POST['pass'],PASSWORD_BCRYPT);
-            $userRepo = $this->userRepository->userConnect($user,$passhash);
-            header('Location: ../index.php?route=all');
-         }
-         /*else {
-            header('Location: ../index.php?route=all');
-         }
-     }*/
 
      public function userConnexion($user)
      {

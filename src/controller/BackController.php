@@ -199,9 +199,8 @@ class BackController
 
      public function adminConnexion($user)
      {
-         if (isset($_POST['submit']) && !empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-             $passhash = password_verify($_POST['pass'], PASSWORD_BCRYPT);
-             $userRepo = $this->userRepository->adminConnexion($user, $passhash);
+         if (isset($user['submit']) && !empty($user['pseudo']) && !empty($user['pass'])) {
+             $userRepo = $this->userRepository->adminConnexion($user);
              header('Location: ../index.php?route=savePost');
          } else {
              throw new Exception('Tous les champs doivent être remplis');
