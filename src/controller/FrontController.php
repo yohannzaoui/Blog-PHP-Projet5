@@ -65,9 +65,9 @@ class FrontController
      public function addUser($user)
      {
         if(isset($user['submit']) && $user['submit'] === 'send'){
-            if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
-                if($_POST['pass'] === $_POST['pass1']){
-                    $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+            if(!empty($user['pseudo']) && !empty($user['pass']) && !empty($user['pass1'])){
+                if($user['pass'] === $user['pass1']){
+                    $passhash = password_hash($user['pass'], PASSWORD_BCRYPT);
                     $userRepo = $this->userRepository->addUser($user,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 }else {
@@ -81,7 +81,7 @@ class FrontController
         }
      }
 
-     public function userConnexionn($user)
+     /*public function userConnexionn($user)
      {
          if(isset($user['submit']) && $user['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
             $passhash = password_verify($_POST['pass'],PASSWORD_BCRYPT);
@@ -90,8 +90,8 @@ class FrontController
          }
          /*else {
             header('Location: ../index.php?route=all');
-         }*/
-     }
+         }
+     }*/
 
      public function userConnexion($user)
      {

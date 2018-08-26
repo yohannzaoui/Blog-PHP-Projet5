@@ -1,6 +1,6 @@
 <?php
 
-namespace App\entity;
+namespace App\Entity;
 
 class Comment
 {

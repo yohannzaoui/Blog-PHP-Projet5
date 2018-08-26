@@ -21,7 +21,7 @@ class User
 
     public function setPseudo($pseudo)
     {
-        if(is_string($pseudo) && strlen($pseudo)<=255){
+        if (is_string($pseudo) && strlen($pseudo)<=255) {
             $this->pseudo = $pseudo;
         }
     }
@@ -33,7 +33,7 @@ class User
 
     public function setRole($role)
     {
-        if(is_string($role) && strlen($role)<=10){
+        if (is_string($role) && strlen($role)<=10) {
             $this->role = $role;
         }
     }
@@ -45,7 +45,7 @@ class User
 
     public function getPseudo()
     {
-        return $this->pseudo; 
+        return $this->pseudo;
     }
 
     public function getPass()
@@ -57,12 +57,12 @@ class User
     {
         return $this->id;
     }
- 
+
     public function getRole()
     {
         return $this->role;
     }
- 
+
     public function getCreation_date()
     {
         return $this->creation_date_fr;
