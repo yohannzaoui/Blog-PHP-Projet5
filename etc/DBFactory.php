@@ -3,6 +3,7 @@
 namespace Core;
 
 use PDO;
+use Exception;
 
 abstract class DBFactory
 {
@@ -28,7 +29,7 @@ abstract class DBFactory
             return $this->db;
         }
 
-        catch (\Exception $errorConnection)
+        catch (Exception $errorConnection)
         {
             die('Erreur de connection : '.$errorConnection->getMessage());
         }

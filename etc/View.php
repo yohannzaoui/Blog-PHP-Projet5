@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Exception;
+
 class View
 {
     private $file;
@@ -24,7 +26,7 @@ class View
             return ob_get_clean();
         }
         else {
-            throw new \Exception('Fichier vue inexistant');
+            throw new Exception('Fichier vue inexistant');
         }
     }
 

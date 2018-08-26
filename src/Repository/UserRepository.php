@@ -5,6 +5,7 @@ namespace App\Repository;
 use Core\DBFactory;
 use App\Entity\User;
 use PDO;
+use Exception;
 
 class UserRepository extends DBFactory
 {
@@ -16,7 +17,7 @@ class UserRepository extends DBFactory
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
-            throw new \Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
+            throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
             $req = $this->sql($sql, [$pseudo, $pass]);
@@ -31,7 +32,7 @@ class UserRepository extends DBFactory
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
-            throw new \Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
+            throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
             $req = $this->sql($sql, [$pseudo, $pass]);
@@ -76,7 +77,7 @@ class UserRepository extends DBFactory
             $_SESSION['role'] = $userinfo['role'];
         }
         else {
-            throw new \Exception('Identifiant incorrect');
+            throw new Exception('Identifiant incorrect');
         }
     }
 

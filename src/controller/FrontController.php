@@ -6,6 +6,7 @@ use App\repository\PostRepository;
 use App\repository\CommentRepository;
 use App\Repository\UserRepository;
 use Core\View;
+use Exception;
 
 
 class FrontController
@@ -48,7 +49,7 @@ class FrontController
             $commentRepo = $this->commentRepository->addComment($comment);
             header('Location: ../index.php?route=post&id='.$_POST['idPost']);
         }else {
-            throw new \Exception('Tous les champs doivent être remplis');
+            throw new Exception('Tous les champs doivent être remplis');
         }
      }
 
@@ -71,13 +72,13 @@ class FrontController
                     $userRepo = $this->userRepository->addUser($user,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 } else {
-                    throw new \Exception('Les mots de passes ne sont pas identique');
+                    throw new Exception('Les mots de passes ne sont pas identique');
                 }
             } else {
-                throw new \Exception('Tous les champs doivent être remplis');
+                throw new Exception('Tous les champs doivent être remplis');
             }
         } else {
-            throw new \Exception('Le paramètre envoyé est incorrect');
+            throw new Exception('Le paramètre envoyé est incorrect');
         }
      }
 
@@ -100,10 +101,10 @@ class FrontController
                 $userRepo = $this->userRepository->userConnect($user);
                 header('Location: ../index.php?route=all');
              } else {
-                throw new \Exception('Tous les champs doivent être remplis');
+                throw new Exception('Tous les champs doivent être remplis');
              }
          } else {
-            throw new \Exception('Le paramètre envoyé est incorrect');
+            throw new Exception('Le paramètre envoyé est incorrect');
          }
      }
 }

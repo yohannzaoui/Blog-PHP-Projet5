@@ -2,13 +2,15 @@
 
 namespace Core;
 
+use Exception;
+
 
 abstract class Configuration
 {
-    
+
     private static $params;
 
-    
+
     public static function get($name, $defaultValue = null)
     {
         $params = self::getparams();
@@ -21,7 +23,7 @@ abstract class Configuration
         return $value;
     }
 
-   
+
     private static function getparams()
     {
         if (self::$params == null) {
@@ -30,7 +32,7 @@ abstract class Configuration
                 $filePath = "../config/prod.ini";
             }
             if (!file_exists($filePath)) {
-                throw new \Exception("Aucun fichier de configuration trouvé");
+                throw new Exception("Aucun fichier de configuration trouvé");
             }
             else {
                 self::$params = parse_ini_file($filePath);

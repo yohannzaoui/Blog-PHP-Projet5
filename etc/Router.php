@@ -5,6 +5,7 @@ namespace Core;
 use App\controller\FrontController;
 use App\controller\BackController;
 use Core\View;
+use Exception;
 
 class Router
 {
@@ -107,7 +108,7 @@ class Router
                 $this->frontController->home();
             }
         }
-        catch (\Exception $e)
+        catch (Exception $e)
         {
             $this->view->render('error',['error'=>$e->getMessage()]);
         }
