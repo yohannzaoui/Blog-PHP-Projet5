@@ -48,7 +48,7 @@ class FrontController
             $commentRepo = $this->commentRepository->addComment($comment);
             header('Location: ../index.php?route=post&id='.$_POST['idPost']);
         }else {
-            $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
+            throw new \Exception('Tous les champs doivent être remplis');
         }
      }
 
@@ -70,14 +70,14 @@ class FrontController
                     $passhash = password_hash($user['pass'], PASSWORD_BCRYPT);
                     $userRepo = $this->userRepository->addUser($user,$passhash);
                     header('Location: ../index.php?route=connexionPage');
-                }else {
-                    $this->view->render('error',['error'=>'Les mots de passes ne sont pas identique']);
+                } else {
+                    throw new \Exception('Les mots de passes ne sont pas identique');
                 }
-            }else {
-                $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
+            } else {
+                throw new \Exception('Tous les champs doivent être remplis');
             }
-        }else{
-            $this->view->render('error',['error'=>'Le paramètre envoyé est incorrect']);
+        } else {
+            throw new \Exception('Le paramètre envoyé est incorrect');
         }
      }
 
@@ -100,10 +100,10 @@ class FrontController
                 $userRepo = $this->userRepository->userConnect($user);
                 header('Location: ../index.php?route=all');
              } else {
-                $this->view->render('error',['error'=>'Tous les champs doivent être remplis']);
+                throw new \Exception('Tous les champs doivent être remplis');
              }
          } else {
-            $this->view->render('error',['error'=>'Le paramètre envoyé est incorrect']);
+            throw new \Exception('Le paramètre envoyé est incorrect');
          }
      }
 }

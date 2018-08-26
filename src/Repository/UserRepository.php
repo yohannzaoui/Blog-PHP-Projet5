@@ -12,17 +12,16 @@ class UserRepository extends DBFactory
     {
         extract($user);
         $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (:pseudo,:pass,"admin",NOW())';
-        $req=$this->sql($sql, ['pseudo'=>$pseudo, 'pass'=>$pass]);
+        $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
+        $req = $this->sql($sql, [$pseudo]);
+        $count = $req->rowCount();
+        if($count > 0) {
+            throw new \Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
+        } else {
+            $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
+            $req = $this->sql($sql, [$pseudo, $pass]);
+        }
     }
-
-    /*public function addUser($user,$passhash)
-    {
-        extract($user);
-        $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
-        $req=$this->sql($sql, [$pseudo, $pass]);
-    }*/
 
     public function addUser($user,$passhash)
     {
@@ -31,8 +30,8 @@ class UserRepository extends DBFactory
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
-        if($count == 1) {
-            throw new \Exception('Pseudo existe');
+        if($count > 0) {
+            throw new \Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
             $req = $this->sql($sql, [$pseudo, $pass]);

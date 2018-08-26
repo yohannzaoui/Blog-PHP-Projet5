@@ -109,7 +109,7 @@ class Router
         }
         catch (\Exception $e)
         {
-            $this->view->render('error',['error'=>$e]);
+            $this->view->render('error',['error'=>$e->getMessage()]);
         }
     }
 }

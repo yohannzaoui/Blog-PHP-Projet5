@@ -43,7 +43,7 @@ class BackController
                 $postRepo = $this->postRepository->addPost($post);
                 header('Location: ../index.php?route=all');
             } else {
-                $this->view->render('error', ['error'=>'Tous les champs doivent être remplis']);
+                throw new \Exception('Tous les champs doivent être remplis');
             }
         }
         $this->view->render('addPost', ['post'=>$post]);
@@ -79,7 +79,7 @@ class BackController
             $commentRepo = $this->commentRepository->validateComment($id);
             header('Location: ../index.php?route=listComments');
         } else {
-            $this->view->render('error', ['error'=>'ID du commentaire à valider manquant']);
+            throw new \Exception('ID du commentaire à valider manquant');
         }
     }
 
@@ -90,7 +90,7 @@ class BackController
             $commentRepo = $this->commentRepository->deleteComment($id);
             header('Location: ../index.php?route=listComments');
         }   else {
-                $this->view->render('error', ['error'=>'ID du commentaire à supprimer manquant']);
+                throw new \Exception('ID du commentaire à supprimer manquant');
             }
      }
 
@@ -114,7 +114,7 @@ class BackController
                 $postRepo = $this->postRepository->updatePost($post);
                 header('Location: ../index.php?route=post&id='.$_POST['id']);
             }   else {
-                $this->view->render('error', ['error'=>'Tous les champs doivent être remplis']);
+                throw new \Exception('Tous les champs doivent être remplis');
             }
         }
     }
@@ -126,7 +126,7 @@ class BackController
             $postRepo = $this->postRepository->deleteAll($id);
             header('Location: ../index.php?route=listPosts');
         }   else {
-            $this->view->render('error', ['error'=>'Identifiant manquant']);
+            throw new \Exception('Identifiant manquant');
         }
      }
 
@@ -137,7 +137,7 @@ class BackController
             $postRepo = $this->postRepository->deletePost($id);
             header('Location: ../index.php?route=listPosts');
         }   else {
-            $this->view->render('error', ['error'=>'Identifiant d\'article manquant']);
+            throw new \Exception('Identifiant d\'article manquant');
         }
     }
 
@@ -150,13 +150,13 @@ class BackController
                      $userRepo = $this->userRepository->addAdmin($user, $passhash);
                      header('Location: ../index.php?route=admin');
                  } else {
-                     $this->view->render('error', ['error'=>'Les mots de passes ne correspondent pas']);
+                     throw new \Exception('Les mots de passes ne correspondent pas');
                  }
              } else {
-                 $this->view->render('error', ['error'=>'Tous les champs doivent être remplis']);
+                 throw new \Exception('Tous les champs doivent être remplis');
              }
          } else {
-             $this->view->render('error', ['error'=>'Le paramètre envoyé est incorrect']);
+             throw new \Exception('Le paramètre envoyé est incorrect');
          }
      }
 
@@ -181,7 +181,7 @@ class BackController
              $userRepo = $this->userRepository->deleteUser($id);
              header('Location: ../index.php?route=listAdmins');
          } else {
-             $this->view->render('error', ['error'=>'Identifiant d\'administrateur manquant']);
+             throw new \Exception('Identifiant d\'administrateur manquant');
          }
      }
 
@@ -192,7 +192,7 @@ class BackController
              $userRepo = $this->userRepository->deleteUser($id);
              header('Location: ../index.php?route=listUsers');
          } else {
-             $this->view->render('error', ['error'=>'Identifiant du membre manquant']);
+             throw new \Exception('Identifiant du membre manquant');
          }
      }
 
@@ -203,7 +203,7 @@ class BackController
              $userRepo = $this->userRepository->adminConnexion($user, $passhash);
              header('Location: ../index.php?route=savePost');
          } else {
-             $this->view->render('error', ['error'=>'Tous les champs doivent être remplis']);
+             throw new \Exception('Tous les champs doivent être remplis');
          }
      }
 
