@@ -3,7 +3,7 @@
 namespace App\repository;
 
 use Core\DBFactory;
-use App\entity\Comment;
+use App\Entity\Comment;
 use PDO;
 
 class CommentRepository extends DBFactory

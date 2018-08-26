@@ -8,14 +8,6 @@ use PDO;
 
 class PostRepository extends DBFactory
 {
-    /*public function getRecentPosts()
-    {
-        $req = $this->getDb()->query('SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0,3');
-        $req->execute();
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
-        $posts = $req->fetchAll();
-        return $posts;
-    }*/
 
     public function getRecentPosts()
     {
@@ -37,12 +29,11 @@ class PostRepository extends DBFactory
 
     public function getPost($id)
     {
-        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts WHERE id ='.$id;
-        //$sql->bindvalue(':id',(int)$id, PDO::PARAM_INT);
+        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts WHERE id = ?';
         $req=$this->sql($sql, [$id]);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
         $post = $req->fetch();
-        return $post; 
+        return $post;
     }
 
     public function addPost($post)
@@ -65,28 +56,21 @@ class PostRepository extends DBFactory
     public function updatePost($post)
     {
         extract($post);
-        $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id='.$id;
-        $req = $this->sql($sql, [$author,$title, $subtitle,$content]);
+        $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id= ?';
+        $req = $this->sql($sql, [$author,$title, $subtitle,$content,$id]);
     }
 
     public function deleteAll($id)
     {
-        $sql = 'DELETE posts, comments FROM posts INNER JOIN comments ON posts.id=comments.id_post WHERE posts.id='.$id;
+        $sql = 'DELETE posts, comments FROM posts INNER JOIN comments ON posts.id=comments.id_post WHERE posts.id=?';
         $req = $this->sql($sql, [$id]);
     }
 
     public function deletePost($id)
     {
-        $sql = 'DELETE FROM posts WHERE id='.$id;
+        $sql = 'DELETE FROM posts WHERE id=?';
         $req = $this->sql($sql, [$id]);
     }
-
-    /*public function countPosts()
-    {
-        $req = $this->getDb()->query('SELECT COUNT(*) as nb FROM posts');
-        $line = $req->fetch();
-        return $line['nb'];
-    }*/
 
     public function countPosts()
     {

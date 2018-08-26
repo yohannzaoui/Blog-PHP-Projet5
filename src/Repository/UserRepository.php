@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use Core\DBFactory;
-use App\entity\User;
+use App\Entity\User;
 use PDO;
 
 class UserRepository extends DBFactory
@@ -12,16 +12,31 @@ class UserRepository extends DBFactory
     {
         extract($user);
         $pass = $passhash;
-        $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
-        $req=$this->sql($sql, [$pseudo, $pass]);
+        $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (:pseudo,:pass,"admin",NOW())';
+        $req=$this->sql($sql, ['pseudo'=>$pseudo, 'pass'=>$pass]);
     }
 
-    public function addUser($user,$passhash)
+    /*public function addUser($user,$passhash)
     {
         extract($user);
         $pass = $passhash;
         $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
         $req=$this->sql($sql, [$pseudo, $pass]);
+    }*/
+
+    public function addUser($user,$passhash)
+    {
+        extract($user);
+        $pass = $passhash;
+        $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
+        $req = $this->sql($sql, [$pseudo]);
+        $count = $req->rowCount();
+        if($count == 1) {
+            throw new \Exception('Pseudo existe');
+        } else {
+            $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
+            $req = $this->sql($sql, [$pseudo, $pass]);
+        }
     }
 
     public function allAdmins()
@@ -44,8 +59,8 @@ class UserRepository extends DBFactory
 
     public function deleteUser($id)
     {
-        $sql = 'DELETE FROM users WHERE id='.$id;
-        $req=$this->sql($sql, [$id]);
+        $sql = 'DELETE FROM users WHERE id=:id';
+        $req=$this->sql($sql, ['id'=>$id]);
     }
 
     public function adminConnexion($user,$passhash)
