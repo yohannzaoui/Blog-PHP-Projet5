@@ -28,19 +28,13 @@
   </div>
 </div>
 
-<?php if(!isset($_SESSION['role'], $_SESSION['pseudo'])) { ?>
-<h4 class="title_center">
-  <a href="index.php?route=connexionPage">Connectez vous pour commenter</a>
-</h4>
+<?php if(!isset($_SESSION['role'], $_SESSION['pseudoUser'])) { ?>
+<p class="title_center">
+    <a href="../index.php?route=connexionPage"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
+</p>
 <?php } ?>
 
-<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "member") { ?>
-<h4 class="title_center">
-  <a href="index.php?route=deconnexionUser">Déconnexion</a>
-</h4>
-<?php } ?>
-
-<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "member"){ ?>
+<?php if(isset($_SESSION['role'], $_SESSION['pseudoUser']) && $_SESSION['role'] == "member"){ ?>
 
 <div class="container">
   <div class="row">
@@ -50,7 +44,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label for="pseudo">Auteur</label>
-            <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" value="<?php if(isset($_SESSION['pseudo'])){echo $_SESSION['pseudo'];} ?>" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
+            <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" value="<?php if(isset($_SESSION['pseudoUser'])){echo $_SESSION['pseudoUser'];} ?>" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
             <p class="help-block text-danger"></p>
           </div>
         </div>
@@ -66,6 +60,7 @@
           <input type="hidden" name="idPost" value="<?= htmlspecialchars($post->getId()) ?>" />
           <button type="submit" name="submit" value="send" class="btn btn-primary" id="submit">Envoyer</button>
           <button type="reset" class="btn btn-danger" id="reset">Effacer</button>
+          <a href="../index.php?route=deconnexionUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
         </div>
       </form>
 

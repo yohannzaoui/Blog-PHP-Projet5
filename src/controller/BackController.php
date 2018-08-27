@@ -29,7 +29,11 @@ class BackController
 
     public function admin()
     {
-        $this->view->render('admin');
+        if(!isset($_SESSION['pseudoAdmin'], $_SESSION['role'])) {
+            $this->view->render('admin');
+        } else {
+            $this->view->render('addPost');
+        }
     }
 
     public function registration()
@@ -198,7 +202,7 @@ class BackController
                  $pseudo = $_POST['pseudo'];
                  $pass = $_POST['pass'];
                  $user = $this->userRepository->adminConnexion($pseudo, $pass);
-                 $_SESSION['pseudo'] = $user['pseudo'];
+                 $_SESSION['pseudoAdmin'] = $user['pseudo'];
                  $_SESSION['role'] = $user['role'];
              } else {
                  throw new Exception('Tous les champs doivent être remplis');

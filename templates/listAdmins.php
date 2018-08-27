@@ -1,6 +1,6 @@
 <?php $this->title = "Les administrateurs" ?>
 
-<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "admin") { ?>
+<?php if(isset($_SESSION['role'], $_SESSION['pseudoAmin']) && $_SESSION['role'] == "admin") { ?>
 
 <?php require_once 'adminNav.php'; ?>
 
