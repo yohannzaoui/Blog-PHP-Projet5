@@ -24,9 +24,7 @@
                 </div>
                 <div class="control-group">
                     <label for="content">Contenu de l'article</label>
-                    <textarea rows="5" class="form-control" placeholder="" id="content" name="content">
-                        
-                    </textarea>
+                    <textarea rows="5" class="form-control" placeholder="" id="content" name="content"></textarea>
                     <p class="help-block text-danger"></p>
                 </div>
                 <br>
