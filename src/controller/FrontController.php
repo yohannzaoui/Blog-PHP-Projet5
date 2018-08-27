@@ -96,7 +96,7 @@ class FrontController
                 $pseudo = $_POST['pseudo'];
                 $pass = $_POST['pass'];
                 $user = $this->userRepository->userConnect($pseudo, $pass);
-                $_SESSION['role'] = $user['role'];
+                $_SESSION['roleUser'] = $user['role'];
                 $_SESSION['pseudoUser'] = $user['pseudo'];
              } else {
                 throw new Exception('Tous les champs doivent être remplis');
