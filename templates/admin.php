@@ -21,7 +21,7 @@
         <br>
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" name="submit" class="btn btn-primary">Se connecter</button>
+          <button type="submit" name="submit" value="send" class="btn btn-primary">Se connecter</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
         <div class="form-check">

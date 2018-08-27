@@ -9,10 +9,8 @@ use Exception;
 
 class UserRepository extends DBFactory
 {
-    public function addAdmin($user,$passhash)
+    public function addAdmin($pseudo,$passhash)
     {
-        extract($user);
-        $pass = $passhash;
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
@@ -20,14 +18,12 @@ class UserRepository extends DBFactory
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
-            $req = $this->sql($sql, [$pseudo, $pass]);
+            $req = $this->sql($sql, [$pseudo, $passhash]);
         }
     }
 
-    public function addUser($user,$passhash)
+    public function addUser($pseudo,$passhash)
     {
-        extract($user);
-        $pass = $passhash;
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
@@ -35,7 +31,7 @@ class UserRepository extends DBFactory
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
-            $req = $this->sql($sql, [$pseudo, $pass]);
+            $req = $this->sql($sql, [$pseudo, $passhash]);
         }
     }
 
@@ -59,30 +55,28 @@ class UserRepository extends DBFactory
 
     public function deleteUser($id)
     {
-        $sql = 'DELETE FROM users WHERE id=:id';
-        $req=$this->sql($sql, ['id'=>$id]);
+        $sql = 'DELETE FROM users WHERE id=?';
+        $req=$this->sql($sql, [$id]);
     }
 
-    public function adminConnexion($user)
+    public function adminConnexion($pseudo, $pass)
     {
-        extract($user);
-        $sql = 'SELECT id, pass FROM users WHERE role = "admin" AND pseudo = ?';
+        $sql = 'SELECT pseudo, pass FROM users WHERE pseudo = ? AND role = "admin"';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
             $data = $req->fetch();
             if(password_verify($pass, $data['pass'])) {
-                echo "ok";
+                header('Location: ../index.php?route=savePost');
             } else {
-            throw new Exception("L'administrateur n'existe pas");
+            throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
             }
         }
     }
 
-    public function userConnect($user)
+    public function userConnect($pseudo, $pass)
     {
-        extract($user);
-        $sql = 'SELECT id, pass FROM users WHERE role = "member" AND pseudo = ?';
+        $sql = 'SELECT * FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
@@ -90,7 +84,7 @@ class UserRepository extends DBFactory
             if(password_verify($pass, $data['pass'])) {
                 echo "ok";
             } else {
-            throw new Exception("Le membre n'existe pas");
+            throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
         }
     }

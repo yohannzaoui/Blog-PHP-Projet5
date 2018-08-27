@@ -32,7 +32,7 @@ class Router
                     $this->frontController->all();
                 }
                 elseif($_GET['route'] === 'saveComment'){
-                    $this->frontController->saveComment($_POST);
+                    $this->frontController->saveComment();
                 }
                 elseif($_GET['route'] === 'connexionPage'){
                     $this->frontController->connexionPage();
@@ -41,10 +41,10 @@ class Router
                     $this->frontController->registrationPage();
                 }
                 elseif($_GET['route'] === 'addUser'){
-                    $this->frontController->addUser($_POST);
+                    $this->frontController->addUser();
                 }
                 elseif($_GET['route'] === 'userConnexion'){
-                    $this->frontController->userConnexion($_POST);
+                    $this->frontController->userConnexion();
                 }
                 elseif($_GET['route'] === 'admin'){
                     $this->backController->admin();
@@ -53,7 +53,7 @@ class Router
                     $this->backController->registration();
                 }
                 elseif($_GET['route'] === 'savePost'){
-                    $this->backController->savePost($_POST);
+                    $this->backController->savePost();
                 }
                 elseif($_GET['route'] === 'listComments'){
                     $this->backController->listComments();
@@ -71,7 +71,7 @@ class Router
                     $this->backController->editPost($_GET['id']);
                 }
                 elseif($_GET['route'] === 'updatePost'){
-                    $this->backController->updatePost($_POST);
+                    $this->backController->updatePost();
                 }
                 elseif($_GET['route'] === 'deleteAll'){
                     $this->backController->deleteAll($_GET['id']);
@@ -80,7 +80,7 @@ class Router
                     $this->backController->deletePost($_GET['id']);
                 }
                 elseif($_GET['route'] === 'addAdmin'){
-                    $this->backController->addAdmin($_POST);
+                    $this->backController->addAdmin();
                 }
                 elseif($_GET['route'] === 'listAdmins'){
                     $this->backController->listAdmins();
@@ -95,7 +95,7 @@ class Router
                     $this->backController->deleteUser($_GET['id']);
                 }
                 elseif($_GET['route'] === 'adminConnexion'){
-                    $this->backController->adminConnexion($_POST);
+                    $this->backController->adminConnect();
                 }
                 elseif($_GET['route'] === 'deconnexion'){
                     $this->backController->deconnexion();

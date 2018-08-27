@@ -36,9 +36,8 @@ class PostRepository extends DBFactory
         return $post;
     }
 
-    public function addPost($post)
+    public function addPost($author, $title, $subtitle, $content)
     {
-        extract($post);
         $sql= 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
         $req = $this->sql($sql,[$title, $subtitle, $author, $content]);
     }
@@ -53,9 +52,8 @@ class PostRepository extends DBFactory
         $req->execute();
     }*/
 
-    public function updatePost($post)
+    public function updatePost($id, $author, $title, $subtitle, $content)
     {
-        extract($post);
         $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id= ?';
         $req = $this->sql($sql, [$author,$title, $subtitle,$content,$id]);
     }

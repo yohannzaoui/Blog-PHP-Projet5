@@ -10,15 +10,14 @@ class CommentRepository extends DBFactory
 {
     public function getCommentsFromPost($idPost)
     {
-        $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 1 AND id_post ='.$idPost.' ORDER BY creation_date DESC';
-        //$req->bindvalue(':idpost',(int)$idPost, PDO::PARAM_INT);
+        $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 1 AND id_post = ? ORDER BY creation_date DESC';
         $req = $this->sql($sql, [$idPost]);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Comment::CLASS);
         $comments = $req->fetchAll();
         return $comments;
     }
 
-    public function addComment($comment)
+    public function addComment($idPost, $pseudo, $content)
     {
         extract($comment);
         $sql = 'INSERT INTO comments (id_post, pseudo, content, publication, creation_date) VALUES (?,?,?,0,NOW())';
@@ -36,13 +35,13 @@ class CommentRepository extends DBFactory
 
     public function validateComment($id)
     {
-        $sql = 'UPDATE comments SET publication=1 WHERE id='.$id;
+        $sql = 'UPDATE comments SET publication = 1 WHERE id = ?';
         $req = $this->sql($sql, [$id]);
     }
 
     public function deleteComment($id)
     {
-        $sql = 'DELETE FROM comments WHERE id='.$id;
+        $sql = 'DELETE FROM comments WHERE id = ?';
         $req = $this->sql($sql, [$id]);
     }
 

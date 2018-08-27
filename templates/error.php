@@ -1,7 +1,7 @@
 <?php $this->title = 'Erreur'; ?>
 
 <div class="error_style">
-    <h3>Erreur :
+    <h3>
         <?=$error?>
     </h3>
     <strong>

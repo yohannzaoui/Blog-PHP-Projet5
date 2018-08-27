@@ -44,11 +44,14 @@ class FrontController
         $this->view->render('post', ['post'=>$post, 'comments'=>$comments]);
     }
 
-    public function saveComment($comment)
+    public function saveComment()
      {
-        if(isset($comment['submit']) && $comment['submit'] === 'send' && !empty($comment['pseudo']) && !empty($comment['content'])) {
-            $commentRepo = $this->commentRepository->addComment($comment);
-            header('Location: ../index.php?route=post&id='.$_POST['idPost']);
+        if(isset($_POST['submit']) && $_POST['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['idPost'])) {
+            $pseudo = $_POST['pseudo'];
+            $content = $_POST['content'];
+            $idPost = $_POST['idPost'];
+            $commentRepo = $this->commentRepository->addComment($idPost, $pseudo, $content);
+            header('Location: ../index.php?route=post&id='.$idPost);
         }else {
             throw new Exception('Tous les champs doivent être remplis');
         }
@@ -64,13 +67,14 @@ class FrontController
          $this->view->render('registrationPage');
      }
 
-     public function addUser($user)
+     public function addUser()
      {
-        if(isset($user['submit']) && $user['submit'] === 'send'){
-            if(!empty($user['pseudo']) && !empty($user['pass']) && !empty($user['pass1'])){
-                if($user['pass'] === $user['pass1']){
-                    $passhash = password_hash($user['pass'], PASSWORD_BCRYPT);
-                    $userRepo = $this->userRepository->addUser($user,$passhash);
+        if(isset($_POST['submit']) && $_POST['submit'] === 'send'){
+            if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
+                if($_POST['pass'] === $_POST['pass1']){
+                    $pseudo = $_POST['pseudo'];
+                    $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+                    $userRepo = $this->userRepository->addUser($pseudo,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 } else {
                     throw new Exception('Les mots de passes ne sont pas identique');
@@ -83,11 +87,13 @@ class FrontController
         }
      }
 
-     public function userConnexion($user)
+     public function userConnexion()
      {
-         if(isset($user['submit']) && $user['submit'] === 'send') {
-             if(!empty($user['pseudo']) && !empty($user['pass'])){
-                $userRepo = $this->userRepository->userConnect($user);
+         if(isset($_POST['submit']) && $_POST['submit'] === 'send') {
+             if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
+                $pseudo = $_POST['pseudo'];
+                $pass = $_POST['pass'];
+                $userRepo = $this->userRepository->userConnect($pseudo, $pass);
                 header('Location: ../index.php?route=all');
              } else {
                 throw new Exception('Tous les champs doivent être remplis');

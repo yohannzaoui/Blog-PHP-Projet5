@@ -37,34 +37,22 @@ class BackController
         $this->view->render('registration');
     }
 
-    public function savePost($post)
+    public function savePost()
     {
-        if (isset($post['submit']) && $post['submit'] === 'send') {
-            if(!empty($post['author']) && !empty($post['title']) && !empty($post['subtitle']) && !empty($post['content'])){
-                $postRepo = $this->postRepository->addPost($post);
+        if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
+            if(!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])){
+                $author = $_POST['author'];
+                $title = $_POST['title'];
+                $subtitle = $_POST['subtitle'];
+                $content = $_POST['content'];
+                $postRepo = $this->postRepository->addPost($author, $title, $subtitle, $content);
                 header('Location: ../index.php?route=all');
             } else {
                 throw new Exception('Tous les champs doivent être remplis');
             }
         }
-        $this->view->render('addPost', ['post'=>$post]);
-    }
-
-     /*public function savePost($post)
-     {
-        if(isset($_POST['submit']) && $_POST['submit'] === 'send') {
-            if(!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['author']) && !empty($_POST['content'])) {
-                $post = new Post(['title'=>$_POST['title'],
-                                'subtitle'=>$_POST['subtitle'],
-                                'author'=>$_POST['author'],
-                                'content'=>$_POST['content']
-                                ]);
-                $postRepo = $this->postRepository->addPost($post);
-                header('Location: ../index.php?route=all');
-            }
-        }
         $this->view->render('addPost');
-     }*/
+    }
 
     public function listComments()
     {
@@ -108,12 +96,17 @@ class BackController
         $this->view->render('editPost', ['post'=>$post]);
     }
 
-    public function updatePost($post)
+    public function updatePost()
     {
-        if (isset($post['submit']) && $post['submit'] === 'send') {
-            if (!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty(['content'])) {
-                $postRepo = $this->postRepository->updatePost($post);
-                header('Location: ../index.php?route=post&id='.$_POST['id']);
+        if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
+            if (!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty(['content']) && !empty($_POST['id'])) {
+                $author = $_POST['author'];
+                $title = $_POST['title'];
+                $subtitle = $_POST['subtitle'];
+                $content = $_POST['content'];
+                $id = $_POST['id'];
+                $postRepo = $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
+                header('Location: ../index.php?route=post&id='.$id);
             }   else {
                 throw new Exception('Tous les champs doivent être remplis');
             }
@@ -142,13 +135,14 @@ class BackController
         }
     }
 
-     public function addAdmin($user)
+     public function addAdmin()
      {
-         if (isset($user['submit']) && $user['submit'] === 'send') {
+         if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
              if (!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])) {
                  if ($_POST['pass'] === $_POST['pass1']) {
+                     $pseudo = $_POST['pseudo'];
                      $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-                     $userRepo = $this->userRepository->addAdmin($user, $passhash);
+                     $userRepo = $this->userRepository->addAdmin($pseudo, $passhash);
                      header('Location: ../index.php?route=admin');
                  } else {
                      throw new Exception('Les mots de passes ne correspondent pas');
@@ -197,13 +191,18 @@ class BackController
          }
      }
 
-     public function adminConnexion($user)
+     public function adminConnect()
      {
-         if (isset($user['submit']) && !empty($user['pseudo']) && !empty($user['pass'])) {
-             $userRepo = $this->userRepository->adminConnexion($user);
-             header('Location: ../index.php?route=savePost');
+         if (isset($_POST['submit']) && $_POST['submit'] === "send"){
+             if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
+                 $pseudo = $_POST['pseudo'];
+                 $pass = $_POST['pass'];
+                 $userRepo = $this->userRepository->adminConnexion($pseudo, $pass);
+             } else {
+                 throw new Exception('Tous les champs doivent être remplis');
+             }
          } else {
-             throw new Exception('Tous les champs doivent être remplis');
+             throw new Exception('Le paramètre envoyé est incorrect');
          }
      }
 
