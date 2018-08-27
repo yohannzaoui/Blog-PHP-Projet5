@@ -11,9 +11,7 @@
         <div class="post-preview">
           <a href="../index.php?route=post&id=<?= htmlspecialchars($post->getId()); ?>">
             <h2 class="post-title">
-              <p>
                 <?= $post->getTitle() ?>
-              </p>
             </h2>
             <h3 class="post-subtitle">
               <?= $post->getSubtitle() ?>

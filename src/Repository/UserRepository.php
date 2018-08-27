@@ -76,17 +76,18 @@ class UserRepository extends DBFactory
 
     public function userConnect($pseudo, $pass)
     {
-        $sql = 'SELECT * FROM users WHERE role = "member" AND pseudo = ?';
+        $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "member"';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
             $data = $req->fetch();
             if(password_verify($pass, $data['pass'])) {
-                echo "ok";
+                header('Location: ../index.php?route=all');
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
         }
+        return $data;
     }
 
     public function countAdmins()

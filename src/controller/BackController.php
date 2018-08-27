@@ -45,7 +45,7 @@ class BackController
                 $title = $_POST['title'];
                 $subtitle = $_POST['subtitle'];
                 $content = $_POST['content'];
-                $postRepo = $this->postRepository->addPost($author, $title, $subtitle, $content);
+                $this->postRepository->addPost($author, $title, $subtitle, $content);
                 header('Location: ../index.php?route=all');
             } else {
                 throw new Exception('Tous les champs doivent être remplis');
@@ -65,7 +65,7 @@ class BackController
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = htmlspecialchars($_GET['id']);
-            $commentRepo = $this->commentRepository->validateComment($id);
+            $this->commentRepository->validateComment($id);
             header('Location: ../index.php?route=listComments');
         } else {
             throw new Exception('ID du commentaire à valider manquant');
@@ -76,7 +76,7 @@ class BackController
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = htmlspecialchars($_GET['id']);
-            $commentRepo = $this->commentRepository->deleteComment($id);
+            $this->commentRepository->deleteComment($id);
             header('Location: ../index.php?route=listComments');
         }   else {
                 throw new Exception('ID du commentaire à supprimer manquant');
@@ -105,7 +105,7 @@ class BackController
                 $subtitle = $_POST['subtitle'];
                 $content = $_POST['content'];
                 $id = $_POST['id'];
-                $postRepo = $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
+                $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
                 header('Location: ../index.php?route=post&id='.$id);
             }   else {
                 throw new Exception('Tous les champs doivent être remplis');
@@ -117,7 +117,7 @@ class BackController
 {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = htmlspecialchars($_GET['id']);
-            $postRepo = $this->postRepository->deleteAll($id);
+            $this->postRepository->deleteAll($id);
             header('Location: ../index.php?route=listPosts');
         }   else {
             throw new Exception('Identifiant manquant');
@@ -128,7 +128,7 @@ class BackController
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = htmlspecialchars($_GET['id']);
-            $postRepo = $this->postRepository->deletePost($id);
+            $this->postRepository->deletePost($id);
             header('Location: ../index.php?route=listPosts');
         }   else {
             throw new Exception('Identifiant d\'article manquant');
@@ -142,7 +142,7 @@ class BackController
                  if ($_POST['pass'] === $_POST['pass1']) {
                      $pseudo = $_POST['pseudo'];
                      $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-                     $userRepo = $this->userRepository->addAdmin($pseudo, $passhash);
+                     $this->userRepository->addAdmin($pseudo, $passhash);
                      header('Location: ../index.php?route=admin');
                  } else {
                      throw new Exception('Les mots de passes ne correspondent pas');
@@ -173,7 +173,7 @@ class BackController
      {
          if (isset($_GET['id']) && !empty($_GET['id'])) {
              $id = htmlspecialchars($_GET['id']);
-             $userRepo = $this->userRepository->deleteUser($id);
+             $this->userRepository->deleteUser($id);
              header('Location: ../index.php?route=listAdmins');
          } else {
              throw new Exception('Identifiant d\'administrateur manquant');
@@ -184,7 +184,7 @@ class BackController
      {
          if (isset($_GET['id']) && !empty($_GET['id'])) {
              $id = htmlspecialchars($_GET['id']);
-             $userRepo = $this->userRepository->deleteUser($id);
+             $this->userRepository->deleteUser($id);
              header('Location: ../index.php?route=listUsers');
          } else {
              throw new Exception('Identifiant du membre manquant');
@@ -197,7 +197,7 @@ class BackController
              if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
                  $pseudo = $_POST['pseudo'];
                  $pass = $_POST['pass'];
-                 $userRepo = $this->userRepository->adminConnexion($pseudo, $pass);
+                 $this->userRepository->adminConnexion($pseudo, $pass);
              } else {
                  throw new Exception('Tous les champs doivent être remplis');
              }

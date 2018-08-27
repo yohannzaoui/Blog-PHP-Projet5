@@ -5,12 +5,12 @@
     <div class="row">
       <div class="col-lg-12 col-md-10 mx-auto">
         <div class="post-preview">
-          <h2 class="post-title">
-            <?= $post->getTitle() ?>
-          </h2>
-          <h3 class="post-subtitle">
-            <?= $post->getSubtitle() ?>
-          </h3>
+            <h2 class="post-title">
+                <?= $post->getTitle() ?>
+            </h2>
+            <h3 class="post-subtitle">
+              <?= $post->getSubtitle() ?>
+            </h3>
           <p>
             <?= $post->getContent() ?>
           </p>
@@ -61,7 +61,7 @@
         </div>
       </form>
 
-      
+
 
       <div class="container">
         <div class="row">

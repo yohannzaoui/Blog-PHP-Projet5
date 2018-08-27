@@ -50,7 +50,7 @@ class FrontController
             $pseudo = $_POST['pseudo'];
             $content = $_POST['content'];
             $idPost = $_POST['idPost'];
-            $commentRepo = $this->commentRepository->addComment($idPost, $pseudo, $content);
+            $this->commentRepository->addComment($idPost, $pseudo, $content);
             header('Location: ../index.php?route=post&id='.$idPost);
         }else {
             throw new Exception('Tous les champs doivent être remplis');
@@ -74,7 +74,7 @@ class FrontController
                 if($_POST['pass'] === $_POST['pass1']){
                     $pseudo = $_POST['pseudo'];
                     $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-                    $userRepo = $this->userRepository->addUser($pseudo,$passhash);
+                    $this->userRepository->addUser($pseudo,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 } else {
                     throw new Exception('Les mots de passes ne sont pas identique');
@@ -93,8 +93,7 @@ class FrontController
              if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
                 $pseudo = $_POST['pseudo'];
                 $pass = $_POST['pass'];
-                $userRepo = $this->userRepository->userConnect($pseudo, $pass);
-                header('Location: ../index.php?route=all');
+                $this->userRepository->userConnect($pseudo, $pass);
              } else {
                 throw new Exception('Tous les champs doivent être remplis');
              }
