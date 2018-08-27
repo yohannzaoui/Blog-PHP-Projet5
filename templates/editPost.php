@@ -1,5 +1,7 @@
 <?php $this->title = "Modifier un article" ?>
 
+<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "admin") { ?>
+
 <?php require_once 'adminNav.php'; ?>
 <div class="container">
     <h4 class="title_center">Modifier article</h4>
@@ -33,3 +35,5 @@
                     <button type="submit" name="submit" value="send" class="btn btn-primary" id="submit">Modifier l'article</button>
                 </div>
             </form>
+
+<?php } ?>

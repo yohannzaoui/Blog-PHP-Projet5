@@ -16,6 +16,7 @@ class FrontController
     private $commentRepository;
     private $userRepository;
     private $view;
+    private $session;
 
     public function __construct()
     {
@@ -23,6 +24,7 @@ class FrontController
         $this->commentRepository = new CommentRepository;
         $this->userRepository = new UserRepository;
         $this->view = new View;
+        $this->session = new Session;
     }
 
     public function home()
@@ -93,12 +95,20 @@ class FrontController
              if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
                 $pseudo = $_POST['pseudo'];
                 $pass = $_POST['pass'];
-                $this->userRepository->userConnect($pseudo, $pass);
+                $user = $this->userRepository->userConnect($pseudo, $pass);
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['pseudo'] = $user['pseudo'];
              } else {
                 throw new Exception('Tous les champs doivent être remplis');
              }
          } else {
             throw new Exception('Le paramètre envoyé est incorrect');
          }
+     }
+
+     public function deconnexionUser()
+     {
+         $this->session->sessionDestroy();
+         header('Location: ../index.php?route=connexionPage');
      }
 }

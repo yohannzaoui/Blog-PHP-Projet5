@@ -197,7 +197,9 @@ class BackController
              if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
                  $pseudo = $_POST['pseudo'];
                  $pass = $_POST['pass'];
-                 $this->userRepository->adminConnexion($pseudo, $pass);
+                 $user = $this->userRepository->adminConnexion($pseudo, $pass);
+                 $_SESSION['pseudo'] = $user['pseudo'];
+                 $_SESSION['role'] = $user['role'];
              } else {
                  throw new Exception('Tous les champs doivent être remplis');
              }
@@ -206,7 +208,7 @@ class BackController
          }
      }
 
-     public function deconnexion()
+     public function deconnexionAdmin()
      {
          $this->session->sessionDestroy();
          header('Location: ../index.php?route=admin');

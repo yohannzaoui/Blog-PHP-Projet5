@@ -1,5 +1,7 @@
 <?php $this->title = "Modération commentaire"; ?>
 
+<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "admin") { ?>
+
 <?php require_once 'adminNav.php'; ?>
 
 <h4 class="title_center">Modération commentaire</h4>
@@ -29,3 +31,5 @@
     </div>
   </div>
 </div>
+
+<?php } ?>

@@ -97,8 +97,11 @@ class Router
                 elseif($_GET['route'] === 'adminConnexion'){
                     $this->backController->adminConnect();
                 }
-                elseif($_GET['route'] === 'deconnexion'){
-                    $this->backController->deconnexion();
+                elseif($_GET['route'] === 'deconnexionAdmin'){
+                    $this->backController->deconnexionAdmin();
+                }
+                elseif($_GET['route'] === 'deconnexionUser'){
+                    $this->frontController->deconnexionUser();
                 }
                 else{
                     $this->view->render('error',['error'=>'Page introuvable']);

@@ -1,5 +1,7 @@
 <?php $this->title = "Ajouter un article"; ?>
 
+<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "admin") { ?>
+
 <?php require_once 'adminNav.php'; ?>
 
 <div class="container">
@@ -34,3 +36,5 @@
                     <button type="reset" class="btn btn-danger" id="sendMessageButton">Effacer</button>
                 </div>
             </form>
+
+<?php } ?>

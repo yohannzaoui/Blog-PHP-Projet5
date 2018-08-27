@@ -61,17 +61,17 @@ class UserRepository extends DBFactory
 
     public function adminConnexion($pseudo, $pass)
     {
-        $sql = 'SELECT pseudo, pass FROM users WHERE pseudo = ? AND role = "admin"';
+        $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "admin"';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
-            $data = $req->fetch();
-            if(password_verify($pass, $data['pass'])) {
+            $user = $req->fetch();
+            if(password_verify($pass, $user['pass'])) {
                 header('Location: ../index.php?route=savePost');
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
             }
-        }
+        } return $user;
     }
 
     public function userConnect($pseudo, $pass)
@@ -80,14 +80,13 @@ class UserRepository extends DBFactory
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
         if($count > 0) {
-            $data = $req->fetch();
-            if(password_verify($pass, $data['pass'])) {
+            $user = $req->fetch();
+            if(password_verify($pass, $user['pass'])) {
                 header('Location: ../index.php?route=all');
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
-        }
-        return $data;
+        } return $user;
     }
 
     public function countAdmins()

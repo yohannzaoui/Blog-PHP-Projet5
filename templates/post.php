@@ -28,11 +28,19 @@
   </div>
 </div>
 
+<?php if(!isset($_SESSION['role'], $_SESSION['pseudo'])) { ?>
 <h4 class="title_center">
   <a href="index.php?route=connexionPage">Connectez vous pour commenter</a>
 </h4>
+<?php } ?>
 
+<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "member") { ?>
+<h4 class="title_center">
+  <a href="index.php?route=deconnexionUser">Déconnexion</a>
+</h4>
+<?php } ?>
 
+<?php if(isset($_SESSION['role'], $_SESSION['pseudo']) && $_SESSION['role'] == "member"){ ?>
 
 <div class="container">
   <div class="row">
@@ -42,7 +50,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label for="pseudo">Auteur</label>
-            <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
+            <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" value="<?php if(isset($_SESSION['pseudo'])){echo $_SESSION['pseudo'];} ?>" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
             <p class="help-block text-danger"></p>
           </div>
         </div>
@@ -61,6 +69,7 @@
         </div>
       </form>
 
+<?php } ?>
 
 
       <div class="container">

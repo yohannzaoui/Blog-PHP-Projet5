@@ -12,24 +12,20 @@ class Session
         session_start();
     }
 
-
     public function sessionDestroy()
     {
         session_destroy();
     }
-
 
     public function setSession($name, $value)
     {
         $_SESSION[$name] = $value;
     }
 
-
     public function existeSession($name)
     {
         return (isset($_SESSION[$name]) && $_SESSION[$name] != "");
     }
-
 
     public function getSession($name)
     {
@@ -40,5 +36,4 @@ class Session
             throw new Exception("Attribut '$name' absent de la session");
         }
     }
-
 }

@@ -19,7 +19,7 @@
                                         <a class="dropdown-item" href="../index.php?route=listAdmins">Administrateurs</a>
                                         <div class="dropdown-divider"></div>
                                         <div class="title_center">
-                                        <a href="../index.php?route=deconnexion"><button type="button" class="btn btn-outline-danger">Déconnexion</button></a>
+                                        <a href="../index.php?route=deconnexionAdmin"><button type="button" class="btn btn-outline-danger">Déconnexion</button></a>
                                         </div>
                                 </div>
                         </div>
