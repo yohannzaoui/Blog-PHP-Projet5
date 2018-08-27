@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 23 août 2018 à 20:26
+-- Généré le :  lun. 27 août 2018 à 21:50
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -37,57 +37,16 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `publication` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=173 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=181 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `comments`
 --
 
 INSERT INTO `comments` (`id`, `id_post`, `pseudo`, `content`, `creation_date`, `publication`) VALUES
-(40, 1, 'jean', 'sss', '2018-07-28 19:31:24', 1),
-(49, 1, 'plo', 'plo', '2018-07-28 20:53:46', 1),
-(50, 2, 'popo', 'aq', '2018-07-28 21:04:56', 1),
-(51, 2, 'popo', 'aq', '2018-07-28 21:06:01', 0),
-(56, 1, 'index', 'post', '2018-07-29 07:23:32', 0),
-(59, 1, 'fred', 'qa', '2018-07-29 07:31:57', 0),
-(60, 1, 'rere', 'za', '2018-07-29 07:32:37', 0),
-(61, 1, 'rere', 'tutu', '2018-07-29 07:33:06', 0),
-(63, 1, 'test', 'salut', '2018-07-29 07:42:30', 0),
-(64, 2, 'popo', 'rr', '2018-07-29 07:43:20', 0),
-(67, 2, 'popo', 'dddd', '2018-07-29 10:47:54', 0),
-(68, 2, 'jean', 'ss', '2018-07-29 10:48:03', 0),
-(69, 2, 'jean', 'ss', '2018-07-29 10:51:23', 0),
-(73, 2, 'jean', 'vvv', '2018-07-29 10:55:27', 0),
-(74, 2, 'zaza', 'll', '2018-07-31 09:02:25', 0),
-(77, 1, 'nn', 'aa', '2018-07-31 10:01:17', 0),
-(79, 2, 'gdgd', 'lkm', '2018-07-31 10:10:42', 0),
-(167, 11, 'test', 'test', '2018-08-22 12:32:55', 0),
-(172, 11, 'test', 'test envoyer', '2018-08-23 10:59:34', 1),
-(90, 4, 'yohann', 'ccc', '2018-08-01 18:34:31', 0),
-(91, 2, 'yohann', 'mlmlk', '2018-08-02 11:40:55', 0),
-(92, 2, 'yohann', 'mlmlk', '2018-08-02 12:33:23', 0),
-(93, 2, 'yohann', 'mlmlk', '2018-08-02 12:33:54', 0),
-(96, 2, 'ùmlùm', 'mlùml', '2018-08-05 13:58:40', 1),
-(165, 11, 'test', 'test', '2018-08-22 12:25:09', 1),
-(166, 11, 'test', 'testA', '2018-08-22 12:28:58', 1),
-(164, 11, 'test', 'test', '2018-08-22 12:23:13', 1),
-(104, 1, 'lkmlk', 'kjlkj', '2018-08-05 14:10:04', 1),
-(105, 1, 'lkmlk', 'kjlkj', '2018-08-05 14:22:13', 1),
-(106, 1, 'lkmlk', 'kjlkj', '2018-08-05 14:24:00', 1),
-(107, 1, 'lkmlk', 'kjlkj', '2018-08-05 14:24:51', 1),
-(108, 1, 'lkmlk', 'kjlkj', '2018-08-05 14:26:32', 1),
-(110, 2, 'mùlùmlmù', 'ùmlùmlmù', '2018-08-05 14:39:55', 1),
-(111, 1, 'lkmlk', 'kjlkj', '2018-08-05 14:47:18', 1),
-(112, 1, 'ùmlùml', 'ùlùml', '2018-08-05 14:47:41', 1),
-(113, 1, 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz', 'mùmlùmlù', '2018-08-05 14:48:06', 1),
-(162, 11, 'yohann', 'test comm article 12', '2018-08-22 09:10:12', 1),
-(163, 11, 'yohann', 'test comm article 12', '2018-08-22 09:26:41', 1),
-(125, 4, 'ùm*ù', 'ljlk', '2018-08-06 07:25:49', 1),
-(126, 4, 'yohann', 'llll', '2018-08-06 07:26:05', 1),
-(130, 2, 'kmlkml', 'ML%ML%L', '2018-08-08 18:43:45', 1),
-(131, 2, 'ùlùml', 'ùmùm', '2018-08-08 18:45:03', 1),
-(132, 2, 'yohannzaoui', 'test', '2018-08-11 10:57:52', 0),
-(133, 2, 'yohannzaoui', 'test', '2018-08-11 10:58:30', 0);
+(178, 32, 'mm', 'salut super article', '2018-08-27 20:29:30', 0),
+(179, 32, 'mm', 'llll', '2018-08-27 20:30:17', 0),
+(180, 32, 'mm', 'klkl', '2018-08-27 20:31:30', 0);
 
 -- --------------------------------------------------------
 
@@ -105,16 +64,16 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `posts`
 --
 
 INSERT INTO `posts` (`id`, `author`, `title`, `subtitle`, `content`, `creation_date`, `update_date`) VALUES
-(11, 'Yohann', 'Titre article 12', 'sous titre article 12', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?                                            ', '2018-08-22 09:09:51', NULL),
-(6, 'Yohann', 'Titre 7', 'sous titre 7', 'blabla', '2018-08-17 09:40:00', NULL),
-(8, 'Yohann', 'Titre 9', 'sous titre 9', 'Texte article 9', '2018-08-18 09:57:04', NULL);
+(32, 'Yohann', 'Emploi : l’intelligence artificielle manque de développeurs', 'Le nombre d’offres d’emploi à l’attention de spécialistes en intelligence artificielle a augmenté en moyenne de plus de 3% par mois en deux ans en France. Développeurs et ingénieurs R&D sont les plus recherchés, selon Joblift.', 'Le nombre d’offres d’emploi à l’attention de spécialistes en intelligence artificielle a augmenté en moyenne de plus de 3% par mois en deux ans en France. Développeurs et ingénieurs R&D sont les plus recherchés, selon Joblift.\r\n\r\nLa recherche de talents en intelligence artificielle (IA) s’accélère en France, rapporte Joblift.\r\n\r\nLe métamoteur de recherche d’emploi déclare avoir agrégé 7 729 offres autour de l’IA au cours des 24 derniers mois. Le volume d’offres a ainsi progressé de 3,6% par mois en moyenne. En 2018, au moins 6 000 nouvelles offres sont attendues, selon lui.\r\n\r\nLes profils les plus recherchés sont les suivants :\r\n\r\n– Développeurs (48% des offres) ;\r\n– Ingénieurs en R&D (16%) ;\r\n– Consultants experts en IA (10%).\r\n\r\nPar ailleurs, 5% des offres s’adressent aux directions informatiques (DSI).\r\n\r\nLes entreprises actives dans les télécoms sont à l’origine de 21% des annonces IA publiées ces derniers mois. L’industrie et la banque/assurance arrivent ensuite (18% des offres respectivement). Suivent : la santé (13%), la fintech (11%) et les transports/logistique (7%).\r\n\r\nGuerre des talents\r\nLes offres s’adressent pour l’essentiel à des profils dotés de 2 à 5 ans d’expérience au moins. 27% ciblent des profils plus expérimentés (au moins huit ans dans le secteur).\r\n\r\nJoblift estime à 55 jours la durée moyenne pour pourvoir un poste en CDI (45% des annonces) dans les métiers de l’intelligence artificielle en France. Une durée bien supérieure à celle affichée dans les autres secteurs (33 jours en moyenne).\r\n\r\nDans l’IA, les offres de stages (42% des annonces) sont pourvues en 49 jours en moyenne, contre moins de 40 jours pour trouver le profil recherché dans d’autres secteurs.\r\n\r\nEn cause : la guerre des talents que se livrent les organisations pour se doter de spécialistes en IA. La demande surpassant l’offre.\r\n\r\nEmmanuel Macron, qui recevait fin mars le rapport Villani sur le sujet, ambitionne de « doubler le nombre d’étudiants formés à l’IA d’ici à 2020 » pour mieux répondre aux besoins du marché. Et « positionner la France parmi les grandes nations de l’intelligence artificielle ».\r\n\r\nJoblift, de son côté, publie l’infographie ci-dessous pour illustrer ses chiffres ', '2018-08-27 07:56:15', NULL),
+(31, 'Yohann', 'Microsoft et GitHub : un mariage à 7,5 milliards $', 'La plateforme de partage de codes pour les développeurs rejoint la galaxie Microsoft. Une opération qui devrait rapprocher GiHub des entreprises mais qui pourrait faire fuir des pans entiers de sa communauté.', 'Microsoft va débourser 7,5 milliards $ en actions pour acquérir GitHub. La transaction est soumise à l’approbation des autorités américaines et européennes pour boucler l’opération d’ici à la fin de l’année.\r\n\r\nQuel est le sens de cette acquisition ? Satya Nadella, CEO de Microsoft,  a promis , entre autre,\r\nd’exploiter son réseau de partenaires pour pousser l’usage de GitHub dans les entreprises, qui, sont déjà 1,5 million à l’utiliser. Le rapprochement sera aussi l’occasion de monter des passerelles pour « ouvrir les outils de développement de Microsoft à un nouveau public » de GitHub qui fédère 24 millions de développeurs. Des passerelles devraient également s’établir avec le cloud Azure, comme le laisse suggérer cette présentation. \r\n\r\nMicrosoft, gros contributeur\r\nMicrosoft a semble-t-il surpayé GitHub pour emporter l’affaire.  En effet, sa dernière valorisation connue était de 2 milliards $, à l’été 2015, à l’issue d’un tour de table emmené par Sequoia Capital.\r\n\r\nCôté financier,  les chiffres  des neuf premiers mois de 2016 parlent d’une perte de 66 millions $, pour un chiffre d’affaires de 98 millions. C’est la version entreprise de GitHub, lancée en 2011 et déclinée dans le cloud en 2017, qui constitue sa principale source de revenus.\r\n\r\nMicrosoft est devenu l’un des plus gros contributeurs de GitHub. Plus d’un millier de ses employés y hébergent du code et de la documentation. Parmi les projets versés à la communauté figurent PowerShell, Visual Studio Code et le moteur JavaScript d’Edge.\r\n\r\nPour diriger la structure, l’actuel CEO, Chris Wanstrath, laissera sa place à Nat Friedman arrivé chez Microsoft en 2016 à la faveur du rachat de  Xamarin, sa société à l’origine d’outils de développement d’applications mobiles.      ', '2018-08-27 07:47:09', NULL),
+(30, 'Yohann', 'Les langages de développement qui ont la cote en 2018', 'Les langages de développement sont tellement nombreux, avec des caractéristiques diverses, qu’il peut être difficile d\'en sélectionner quelques-uns de manière objective.', 'PHP\r\n\r\nSi vous êtes un développeur indépendant ou professionnel, la popularité d’un langage est un excellent critère de sélection. Mesuré par PYPL, l’indicateur de popularité PYPL permet d’observer l’évolution des tendances telle que la constance de Java pour les applications web et mobile (Android) ou la perte de vitesse du PHP. \"La force du PHP repose sur des frameworks performants comme Symfony qui n’a de limite que votre propre imagination\" explique Guillaume de l\'agence TheTribe, spécialiste de la techno Symfony.\r\n\r\nJavaScript\r\n\r\nJavaScript arrive toujours dans le trio de tête, car il propose une interface simple et facile à manipuler avec une multitude de fonctionnalités au choix et des framewoks front. Il sera difficile de s’en passer pour le développement web tant il est complet. La grande majorité des développeurs savent coder dans ce langage. Il ne suffit donc plus de mentionner celui-ci dans son CV pour faire la différence, mais il est essentiel de le connaître pour mieux appréhender les nouveautés. \r\n\r\nC & C++\r\n\r\nC’est un langage qui gagne en popularité notamment parce que les objets connectés sont très en vogue. La programmation des logiciels embarqués est plus simple et plus accessible avec ce concept. Son futur est également bien plus sécurisé puisque des géants seront construits avec C comme Firefox ou Android (FushiaOS).\r\n\r\nC++ est un langage de développement en forte croissance que l’on retrouve souvent sur le podium en termes de classement. Il est performant, fiable et possède de nombreuses fonctionnalités. C’est donc le langage à privilégier pour certains types de projets : le développement d’applications d’appareils mobiles, d’applications d’entreprises, de bureau ou d’applications scientifiques. La version 20 qui sera finalisée en 2020 devrait inclure de nouvelles améliorations qui faciliteraient la gestion et la création du développeur.\r\n\r\nPython\r\n\r\nPython, élu « meilleur langage 2017 » par IEEE, dépasse encore Java et C en termes d’influence en 2018. Ce classement a été élaboré à partir des données collectées sur différentes sources. Ce sont les nombres de requêtes pour Python sur Google Search et les tendances provenant de Google Trends qui le conforme. C’est le best of qu’il faudrait apprendre à maîtriser en 2018', '2018-08-27 07:41:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,22 +88,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pass` varchar(255) NOT NULL,
   `role` varchar(10) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `pseudo_UNIQUE` (`pseudo`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `pass`, `role`, `creation_date`) VALUES
-(23, 'azerty', '$2y$10$QzC14IcwyDVKw4Yn3yyAWOktyZpNvcHQkSLs27Hk9Ls..uovslDm6', 'member', '2018-08-22 22:33:44'),
-(26, 'supermembre2', '$2y$10$OVpzYYNk3MwehjBOz0HD2ud8sCY4s.bMm0Pcu/v/QKC3B7BccAtEa', 'member', '2018-08-22 23:12:26'),
-(27, 'yohann', '$2y$10$OKq/V99IWgFVkyHsh5vG.eEPFASsjaBkgHpUieupHdfedZZYEtHi2', 'admin', '2018-08-23 11:42:47'),
-(28, 'superadmin', '$2y$10$re53MlueV7opX5yuVljsgeRT9bSMZYQEoL3CzNnyCTajWDgxTEPGO', 'member', '2018-08-23 13:03:24'),
-(29, 'megamembre', '$2y$10$yWwI2Jz9sAOCukKzVqGuRuxamKJl5i62pLoChOHIq6WrWWtJB0/fG', 'member', '2018-08-23 13:06:00'),
-(30, 'toto', '$2y$10$m6zdslYKnRMpi/qfcj2JsupjAbS6YsfX6GFYk4G7T/0xzK5qcGTqK', 'admin', '2018-08-23 14:48:37'),
-(31, 'membre', '$2y$10$RUORZdopt70P8dlJSaIYyOzomZBAgLMLK0qknl12kOlh1tGS49EU6', 'member', '2018-08-23 14:52:46');
+(62, 'yohann', '$2y$10$ohNKq9CHNcNwW124miG/Qe3R05RSWjMviuY3jHWLEWHdpXcSuzcs6', 'admin', '2018-08-27 23:18:19'),
+(63, 'yohann', '$2y$10$KZ4xFee76maurwlf2bh99.p.BdK9eNRCr.GKCFSWUkL/V0YqAWVuK', 'member', '2018-08-27 23:19:27');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
