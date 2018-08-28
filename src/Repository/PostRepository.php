@@ -42,16 +42,6 @@ class PostRepository extends DBFactory
         $req = $this->sql($sql,[$title, $subtitle, $author, $content]);
     }
 
-    /*public function addPost(post $post)
-    {
-        $req = $this->getDb()->prepare('INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (:title,:subtitle,:author,:content,NOW())');
-        $req->bindValue(':title', $post->getTitle());
-        $req->bindValue(':subtitle', $post->getSubtitle());
-        $req->bindValue(':author', $post->getAuthor());
-        $req->bindValue(':content', $post->getContent());
-        $req->execute();
-    }*/
-
     public function updatePost($id, $author, $title, $subtitle, $content)
     {
         $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id= ?';
