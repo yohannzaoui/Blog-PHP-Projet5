@@ -36,4 +36,9 @@ class Session
             throw new Exception("Attribut '$name' absent de la session");
         }
     }
+
+    public function flash($name, $value)
+    {
+        return $_SESSION[$name]=$value;
+    }
 }

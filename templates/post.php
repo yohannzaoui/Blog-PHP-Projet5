@@ -1,5 +1,11 @@
 <?php $this->title = "Mon Blog - " . $post->getTitle(); ?>
 
+<strong><h4 class="flash">
+<?php if (isset($_SESSION['flashComment'])) {
+    echo $_SESSION['flashComment'];
+    unset($_SESSION['flashComment']);
+} ?></h4></strong>
+
 <div class="container">
   <div class="alert alert-primary" role="alert">
     <div class="row">
@@ -28,13 +34,16 @@
   </div>
 </div>
 
-<?php if(!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) { ?>
+<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) {
+    ?>
 <p class="title_center">
     <a href="../index.php?route=connexionPage"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
-<?php } ?>
+<?php
+} ?>
 
-<?php if(isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member"){ ?>
+<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member") {
+        ?>
 
 <div class="container">
   <div class="row">
@@ -44,7 +53,9 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label for="pseudo">Auteur</label>
-            <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" value="<?php if(isset($_SESSION['pseudoUser'])){echo $_SESSION['pseudoUser'];} ?>" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
+            <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" value="<?php if (isset($_SESSION['pseudoUser'])) {
+            echo $_SESSION['pseudoUser'];
+        } ?>" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
             <p class="help-block text-danger"></p>
           </div>
         </div>
@@ -64,14 +75,15 @@
         </div>
       </form>
 
-<?php } ?>
+<?php
+    } ?>
 
 
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-10 mx-auto">
             <h2 class="title_center">Les commentaires</h2>
-            <?php foreach($comments as $comment) : ?>
+            <?php foreach ($comments as $comment) : ?>
             <p>
               <strong>
                 <?=$comment->getPseudo()  ?>

@@ -3,6 +3,7 @@
 <?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") { ?>
 
 <?php require_once 'adminNav.php'; ?>
+
 <div class="container">
     <h4 class="title_center">Modifier article</h4>
     <div class="row">

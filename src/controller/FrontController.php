@@ -53,6 +53,7 @@ class FrontController
             $content = $_POST['content'];
             $idPost = $_POST['idPost'];
             $this->commentRepository->addComment($idPost, $pseudo, $content);
+            $this->session->flash('flashComment', 'Votre commentaire à été envoyé. Il sera affiché après validation.');
             header('Location: ../index.php?route=post&id='.$idPost);
         }else {
             throw new Exception('Tous les champs doivent être remplis');
@@ -96,8 +97,8 @@ class FrontController
                 $pseudo = $_POST['pseudo'];
                 $pass = $_POST['pass'];
                 $user = $this->userRepository->userConnect($pseudo, $pass);
-                $_SESSION['roleUser'] = $user['role'];
-                $_SESSION['pseudoUser'] = $user['pseudo'];
+                $this->session->setSession('roleUser', $user['role']);
+                $this->session->setSession('pseudoUser', $user['pseudo']);
              } else {
                 throw new Exception('Tous les champs doivent être remplis');
              }

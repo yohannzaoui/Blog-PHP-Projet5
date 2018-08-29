@@ -1,8 +1,15 @@
 <?php $this->title = "Ajouter un article"; ?>
 
-<?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") { ?>
+<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") {
+    ?>
 
 <?php require_once 'adminNav.php'; ?>
+
+<strong><h4 class="flash">
+<?php if (isset($_SESSION['flashAddPost'])) {
+        echo $_SESSION['flashAddPost'];
+        unset($_SESSION['flashAddPost']);
+    } ?></h4></strong>
 
 <div class="container">
     <h4 class="title_center">Ajouter article</h4>
@@ -37,4 +44,5 @@
                 </div>
             </form>
 
-<?php } ?>
+<?php
+} ?>

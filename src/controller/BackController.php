@@ -50,7 +50,7 @@ class BackController
                 $subtitle = $_POST['subtitle'];
                 $content = $_POST['content'];
                 $this->postRepository->addPost($author, $title, $subtitle, $content);
-                header('Location: ../index.php?route=all');
+                $this->session->flash('flashAddPost', 'Article ajouté.');
             } else {
                 throw new Exception('Tous les champs doivent être remplis');
             }
@@ -202,8 +202,8 @@ class BackController
                  $pseudo = $_POST['pseudo'];
                  $pass = $_POST['pass'];
                  $user = $this->userRepository->adminConnexion($pseudo, $pass);
-                 $_SESSION['pseudoAdmin'] = $user['pseudo'];
-                 $_SESSION['roleAdmin'] = $user['role'];
+                 $this->session->setSession('roleAdmin', $user['role']);
+                 $this->session->setSession('pseudoAdmin', $user['pseudo']);
              } else {
                  throw new Exception('Tous les champs doivent être remplis');
              }
