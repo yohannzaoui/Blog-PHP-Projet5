@@ -15,8 +15,8 @@
             </h2>
             <h3 class="post-subtitle">
               <?= $post->getSubtitle() ?>
-            </h3>
-          </a>
+            </h3></a>
+
           <p class="post-meta">
             <?php echo "Ecrit par " . $post->getAuthor() ?>
             <?php echo "le " . $post->getCreation_date() ?>

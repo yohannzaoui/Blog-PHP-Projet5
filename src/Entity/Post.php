@@ -17,7 +17,7 @@ class Post
     if(!empty($data)){
       $this->hydrate($data);
     }
-    
+
   }
 
   public function hydrate(array $data)
@@ -30,7 +30,6 @@ class Post
       }
     }
   }*/
-
 
   public function setId($id)
   {

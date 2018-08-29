@@ -13,7 +13,7 @@ abstract class Configuration
 
     public static function get($name, $defaultValue = null)
     {
-        $params = self::getparams();
+        $params = self::getParams();
         if (isset($params[$name])) {
             $value = $params[$name];
         }
@@ -24,7 +24,7 @@ abstract class Configuration
     }
 
 
-    private static function getparams()
+    private static function getParams()
     {
         if (self::$params == null) {
             $filePath = "../config/dev.ini";

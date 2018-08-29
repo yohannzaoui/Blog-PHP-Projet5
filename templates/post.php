@@ -11,12 +11,12 @@
     <div class="row">
       <div class="col-lg-12 col-md-10 mx-auto">
         <div class="post-preview">
-            <h2 class="post-title">
+            <a><h2 class="post-title">
                 <?= $post->getTitle() ?>
             </h2>
-            <h3 class="post-subtitle">
+            <h4 class="post-subtitle">
               <?= $post->getSubtitle() ?>
-            </h3>
+          </h4></a>
           <p>
             <?= $post->getContent() ?>
           </p>
@@ -40,10 +40,11 @@
     <a href="../index.php?route=connexionPage"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
 <?php
-} ?>
+}
+?>
 
 <?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member") {
-        ?>
+?>
 
 <div class="container">
   <div class="row">
