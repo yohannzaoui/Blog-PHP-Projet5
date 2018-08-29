@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Exception;
+
 class Post
 {
   private $id;

@@ -1,5 +1,11 @@
 <?php $this->title = "Administration"; ?>
 
+<strong><h4 class="flash">
+<?php if (isset($_SESSION['flash'])) {
+    echo $_SESSION['flash'];
+    unset($_SESSION['flash']);
+} ?></h4></strong>
+
 <div class="title_center">
   <h4>Connexion Administration</h4>
 </div>

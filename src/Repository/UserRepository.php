@@ -68,10 +68,11 @@ class UserRepository extends DBFactory
             $user = $req->fetch();
             if(password_verify($pass, $user['pass'])) {
                 header('Location: ../index.php?route=savePost');
+                return $user;
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
             }
-        } return $user;
+        }
     }
 
     public function userConnect($pseudo, $pass)
@@ -83,10 +84,11 @@ class UserRepository extends DBFactory
             $user = $req->fetch();
             if(password_verify($pass, $user['pass'])) {
                 header('Location: ../index.php?route=all');
+                return $user;
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
-        } return $user;
+        }
     }
 
     public function countAdmins()

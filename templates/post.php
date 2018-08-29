@@ -1,9 +1,9 @@
 <?php $this->title = "Mon Blog - " . $post->getTitle(); ?>
 
 <strong><h4 class="flash">
-<?php if (isset($_SESSION['flashComment'])) {
-    echo $_SESSION['flashComment'];
-    unset($_SESSION['flashComment']);
+<?php if (isset($_SESSION['flash'])) {
+    echo $_SESSION['flash'];
+    unset($_SESSION['flash']);
 } ?></h4></strong>
 
 <div class="container">
@@ -34,8 +34,7 @@
   </div>
 </div>
 
-<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) {
-    ?>
+<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) { ?>
 <p class="title_center">
     <a href="../index.php?route=connexionPage"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
@@ -76,8 +75,7 @@
         </div>
       </form>
 
-<?php
-    } ?>
+<?php } ?>
 
 
       <div class="container">
@@ -87,12 +85,12 @@
             <?php foreach ($comments as $comment) : ?>
             <p>
               <strong>
-                <?=$comment->getPseudo()  ?>
+                <?=$comment->getPseudo()?>
               </strong> le
-              <?= $comment->getCreation_date()  ?>
+              <?= $comment->getCreation_date()?>
             </p>
             <p>
-              <?=$comment->getContent()  ?>
+              <?=$comment->getContent()?>
             </p>
             <hr>
             <?php endforeach; ?>

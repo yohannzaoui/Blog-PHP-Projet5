@@ -22,6 +22,11 @@ class Session
         $_SESSION[$name] = $value;
     }
 
+    public function setFlash($message)
+    {
+        $this->setSession('flash', $message);
+    }
+
     public function existeSession($name)
     {
         return (isset($_SESSION[$name]) && $_SESSION[$name] != "");
@@ -35,10 +40,5 @@ class Session
         else {
             throw new Exception("Attribut '$name' absent de la session");
         }
-    }
-
-    public function flash($name, $value)
-    {
-        return $_SESSION[$name]=$value;
     }
 }

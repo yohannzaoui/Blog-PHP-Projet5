@@ -43,17 +43,17 @@ class FrontController
     {
         $post = $this->postRepository->getPost($idPost);
         $comments = $this->commentRepository->getCommentsFromPost($idPost);
-        $this->view->render('post', ['post'=>$post, 'comments'=>$comments]);
+        $this->view->render('post', ['post'=> $post, 'comments'=>$comments]);
     }
 
     public function saveComment()
      {
         if(isset($_POST['submit']) && $_POST['submit'] === 'send' && !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['idPost'])) {
-            $pseudo = $_POST['pseudo'];
-            $content = $_POST['content'];
-            $idPost = $_POST['idPost'];
+            $pseudo = $this->view->check($_POST['pseudo']);
+            $content = $this->view->check($_POST['content']);
+            $idPost = $this->view->check($_POST['idPost']);
             $this->commentRepository->addComment($idPost, $pseudo, $content);
-            $this->session->flash('flashComment', 'Votre commentaire à été envoyé. Il sera affiché après validation.');
+            $this->session->setFlash('Votre commentaire à été envoyé. Il sera affiché après validation.');
             header('Location: ../index.php?route=post&id='.$idPost);
         }else {
             throw new Exception('Tous les champs doivent être remplis');
@@ -75,8 +75,9 @@ class FrontController
         if(isset($_POST['submit']) && $_POST['submit'] === 'send'){
             if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
                 if($_POST['pass'] === $_POST['pass1']){
-                    $pseudo = $_POST['pseudo'];
-                    $passhash = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+                    $pseudo = $this->view->check($_POST['pseudo']);
+                    $hash = $this->view->check($_POST['pass']);
+                    $passhash = password_hash($hash, PASSWORD_BCRYPT);
                     $this->userRepository->addUser($pseudo,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 } else {
@@ -94,8 +95,8 @@ class FrontController
      {
          if(isset($_POST['submit']) && $_POST['submit'] === 'send') {
              if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
-                $pseudo = $_POST['pseudo'];
-                $pass = $_POST['pass'];
+                $pseudo = $this->view->check($_POST['pseudo']);
+                $pass = $this->view->check($_POST['pass']);
                 $user = $this->userRepository->userConnect($pseudo, $pass);
                 $this->session->setSession('roleUser', $user['role']);
                 $this->session->setSession('pseudoUser', $user['pseudo']);
