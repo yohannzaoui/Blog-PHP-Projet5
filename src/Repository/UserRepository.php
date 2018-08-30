@@ -13,8 +13,8 @@ class UserRepository extends DBFactory
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
-        $count = $req->rowCount();
-        if($count > 0) {
+        $user = $req->rowCount();
+        if($user > 0) {
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
@@ -26,8 +26,8 @@ class UserRepository extends DBFactory
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
-        $count = $req->rowCount();
-        if($count > 0) {
+        $user = $req->rowCount();
+        if($user > 0) {
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';

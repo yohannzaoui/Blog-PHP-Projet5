@@ -1,11 +1,10 @@
 <?php $this->title = "Ajouter un article"; ?>
 
-<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") {
-    ?>
+<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") : ?>
 
 <?php require_once 'adminNav.php'; ?>
 
-<?php if (isset($_SESSION['flash'])) { ?>
+<?php if (isset($_SESSION['flash'])) : ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
@@ -18,7 +17,7 @@
         </div>
     </div>
 </div>
-<?php unset($_SESSION['flash']); } ?>
+<?php endif; unset($_SESSION['flash']); ?>
 
 <div class="container">
     <h4 class="title_center">Ajouter article</h4>
@@ -53,5 +52,4 @@
                 </div>
             </form>
 
-<?php
-} ?>
+<?php endif; ?>

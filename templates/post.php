@@ -2,7 +2,7 @@
 
 
 
-<?php if (isset($_SESSION['flash'])) { ?>
+<?php if (isset($_SESSION['flash'])) : ?>
 <div class="container">
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <?=  $_SESSION['flash'] ?>
@@ -11,7 +11,7 @@
         </button>
     </div>
 </div>
-<?php unset($_SESSION['flash']); } ?>
+<?php endif; unset($_SESSION['flash']); ?>
 
 <div class="container">
   <div class="alert alert-primary" role="alert">
@@ -41,16 +41,13 @@
   </div>
 </div>
 
-<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) { ?>
+<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) : ?>
 <p class="title_center">
     <a href="../index.php?route=connexionPage"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
-<?php
-}
-?>
+<?php endif; ?>
 
-<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member") {
-?>
+<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member") : ?>
 
 <div class="container">
   <div class="row">
@@ -82,7 +79,7 @@
         </div>
       </form>
 
-<?php } ?>
+<?php endif; ?>
 
 
       <div class="container">
