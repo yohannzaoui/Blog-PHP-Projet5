@@ -53,8 +53,6 @@ class BackController
             } else {
                 throw new Exception('Tous les champs doivent être remplis');
             }
-        } else {
-            throw new Exception('Le paramètre envoyé est incorrect');
         }
         $this->view->render('addPost');
     }
