@@ -11,8 +11,7 @@
       <form action="index.php?route=addAdmin" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
-          <input type="text" name="pseudo" class="form-control" value="<?php if (isset($pseudo)) {
-                  echo $pseudo; } ?>" id="pseudo" <p class="help-block text-danger">
+          <input type="text" name="pseudo" class="form-control" value="" id="pseudo" <p class="help-block text-danger">
           </p>
         </div>
         <div class="control-group">
@@ -23,6 +22,11 @@
         <div class="control-group">
           <label for="pass1">Confirmez votre mot de passe</label>
           <input type="password" name="pass1" class="form-control" id="pass1" <p class="help-block text-danger">
+          </p>
+        </div>
+        <div class="control-group">
+          <label for="email">Votre adresse Email</label>
+          <input type="email" name="email" class="form-control" id="email" <p class="help-block text-danger">
           </p>
         </div>
         <br>

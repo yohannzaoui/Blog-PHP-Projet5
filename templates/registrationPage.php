@@ -32,6 +32,11 @@
           <input type="password" name="pass1" class="form-control" id="pass1" <p class="help-block text-danger">
           </p>
         </div>
+        <div class="control-group">
+          <label for="email">Votre adresse Email</label>
+          <input type="email" name="email" class="form-control" id="" <p emailclass="help-block text-danger">
+          </p>
+        </div>
         <br>
         <div id="success"></div>
         <div class="form-group">

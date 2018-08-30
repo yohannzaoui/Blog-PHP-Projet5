@@ -7,7 +7,9 @@ class User
     private $id;
     private $pseudo;
     private $pass;
+    private $email;
     private $role;
+    private $confirmation_token;
     private $creation_date_fr;
 
 
@@ -28,7 +30,14 @@ class User
 
     public function setPass($pass)
     {
-        $this->pass = $pass;
+        if (is_string($pass) && strlen($pass)<=255) {
+            $this->pass = $pass;
+        }
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     public function setRole($role)
@@ -53,6 +62,11 @@ class User
         return $this->pass;
     }
 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -67,4 +81,15 @@ class User
     {
         return $this->creation_date_fr;
     }
+
+    public function getConfirmationToken()
+    {
+        return $this->confirmation_token;
+    }
+
+    public function setConfirmationToken($confirmation_token)
+    {
+        $this->confirmation_token = $confirmation_token;
+    }
+
 }

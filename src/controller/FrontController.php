@@ -73,12 +73,14 @@ class FrontController
      public function addUser()
      {
         if(isset($_POST['submit']) && $_POST['submit'] === 'send'){
-            if(!empty($_POST['pseudo']) && preg_match('/^[a-zA-Z09_]+$/', $_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
+            if(!empty($_POST['pseudo']) && preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1']) && !empty($_POST['email'])){
                 if($_POST['pass'] === $_POST['pass1']){
                     $pseudo = $this->view->check($_POST['pseudo']);
+                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                    //$token = str_random(60);
                     $hash = $this->view->check($_POST['pass']);
                     $passhash = password_hash($hash, PASSWORD_BCRYPT);
-                    $this->userRepository->addUser($pseudo,$passhash);
+                    $this->userRepository->addUser($pseudo,$email,$passhash);
                     header('Location: ../index.php?route=connexionPage');
                 } else {
                     throw new Exception('Les mots de passes ne sont pas identique');
@@ -113,4 +115,13 @@ class FrontController
          $this->session->sessionDestroy();
          header('Location: ../index.php?route=connexionPage');
      }
+
+     private function str_random($length)
+    {
+        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+
+
+    //mail($email,"Bonjour, pour valider votre compte merci de cliquer sur ce lien\n\n http://blog/index.php?route=connexionPage");
 }

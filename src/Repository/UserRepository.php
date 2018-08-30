@@ -9,7 +9,7 @@ use Exception;
 
 class UserRepository extends DBFactory
 {
-    public function addAdmin($pseudo,$passhash)
+    public function addAdmin($pseudo,$passhash,$email)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
@@ -17,12 +17,12 @@ class UserRepository extends DBFactory
         if($user > 0) {
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
-            $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"admin",NOW())';
-            $req = $this->sql($sql, [$pseudo, $passhash]);
+            $sql = 'INSERT INTO users (pseudo, pass, email, role, creation_date) VALUES (?,?,?,"admin",NOW())';
+            $req = $this->sql($sql, [$pseudo, $passhash, $email]);
         }
     }
 
-    public function addUser($pseudo,$passhash)
+    public function addUser($pseudo,$email,$passhash)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
@@ -30,8 +30,8 @@ class UserRepository extends DBFactory
         if($user > 0) {
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
-            $sql = 'INSERT INTO users (pseudo, pass, role, creation_date) VALUES (?,?,"member",NOW())';
-            $req = $this->sql($sql, [$pseudo, $passhash]);
+            $sql = 'INSERT INTO users (pseudo, pass, email, role, creation_date) VALUES (?,?,?,"member",NOW())';
+            $req = $this->sql($sql, [$pseudo, $passhash, $email]);
         }
     }
 
@@ -103,16 +103,5 @@ class UserRepository extends DBFactory
         $sql = 'SELECT COUNT(*) as nb FROM users WHERE role = "member"';
         $line = $this->sql($sql)->fetch();
         return $line['nb'];
-    }
-
-    private function buildObject($row)
-    {
-        $comment = new User;
-        $comment->setId($row['id']);
-        $comment->setPseudo($row['pseudo']);
-        $comment->setPass($row['pass']);
-        $comment->setRole($row['role']);
-        $comment->setCreation_date($row['creation_date_fr']);
-        return $user;
     }
 }

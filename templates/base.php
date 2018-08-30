@@ -50,10 +50,10 @@
 
     <!-- Contact Form JavaScript -->
     <script src="../js/jqBootstrapValidation.js"></script>
-    <script src="../js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
+    <script src="../js/mail.js"></script>
+    
     <script src="../js/clean-blog.min.js"></script>
+
 
 </body>
 
