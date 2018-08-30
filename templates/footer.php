@@ -7,32 +7,28 @@
           <li class="list-inline-item">
             <a href="https://twitter.com/yohannzaoui" target="_blank">
                 <span class="fa-stack">
-                    <i class="fas fa-square fa-stack-2x"></i>
-                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                    <i class="fab fa-twitter-square fa-2x"></i>
                 </span>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="https://plus.google.com/+YohannZaoui" target="_blank">
                 <span class="fa-stack">
-                    <i class="fas fa-square fa-stack-2x"></i>
-                    <i class="fab fa-google-plus fa-stack-1x fa-inverse"></i>
+                    <i class="fab fa-google-plus-square fa-2x"></i>
                 </span>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="https://www.linkedin.com/in/yohannzaoui/" target="_blank">
                 <span class="fa-stack">
-                    <i class="fas fa-square fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fab fa-linkedin fa-2x"></i>
                 </span>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="https://github.com/yohannzaoui" target="_blank">
                 <span class="fa-stack">
-                    <i class="fas fa-square fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    <i class="fab fa-github-square fa-2x"></i>
                 </span>
             </a>
           </li>
