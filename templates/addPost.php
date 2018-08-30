@@ -5,11 +5,20 @@
 
 <?php require_once 'adminNav.php'; ?>
 
-<strong><h4 class="flash">
-<?php if (isset($_SESSION['flashAddPost'])) {
-        echo $_SESSION['flashAddPost'];
-        unset($_SESSION['flashAddPost']);
-    } ?></h4></strong>
+<?php if (isset($_SESSION['flash'])) { ?>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-10 mx-auto">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?=  $_SESSION['flash'] ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php unset($_SESSION['flash']); } ?>
 
 <div class="container">
     <h4 class="title_center">Ajouter article</h4>

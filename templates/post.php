@@ -1,10 +1,17 @@
 <?php $this->title = "Mon Blog - " . $post->getTitle(); ?>
 
-<strong><h4 class="flash">
-<?php if (isset($_SESSION['flash'])) {
-    echo $_SESSION['flash'];
-    unset($_SESSION['flash']);
-} ?></h4></strong>
+
+
+<?php if (isset($_SESSION['flash'])) { ?>
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?=  $_SESSION['flash'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<?php unset($_SESSION['flash']); } ?>
 
 <div class="container">
   <div class="alert alert-primary" role="alert">
