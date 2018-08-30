@@ -73,7 +73,7 @@ class FrontController
      public function addUser()
      {
         if(isset($_POST['submit']) && $_POST['submit'] === 'send'){
-            if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
+            if(!empty($_POST['pseudo']) && preg_match('/^[a-zA-Z09_]+$/', $_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass1'])){
                 if($_POST['pass'] === $_POST['pass1']){
                     $pseudo = $this->view->check($_POST['pseudo']);
                     $hash = $this->view->check($_POST['pass']);
@@ -84,7 +84,7 @@ class FrontController
                     throw new Exception('Les mots de passes ne sont pas identique');
                 }
             } else {
-                throw new Exception('Tous les champs doivent être remplis');
+                throw new Exception('Tous les champs doivent être remplis / Votre pseudo doit contenir seulement des lettres (miniscules et/ou majuscules), des chiffres et le signe _ "underscore".');
             }
         } else {
             throw new Exception('Le paramètre envoyé est incorrect');
