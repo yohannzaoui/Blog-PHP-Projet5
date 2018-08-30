@@ -72,6 +72,8 @@ class UserRepository extends DBFactory
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
             }
+        } else {
+            throw new Exception("Ce compte n'éxiste pas");
         }
     }
 
@@ -88,6 +90,8 @@ class UserRepository extends DBFactory
             } else {
             throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
+        } else {
+            throw new Exception("Ce compte n'éxiste pas");
         }
     }
 

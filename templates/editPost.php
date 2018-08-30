@@ -4,6 +4,17 @@
 
 <?php require_once 'adminNav.php'; ?>
 
+<?php if (isset($_SESSION['flash'])) : ?>
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?=  $_SESSION['flash'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<?php endif; unset($_SESSION['flash']); ?>
+
 <div class="container">
     <h4 class="title_center">Modifier article</h4>
     <div class="row">

@@ -40,7 +40,7 @@
   <div class="title_center">
     <p>
       <small>
-        <a href="index.php?route=admin">Administration</a>
+        <a href="index.php?route=loginAdmin">Administration</a>
       </small>
     </p>
   </div>

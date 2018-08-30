@@ -2,21 +2,51 @@
 
 namespace Core;
 
-use App\controller\FrontController;
-use App\controller\BackController;
+use App\controller\frontend\HomeController;
+use App\controller\frontend\AllPostsController;
+use App\controller\frontend\PostController;
+use App\controller\frontend\LoginController;
+use App\controller\frontend\RegisterController;
+use App\controller\frontend\LogoutController;
+use App\controller\backend\LoginController as LoginAdmin;
+use App\controller\backend\LogoutController as LogoutAdmin;
+use App\controller\backend\RegisterController as RegisterAdmin;
+use App\controller\backend\PostController as PostBackend;
+use App\controller\backend\CommentController;
+use App\controller\backend\UserController;
 use Core\View;
 use Exception;
 
 class Router
 {
-    private $frontController;
-    private $backController;
+    private $homeController;
+    private $allPostsController;
+    private $postFrontend;
+    private $loginUser;
+    private $registerUser;
+    private $logoutUser;
+    private $loginAdmin;
+    private $logoutAdmin;
+    private $registerAdmin;
+    private $postBackend;
+    private $commentBackend;
+    private $userController;
     private $view;
 
     public function __construct()
     {
-        $this->frontController = new FrontController;
-        $this->backController = new BackController;
+        $this->homeController = new HomeController;
+        $this->allPostsController = new AllPostsController;
+        $this->postFrontend = new PostController;
+        $this->loginUser = new LoginController;
+        $this->registerUser = new RegisterController;
+        $this->logoutUser = new LogoutController;
+        $this->loginAdmin = new LoginAdmin;
+        $this->logoutAdmin = new LogoutAdmin;
+        $this->registerAdmin = new RegisterAdmin;
+        $this->commentBackend = new CommentController;
+        $this->postBackend = new PostBackend;
+        $this->userController = new UserController;
         $this->view = new View;
     }
 
@@ -26,89 +56,89 @@ class Router
             if(isset($_GET['route']))
             {
                 if($_GET['route'] === 'post'){
-                    $this->frontController->post($_GET['id']);
+                    $this->postFrontend->post($_GET['id']);
                 }
                 elseif($_GET['route'] === 'all'){
-                    $this->frontController->all();
+                    $this->allPostsController->all();
                 }
                 elseif($_GET['route'] === 'saveComment'){
-                    $this->frontController->saveComment();
+                    $this->postFrontend->saveComment();
                 }
-                elseif($_GET['route'] === 'connexionPage'){
-                    $this->frontController->connexionPage();
+                elseif($_GET['route'] === 'loginUser'){
+                    $this->loginUser->loginPage();
                 }
-                elseif($_GET['route'] === 'registrationPage'){
-                    $this->frontController->registrationPage();
+                elseif($_GET['route'] === 'registerUser'){
+                    $this->registerUser->registrationPage();
                 }
                 elseif($_GET['route'] === 'addUser'){
-                    $this->frontController->addUser();
+                    $this->registerUser->addUser();
                 }
                 elseif($_GET['route'] === 'userConnexion'){
-                    $this->frontController->userConnexion();
+                    $this->loginUser->userConnexion();
                 }
-                elseif($_GET['route'] === 'admin'){
-                    $this->backController->admin();
+                elseif($_GET['route'] === 'loginAdmin'){
+                    $this->loginAdmin->admin();
                 }
-                elseif($_GET['route'] === 'registration'){
-                    $this->backController->registration();
+                elseif($_GET['route'] === 'registerAdmin'){
+                    $this->registerAdmin->registration();
                 }
                 elseif($_GET['route'] === 'savePost'){
-                    $this->backController->savePost();
+                    $this->postBackend->savePost();
                 }
                 elseif($_GET['route'] === 'listComments'){
-                    $this->backController->listComments();
+                    $this->commentBackend->listComments();
                 }
                 elseif($_GET['route'] === 'validateComment'){
-                    $this->backController->validateComment($_GET['id']);
+                    $this->commentBackend->validateComment($_GET['id']);
                 }
                 elseif($_GET['route'] === 'deleteComment'){
-                    $this->backController->deleteComment($_GET['id']);
+                    $this->commentBackend->deleteComment($_GET['id']);
                 }
                 elseif($_GET['route'] === 'listPosts'){
-                    $this->backController->listPosts();
+                    $this->postBackend->listPosts();
                 }
                 elseif($_GET['route'] === 'editPost'){
-                    $this->backController->editPost($_GET['id']);
+                    $this->postBackend->editPost($_GET['id']);
                 }
                 elseif($_GET['route'] === 'updatePost'){
-                    $this->backController->updatePost();
+                    $this->postBackend->updatePost();
                 }
                 elseif($_GET['route'] === 'deleteAll'){
-                    $this->backController->deleteAll($_GET['id']);
+                    $this->postBackend->deleteAll($_GET['id']);
                 }
                 elseif($_GET['route'] === 'deletePost'){
-                    $this->backController->deletePost($_GET['id']);
+                    $this->postBackend->deletePost($_GET['id']);
                 }
                 elseif($_GET['route'] === 'addAdmin'){
-                    $this->backController->addAdmin();
+                    $this->registerAdmin->addAdmin();
                 }
                 elseif($_GET['route'] === 'listAdmins'){
-                    $this->backController->listAdmins();
+                    $this->userController->listAdmins();
                 }
                 elseif($_GET['route'] === 'listUsers'){
-                    $this->backController->listUsers();
+                    $this->userController->listUsers();
                 }
                 elseif($_GET['route'] === 'deleteAdmin'){
-                    $this->backController->deleteAdmin($_GET['id']);
+                    $this->userController->deleteAdmin($_GET['id']);
                 }
                 elseif($_GET['route'] === 'deleteUser'){
-                    $this->backController->deleteUser($_GET['id']);
+                    $this->userController->deleteUser($_GET['id']);
                 }
                 elseif($_GET['route'] === 'adminConnexion'){
-                    $this->backController->adminConnect();
+                    $this->loginAdmin->adminConnect();
                 }
-                elseif($_GET['route'] === 'deconnexionAdmin'){
-                    $this->backController->deconnexionAdmin();
+                elseif($_GET['route'] === 'logoutAdmin'){
+                    $this->logoutAdmin->logoutAdmin();
                 }
-                elseif($_GET['route'] === 'deconnexionUser'){
-                    $this->frontController->deconnexionUser();
+                elseif($_GET['route'] === 'logoutUser'){
+                    $this->logoutUser->logoutUser();
                 }
                 else{
                     $this->view->render('error',['error'=>'Page introuvable']);
                 }
             }
             else{
-                $this->frontController->home();
+                $this->homeController->home();
             }
         }
         catch (Exception $e)

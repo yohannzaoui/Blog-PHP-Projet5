@@ -19,7 +19,6 @@ class CommentRepository extends DBFactory
 
     public function addComment($idPost, $pseudo, $content)
     {
-        extract($comment);
         $sql = 'INSERT INTO comments (id_post, pseudo, content, publication, creation_date) VALUES (?,?,?,0,NOW())';
         $req = $this->sql($sql, [$idPost,$pseudo, $content]);
     }
@@ -50,17 +49,5 @@ class CommentRepository extends DBFactory
         $sql = 'SELECT COUNT(*) as nb FROM comments WHERE publication = 0';
         $line = $this->sql($sql)->fetch();
         return $line['nb'];
-    }
-
-    private function buildObject($row)
-    {
-        $comment = new Comment;
-        $comment->setId($row['id']);
-        $comment->setPostId($row['id_post']);
-        $comment->setPseudo($row['pseudo']);
-        $comment->setContent($row['content']);
-        $comment->setCreation_date($row['creation_date_fr']);
-        $comment->setPublication($row['publication']);
-        return $comment;
     }
 }

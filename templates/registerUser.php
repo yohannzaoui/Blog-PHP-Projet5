@@ -46,5 +46,5 @@
       </form>
 
       <p>Vous avez un compte ?
-        <a href="index.php?route=connexionPage">Connectez vous !</a>
+        <a href="index.php?route=loginUser">Connectez vous !</a>
       </p>

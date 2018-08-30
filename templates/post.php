@@ -43,7 +43,7 @@
 
 <?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])) : ?>
 <p class="title_center">
-    <a href="../index.php?route=connexionPage"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
+    <a href="../index.php?route=loginUser"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
 <?php endif; ?>
 
@@ -75,7 +75,7 @@
           <input type="hidden" name="idPost" value="<?= htmlspecialchars($post->getId()) ?>" />
           <button type="submit" name="submit" value="send" class="btn btn-primary" id="submit">Envoyer</button>
           <button type="reset" class="btn btn-danger" id="reset">Effacer</button>
-          <a href="../index.php?route=deconnexionUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
+          <a href="../index.php?route=logoutUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
         </div>
       </form>
 
