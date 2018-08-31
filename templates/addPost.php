@@ -22,7 +22,7 @@
 <div class="container">
     <h4 class="title_center">Ajouter article</h4>
     <div class="row">
-        <div class="col-lg-6 col-md-10 mx-auto">
+        <h4 class="title_center">Ajouter article</h4>
             <form method="post" action="index.php?route=savePost">
                 <div class="control-group">
                     <label for="author">Auteur</label>

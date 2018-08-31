@@ -32,14 +32,14 @@ class LoginController
     public function adminConnect()
     {
         if (isset($_POST['submit']) && $_POST['submit'] === "send"){
-            if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
+            if(empty($_POST['pseudo']) && empty($_POST['pass'])){
+                throw new Exception('Tous les champs doivent être remplis');
+            } else {
                 $pseudo = $this->view->check($_POST['pseudo']);
                 $pass = $this->view->check($_POST['pass']);
                 $user = $this->userRepository->adminConnect($pseudo, $pass);
                 $this->session->add('roleAdmin', $user['role']);
                 $this->session->add('pseudoAdmin', $user['pseudo']);
-            } else {
-                throw new Exception('Tous les champs doivent être remplis');
             }
         } else {
             throw new Exception('Le paramètre envoyé est incorrect');
