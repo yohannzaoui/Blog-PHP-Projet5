@@ -46,10 +46,10 @@ class registerController
                 throw new Exception('Veuillez entrer votre adresse email');
             } else {
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-                $token = md5($email);
+                $token = $this->mailer->token($email);
                 $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien http://blog/index.php?token=$token");
                 $this->userRepository->addUser($pseudo,$email,$passhash,$token);
-                header('Location: ../index.php?route=loginUser');
+                $this->view->render('validation');
             }
         } else {
             throw new Exception("Le paramétre d'envoi est absent");

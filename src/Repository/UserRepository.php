@@ -9,7 +9,7 @@ use Exception;
 
 class UserRepository extends DBFactory
 {
-    public function addAdmin($pseudo,$passhash,$email)
+    public function addAdmin($pseudo,$passhash,$email,$token)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
@@ -17,8 +17,8 @@ class UserRepository extends DBFactory
         if($user > 0) {
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
-            $sql = 'INSERT INTO users (pseudo, pass, email, role, creation_date) VALUES (?,?,?,"admin",NOW())';
-            $req = $this->sql($sql, [$pseudo, $passhash, $email]);
+            $sql = 'INSERT INTO users (pseudo, pass, email,token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
+            $req = $this->sql($sql, [$pseudo, $passhash, $email, $token]);
         }
     }
 

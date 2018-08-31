@@ -29,4 +29,9 @@ class Mailer
         // Send the message
         $result = $mailer->send($message);
     }
+
+    public function token($data)
+    {
+        return md5($data);
+    }
 }
