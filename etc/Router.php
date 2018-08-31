@@ -61,6 +61,9 @@ class Router
                 elseif($_GET['route'] === 'all'){
                     $this->allPostsController->all();
                 }
+                elseif ($_GET['route'] === 'sendMail') {
+                    $this->homeController->contact();
+                }
                 elseif($_GET['route'] === 'saveComment'){
                     $this->postFrontend->saveComment();
                 }

@@ -1,5 +1,6 @@
 <?php
 
+//Mailer configuration
 //rename this file in mail.php
 
 return [

@@ -8,7 +8,7 @@ use Swift_Mailer;
 
 class Mailer
 {
-    public function send($pseudo,$email)
+    public function send($pseudo,$email,$body)
     {
         $data = require __DIR__ . '/../config/mail.php';
         $transport = (new Swift_SmtpTransport($data['smtp'], $data['port'], $data['encryption']))
@@ -20,10 +20,10 @@ class Mailer
         $mailer = new Swift_Mailer($transport);
 
         // Create a message
-        $message = (new Swift_Message('Confirmation de compte'))
+        $message = (new Swift_Message('Message du Blog Yohann Zaoui'))
           ->setFrom(['contact@yohannzaoui.com' => 'Blog Yohann Zaoui'])
           ->setTo([$email => $pseudo])
-          ->setBody('Cliquez ici pour confirmer votre création de compte')
+          ->setBody($body)
           ;
 
         // Send the message
