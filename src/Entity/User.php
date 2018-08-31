@@ -9,7 +9,8 @@ class User
     private $pass;
     private $email;
     private $role;
-    private $confirmation_token;
+    private $token;
+    private $ctoken;
     private $creation_date_fr;
 
 
@@ -82,14 +83,24 @@ class User
         return $this->creation_date_fr;
     }
 
-    public function getConfirmationToken()
+    public function getToken()
     {
         return $this->confirmation_token;
     }
 
-    public function setConfirmationToken($confirmation_token)
+    public function setToken($token)
     {
-        $this->confirmation_token = $confirmation_token;
+        $this->token = $token;
+    }
+    
+    public function getCtoken()
+    {
+        return $this->ctoken;
+    }
+
+    public function setCtoken($ctoken)
+    {
+        $this->ctoken = $ctoken;
     }
 
 }

@@ -46,8 +46,9 @@ class registerController
                 throw new Exception('Veuillez entrer votre adresse email');
             } else {
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-                $this->mailer->send($pseudo, $email);
-                $this->userRepository->addUser($pseudo,$email,$passhash);
+                $token = md5($email);
+                $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien http://blog/index.php?token=$token");
+                $this->userRepository->addUser($pseudo,$email,$passhash,$token);
                 header('Location: ../index.php?route=loginUser');
             }
         } else {
