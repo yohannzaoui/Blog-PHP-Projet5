@@ -32,8 +32,8 @@ class LoginController
                $pseudo = $this->view->check($_POST['pseudo']);
                $pass = $this->view->check($_POST['pass']);
                $user = $this->userRepository->userConnect($pseudo, $pass);
-               $this->session->setSession('roleUser', $user['role']);
-               $this->session->setSession('pseudoUser', $user['pseudo']);
+               $this->session->add('roleUser', $user['role']);
+               $this->session->add('pseudoUser', $user['pseudo']);
             } else {
                throw new Exception('Tous les champs doivent être remplis');
             }

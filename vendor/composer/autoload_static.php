@@ -6,7 +6,15 @@ namespace Composer\Autoload;
 
 class ComposerStaticInite7cc6bbb35a5b0634b39b5967830e9d3
 {
+    public static $files = array (
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'E' => 
+        array (
+            'Egulias\\EmailValidator\\' => 23,
+        ),
         'C' => 
         array (
             'Core\\' => 5,
@@ -18,6 +26,10 @@ class ComposerStaticInite7cc6bbb35a5b0634b39b5967830e9d3
     );
 
     public static $prefixDirsPsr4 = array (
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
+        ),
         'Core\\' => 
         array (
             0 => __DIR__ . '/../..' . '/etc',
@@ -28,11 +40,22 @@ class ComposerStaticInite7cc6bbb35a5b0634b39b5967830e9d3
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'D' => 
+        array (
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite7cc6bbb35a5b0634b39b5967830e9d3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite7cc6bbb35a5b0634b39b5967830e9d3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite7cc6bbb35a5b0634b39b5967830e9d3::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

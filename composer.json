@@ -4,5 +4,8 @@
         "App\\": "src/",
         "Core\\":"etc/"
       }
+    },
+    "require": {
+        "swiftmailer/swiftmailer": "6.0"
     }
 }

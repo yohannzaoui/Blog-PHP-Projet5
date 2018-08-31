@@ -17,14 +17,14 @@ class Session
         session_destroy();
     }
 
-    public function setSession($name, $value)
+    public function add($name, $value)
     {
         $_SESSION[$name] = $value;
     }
 
-    public function setFlash($message)
+    public function flash($message)
     {
-        $this->setSession('flash', $message);
+        $this->add('flash', $message);
     }
 
     public function existeSession($name)

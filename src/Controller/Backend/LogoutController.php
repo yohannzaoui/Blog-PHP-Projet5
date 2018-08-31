@@ -16,6 +16,6 @@ class LogoutController
     public function logoutAdmin()
     {
         $this->session->sessionDestroy();
-        header('Location: ../index.php?route=admin');
+        header('Location: ../index.php?route=loginAdmin');
     }
 }

@@ -29,9 +29,9 @@ class PostController
                 $subtitle = $this->view->check($_POST['subtitle']);
                 $content = $this->view->check($_POST['content']);
                 $this->postRepository->addPost($author, $title, $subtitle, $content);
-                $this->session->setFlash('Article ajouté.');
+                $this->session->flash('Article ajouté.');
             } else {
-                $this->session->setFlash('Tous les champs doivent être remplis');
+                $this->session->flash('Tous les champs doivent être remplis');
             }
         }
         $this->view->render('addPost');

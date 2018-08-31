@@ -37,7 +37,7 @@ class PostController
             $content = $this->view->check($_POST['content']);
             $idPost = $this->view->check($_POST['idPost']);
             $this->commentRepository->addComment($idPost, $pseudo, $content);
-            $this->session->setFlash('Votre commentaire à été envoyé. Il sera affiché après validation.');
+            $this->session->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
             header('Location: ../index.php?route=post&id='.$idPost);
         }else {
             throw new Exception('Tous les champs doivent être remplis');

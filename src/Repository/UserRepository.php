@@ -59,7 +59,7 @@ class UserRepository extends DBFactory
         $req=$this->sql($sql, [$id]);
     }
 
-    public function adminConnexion($pseudo, $pass)
+    public function adminConnect($pseudo, $pass)
     {
         $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "admin"';
         $req = $this->sql($sql, [$pseudo]);

@@ -35,9 +35,9 @@ class LoginController
             if(!empty($_POST['pseudo']) && !empty($_POST['pass'])){
                 $pseudo = $this->view->check($_POST['pseudo']);
                 $pass = $this->view->check($_POST['pass']);
-                $user = $this->userRepository->adminConnexion($pseudo, $pass);
-                $this->session->setSession('roleAdmin', $user['role']);
-                $this->session->setSession('pseudoAdmin', $user['pseudo']);
+                $user = $this->userRepository->adminConnect($pseudo, $pass);
+                $this->session->add('roleAdmin', $user['role']);
+                $this->session->add('pseudoAdmin', $user['pseudo']);
             } else {
                 throw new Exception('Tous les champs doivent être remplis');
             }

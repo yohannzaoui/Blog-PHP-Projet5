@@ -4,17 +4,20 @@ namespace App\controller\frontend;
 
 use App\Repository\UserRepository;
 use Core\View;
+use Core\Mailer;
 use Exception;
 
 class registerController
 {
     private $view;
     private $userRepository;
+    private $mailer;
 
     public function __construct()
     {
         $this->view = new View;
         $this->userRepository = new UserRepository;
+        $this->mailer = new Mailer;
     }
 
     public function registrationPage()
@@ -43,6 +46,7 @@ class registerController
                 throw new Exception('Veuillez entrer votre adresse email');
             } else {
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                $this->mailer->send($pseudo, $email);
                 $this->userRepository->addUser($pseudo,$email,$passhash);
                 header('Location: ../index.php?route=loginUser');
             }
