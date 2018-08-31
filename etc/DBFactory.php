@@ -21,10 +21,8 @@ abstract class DBFactory
     {
         try
         {
-            $dsn = Configuration::get("dsn");
-            $login = Configuration::get("login");
-            $password = Configuration::get("password");
-            $this->db = new PDO($dsn, $login, $password);
+            $data = require __DIR__ . '/../config/database.php';
+            $this->db = new PDO($data['dsn'], $data['login'], $data['password']);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->db;
         }
