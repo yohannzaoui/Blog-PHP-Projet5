@@ -34,20 +34,20 @@ class PostController
                 $this->session->flash('Tous les champs doivent être remplis');
             }
         }
-        $this->view->render('addPost');
+        $this->view->render('addPost','backend');
     }
 
     public function listPosts()
     {
         $posts = $this->postRepository->getAll();
         $line = $this->postRepository->countPosts();
-        $this->view->render('listPosts', ['posts'=>$posts,'line'=>$line]);
+        $this->view->render('listPosts','backend', ['posts'=>$posts,'line'=>$line]);
     }
 
     public function editPost($id)
     {
         $post = $this->postRepository->getPost($id);
-        $this->view->render('editPost', ['post'=>$post]);
+        $this->view->render('editPost','backend', ['post'=>$post]);
     }
 
     public function updatePost()

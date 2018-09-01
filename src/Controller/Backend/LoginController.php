@@ -23,9 +23,9 @@ class LoginController
     public function admin()
     {
         if(!isset($_SESSION['pseudoAdmin'], $_SESSION['roleAdmin'])) {
-            $this->view->render('loginAdmin');
+            $this->view->render('loginAdmin','backend');
         } else {
-            $this->view->render('addPost');
+            $this->view->render('addPost','backend');
         }
     }
 

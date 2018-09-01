@@ -21,14 +21,14 @@ class UserController
      {
          $users = $this->userRepository->allAdmins();
          $line = $this->userRepository->countAdmins();
-         $this->view->render('listAdmins', ['users'=>$users, 'line'=>$line]);
+         $this->view->render('listAdmins','backend', ['users'=>$users, 'line'=>$line]);
      }
 
      public function listUsers()
      {
          $users = $this->userRepository->allUsers();
          $line = $this->userRepository->countMembers();
-         $this->view->render('listUsers', ['users'=>$users, 'line'=>$line]);
+         $this->view->render('listUsers','backend', ['users'=>$users, 'line'=>$line]);
      }
 
      public function deleteAdmin()

@@ -27,7 +27,7 @@ class PostController
     {
         $post = $this->postRepository->getPost($idPost);
         $comments = $this->commentRepository->getCommentsFromPost($idPost);
-        $this->view->render('post', ['post'=> $post, 'comments'=>$comments]);
+        $this->view->render('post','frontend', ['post'=> $post, 'comments'=>$comments]);
     }
 
     public function saveComment()

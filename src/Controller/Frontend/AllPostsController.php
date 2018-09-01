@@ -19,6 +19,6 @@ class AllPostsController
     public function all()
     {
         $posts = $this->postRepository->getAll();
-        $this->view->render('all', ['posts'=> $posts]);
+        $this->view->render('all','frontend', ['posts'=> $posts]);
     }
 }

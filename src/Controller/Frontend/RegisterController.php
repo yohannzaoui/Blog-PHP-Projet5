@@ -22,7 +22,7 @@ class registerController
 
     public function registrationPage()
     {
-        $this->view->render('registerUser');
+        $this->view->render('registerUser','frontend');
     }
 
 

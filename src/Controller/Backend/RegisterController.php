@@ -22,7 +22,7 @@ class RegisterController
 
     public function registration()
     {
-        $this->view->render('registerAdmin');
+        $this->view->render('registerAdmin','backend');
     }
 
     public function addAdmin()

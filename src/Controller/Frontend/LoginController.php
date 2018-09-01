@@ -22,7 +22,7 @@ class LoginController
 
     public function loginPage()
     {
-        $this->view->render('loginUser');
+        $this->view->render('loginUser','frontend');
     }
 
     public function userConnexion()

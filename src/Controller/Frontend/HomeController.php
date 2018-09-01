@@ -26,7 +26,7 @@ class HomeController
     public function home()
     {
         $posts = $this->postRepository->getRecentPosts();
-        $this->view->render('home', ['posts'=> $posts]);
+        $this->view->render('home','frontend', ['posts'=> $posts]);
     }
 
     public function contact()
