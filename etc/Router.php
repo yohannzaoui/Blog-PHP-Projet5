@@ -140,7 +140,7 @@ class Router
                     $this->loginUser->confirmation($_GET['token']);
                 }
                 else{
-                    $this->view->render('error',['error'=>'Page introuvable']);
+                    $this->view->render('error','error',['error'=>'Page introuvable']);
                 }
             }
             else{
@@ -149,7 +149,7 @@ class Router
         }
         catch (Exception $e)
         {
-            $this->view->render('error',['error'=>$e->getMessage()]);
+            $this->view->render('error','error',['error'=>$e->getMessage()]);
         }
     }
 }

@@ -47,7 +47,7 @@ class LoginController
         if (isset($_GET['token']) && !empty($_GET['token'])) {
             $token = $this->view->check($_GET['token']);
             $this->userRepository->confirme($token);
-            $this->view->render('confirmation');
+            $this->view->render('confirmation','frontend');
         }
     }
 }

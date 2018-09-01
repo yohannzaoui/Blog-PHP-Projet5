@@ -2,7 +2,7 @@
 
 
 
-<?php if (isset($_SESSION['flash'])) : ?>
+<?php if(isset($_SESSION['flash'])) : ?>
 <div class="container">
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <?=  $_SESSION['flash'] ?>

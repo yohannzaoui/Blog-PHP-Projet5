@@ -48,7 +48,7 @@ class RegisterController
                 $token = $this->mailer->token($email);
                 $this->userRepository->addAdmin($pseudo,$passhash,$email,$token);
                 $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://blog/index.php?route=confirmation&token=$token");
-                $this->view->render('validation');
+                $this->view->render('validation','frontend');
             }
         } else {
             throw new Exception("Le paramétre d'envoi est absent");

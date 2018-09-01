@@ -9,7 +9,7 @@ class View
     private $file;
     private $title;
 
-    public function render($template, $folder, $data = [])
+    public function render($template, $folder=null, $data = [])
     {
         $this->file = '../templates/'.$folder.'/'.$template.'.php';
         $content = $this->renderFile($this->file, $data);
