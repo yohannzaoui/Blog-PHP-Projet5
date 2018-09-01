@@ -1,8 +1,10 @@
-<footer>
-  <div class="container">
-      <hr>
+<footer class="footer_style">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12 col-md-10 mx-auto">
+        <div class="col-lg-6 col-md-10 mx-auto">
+            <h3 class="title_footer">Blog Yohann Zaoui</h3>
+        </div>
+      <div class="col-lg-6 col-md-10 mx-auto">
         <ul class="list-inline text-center">
           <li class="list-inline-item">
             <a href="https://twitter.com/yohannzaoui" target="_blank">
@@ -33,15 +35,18 @@
             </a>
           </li>
         </ul>
-        <p class="copyright text-muted">Copyright &copy; Yohann Zaoui 2018</p>
       </div>
     </div>
-  </div>
-  <div class="title_center">
-    <p>
-      <small>
-        <a href="index.php?route=loginAdmin">Administration</a>
-      </small>
-    </p>
-  </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row" >
+            <div class="col-lg-6 col-md-12 mx-12">
+                <p class="copyright text-muted">Copyright &copy; Yohann Zaoui 2018</p>
+            </div>
+            <div class="col-lg-6 col-md-12 mx-12">
+                <p class="admin"><a href="index.php?route=loginAdmin">Administration</a></p>
+            </div>
+        </div>
+        <br>
+    </div>
 </footer>

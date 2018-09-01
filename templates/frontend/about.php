@@ -13,7 +13,7 @@
             esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
         </div>
         <div class="col-lg-2 col-md-2 mx-auto" >
-        <img src="/images/avatar_black.png" alt="Avatar Yohann Zaoui" class="img-thumbnail">
+        <p class="title_center"><img src="/images/avatar_black.png" alt="Avatar Yohann Zaoui" class="img-thumbnail"></p>
         </div>
       </div>
     </div>
