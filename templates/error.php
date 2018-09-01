@@ -3,9 +3,9 @@
 <div class="container">
     <div class="alert alert-warning" role="alert">
         <div class="title_center">
-            <h3>
+            <h4>
                 <?=$error?>
-            </h3>
+            </h4>
             <strong>
                 <p>
                     <a href="<?=$_SERVER['HTTP_REFERER']?>"> <<<< RETOUR</a>

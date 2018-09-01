@@ -47,7 +47,7 @@ class registerController
             } else {
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                 $token = $this->mailer->token($email);
-                $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien http://blog/index.php?token=$token");
+                $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://blog/index.php?route=confirmation&token=$token");
                 $this->userRepository->addUser($pseudo,$email,$passhash,$token);
                 $this->view->render('validation');
             }
