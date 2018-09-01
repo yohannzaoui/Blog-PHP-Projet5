@@ -9,14 +9,14 @@
           <li class="list-inline-item">
             <a href="https://twitter.com/yohannzaoui" target="_blank">
                 <span class="fa-stack">
-                    <i class="fab fa-twitter-square fa-2x"></i>
+                    <i class="fab fa-twitter fa-2x"></i>
                 </span>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="https://plus.google.com/+YohannZaoui" target="_blank">
                 <span class="fa-stack">
-                    <i class="fab fa-google-plus-square fa-2x"></i>
+                    <i class="fab fa-google-plus fa-2x"></i>
                 </span>
             </a>
           </li>
@@ -30,7 +30,14 @@
           <li class="list-inline-item">
             <a href="https://github.com/yohannzaoui" target="_blank">
                 <span class="fa-stack">
-                    <i class="fab fa-github-square fa-2x"></i>
+                    <i class="fab fa-github-alt fa-2x"></i>
+                </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="index.php?#contact" target="_blank">
+                <span class="fa-stack">
+                    <i class="fas fa-envelope fa-2x"></i>
                 </span>
             </a>
           </li>

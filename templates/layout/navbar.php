@@ -17,6 +17,9 @@
         <li class="nav-item">
           <a class="nav-link" target="_blank" href="../doc/cv_web_yohann_zaoui.pdf">Mon Cv <span class="badge badge-secondary">PDF</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php#contact">Contact</a>
+        </li>
       </ul>
     </div>
   </div>
