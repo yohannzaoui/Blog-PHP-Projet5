@@ -22,26 +22,25 @@
             <form action="../index.php?route=updatePost" method="post">
                 <div class="control-group">
                     <label for="author">Auteur</label>
-                    <input type="text" class="form-control" id="author" name="author" value="<?=$post->getAuthor()?>">
+                    <input type="text" class="form-control" name="author" value="<?=$post->getAuthor()?>">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="title">Titre</label>
-                    <input type="text" class="form-control" id="title" name="title" value="<?=$post->getTitle()?>">
+                    <input type="text" class="form-control" name="title" value="<?=$post->getTitle()?>">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="subtitle">Sous titre</label>
-                    <input type="text" class="form-control" id="subtitle" name="subtitle" value="<?=$post->getSubtitle()?>">
+                    <input type="text" class="form-control" name="subtitle" value="<?=$post->getSubtitle()?>">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="content">Contenu de l'article</label>
-                    <textarea rows="5" class="form-control" id="content" name="content"><?=$post->getContent()?></textarea>
+                    <textarea rows="5" class="form-control" name="content"><?=$post->getContent()?></textarea>
                     <p class="help-block text-danger"></p>
                 </div>
                 <br>
-                <div id="success"></div>
                 <div class="form-group">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($post->getId()) ?>" />
                     <button type="submit" name="submit" value="send" class="btn btn-primary" id="submit">Modifier l'article</button>

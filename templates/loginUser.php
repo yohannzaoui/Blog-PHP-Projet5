@@ -10,23 +10,21 @@
       <form action="index.php?route=userConnexion" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
-          <input type="text" class="form-control" name="pseudo" id="pseudo" value="">
+          <input type="text" class="form-control" name="pseudo">
           <p class="help-block text-danger"></p>
         </div>
         <div class="control-group">
           <label for="pass">Votre mot de passe</label>
-          <input type="password" class="form-control" name="pass" id="pass">
+          <input type="password" class="form-control" name="pass">
           <p class="help-block text-danger"></p>
         </div>
         <br>
-        <div id="success"></div>
         <div class="form-group">
-
           <button type="submit" name="submit" value="send" class="btn btn-primary">Se connecter</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="remember" value="" id="remember">
+          <input class="form-check-input" type="checkbox" name="remember">
           <label class="form-check-label" for="remember">Se souvenir de moi</label>
         </div>
       </form>

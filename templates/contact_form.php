@@ -5,14 +5,14 @@
       <form action="index.php?route=sendMail" method="post">
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
-            <label>Nom</label>
+            <label>Nom et Prénom</label>
             <input type="text" name="name" class="form-control" placeholder="Nom et prénom" required data-validation-required-message="SVP entrez votre nom et prénom.">
             <p class="help-block text-danger"></p>
           </div>
         </div>
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
-            <label>Email Address</label>
+            <label>Adresse Email</label>
             <input type="email" name="email" class="form-control" placeholder="Adresse Email" required data-validation-required-message="SVP entrez votre adresse Email.">
             <p class="help-block text-danger"></p>
           </div>

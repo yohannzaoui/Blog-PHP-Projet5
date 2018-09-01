@@ -19,29 +19,29 @@
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" name="pseudo" class="form-control" value="<?php if (isset($pseudo)) {
-                  echo $pseudo; } ?>" id="pseudo" <p class="help-block text-danger">
+                  echo $pseudo; } ?>" <p class="help-block text-danger">
           </p>
         </div>
         <div class="control-group">
           <label for="pass">Votre mot de passe</label>
-          <input type="password" name="pass" class="form-control" id="pass" <p class="help-block text-danger">
+          <input type="password" name="pass" class="form-control" <p class="help-block text-danger">
           </p>
         </div>
         <div class="control-group">
           <label for="pass1">Confirmez votre mot de passe</label>
-          <input type="password" name="pass1" class="form-control" id="pass1" <p class="help-block text-danger">
+          <input type="password" name="pass1" class="form-control" <p class="help-block text-danger">
           </p>
         </div>
         <div class="control-group">
           <label for="email">Votre adresse Email</label>
-          <input type="email" name="email" class="form-control" id="" <p emailclass="help-block text-danger">
+          <input type="email" name="email" class="form-control" <p emailclass="help-block text-danger">
           </p>
         </div>
         <br>
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" value="send" id="submit" name="submit">S'inscrire</button>
-          <button type="reset" class="btn btn-danger" id="reset">Effacer</button>
+          <button type="submit" class="btn btn-primary" value="send" name="submit">S'inscrire</button>
+          <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
       </form>
 

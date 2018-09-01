@@ -136,6 +136,9 @@ class Router
                 elseif($_GET['route'] === 'logoutUser'){
                     $this->logoutUser->logoutUser();
                 }
+                elseif ($_GET['route'] === 'confirmation') {
+                    $this->loginUser->confirmation($_GET['token']);
+                }
                 else{
                     $this->view->render('error',['error'=>'Page introuvable']);
                 }

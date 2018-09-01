@@ -41,4 +41,13 @@ class LoginController
            throw new Exception('Le paramètre envoyé est incorrect');
         }
     }
+
+    public function confirmation($token)
+    {
+        if (isset($_GET['token']) && !empty($_GET['token'])) {
+            $token = $this->view->check($_GET['token']);
+            $this->userRepository->confirme($token);
+            $this->view->render('confirmation');
+        }
+    }
 }

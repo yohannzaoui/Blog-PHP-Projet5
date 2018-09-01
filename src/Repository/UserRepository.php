@@ -17,8 +17,8 @@ class UserRepository extends DBFactory
         if($user > 0) {
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
-            $sql = 'INSERT INTO users (pseudo, pass, email,token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
-            $req = $this->sql($sql, [$pseudo, $passhash, $email, $token]);
+            $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
+            $userid = $this->sql($sql, [$pseudo, $passhash, $email, $token]);
         }
     }
 
@@ -66,7 +66,7 @@ class UserRepository extends DBFactory
         $count = $req->rowCount();
         if($count > 0) {
             $user = $req->fetch();
-            if(password_verify($pass, $user['pass'])) {
+            if(password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
                 header('Location: ../index.php?route=savePost');
                 return $user;
             } else {
@@ -84,7 +84,7 @@ class UserRepository extends DBFactory
         $count = $req->rowCount();
         if($count > 0) {
             $user = $req->fetch();
-            if(password_verify($pass, $user['pass'])) {
+            if(password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
                 header('Location: ../index.php?route=all');
                 return $user;
             } else {
@@ -92,6 +92,19 @@ class UserRepository extends DBFactory
             }
         } else {
             throw new Exception("Ce compte n'éxiste pas");
+        }
+    }
+
+    public function confirme($token)
+    {
+        $sql = 'SELECT token FROM users WHERE c_token = ?';
+        $req = $this->sql($sql, [$token]);
+        $user = $req->rowCount();
+        if($user > 0) {
+            throw new Exception('Ce compte à déja été validé');
+        } else {
+            $sql = 'UPDATE users SET c_token=? WHERE token= ?';
+            $req = $this->sql($sql, [$token,$token]);
         }
     }
 
