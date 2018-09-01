@@ -9,11 +9,11 @@ class View
     private $file;
     private $title;
 
-    public function render($template, $folder=null, $data = [])
+    public function render($template, $path, $data = [])
     {
-        $this->file = '../templates/'.$folder.'/'.$template.'.php';
+        $this->file = '../templates/'.$path.'/'.$template.'.php';
         $content = $this->renderFile($this->file, $data);
-        $view = $this->renderFile('../templates/base.php', ['title'=> $this->title, 'content'=> $content]);
+        $view = $this->renderFile('../templates/layout/base.php', ['title'=> $this->title, 'content'=> $content]);
         echo $view;
     }
 
