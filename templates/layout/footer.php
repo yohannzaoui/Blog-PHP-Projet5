@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="index.php?#contact" target="_blank">
+            <a href="index.php?#contact_form" target="_blank">
                 <span class="fa-stack">
                     <i class="fas fa-envelope fa-2x"></i>
                 </span>
