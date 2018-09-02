@@ -92,7 +92,7 @@ class User
     {
         $this->token = $token;
     }
-    
+
     public function getCtoken()
     {
         return $this->ctoken;
@@ -102,5 +102,4 @@ class User
     {
         $this->ctoken = $ctoken;
     }
-
 }

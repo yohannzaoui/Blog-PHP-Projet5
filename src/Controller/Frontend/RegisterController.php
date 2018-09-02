@@ -55,4 +55,14 @@ class registerController
             throw new Exception("Le paramétre d'envoi est absent");
         }
     }
+
+    public function confirmation($id,$token)
+    {
+        if (isset($_GET['token'], $_GET['id']) && !empty($_GET['token']) && !empty($_GET['id'])) {
+            $token = $this->view->check($_GET['token']);
+            $id = $this->view->check($_GET['id']);
+            $this->userRepository->confirme($id,$token);
+            $this->view->render('confirmation','frontend');
+        }
+    }
 }

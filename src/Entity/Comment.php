@@ -11,7 +11,6 @@ class Comment
   private $creation_date_fr;
   private $publication;
 
-
   public function setId($id)
   {
     $id=(int)$id;

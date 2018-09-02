@@ -45,9 +45,4 @@ abstract class DBFactory
             return $result;
         }
     }
-
-    public function lastId()
-    {
-        return $this->db->lastInsertId();
-    }
 }
