@@ -30,9 +30,9 @@
           <p class="post-meta">
             <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreation_date().' -- Modifié le '.$post->getUpdate_date() ?>
           </p>
-          <p>
+          <small><p>
               Partagez l'article : <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </p>
+          </p></small>
           <p>
             <small>
               <a href="index.php?route=all">Retour à la liste d'articles</a>

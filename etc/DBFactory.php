@@ -7,7 +7,7 @@ use Exception;
 
 abstract class DBFactory
 {
-    private $db;
+    protected $db;
 
     private function checkDb()
     {
@@ -44,5 +44,10 @@ abstract class DBFactory
             $result = $this->checkDb()->query($sql);
             return $result;
         }
+    }
+
+    public function lastId()
+    {
+        return $this->db->lastInsertId();
     }
 }

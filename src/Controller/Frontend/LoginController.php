@@ -42,11 +42,12 @@ class LoginController
         }
     }
 
-    public function confirmation($token)
+    public function confirmation($id,$token)
     {
-        if (isset($_GET['token']) && !empty($_GET['token'])) {
+        if (isset($_GET['token'], $_GET['id']) && !empty($_GET['token']) && !empty($_GET['id'])) {
             $token = $this->view->check($_GET['token']);
-            $this->userRepository->confirme($token);
+            $id = $this->view->check($_GET['id']);
+            $this->userRepository->confirme($id,$token);
             $this->view->render('confirmation','frontend');
         }
     }

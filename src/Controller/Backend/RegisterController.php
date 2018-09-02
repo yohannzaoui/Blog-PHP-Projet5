@@ -46,8 +46,8 @@ class RegisterController
             } else {
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                 $token = $this->mailer->token($email);
-                $this->userRepository->addAdmin($pseudo,$passhash,$email,$token);
-                $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://blog/index.php?route=confirmation&token=$token");
+                $userId = $this->userRepository->addAdmin($pseudo,$passhash,$email,$token);
+                $this->mailer->send($pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://blog/index.php?route=confirmation&id=$userId&token=$token");
                 $this->view->render('validation','frontend');
             }
         } else {

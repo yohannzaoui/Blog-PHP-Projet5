@@ -18,8 +18,10 @@ class UserRepository extends DBFactory
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
-            $userid = $this->sql($sql, [$pseudo, $passhash, $email, $token]);
+            $this->sql($sql, [$pseudo, $passhash, $email, $token]);
+            $userId = $this->db->lastInsertId();
         }
+        return $userId;
     }
 
     public function addUser($pseudo,$email,$passhash,$token)
@@ -31,8 +33,10 @@ class UserRepository extends DBFactory
             throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"member",NOW())';
-            $req = $this->sql($sql, [$pseudo, $passhash, $email, $token]);
+            $this->sql($sql, [$pseudo, $passhash, $email, $token]);
+            $userId = $this->db->lastInsertId();
         }
+        return $userId;
     }
 
     public function allAdmins()
@@ -95,16 +99,16 @@ class UserRepository extends DBFactory
         }
     }
 
-    public function confirme($token)
+    public function confirme($id,$token)
     {
-        $sql = 'SELECT token FROM users WHERE c_token = ?';
-        $req = $this->sql($sql, [$token]);
+        $sql = 'SELECT id, token FROM users WHERE id = ? AND c_token = ?';
+        $req = $this->sql($sql, [$id,$token]);
         $user = $req->rowCount();
         if($user > 0) {
             throw new Exception('Ce compte à déja été validé');
         } else {
-            $sql = 'UPDATE users SET c_token=? WHERE token= ?';
-            $req = $this->sql($sql, [$token,$token]);
+            $sql = 'UPDATE users SET c_token=? WHERE id= ?';
+            $req = $this->sql($sql, [$token,$id]);
         }
     }
 
