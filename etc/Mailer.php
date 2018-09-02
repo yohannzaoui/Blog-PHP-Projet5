@@ -20,8 +20,8 @@ class Mailer
         $mailer = new Swift_Mailer($transport);
 
         // Create a message
-        $message = (new Swift_Message('Message du Blog Yohann Zaoui'))
-          ->setFrom(['contact@yohannzaoui.com' => 'Blog Yohann Zaoui'])
+        $message = (new Swift_Message($data['subject']))
+          ->setFrom([$data['from'] => $data['name']])
           ->setTo([$email => $pseudo])
           ->setBody($body)
           ;

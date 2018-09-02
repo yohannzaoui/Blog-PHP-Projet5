@@ -9,5 +9,7 @@ return [
     'encryption' => 'ssl' ,
     'username'   => 'username',
     'password'   => '****',
-    'from'       => 'mail@mail.com'
+    'from'       => 'mail@mail.com',
+    'name'       => 'name',
+    'subject'    => 'subject'
 ];
