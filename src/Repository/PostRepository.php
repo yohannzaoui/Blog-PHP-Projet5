@@ -40,6 +40,8 @@ class PostRepository extends DBFactory
     {
         $sql= 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
         $req = $this->sql($sql,[$title, $subtitle, $author, $content]);
+        $id = $this->db->lastInsertId();
+        return $id;
     }
 
     public function updatePost($id, $author, $title, $subtitle, $content)

@@ -28,8 +28,8 @@ class PostController
                 $title = $this->view->check($_POST['title']);
                 $subtitle = $this->view->check($_POST['subtitle']);
                 $content = $this->view->check($_POST['content']);
-                $this->postRepository->addPost($author, $title, $subtitle, $content);
-                $this->session->flash('Article ajouté.');
+                $id = $this->postRepository->addPost($author, $title, $subtitle, $content);
+                $this->session->flash('Article ajouté. <a href="index.php?route=post&id='.$id.'">Voir l\'article</a>');
             } else {
                 $this->session->flash('Tous les champs doivent être remplis');
             }
