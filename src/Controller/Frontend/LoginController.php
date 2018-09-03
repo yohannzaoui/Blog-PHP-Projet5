@@ -41,7 +41,7 @@ class LoginController
                 $this->session->add('pseudoUser', $user['pseudo']);
             }
             if(isset($_POST['remember'])) {
-                $this->cookie->set('pseudo', $pseudo);
+                $this->cookie->set('pseudoUser', $pseudo);
             }
         } else {
            throw new Exception('Le paramètre envoyé est incorrect');

@@ -1,6 +1,6 @@
 <?php $this->title = "Modifier un article" ?>
 
-<?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") : ?>
+<?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin" || isset($_COOKIE['pseudoAdmin'])) : ?>
 
 <?php require_once 'adminNav.php'; ?>
 
@@ -43,7 +43,7 @@
                 <br>
                 <div class="form-group">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($post->getId()) ?>" />
-                    <button type="submit" name="submit" value="send" class="btn btn-primary" id="submit">Modifier l'article</button>
+                    <button type="submit" name="submit" value="send" class="btn btn-primary">Modifier l'article</button>
                 </div>
             </form>
 
