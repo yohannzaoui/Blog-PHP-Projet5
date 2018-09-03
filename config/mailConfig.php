@@ -10,6 +10,5 @@ return [
     'username'   => 'username',
     'password'   => '****',
     'from'       => 'mail@mail.com',
-    'name'       => 'name',
-    'subject'    => 'subject'
+    'name'       => 'name'
 ];

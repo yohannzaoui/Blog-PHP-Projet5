@@ -8,7 +8,7 @@ use Swift_Mailer;
 
 class Mailer
 {
-    public function send($pseudo,$email,$body)
+    public function send($subject,$pseudo,$email,$body)
     {
         $data = require __DIR__ . '/../config/mail.php';
         $transport = (new Swift_SmtpTransport($data['smtp'], $data['port'], $data['encryption']))
@@ -20,7 +20,7 @@ class Mailer
         $mailer = new Swift_Mailer($transport);
 
         // Create a message
-        $message = (new Swift_Message($data['subject']))
+        $message = (new Swift_Message($subject))
           ->setFrom([$data['from'] => $data['name']])
           ->setTo([$email => $pseudo])
           ->setBody($body)

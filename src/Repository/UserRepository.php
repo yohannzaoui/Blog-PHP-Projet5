@@ -124,6 +124,38 @@ class UserRepository extends DBFactory
         }
     }
 
+    public function resetUser($token)
+    {
+        $sql = 'SELECT id, pseudo FROM users WHERE role = "member" AND token = ?';
+        $req = $this->sql($sql, [$token]);
+        $userExist = $req->rowCount();
+        if ($userExist > 0) {
+            $user = $req->fetch();
+        } else {
+            throw new Exception("Adresse Email inconnue");
+        }
+        return $user;
+    }
+
+    public function resetAdmin($token)
+    {
+        $sql = 'SELECT id, pseudo FROM users WHERE role = "admin" AND token = ?';
+        $req = $this->sql($sql, [$token]);
+        $userExist = $req->rowCount();
+        if ($userExist > 0) {
+            $user = $req->fetch();
+        } else {
+            throw new Exception("Adresse Email inconnue");
+        }
+        return $user;
+    }
+
+    public function resetUserPass($id, $passhash)
+    {
+        $sql = 'UPDATE users SET pass=? WHERE id= ?';
+        $this->sql($sql, [$passhash, $id]);
+    }
+
     public function countAdmins()
     {
         $sql= 'SELECT COUNT(*) as nb FROM users WHERE role = "admin"';

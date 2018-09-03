@@ -14,6 +14,7 @@ use App\controller\backend\RegisterController as RegisterAdmin;
 use App\controller\backend\PostController as PostBackend;
 use App\controller\backend\CommentController;
 use App\controller\backend\UserController;
+use App\controller\backend\resetController;
 use Core\View;
 use Exception;
 
@@ -31,6 +32,7 @@ class Router
     private $postBackend;
     private $commentBackend;
     private $userController;
+    private $resetUser;
     private $view;
 
     public function __construct()
@@ -47,6 +49,7 @@ class Router
         $this->commentBackend = new CommentController;
         $this->postBackend = new PostBackend;
         $this->userController = new UserController;
+        $this->resetUser = new resetController;
         $this->view = new View;
     }
 
@@ -138,6 +141,27 @@ class Router
                 }
                 elseif ($_GET['route'] === 'confirmation') {
                     $this->registerUser->confirmation($_GET['token'], $_GET['id']);
+                }
+                elseif ($_GET['route'] === 'resetUser') {
+                    $this->resetUser->resetUser();
+                }
+                elseif($_GET['route'] === 'passUser'){
+                    $this->resetUser->resetUserInfo();
+                }
+                elseif ($_GET['route'] === 'passwordResetUser') {
+                    $this->resetUser->passwordResetUser($_GET['id'], $_GET['token']);
+                }
+                elseif ($_GET['route'] == 'changePassUser') {
+                    $this->resetUser->passwordReset();
+                }
+                elseif ($_GET['route'] === 'resetAdmin') {
+                    $this->resetUser->resetAdmin();
+                }
+                elseif($_GET['route'] === 'passAdmin'){
+                    $this->resetUser->resetAdminInfo();
+                }
+                elseif ($_GET['route'] === 'passwordResetAdmin') {
+                    $this->resetUser->passwordResetAdmin($_GET['id'], $_GET['token']);
                 }
                 else{
                     $this->view->render('error','error',['error'=>'Page introuvable']);

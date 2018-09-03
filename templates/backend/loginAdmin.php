@@ -37,5 +37,8 @@
       <p>Pas de compte ?
         <a href="index.php?route=registerAdmin">Inscrivez vous !</a>
       </p>
+      <small><p>
+        <a href="index.php?route=resetAdmin">Mot de passe oublié ?</a>
+    </p></small>
     </div>
   </div>

@@ -3,8 +3,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
-            <h4 class="title_center">Compte en attente de validation</h4>
-            <p class="title_center">Un email vous a été envoyé pour la validation de votre compte</p>
+            <h4 class="title_center">Récupération de mot de passe</h4>
+            <p class="title_center">Un email vous a été envoyé pour la récupération de votre mot de passe.</p>
             <br>
             <br>
         </div>

@@ -31,5 +31,8 @@
       <p>Pas de compte ?
         <a href="index.php?route=registerUser">Inscrivez vous !</a>
       </p>
+      <small><p>
+        <a href="index.php?route=resetUser">Mot de passe oublié ?</a>
+    </p></small>
     </div>
   </div>

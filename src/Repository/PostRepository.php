@@ -47,7 +47,7 @@ class PostRepository extends DBFactory
     public function updatePost($id, $author, $title, $subtitle, $content)
     {
         $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id= ?';
-        $req = $this->sql($sql, [$author,$title, $subtitle,$content,$id]);
+        $this->sql($sql, [$author,$title, $subtitle,$content,$id]);
     }
 
     public function deleteAll($id)
