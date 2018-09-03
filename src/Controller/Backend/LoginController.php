@@ -5,6 +5,7 @@ namespace App\controller\backend;
 use App\Repository\UserRepository;
 use Core\View;
 use Core\Session;
+use Core\Cookie;
 use Exception;
 
 class LoginController
@@ -12,12 +13,14 @@ class LoginController
     private $userRepository;
     private $view;
     private $session;
+    private $cookie;
 
     public function __construct()
     {
         $this->userRepository = new UserRepository;
         $this->view = new View;
         $this->session = new Session;
+        $this->cookie = new Cookie;
     }
 
     public function admin()
@@ -40,6 +43,9 @@ class LoginController
                 $user = $this->userRepository->adminConnect($pseudo, $pass);
                 $this->session->add('roleAdmin', $user['role']);
                 $this->session->add('pseudoAdmin', $user['pseudo']);
+            }
+            if(isset($_POST['remember'])) {
+                $this->cookie->set('pseudo', $pseudo);
             }
         } else {
             throw new Exception('Le paramètre envoyé est incorrect');
