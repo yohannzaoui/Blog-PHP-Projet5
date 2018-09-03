@@ -23,25 +23,25 @@
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
         <h4 class="title_center">Ajouter un article</h4>
-            <form method="post" action="index.php?route=savePost">
+            <form method="post" action="index.php?route=savePost" enctype="multipart/form-data">
                 <div class="control-group">
                     <label for="author">Auteur</label>
-                    <input type="text" class="form-control" placeholder="" name="author">
+                    <input type="text" class="form-control" name="author">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="title">Titre</label>
-                    <input type="text" class="form-control" placeholder="" name="title">
+                    <input type="text" class="form-control" name="title">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
-                    <label for subtitle>Sous titre</label>
-                    <input type="text" class="form-control" placeholder="" name="subtitle">
+                    <label for="subtitle">Sous titre</label>
+                    <input type="text" class="form-control" name="subtitle">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="content">Contenu de l'article</label>
-                    <textarea rows="5" class="form-control" placeholder="" name="content"></textarea>
+                    <textarea rows="5" class="form-control" name="content"></textarea>
                     <p class="help-block text-danger"></p>
                 </div>
                 <br>
