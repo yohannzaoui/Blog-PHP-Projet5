@@ -67,22 +67,12 @@ class PostController
         }
     }
 
-    public function deleteAll($id)
-    {
-        if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $id = $this->view->check($_GET['id']);
-            $this->postRepository->deleteAll($id);
-            header('Location: ../index.php?route=listPosts');
-        }   else {
-            throw new Exception('Identifiant manquant');
-        }
-     }
-
     public function deletePost($id)
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = $this->view->check($_GET['id']);
             $this->postRepository->deletePost($id);
+            $this->session->flash("L'article à été supprimer");
             header('Location: ../index.php?route=listPosts');
         }   else {
             throw new Exception('Identifiant d\'article manquant');

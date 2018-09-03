@@ -44,6 +44,12 @@ class CommentRepository extends DBFactory
         $req = $this->sql($sql, [$id]);
     }
 
+    public function deleteComments($idPost)
+    {
+        $sql = 'DELETE FROM comments WHERE id_post = ?';
+        $req = $this->sql($sql, [$idPost]);
+    }
+
     public function countComments()
     {
         $sql = 'SELECT COUNT(*) as nb FROM comments WHERE publication = 0';

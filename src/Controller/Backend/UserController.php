@@ -4,17 +4,20 @@ namespace App\controller\backend;
 
 use App\Repository\UserRepository;
 use Core\View;
+use Core\Session;
 use Exception;
 
 class UserController
 {
     private $userRepository;
     private $view;
+    private $session;
 
     public function __construct()
     {
         $this->userRepository = new UserRepository;
         $this->view = new View;
+        $this->session = new Session;
     }
 
      public function listAdmins()
@@ -36,6 +39,7 @@ class UserController
          if (isset($_GET['id']) && !empty($_GET['id'])) {
              $id = $this->view->check($_GET['id']);
              $this->userRepository->deleteUser($id);
+             $this->session->flash('Administrateur supprimé');
              header('Location: ../index.php?route=listAdmins');
          } else {
              throw new Exception('Identifiant d\'administrateur manquant');
@@ -47,6 +51,7 @@ class UserController
          if (isset($_GET['id']) && !empty($_GET['id'])) {
              $id = $this->view->check($_GET['id']);
              $this->userRepository->deleteUser($id);
+             $this->session->flash('Membre supprimé');
              header('Location: ../index.php?route=listUsers');
          } else {
              throw new Exception('Identifiant du membre manquant');

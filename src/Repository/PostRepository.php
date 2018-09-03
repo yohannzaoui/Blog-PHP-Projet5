@@ -53,7 +53,7 @@ class PostRepository extends DBFactory
     public function deleteAll($id)
     {
         $sql = 'DELETE posts, comments FROM posts INNER JOIN comments ON posts.id=comments.id_post WHERE posts.id=?';
-        $req = $this->sql($sql, [$id]);
+        $this->sql($sql, [$id]);
     }
 
     public function deletePost($id)

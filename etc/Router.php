@@ -100,6 +100,9 @@ class Router
                 elseif($_GET['route'] === 'deleteComment'){
                     $this->commentBackend->deleteComment($_GET['id']);
                 }
+                elseif($_GET['route'] === 'deleteComments'){
+                    $this->commentBackend->deleteComments($_GET['idPost']);
+                }
                 elseif($_GET['route'] === 'listPosts'){
                     $this->postBackend->listPosts();
                 }
@@ -108,9 +111,6 @@ class Router
                 }
                 elseif($_GET['route'] === 'updatePost'){
                     $this->postBackend->updatePost();
-                }
-                elseif($_GET['route'] === 'deleteAll'){
-                    $this->postBackend->deleteAll($_GET['id']);
                 }
                 elseif($_GET['route'] === 'deletePost'){
                     $this->postBackend->deletePost($_GET['id']);
