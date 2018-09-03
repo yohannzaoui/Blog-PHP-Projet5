@@ -15,7 +15,13 @@ class UserRepository extends DBFactory
         $req = $this->sql($sql, [$pseudo]);
         $user = $req->rowCount();
         if($user > 0) {
-            throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
+            throw new Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
+        }
+        $sql = 'SELECT email FROM users WHERE role = "admin" AND email = ?';
+        $req = $this->sql($sql, [$email]);
+        $user = $req->rowCount();
+        if($user > 0) {
+            throw new Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
             $this->sql($sql, [$pseudo, $passhash, $email, $token]);
@@ -30,7 +36,13 @@ class UserRepository extends DBFactory
         $req = $this->sql($sql, [$pseudo]);
         $user = $req->rowCount();
         if($user > 0) {
-            throw new Exception('Ce pseudo est déja utilisé. Veuillez en choisir un autre.');
+            throw new Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
+        }
+        $sql = 'SELECT email FROM users WHERE role = "member" AND email = ?';
+        $req = $this->sql($sql, [$email]);
+        $user = $req->rowCount();
+        if($user > 0) {
+            throw new Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"member",NOW())';
             $this->sql($sql, [$pseudo, $passhash, $email, $token]);
