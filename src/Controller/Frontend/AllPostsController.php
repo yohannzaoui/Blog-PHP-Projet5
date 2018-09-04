@@ -5,8 +5,12 @@ namespace App\controller\frontend;
 use App\repository\PostRepository;
 use Core\View;
 
+/**
+ *
+ */
 class AllPostsController
 {
+    
     private $postRepository;
     private $view;
 

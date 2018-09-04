@@ -6,8 +6,12 @@ use Core\DBFactory;
 use App\Entity\Comment;
 use PDO;
 
+/**
+ *
+ */
 class CommentRepository extends DBFactory
 {
+
     public function getCommentsFromPost($idPost)
     {
         $sql = 'SELECT id,id_post,pseudo,content,publication,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM comments WHERE publication = 1 AND id_post = ? ORDER BY creation_date DESC';
@@ -20,7 +24,7 @@ class CommentRepository extends DBFactory
     public function addComment($idPost, $pseudo, $content)
     {
         $sql = 'INSERT INTO comments (id_post, pseudo, content, publication, creation_date) VALUES (?,?,?,0,NOW())';
-        $req = $this->sql($sql, [$idPost,$pseudo, $content]);
+        $this->sql($sql, [$idPost,$pseudo, $content]);
     }
 
     public function getCommentsNoValide()
@@ -35,19 +39,19 @@ class CommentRepository extends DBFactory
     public function validateComment($id)
     {
         $sql = 'UPDATE comments SET publication = 1 WHERE id = ?';
-        $req = $this->sql($sql, [$id]);
+        $this->sql($sql, [$id]);
     }
 
     public function deleteComment($id)
     {
         $sql = 'DELETE FROM comments WHERE id = ?';
-        $req = $this->sql($sql, [$id]);
+        $this->sql($sql, [$id]);
     }
 
     public function deleteComments($idPost)
     {
         $sql = 'DELETE FROM comments WHERE id_post = ?';
-        $req = $this->sql($sql, [$idPost]);
+        $this->sql($sql, [$idPost]);
     }
 
     public function countComments()

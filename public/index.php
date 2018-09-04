@@ -1,11 +1,11 @@
 <?php
 
-require '../vendor/autoload.php';
+require_once __DIR__."/../vendor/autoload.php";
 
-use Core\Router;
+use Core\Application;
 use Core\Session;
 
 $session = New Session;
 $session->sessionStart();
-$router = new router;
-$router->run();
+$application = new Application;
+$application->boot();

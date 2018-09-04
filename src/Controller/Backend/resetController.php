@@ -7,8 +7,12 @@ use Core\Mailer;
 use App\Repository\UserRepository;
 use Exception;
 
+/**
+ *
+ */
 class resetController
 {
+
     private $userRepository;
     private $mailer;
     private $view;

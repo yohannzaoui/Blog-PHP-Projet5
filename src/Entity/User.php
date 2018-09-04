@@ -2,8 +2,12 @@
 
 namespace App\Entity;
 
+/**
+ *
+ */
 class User
 {
+
     private $id;
     private $pseudo;
     private $pass;

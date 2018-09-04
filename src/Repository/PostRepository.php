@@ -6,6 +6,9 @@ use Core\DBFactory;
 use App\Entity\Post;
 use PDO;
 
+/**
+ *
+ */
 class PostRepository extends DBFactory
 {
 
@@ -39,7 +42,7 @@ class PostRepository extends DBFactory
     public function addPost($author, $title, $subtitle, $content)
     {
         $sql= 'INSERT INTO posts (title, subtitle, author, content,creation_date) VALUES (?,?,?,?,?,NOW())';
-        $req = $this->sql($sql,[$title, $subtitle, $author, $content]);
+        $this->sql($sql,[$title, $subtitle, $author, $content]);
         $id = $this->db->lastInsertId();
         return $id;
     }
@@ -59,7 +62,7 @@ class PostRepository extends DBFactory
     public function deletePost($id)
     {
         $sql = 'DELETE FROM posts WHERE id=?';
-        $req = $this->sql($sql, [$id]);
+        $this->sql($sql, [$id]);
     }
 
     public function countPosts()

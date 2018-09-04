@@ -4,8 +4,12 @@ namespace Core;
 
 use Exception;
 
+/**
+ *
+ */
 class View
 {
+
     private $file;
     private $title;
 

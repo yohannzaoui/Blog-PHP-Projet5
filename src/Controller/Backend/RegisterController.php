@@ -7,8 +7,12 @@ use Core\View;
 use Core\Mailer;
 use Exception;
 
+/**
+ *
+ */
 class RegisterController
 {
+    
     private $view;
     private $userRepository;
     private $mailer;

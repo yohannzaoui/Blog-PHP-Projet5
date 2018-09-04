@@ -8,8 +8,12 @@ use Core\Session;
 use Core\Cookie;
 use Exception;
 
+/**
+ *
+ */
 class LoginController
 {
+
     private $view;
     private $userRepository;
     private $session;

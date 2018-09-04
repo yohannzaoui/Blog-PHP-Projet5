@@ -8,8 +8,12 @@ use Core\Session;
 use App\repository\PostRepository;
 use Execption;
 
+/**
+ *
+ */
 class HomeController
 {
+    
     private $postRepository;
     private $view;
     private $session;

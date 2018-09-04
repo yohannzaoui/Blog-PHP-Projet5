@@ -7,8 +7,12 @@ use Core\View;
 use Core\Session;
 use Exception;
 
+/**
+ *
+ */
 class PostController
 {
+    
     private $view;
     private $session;
     private $postRepository;

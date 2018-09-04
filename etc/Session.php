@@ -4,6 +4,9 @@ namespace Core;
 
 use Exception;
 
+/**
+ *
+ */
 class Session
 {
 

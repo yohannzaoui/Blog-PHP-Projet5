@@ -4,8 +4,12 @@ namespace App\controller\backend;
 
 use Core\Session;
 
+/**
+ *
+ */
 class LogoutController
 {
+
     private $session;
 
     public function __construct()

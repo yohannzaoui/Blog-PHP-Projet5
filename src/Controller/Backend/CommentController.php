@@ -7,8 +7,12 @@ use Core\View;
 use Core\Session;
 use Exception;
 
+/**
+ *
+ */
 class CommentController
 {
+
     private $view;
     private $commentRepository;
 

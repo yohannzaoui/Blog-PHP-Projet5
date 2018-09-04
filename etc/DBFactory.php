@@ -5,8 +5,12 @@ namespace Core;
 use PDO;
 use Exception;
 
+/**
+ *
+ */
 abstract class DBFactory
 {
+
     protected $db;
 
     private function checkDb()
@@ -21,7 +25,7 @@ abstract class DBFactory
     {
         try
         {
-            $data = require __DIR__ . '/../config/database.php';
+            $data = require __DIR__ .'/../config/database.php';
             $this->db = new PDO($data['dsn'], $data['login'], $data['password']);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->db;

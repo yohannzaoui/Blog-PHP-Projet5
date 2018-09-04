@@ -6,8 +6,12 @@ use Swift_Message;
 use Swift_SmtpTransport;
 use Swift_Mailer;
 
+/**
+ *
+ */
 class Mailer
 {
+
     public function send($subject,$pseudo,$email,$body)
     {
         $data = require __DIR__ . '/../config/mail.php';

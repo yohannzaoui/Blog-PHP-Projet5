@@ -7,8 +7,12 @@ use App\Entity\User;
 use PDO;
 use Exception;
 
+/**
+ *
+ */
 class UserRepository extends DBFactory
 {
+
     public function addAdmin($pseudo,$passhash,$email,$token)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
@@ -72,7 +76,7 @@ class UserRepository extends DBFactory
     public function deleteUser($id)
     {
         $sql = 'DELETE FROM users WHERE id=?';
-        $req=$this->sql($sql, [$id]);
+        $this->sql($sql, [$id]);
     }
 
     public function adminConnect($pseudo, $pass)

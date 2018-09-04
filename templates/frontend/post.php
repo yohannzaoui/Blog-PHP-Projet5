@@ -81,6 +81,7 @@
           <a href="../index.php?route=logoutUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
         </div>
       </form>
+      <br>
 
 <?php endif; ?>
 
