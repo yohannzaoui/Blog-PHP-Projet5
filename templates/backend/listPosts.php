@@ -1,6 +1,6 @@
 <?php $this->title = "Modifier article" ?>
 
-<?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin" || isset($_COOKIE['pseudoAdmin'])) : ?>
+<?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin"):?>
 
 <?php if (isset($_SESSION['flash'])) : ?>
     <div class="container">

@@ -1,6 +1,6 @@
 <?php $this->title = "Ajouter un article"; ?>
 
-<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin" || isset($_COOKIE['pseudoAdmin'])) : ?>
+<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") : ?>
 
 <?php require_once 'adminNav.php'; ?>
 

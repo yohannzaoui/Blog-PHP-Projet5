@@ -44,13 +44,13 @@
   </div>
 </div>
 
-<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) || !isset($_COOKIE['pseudoUser'])) : ?>
+<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])):?>
 <p class="title_center">
     <a href="../index.php?route=loginUser"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
 <?php endif; ?>
 
-<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member" || isset($_COOKIE['pseudoUser'])) : ?>
+<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member"):?>
 
 <div class="container">
   <div class="row">
