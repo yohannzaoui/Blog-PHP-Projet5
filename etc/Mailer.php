@@ -13,7 +13,7 @@ use Swift_Mailer;
 class Mailer implements MailerInterface
 {
 
-    public function send($subject,$pseudo,$email,$body)
+    public function send($subject, $pseudo, $email, $body)
     {
         $data = require __DIR__ . '/../config/mail.php';
         $transport = (new Swift_SmtpTransport($data['smtp'], $data['port'], $data['encryption']))
@@ -32,7 +32,7 @@ class Mailer implements MailerInterface
           ;
 
         // Send the message
-        $result = $mailer->send($message);
+        $mailer->send($message);
     }
 
     public function token($data)

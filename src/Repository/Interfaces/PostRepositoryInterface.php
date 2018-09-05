@@ -17,8 +17,6 @@ interface PostRepositoryInterface
 
     public function updatePost($id, $author, $title, $subtitle, $content);
 
-    public function deleteAll($id);
-
     public function deletePost($id);
 
     public function countPosts();

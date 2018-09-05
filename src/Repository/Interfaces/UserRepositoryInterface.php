@@ -7,9 +7,9 @@ namespace App\Repository\Interfaces;
  */
 interface UserRepositoryInterface
 {
-    public function addAdmin($pseudo,$passhash,$email,$token);
+    public function addAdmin($pseudo, $passhash, $email, $token);
 
-    public function addUser($pseudo,$email,$passhash,$token);
+    public function addUser($pseudo, $email, $passhash, $token);
 
     public function allAdmins();
 
@@ -21,7 +21,7 @@ interface UserRepositoryInterface
 
     public function userConnect($pseudo, $pass);
 
-    public function confirme($id,$token);
+    public function confirme($id, $token);
 
     public function resetUser($token);
 

@@ -17,6 +17,6 @@ class Cookie implements CookieInterface
 
     public function delete($name, $value)
     {
-        return setcookie($name, $value,time()-1);
+        return setcookie($name, $value, time()-1);
     }
 }

@@ -28,18 +28,17 @@ class PostController implements PostControllerInterface
     public function savePost()
     {
         if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
-            if(!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])){
+            if (empty($_POST['author']) && empty($_POST['title']) && empty($_POST['subtitle']) && empty($_POST['content'])) {
+                $this->session->flash('Tous les champs doivent être remplis');
+            }
                 $author = $this->view->check($_POST['author']);
                 $title = $this->view->check($_POST['title']);
                 $subtitle = $this->view->check($_POST['subtitle']);
                 $content = $this->view->check($_POST['content']);
                 $id = $this->postRepository->addPost($author, $title, $subtitle, $content);
                 $this->session->flash('Article ajouté. <a href="index.php?route=post&id='.$id.'">Voir l\'article</a>');
-            } else {
-                $this->session->flash('Tous les champs doivent être remplis');
-            }
         }
-        $this->view->render('addPost','backend');
+        $this->view->render('addPost', 'backend');
     }
 
     public function listPosts()

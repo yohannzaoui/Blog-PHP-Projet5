@@ -42,8 +42,8 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
 
     public function addPost($author, $title, $subtitle, $content)
     {
-        $sql= 'INSERT INTO posts (title, subtitle, author, content,creation_date) VALUES (?,?,?,?,?,NOW())';
-        $this->sql($sql,[$title, $subtitle, $author, $content]);
+        $sql= 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
+        $this->sql($sql, [$title, $subtitle, $author, $content]);
         $id = $this->db->lastInsertId();
         return $id;
     }
@@ -51,13 +51,7 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
     public function updatePost($id, $author, $title, $subtitle, $content)
     {
         $sql = 'UPDATE posts SET author=?,title=?,subtitle=?,content=?,update_date=NOW() WHERE id= ?';
-        $this->sql($sql, [$author,$title, $subtitle,$content,$id]);
-    }
-
-    public function deleteAll($id)
-    {
-        $sql = 'DELETE posts, comments FROM posts INNER JOIN comments ON posts.id=comments.id_post WHERE posts.id=?';
-        $this->sql($sql, [$id]);
+        $this->sql($sql, [$author, $title, $subtitle, $content, $id]);
     }
 
     public function deletePost($id)

@@ -36,20 +36,18 @@ class PostController implements PostControllerInterface
     }
 
     public function saveComment()
-     {
-        if(isset($_POST['submit']) && $_POST['submit'] === 'send'){
-            if (empty($_POST['pseudo']) && empty($_POST['content']) && empty($_POST['idPost']) ) {
+    {
+        if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
+            if (empty($_POST['pseudo']) && empty($_POST['content']) && empty($_POST['idPost'])) {
                 throw new Exception('Tous les champs doivent être remplis');
-            } else {
+            }
                 $pseudo = $this->view->check($_POST['pseudo']);
                 $content = $this->view->check($_POST['content']);
                 $idPost = $this->view->check($_POST['idPost']);
                 $this->commentRepository->addComment($idPost, $pseudo, $content);
                 $this->session->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
                 header('Location: ../index.php?route=post&id='.$idPost);
-            }
-        } else {
-            throw new Exception('Paramètre incorrect');
         }
+            throw new Exception('Paramètre incorrect');
      }
 }

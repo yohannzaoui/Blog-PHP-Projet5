@@ -22,22 +22,22 @@ class User implements UserInterface
 
     public function setId($id)
     {
-        $id=(int)$id;
-        if ($id>0) {
-            $this->id=$id;
+        $id = (int)$id;
+        if ($id > 0) {
+            $this->id = $id;
         }
     }
 
     public function setPseudo($pseudo)
     {
-        if (is_string($pseudo) && strlen($pseudo)<=255) {
+        if (is_string($pseudo) && strlen($pseudo) <= 255) {
             $this->pseudo = $pseudo;
         }
     }
 
     public function setPass($pass)
     {
-        if (is_string($pass) && strlen($pass)<=255) {
+        if (is_string($pass) && strlen($pass) <= 255) {
             $this->pass = $pass;
         }
     }
@@ -49,14 +49,14 @@ class User implements UserInterface
 
     public function setRole($role)
     {
-        if (is_string($role) && strlen($role)<=10) {
+        if (is_string($role) && strlen($role) <= 10) {
             $this->role = $role;
         }
     }
 
     public function setCreation_date($creation_date_fr)
     {
-        $this->creation_date_fr=$creation_date_fr;
+        $this->creation_date_fr = $creation_date_fr;
     }
 
     public function getPseudo()
@@ -91,7 +91,7 @@ class User implements UserInterface
 
     public function getToken()
     {
-        return $this->confirmation_token;
+        return $this->token;
     }
 
     public function setToken($token)

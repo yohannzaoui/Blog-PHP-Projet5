@@ -14,7 +14,7 @@ use Exception;
 class UserRepository extends DBFactory implements UserRepositoryInterface
 {
 
-    public function addAdmin($pseudo,$passhash,$email,$token)
+    public function addAdmin($pseudo, $passhash, $email, $token)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
@@ -35,7 +35,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $userId;
     }
 
-    public function addUser($pseudo,$email,$passhash,$token)
+    public function addUser($pseudo, $email, $passhash, $token)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
@@ -116,16 +116,16 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
-    public function confirme($id,$token)
+    public function confirme($id, $token)
     {
         $sql = 'SELECT id, token FROM users WHERE id = ? AND c_token = ?';
-        $req = $this->sql($sql, [$id,$token]);
+        $req = $this->sql($sql, [$id, $token]);
         $user = $req->rowCount();
         if($user > 0) {
             throw new Exception('Ce compte à déja été validé');
         } else {
             $sql = 'UPDATE users SET c_token=? WHERE id= ?';
-            $this->sql($sql, [$token,$id]);
+            $this->sql($sql, [$token, $id]);
         }
     }
 

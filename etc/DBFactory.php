@@ -45,9 +45,7 @@ abstract class DBFactory implements DBFactoryInterface
             $result->execute($parameters);
             return $result;
         }
-        else {
             $result = $this->checkDb()->query($sql);
             return $result;
-        }
     }
 }

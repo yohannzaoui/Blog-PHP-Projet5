@@ -25,7 +25,7 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
     public function addComment($idPost, $pseudo, $content)
     {
         $sql = 'INSERT INTO comments (id_post, pseudo, content, publication, creation_date) VALUES (?,?,?,0,NOW())';
-        $this->sql($sql, [$idPost,$pseudo, $content]);
+        $this->sql($sql, [$idPost, $pseudo, $content]);
     }
 
     public function getCommentsNoValide()

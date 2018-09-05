@@ -31,24 +31,22 @@ class HomeController implements HomeControllerInterface
     public function home()
     {
         $posts = $this->postRepository->getRecentPosts();
-        $this->view->render('home','frontend', ['posts'=> $posts]);
+        $this->view->render('home', 'frontend', ['posts'=> $posts]);
     }
 
     public function contact()
     {
-        if(isset($_POST['submit']) && $_POST['submit'] === "send") {
-            if(empty($_POST['name']) && empty($_POST['email']) && empty($_POST['message'])) {
+        if (isset($_POST['submit']) && $_POST['submit'] === "send") {
+            if (empty($_POST['name']) && empty($_POST['email']) && empty($_POST['message'])) {
                 throw new Execption('Les champs sont vides');
-            } else {
+            }
                 $pseudo = $this->view->check($_POST['name']);
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                 $body = $this->view->check($_POST['message']);
-                $this->mailer->send('Message du Blog',$pseudo,$email,$body);
+                $this->mailer->send('Message du Blog', $pseudo, $email, $body);
                 $this->session->flash('Votre message à bien été envoyé');
                 header('Location:index.php');
-            }
-        } else {
-            throw new Execption('Le paramétre envoyé est invalide');
         }
+            throw new Execption('Le paramétre envoyé est invalide');
     }
 }

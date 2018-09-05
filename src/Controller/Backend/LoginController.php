@@ -30,30 +30,28 @@ class LoginController implements LoginControllerInterface
 
     public function admin()
     {
-        if(!isset($_SESSION['pseudoAdmin'], $_SESSION['roleAdmin'])) {
-            $this->view->render('loginAdmin','backend');
-        } else {
-            $this->view->render('addPost','backend');
+        if (!isset($_SESSION['pseudoAdmin'], $_SESSION['roleAdmin'])) {
+            $this->view->render('loginAdmin', 'backend');
         }
+            $this->view->render('addPost', 'backend');
     }
 
     public function adminConnect()
     {
-        if (isset($_POST['submit']) && $_POST['submit'] === "send"){
-            if(empty($_POST['pseudo']) && empty($_POST['pass'])){
+        if (isset($_POST['submit']) && $_POST['submit'] === "send") {
+            if (empty($_POST['pseudo']) && empty($_POST['pass'])) {
                 throw new Exception('Tous les champs doivent être complétés');
-            } else {
+            }
                 $pseudo = $this->view->check($_POST['pseudo']);
                 $pass = $this->view->check($_POST['pass']);
                 $user = $this->userRepository->adminConnect($pseudo, $pass);
                 $this->session->add('roleAdmin', $user['role']);
                 $this->session->add('pseudoAdmin', $user['pseudo']);
-            }
-            if(isset($_POST['remember'])) {
+
+            if (isset($_POST['remember'])) {
                 $this->cookie->set('pseudoAdmin', $pseudo);
             }
-        } else {
-            throw new Exception('Le paramètre envoyé est incorrect');
         }
+            throw new Exception('Le paramètre envoyé est incorrect');
     }
 }

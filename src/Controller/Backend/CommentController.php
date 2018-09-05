@@ -28,7 +28,7 @@ class CommentController implements CommentControllerInterface
     {
         $comments = $this->commentRepository->getCommentsNoValide();
         $line = $this->commentRepository->countComments();
-        $this->view->render('listComments','backend', ['comments'=>$comments,'line'=>$line]);
+        $this->view->render('listComments', 'backend', ['comments'=>$comments,'line'=>$line]);
     }
 
     public function validateComment($id)
@@ -38,9 +38,8 @@ class CommentController implements CommentControllerInterface
             $this->commentRepository->validateComment($id);
             $this->session->flash('Commentaire validé');
             header('Location: ../index.php?route=listComments');
-        } else {
-            throw new Exception('ID du commentaire à valider manquant');
         }
+            throw new Exception('ID du commentaire à valider manquant');
     }
 
     public function deleteComment($id)
@@ -50,9 +49,8 @@ class CommentController implements CommentControllerInterface
             $this->commentRepository->deleteComment($id);
             $this->session->flash('Commentaire supprimé');
             header('Location: ../index.php?route=listComments');
-        }   else {
+        }
                 throw new Exception('ID du commentaire à supprimer manquant');
-            }
      }
 
      public function deleteComments($idPost)
@@ -62,8 +60,7 @@ class CommentController implements CommentControllerInterface
              $this->commentRepository->deleteComments($idPost);
              $this->session->flash("Tous les commentaires de l'article on été supprimer");
              header('Location: ../index.php?route=listPosts');
-         }   else {
+         }
                  throw new Exception('ID de l\'article manquant');
-             }
       }
 }
