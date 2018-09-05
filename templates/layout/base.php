@@ -11,8 +11,8 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Yohann Zaoui">
-    <meta name="copyright" content="Yohann Zaoui" />
-    <meta name="description" content="Blog Yohann Zaoui" />
+    <meta name="copyright" content="Yohann Zaoui"/>
+    <meta name="description" content="Blog Yohann Zaoui"/>
     <meta name="keywords" content="yohann zaoui, cv, emploi, developpeur php, php, html5, css3, bootstrap, sql, uml, mysql, symfony, openclassrooms, twitter, linkedin">
     <link rel="icon" href="../images/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
