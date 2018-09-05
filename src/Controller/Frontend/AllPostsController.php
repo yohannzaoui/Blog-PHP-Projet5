@@ -1,16 +1,17 @@
 <?php
 
-namespace App\controller\frontend;
+namespace App\Controller\Frontend;
 
+use App\Controller\Frontend\Interfaces\AllPostsControllerInterface;
 use App\repository\PostRepository;
 use Core\View;
 
 /**
  *
  */
-class AllPostsController
+class AllPostsController implements AllPostsControllerInterface
 {
-    
+
     private $postRepository;
     private $view;
 

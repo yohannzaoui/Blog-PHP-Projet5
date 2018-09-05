@@ -1,7 +1,8 @@
 <?php
 
-namespace App\controller\backend;
+namespace App\Controller\Backend;
 
+use App\Controller\Backend\Interfaces\RegisterControllerInterface;
 use App\Repository\UserRepository;
 use Core\View;
 use Core\Mailer;
@@ -10,9 +11,9 @@ use Exception;
 /**
  *
  */
-class RegisterController
+class RegisterController implements RegisterControllerInterface
 {
-    
+
     private $view;
     private $userRepository;
     private $mailer;

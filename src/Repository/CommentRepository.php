@@ -1,7 +1,8 @@
 <?php
 
-namespace App\repository;
+namespace App\Repository;
 
+use App\Repository\Interfaces\CommentRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\Comment;
 use PDO;
@@ -9,7 +10,7 @@ use PDO;
 /**
  *
  */
-class CommentRepository extends DBFactory
+class CommentRepository extends DBFactory implements CommentRepositoryInterface
 {
 
     public function getCommentsFromPost($idPost)

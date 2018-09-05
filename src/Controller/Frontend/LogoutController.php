@@ -1,15 +1,16 @@
 <?php
 
-namespace App\controller\frontend;
+namespace App\Controller\Frontend;
 
+use App\Controller\Frontend\Interfaces\LogoutControllerInterface;
 use Core\Session;
 
 /**
  *
  */
-class LogoutController
+class LogoutController implements LogoutControllerInterface
 {
-    
+
     private $session;
 
     public function __construct()

@@ -2,12 +2,13 @@
 
 namespace Core;
 
+use Core\Interfaces\ViewInterface;
 use Exception;
 
 /**
  *
  */
-class View
+class View implements ViewInterface
 {
 
     private $file;

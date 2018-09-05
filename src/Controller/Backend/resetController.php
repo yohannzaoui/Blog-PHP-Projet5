@@ -2,6 +2,7 @@
 
 namespace App\controller\backend;
 
+use App\Controller\Backend\Interfaces\ResetControllerInterface;
 use Core\View;
 use Core\Mailer;
 use App\Repository\UserRepository;
@@ -10,7 +11,7 @@ use Exception;
 /**
  *
  */
-class resetController
+class ResetController implements ResetControllerInterface
 {
 
     private $userRepository;

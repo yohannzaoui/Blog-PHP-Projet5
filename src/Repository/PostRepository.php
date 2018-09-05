@@ -1,7 +1,8 @@
 <?php
 
-namespace App\repository;
+namespace App\Repository;
 
+use App\Repository\Interfaces\PostRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\Post;
 use PDO;
@@ -9,7 +10,7 @@ use PDO;
 /**
  *
  */
-class PostRepository extends DBFactory
+class PostRepository extends DBFactory implements PostRepositoryInterface
 {
 
     public function getRecentPosts()

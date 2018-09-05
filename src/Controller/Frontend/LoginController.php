@@ -1,7 +1,8 @@
 <?php
 
-namespace App\controller\frontend;
+namespace App\Controller\Frontend;
 
+use App\Controller\Frontend\Interfaces\LoginControllerInterface;
 use App\Repository\UserRepository;
 use Core\View;
 use Core\Session;
@@ -11,7 +12,7 @@ use Exception;
 /**
  *
  */
-class LoginController
+class LoginController implements LoginControllerInterface
 {
 
     private $view;

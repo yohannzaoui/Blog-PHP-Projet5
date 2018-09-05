@@ -1,7 +1,8 @@
 <?php
 
-namespace App\controller\backend;
+namespace App\Controller\Backend;
 
+use App\Controller\Backend\Interfaces\UserControllerInterface;
 use App\Repository\UserRepository;
 use Core\View;
 use Core\Session;
@@ -10,9 +11,9 @@ use Exception;
 /**
  *
  */
-class UserController
+class UserController implements UserControllerInterface
 {
-    
+
     private $userRepository;
     private $view;
     private $session;

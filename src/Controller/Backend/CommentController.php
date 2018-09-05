@@ -2,6 +2,7 @@
 
 namespace App\controller\backend;
 
+use App\controller\backend\Interfaces\CommentControllerInterface;
 use App\Repository\CommentRepository;
 use Core\View;
 use Core\Session;
@@ -10,7 +11,7 @@ use Exception;
 /**
  *
  */
-class CommentController
+class CommentController implements CommentControllerInterface
 {
 
     private $view;

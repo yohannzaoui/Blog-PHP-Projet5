@@ -2,13 +2,14 @@
 
 namespace Core;
 
+use Core\Interfaces\DBFactoryInterface;
 use PDO;
 use Exception;
 
 /**
  *
  */
-abstract class DBFactory
+abstract class DBFactory implements DBFactoryInterface
 {
 
     protected $db;

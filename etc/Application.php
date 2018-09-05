@@ -2,12 +2,13 @@
 
 namespace Core;
 
+use Core\Interfaces\ApplicationInterface;
 use Core\Router;
 
 /**
  *
  */
-class Application
+class Application implements ApplicationInterface
 {
 
     private $router;

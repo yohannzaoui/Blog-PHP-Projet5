@@ -2,12 +2,13 @@
 
 namespace App\controller\backend;
 
+use App\Controller\Backend\Interfaces\LogoutControllerInterface;
 use Core\Session;
 
 /**
  *
  */
-class LogoutController
+class LogoutController implements LogoutControllerInterface
 {
 
     private $session;

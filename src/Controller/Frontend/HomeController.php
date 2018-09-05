@@ -1,7 +1,8 @@
 <?php
 
-namespace App\controller\frontend;
+namespace App\Controller\Frontend;
 
+use App\Controller\Frontend\Interfaces\HomeControllerInterface;
 use Core\View;
 use Core\Mailer;
 use Core\Session;
@@ -11,9 +12,9 @@ use Execption;
 /**
  *
  */
-class HomeController
+class HomeController implements HomeControllerInterface
 {
-    
+
     private $postRepository;
     private $view;
     private $session;
@@ -36,15 +37,15 @@ class HomeController
     public function contact()
     {
         if(isset($_POST['submit']) && $_POST['submit'] === "send") {
-            if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['message'])) {
+            if(empty($_POST['name']) && empty($_POST['email']) && empty($_POST['message'])) {
+                throw new Execption('Les champs sont vides');
+            } else {
                 $pseudo = $this->view->check($_POST['name']);
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                 $body = $this->view->check($_POST['message']);
-                $this->mailer->send($pseudo,$email,$body);
+                $this->mailer->send('Message du Blog',$pseudo,$email,$body);
                 $this->session->flash('Votre message à bien été envoyé');
                 header('Location:index.php');
-            } else {
-                throw new Execption('Les champs sont vides');
             }
         } else {
             throw new Execption('Le paramétre envoyé est invalide');

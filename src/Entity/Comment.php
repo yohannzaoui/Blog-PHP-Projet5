@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use App\Entity\Interfaces\CommentInterface;
+
 /**
  *
  */
-class Comment
+class Comment implements CommentInterface
 {
 
     private $id;

@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Interfaces\PostInterface;
 use Exception;
 
 /**
  *
  */
-class Post
+class Post implements PostInterface
 {
 
     private $id;

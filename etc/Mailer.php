@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Core\Interfaces\MailerInterface;
 use Swift_Message;
 use Swift_SmtpTransport;
 use Swift_Mailer;
@@ -9,7 +10,7 @@ use Swift_Mailer;
 /**
  *
  */
-class Mailer
+class Mailer implements MailerInterface
 {
 
     public function send($subject,$pseudo,$email,$body)

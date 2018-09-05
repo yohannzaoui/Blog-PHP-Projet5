@@ -2,10 +2,12 @@
 
 namespace Core;
 
+use Core\Interfaces\CookieInterface;
+
 /**
  *
  */
-class Cookie
+class Cookie implements CookieInterface
 {
 
     public function set($name, $value)

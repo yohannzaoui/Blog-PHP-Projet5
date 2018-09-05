@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Repository\Interfaces\UserRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\User;
 use PDO;
@@ -10,7 +11,7 @@ use Exception;
 /**
  *
  */
-class UserRepository extends DBFactory
+class UserRepository extends DBFactory implements UserRepositoryInterface
 {
 
     public function addAdmin($pseudo,$passhash,$email,$token)
@@ -124,7 +125,7 @@ class UserRepository extends DBFactory
             throw new Exception('Ce compte à déja été validé');
         } else {
             $sql = 'UPDATE users SET c_token=? WHERE id= ?';
-            $req = $this->sql($sql, [$token,$id]);
+            $this->sql($sql, [$token,$id]);
         }
     }
 

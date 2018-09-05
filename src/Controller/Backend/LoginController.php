@@ -2,6 +2,7 @@
 
 namespace App\controller\backend;
 
+use App\Controller\Backend\Interfaces\LoginControllerInterface;
 use App\Repository\UserRepository;
 use Core\View;
 use Core\Session;
@@ -11,7 +12,7 @@ use Exception;
 /**
  *
  */
-class LoginController
+class LoginController implements LoginControllerInterface
 {
 
     private $userRepository;

@@ -2,12 +2,13 @@
 
 namespace Core;
 
+use Core\Interfaces\SessionInterface;
 use Exception;
 
 /**
  *
  */
-class Session
+class Session implements SessionInterface
 {
 
     public function sessionStart()

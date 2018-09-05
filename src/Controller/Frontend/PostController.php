@@ -1,7 +1,8 @@
 <?php
 
-namespace App\controller\frontend;
+namespace App\Controller\Frontend;
 
+use App\Controller\Frontend\Interfaces\PostControllerInterface;
 use App\repository\PostRepository;
 use App\repository\CommentRepository;
 use Core\View;
@@ -11,9 +12,9 @@ use Exception;
 /**
  *
  */
-class PostController
+class PostController implements PostControllerInterface
 {
-    
+
     private $postRepository;
     private $commentRepository;
     private $view;

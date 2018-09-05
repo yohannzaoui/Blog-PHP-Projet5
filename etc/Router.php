@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Core\Interfaces\RouterInterface;
 use App\controller\frontend\HomeController;
 use App\controller\frontend\AllPostsController;
 use App\controller\frontend\PostController;
@@ -14,14 +15,14 @@ use App\controller\backend\RegisterController as RegisterAdmin;
 use App\controller\backend\PostController as PostBackend;
 use App\controller\backend\CommentController;
 use App\controller\backend\UserController;
-use App\controller\backend\resetController;
+use App\controller\backend\ResetController;
 use Core\View;
 use Exception;
 
 /**
  *
  */
-class Router
+class Router implements RouterInterface
 {
 
     private $homeController;
@@ -53,7 +54,7 @@ class Router
         $this->commentBackend = new CommentController;
         $this->postBackend = new PostBackend;
         $this->userController = new UserController;
-        $this->resetUser = new resetController;
+        $this->resetUser = new ResetController;
         $this->view = new View;
     }
 

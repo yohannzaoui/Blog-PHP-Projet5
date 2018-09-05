@@ -2,6 +2,7 @@
 
 namespace App\controller\backend;
 
+use App\Controller\Backend\Interfaces\PostControllerInterface;
 use App\repository\PostRepository;
 use Core\View;
 use Core\Session;
@@ -10,9 +11,9 @@ use Exception;
 /**
  *
  */
-class PostController
+class PostController implements PostControllerInterface
 {
-    
+
     private $view;
     private $session;
     private $postRepository;
