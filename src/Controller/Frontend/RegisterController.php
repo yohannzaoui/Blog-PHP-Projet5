@@ -31,7 +31,7 @@ class RegisterController implements RegisterControllerInterface
     }
 
 
-    public function adduser()
+    public function addUser()
     {
         if(isset($_POST['submit']) && $_POST['submit'] === "send"){
             if(empty($_POST['pseudo']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo'])){

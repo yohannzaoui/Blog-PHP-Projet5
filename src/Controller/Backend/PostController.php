@@ -1,6 +1,6 @@
 <?php
 
-namespace App\controller\backend;
+namespace App\Controller\Backend;
 
 use App\Controller\Backend\Interfaces\PostControllerInterface;
 use App\Repository\PostRepository;
@@ -67,7 +67,7 @@ class PostController implements PostControllerInterface
                 $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
                 header('Location: ../index.php?route=post&id='.$id);
             }   else {
-                throw new Exception('Tous les champs doivent être remplis');
+                throw new Exception('Tous les champs doivent être completés');
             }
         }
     }

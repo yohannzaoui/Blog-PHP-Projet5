@@ -1,6 +1,6 @@
 <?php
 
-namespace App\controller\backend;
+namespace App\Controller\Backend;
 
 use App\Controller\Backend\Interfaces\LogoutControllerInterface;
 use Core\Session;

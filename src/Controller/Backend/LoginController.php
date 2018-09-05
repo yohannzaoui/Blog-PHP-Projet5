@@ -1,6 +1,6 @@
 <?php
 
-namespace App\controller\backend;
+namespace App\Controller\Backend;
 
 use App\Controller\Backend\Interfaces\LoginControllerInterface;
 use App\Repository\UserRepository;
@@ -41,7 +41,7 @@ class LoginController implements LoginControllerInterface
     {
         if (isset($_POST['submit']) && $_POST['submit'] === "send"){
             if(empty($_POST['pseudo']) && empty($_POST['pass'])){
-                throw new Exception('Tous les champs doivent être remplis');
+                throw new Exception('Tous les champs doivent être complétés');
             } else {
                 $pseudo = $this->view->check($_POST['pseudo']);
                 $pass = $this->view->check($_POST['pass']);
