@@ -37,11 +37,11 @@
       <?php foreach ($users as $user) :?>
       <div class="post-preview">
         <h4 class="post-title">Pseudo :
-          <?= htmlspecialchars($user->getPseudo()) ?>
+          <?=$user->getPseudo()?>
         </h4>
         <p>Administrateur depuis le :
-          <?= $user->getCreationDate() ?>
-            <a href="index.php?route=deleteAdmin&id=<?=$user->getId()?>"><i class="fas fa-trash-alt"></i></a>
+          <?= $user->getCreationDate()?>
+            <a href="index.php?route=deleteAdmin&id=<?=htmlspecialchars($user->getId())?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>
       <hr>

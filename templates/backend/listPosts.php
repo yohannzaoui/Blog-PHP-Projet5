@@ -37,14 +37,14 @@
       <?php foreach ($posts as $post) :?>
       <div class="post-preview">
         <h4 class="post-title">
-          <?= htmlspecialchars($post->getTitle()) ?>
+          <?=$post->getTitle()?>
         </h4>
         <h5 class="post-subtitle">
-          <?= htmlspecialchars($post->getSubtitle())?>
+          <?=$post->getSubtitle()?>
         </h5>
         <p class="post-meta">
-          <?php echo "Auteur : ".htmlspecialchars($post->getAuthor())?>
-          <?php echo " - Date : ".htmlspecialchars($post->getCreationDate())?>
+          <?php echo "Auteur : ".$post->getAuthor()?>
+          <?php echo " - Date : ".$post->getCreationDate()?>
         </p>
         <p>
           <a href="index.php?route=post&id=<?=$post->getId()?>"><i class="fas fa-eye"></i></a> |

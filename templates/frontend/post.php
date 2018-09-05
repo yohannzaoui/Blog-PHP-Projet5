@@ -19,16 +19,16 @@
       <div class="col-lg-12 col-md-10 mx-auto">
         <div class="post-preview">
             <a><h2 class="post-title">
-                <?= $post->getTitle() ?>
+                <?=$post->getTitle()?>
             </h2>
             <h4 class="post-subtitle">
-              <?= $post->getSubtitle() ?>
+              <?=$post->getSubtitle()?>
           </h4></a>
           <p>
-            <?= $post->getContent() ?>
+            <?=$post->getContent()?>
           </p>
           <p class="post-meta">
-            <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate().' -- Modifié le '.$post->getUpdateDate() ?>
+            <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate().' -- Modifié le '.$post->getUpdateDate()?>
           </p>
           <small><p>
               Partagez l'article : <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -69,13 +69,13 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label for="message">Commentaire</label>
-            <textarea rows="5" class="form-control" name="content" placeholder="Message" id="message" required data-validation-required-message="SVP Entrez votre commentaire."></textarea>
+            <textarea rows="5" class="form-control" name="content" placeholder="Message" required data-validation-required-message="SVP Entrez votre commentaire."></textarea>
             <p class="help-block text-danger"></p>
           </div>
         </div>
         <br>
         <div class="form-group">
-          <input type="hidden" name="idPost" value="<?= htmlspecialchars($post->getId()) ?>" />
+          <input type="hidden" name="idPost" value="<?=$post->getId()?>" />
           <button type="submit" name="submit" value="send" class="btn btn-primary">Envoyer</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
           <a href="../index.php?route=logoutUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
@@ -95,7 +95,7 @@
               <strong>
                 <?=$comment->getPseudo()?>
               </strong> le
-              <?= $comment->getCreationDate()?>
+              <?=$comment->getCreationDate()?>
             </p>
             <p>
               <?=$comment->getContent()?>
