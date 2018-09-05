@@ -3,8 +3,8 @@
 namespace App\Controller\Frontend;
 
 use App\Controller\Frontend\Interfaces\PostControllerInterface;
-use App\repository\PostRepository;
-use App\repository\CommentRepository;
+use App\Repository\PostRepository;
+use App\Repository\CommentRepository;
 use Core\View;
 use Core\Session;
 use Exception;

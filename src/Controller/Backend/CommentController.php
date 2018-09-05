@@ -2,7 +2,7 @@
 
 namespace App\controller\backend;
 
-use App\controller\backend\Interfaces\CommentControllerInterface;
+use App\Controller\Backend\Interfaces\CommentControllerInterface;
 use App\Repository\CommentRepository;
 use Core\View;
 use Core\Session;

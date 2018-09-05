@@ -6,7 +6,7 @@ use App\Controller\Frontend\Interfaces\HomeControllerInterface;
 use Core\View;
 use Core\Mailer;
 use Core\Session;
-use App\repository\PostRepository;
+use App\Repository\PostRepository;
 use Execption;
 
 /**

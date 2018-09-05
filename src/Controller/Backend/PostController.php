@@ -3,7 +3,7 @@
 namespace App\controller\backend;
 
 use App\Controller\Backend\Interfaces\PostControllerInterface;
-use App\repository\PostRepository;
+use App\Repository\PostRepository;
 use Core\View;
 use Core\Session;
 use Exception;

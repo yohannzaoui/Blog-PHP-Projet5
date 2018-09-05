@@ -3,7 +3,7 @@
 namespace App\Controller\Frontend;
 
 use App\Controller\Frontend\Interfaces\AllPostsControllerInterface;
-use App\repository\PostRepository;
+use App\Repository\PostRepository;
 use Core\View;
 
 /**

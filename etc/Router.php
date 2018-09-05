@@ -3,19 +3,19 @@
 namespace Core;
 
 use Core\Interfaces\RouterInterface;
-use App\controller\frontend\HomeController;
-use App\controller\frontend\AllPostsController;
-use App\controller\frontend\PostController;
-use App\controller\frontend\LoginController;
-use App\controller\frontend\RegisterController;
-use App\controller\frontend\LogoutController;
-use App\controller\backend\LoginController as LoginAdmin;
-use App\controller\backend\LogoutController as LogoutAdmin;
-use App\controller\backend\RegisterController as RegisterAdmin;
-use App\controller\backend\PostController as PostBackend;
-use App\controller\backend\CommentController;
-use App\controller\backend\UserController;
-use App\controller\backend\ResetController;
+use App\Controller\Frontend\HomeController;
+use App\Controller\Frontend\AllPostsController;
+use App\Controller\Frontend\PostController;
+use App\Controller\Frontend\LoginController;
+use App\Controller\Frontend\RegisterController;
+use App\Controller\Frontend\LogoutController;
+use App\Controller\Backend\LoginController as LoginAdmin;
+use App\Controller\Backend\LogoutController as LogoutAdmin;
+use App\Controller\Backend\RegisterController as RegisterAdmin;
+use App\Controller\Backend\PostController as PostBackend;
+use App\Controller\Backend\CommentController;
+use App\Controller\Backend\UserController;
+use App\Controller\Backend\ResetController;
 use Core\View;
 use Exception;
 
