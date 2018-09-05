@@ -24,7 +24,7 @@ class View implements ViewInterface
 
     private function renderFile($file, $data)
     {
-        if(file_exists($file)) {
+        if (file_exists($file)) {
             extract($data);
             ob_start();
             require $file;

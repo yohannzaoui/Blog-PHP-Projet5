@@ -19,7 +19,7 @@
           </a>
           <p class="post-meta">
             <?php echo "Ecrit par ".htmlspecialchars($post->getAuthor())?>
-            <?php echo "le ".htmlspecialchars($post->getCreation_date())?>
+            <?php echo "le ".htmlspecialchars($post->getCreationDate())?>
           </p>
         </div>
         <hr>

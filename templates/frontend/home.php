@@ -30,7 +30,7 @@
 
           <p class="post-meta">
             <?php echo "Ecrit par " . $post->getAuthor() ?>
-            <?php echo "le " . $post->getCreation_date() ?>
+            <?php echo "le " . $post->getCreationDate() ?>
           </p>
         </div>
         <hr>

@@ -25,7 +25,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $sql = 'SELECT email FROM users WHERE role = "admin" AND email = ?';
         $req = $this->sql($sql, [$email]);
         $user = $req->rowCount();
-        if($user > 0) {
+        if ($user > 0) {
             throw new Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
@@ -40,13 +40,13 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
         $user = $req->rowCount();
-        if($user > 0) {
+        if ($user > 0) {
             throw new Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
         }
         $sql = 'SELECT email FROM users WHERE role = "member" AND email = ?';
         $req = $this->sql($sql, [$email]);
         $user = $req->rowCount();
-        if($user > 0) {
+        if ($user > 0) {
             throw new Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"member",NOW())';
@@ -58,7 +58,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
 
     public function allAdmins()
     {
-        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
+        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
         $req = $this->sql($sql);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
         $users = $req->fetchAll();
@@ -67,7 +67,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
 
     public function allUsers()
     {
-        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr FROM users WHERE role = "member" ORDER BY creation_date DESC';
+        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "member" ORDER BY creation_date DESC';
         $req = $this->sql($sql);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
         $users = $req->fetchAll();
@@ -85,13 +85,13 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "admin"';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
-        if($count > 0) {
+        if ($count > 0) {
             $user = $req->fetch();
-            if(password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
+            if (password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
                 header('Location: ../index.php?route=savePost');
                 return $user;
             } else {
-            throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
+                throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
             }
         } else {
             throw new Exception("Ce compte n'éxiste pas");
@@ -103,13 +103,13 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "member"';
         $req = $this->sql($sql, [$pseudo]);
         $count = $req->rowCount();
-        if($count > 0) {
+        if ($count > 0) {
             $user = $req->fetch();
-            if(password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
+            if (password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
                 header('Location: ../index.php?route=all');
                 return $user;
             } else {
-            throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
+                throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
         } else {
             throw new Exception("Ce compte n'éxiste pas");
@@ -121,7 +121,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $sql = 'SELECT id, token FROM users WHERE id = ? AND c_token = ?';
         $req = $this->sql($sql, [$id, $token]);
         $user = $req->rowCount();
-        if($user > 0) {
+        if ($user > 0) {
             throw new Exception('Ce compte à déja été validé');
         } else {
             $sql = 'UPDATE users SET c_token=? WHERE id= ?';

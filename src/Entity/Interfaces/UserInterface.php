@@ -21,7 +21,7 @@ interface UserInterface
 
     public function setCtoken($ctoken);
 
-    public function setCreation_date($creation_date_fr);
+    public function setCreationDate($creationDateFr);
 
     public function getPseudo();
 
@@ -33,7 +33,7 @@ interface UserInterface
 
     public function getRole();
 
-    public function getCreation_date();
+    public function getCreationDate();
 
     public function getToken();
 

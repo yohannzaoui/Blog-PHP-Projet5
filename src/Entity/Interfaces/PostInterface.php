@@ -17,9 +17,9 @@ interface PostInterface
 
     public function setContent($content);
 
-    public function setCreation_date($creation_date_fr);
+    public function setCreationDate($creationDateFr);
 
-    public function setUpdate_date($update_date_fr);
+    public function setUpdateDate($updateDateFr);
 
     public function getId();
 
@@ -31,7 +31,7 @@ interface PostInterface
 
     public function getContent();
 
-    public function getCreation_date();
+    public function getCreationDate();
 
-    public function getUpdate_date();
+    public function getUpdateDate();
 }

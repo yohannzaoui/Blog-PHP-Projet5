@@ -40,7 +40,7 @@
           <?= htmlspecialchars($user->getPseudo()) ?>
         </h4>
         <p>Administrateur depuis le :
-          <?= $user->getCreation_date() ?>
+          <?= $user->getCreationDate() ?>
             <a href="index.php?route=deleteAdmin&id=<?=$user->getId()?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>

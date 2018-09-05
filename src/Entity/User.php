@@ -17,7 +17,7 @@ class User implements UserInterface
     private $role;
     private $token;
     private $ctoken;
-    private $creation_date_fr;
+    private $creationDateFr;
 
 
     public function setId($id)
@@ -54,9 +54,9 @@ class User implements UserInterface
         }
     }
 
-    public function setCreation_date($creation_date_fr)
+    public function setCreationDate($creationDateFr)
     {
-        $this->creation_date_fr = $creation_date_fr;
+        $this->creationDateFr = $creationDateFr;
     }
 
     public function getPseudo()
@@ -84,9 +84,9 @@ class User implements UserInterface
         return $this->role;
     }
 
-    public function getCreation_date()
+    public function getCreationDate()
     {
-        return $this->creation_date_fr;
+        return $this->creationDateFr;
     }
 
     public function getToken()

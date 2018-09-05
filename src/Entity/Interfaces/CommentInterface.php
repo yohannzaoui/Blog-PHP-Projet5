@@ -15,7 +15,7 @@ interface CommentInterface
 
     public function setContent($content);
 
-    public function setCreation_date($creation_date);
+    public function setCreationDate($creationDate);
 
     public function setPublication($publication);
 
@@ -27,7 +27,7 @@ interface CommentInterface
 
     public function getContent();
 
-    public function getCreation_date();
+    public function getCreationDate();
 
     public function getPublication();
 }

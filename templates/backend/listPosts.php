@@ -44,7 +44,7 @@
         </h5>
         <p class="post-meta">
           <?php echo "Auteur : ".htmlspecialchars($post->getAuthor())?>
-          <?php echo " - Date : ".htmlspecialchars($post->getCreation_date())?>
+          <?php echo " - Date : ".htmlspecialchars($post->getCreationDate())?>
         </p>
         <p>
           <a href="index.php?route=post&id=<?=$post->getId()?>"><i class="fas fa-eye"></i></a> |

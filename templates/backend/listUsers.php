@@ -40,7 +40,7 @@
           <?= htmlspecialchars($user->getPseudo()) ?>
         </h4>
         <p>Membre depuis le :
-          <?= $user->getCreation_date() ?>
+          <?= $user->getCreationDate() ?>
             <a href="index.php?route=deleteUser&id=<?=$user->getId()?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>

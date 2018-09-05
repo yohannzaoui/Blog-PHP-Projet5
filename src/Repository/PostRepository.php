@@ -15,7 +15,7 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
 
     public function getRecentPosts()
     {
-        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0,3';
+        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts ORDER BY creation_date DESC LIMIT 0,3';
         $req=$this->sql($sql);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
         $posts = $req->fetchAll();
@@ -24,7 +24,7 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
 
     public function getAll()
     {
-        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts ORDER BY creation_date DESC';
+        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts ORDER BY creation_date DESC';
         $req=$this->sql($sql);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
         $posts = $req->fetchAll();
@@ -33,8 +33,8 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
 
     public function getPost($id)
     {
-        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creation_date_fr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS update_date_fr FROM posts WHERE id = ?';
-        $req=$this->sql($sql, [$id]);
+        $sql = 'SELECT id,author,title,subtitle,content,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts WHERE id = ?';
+        $req = $this->sql($sql, [$id]);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
         $post = $req->fetch();
         return $post;

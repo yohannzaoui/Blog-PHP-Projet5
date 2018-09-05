@@ -35,7 +35,7 @@
     <div class="col-lg-12 col-md-10 mx-auto">
       <?php foreach ($comments as $comment) : ?>
       <div class="container">
-        <?php echo '<p><b>Pseudo</b> : '.$comment->getPseudo().'<b> - Le</b> '.$comment->getCreation_date().'<br> <b>Commentaire</b> : '.$comment->getContent().'</p>'?>
+        <?php echo '<p><b>Pseudo</b> : '.$comment->getPseudo().'<b> - Le</b> '.$comment->getCreationDate().'<br> <b>Commentaire</b> : '.$comment->getContent().'</p>'?>
         <a href="index.php?route=post&id=<?= $comment->getPostId() ?>"><i class="fas fa-eye"></i></a> |
         <a  href="index.php?route=validateComment&id=<?=$comment->getId()?>"><i class="fas fa-check"></i></a> |
         <a  href="index.php?route=deleteComment&id=<?=$comment->getId()?>"><i class="fas fa-trash-alt"></i></a>
