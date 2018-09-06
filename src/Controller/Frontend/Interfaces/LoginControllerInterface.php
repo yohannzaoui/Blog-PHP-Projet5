@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller\Frontend\Interfaces;
 
 /**
