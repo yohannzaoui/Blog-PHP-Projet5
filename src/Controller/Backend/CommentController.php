@@ -27,7 +27,7 @@ class CommentController implements CommentControllerInterface
     {
         $comments = $this->commentRepository->getCommentsNoValide();
         $line = $this->commentRepository->countComments();
-        $this->view->render('listComments', 'backend', ['comments'=>$comments,'line'=>$line]);
+        $this->view->render('listComments', 'backend', ['comments'=>$comments, 'line'=>$line]);
     }
 
     public function validateComment($id)

@@ -26,22 +26,22 @@ class ResetController implements ResetControllerInterface
 
     public function resetUser()
     {
-        $this->view->render('resetUser','frontend');
+        $this->view->render('resetUser', 'frontend');
     }
 
     public function resetAdmin()
     {
-        $this->view->render('resetAdmin','backend');
+        $this->view->render('resetAdmin', 'backend');
     }
 
     public function passwordResetUser()
     {
-        $this->view->render('passwordResetUser','frontend');
+        $this->view->render('passwordResetUser', 'frontend');
     }
 
     public function passwordResetAdmin()
     {
-        $this->view->render('passwordResetAdmin','backend');
+        $this->view->render('passwordResetAdmin', 'backend');
     }
 
     public function resetUserInfo()

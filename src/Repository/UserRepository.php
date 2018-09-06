@@ -57,7 +57,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
 
     public function allAdmins()
     {
-        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
+        $sql = 'SELECT id, pseudo, pass, role, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
         $req = $this->sql($sql);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
         $users = $req->fetchAll();
@@ -66,7 +66,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
 
     public function allUsers()
     {
-        $sql = 'SELECT id,pseudo,pass,role,DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "member" ORDER BY creation_date DESC';
+        $sql = 'SELECT id, pseudo, pass, role, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "member" ORDER BY creation_date DESC';
         $req = $this->sql($sql);
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
         $users = $req->fetchAll();
@@ -75,7 +75,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
 
     public function deleteUser($id)
     {
-        $sql = 'DELETE FROM users WHERE id=?';
+        $sql = 'DELETE FROM users WHERE id = ?';
         $this->sql($sql, [$id]);
     }
 
@@ -123,7 +123,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         if ($user > 0) {
             throw new Exception('Ce compte à déja été validé');
         } else {
-            $sql = 'UPDATE users SET c_token=? WHERE id= ?';
+            $sql = 'UPDATE users SET c_token = ? WHERE id = ?';
             $this->sql($sql, [$token, $id]);
         }
     }
@@ -156,7 +156,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
 
     public function resetUserPass($id, $passhash)
     {
-        $sql = 'UPDATE users SET pass=? WHERE id= ?';
+        $sql = 'UPDATE users SET pass = ? WHERE id = ?';
         $this->sql($sql, [$passhash, $id]);
     }
 

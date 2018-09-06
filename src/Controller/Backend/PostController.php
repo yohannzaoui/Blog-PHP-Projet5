@@ -44,13 +44,13 @@ class PostController implements PostControllerInterface
     {
         $posts = $this->postRepository->getAll();
         $line = $this->postRepository->countPosts();
-        $this->view->render('listPosts','backend', ['posts'=>$posts,'line'=>$line]);
+        $this->view->render('listPosts', 'backend', ['posts'=>$posts, 'line'=>$line]);
     }
 
     public function editPost($id)
     {
         $post = $this->postRepository->getPost($id);
-        $this->view->render('editPost','backend', ['post'=>$post]);
+        $this->view->render('editPost', 'backend', ['post'=>$post]);
     }
 
     public function updatePost()
@@ -78,7 +78,7 @@ class PostController implements PostControllerInterface
             $this->session->flash("L'article à été supprimer");
             header('Location: ../index.php?route=listPosts');
         }   else {
-            throw new Exception('Identifiant d\'article manquant');
+            throw new Exception("Identifiant d'article manquant");
         }
     }
 }

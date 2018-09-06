@@ -60,87 +60,86 @@ class Router implements RouterInterface
     public function run()
     {
         try{
-            if(isset($_GET['route']))
-            {
-                if($_GET['route'] === 'post'){
+            if (isset($_GET['route'])) {
+                if ($_GET['route'] === 'post') {
                     $this->postFrontend->post($_GET['id']);
                 }
-                elseif($_GET['route'] === 'all'){
+                elseif ($_GET['route'] === 'all') {
                     $this->allPostsController->all();
                 }
                 elseif ($_GET['route'] === 'sendMail') {
                     $this->homeController->contact();
                 }
-                elseif($_GET['route'] === 'saveComment'){
+                elseif ($_GET['route'] === 'saveComment') {
                     $this->postFrontend->saveComment();
                 }
-                elseif($_GET['route'] === 'loginUser'){
+                elseif ($_GET['route'] === 'loginUser') {
                     $this->loginUser->loginPage();
                 }
-                elseif($_GET['route'] === 'registerUser'){
+                elseif ($_GET['route'] === 'registerUser') {
                     $this->registerUser->registrationPage();
                 }
-                elseif($_GET['route'] === 'addUser'){
+                elseif ($_GET['route'] === 'addUser') {
                     $this->registerUser->addUser();
                 }
-                elseif($_GET['route'] === 'userConnexion'){
+                elseif ($_GET['route'] === 'userConnexion') {
                     $this->loginUser->userConnexion();
                 }
-                elseif($_GET['route'] === 'loginAdmin'){
+                elseif ($_GET['route'] === 'loginAdmin') {
                     $this->loginAdmin->admin();
                 }
-                elseif($_GET['route'] === 'registerAdmin'){
+                elseif ($_GET['route'] === 'registerAdmin') {
                     $this->registerAdmin->registration();
                 }
-                elseif($_GET['route'] === 'savePost'){
+                elseif ($_GET['route'] === 'savePost') {
                     $this->postBackend->savePost();
                 }
-                elseif($_GET['route'] === 'listComments'){
+                elseif ($_GET['route'] === 'listComments') {
                     $this->commentBackend->listComments();
                 }
-                elseif($_GET['route'] === 'validateComment'){
+                elseif ($_GET['route'] === 'validateComment') {
                     $this->commentBackend->validateComment($_GET['id']);
                 }
-                elseif($_GET['route'] === 'deleteComment'){
+                elseif ($_GET['route'] === 'deleteComment') {
                     $this->commentBackend->deleteComment($_GET['id']);
                 }
-                elseif($_GET['route'] === 'deleteComments'){
+                elseif ($_GET['route'] === 'deleteComments') {
                     $this->commentBackend->deleteComments($_GET['idPost']);
                 }
-                elseif($_GET['route'] === 'listPosts'){
+                elseif ($_GET['route'] === 'listPosts') {
                     $this->postBackend->listPosts();
                 }
-                elseif($_GET['route'] === 'editPost'){
+                elseif ($_GET['route'] === 'editPost') {
                     $this->postBackend->editPost($_GET['id']);
                 }
-                elseif($_GET['route'] === 'updatePost'){
+                elseif ($_GET['route'] === 'updatePost') {
                     $this->postBackend->updatePost();
                 }
-                elseif($_GET['route'] === 'deletePost'){
+                elseif ($_GET['route'] === 'deletePost') {
                     $this->postBackend->deletePost($_GET['id']);
                 }
-                elseif($_GET['route'] === 'addAdmin'){
+                elseif ($_GET['route'] === 'addAdmin') {
                     $this->registerAdmin->addAdmin();
                 }
-                elseif($_GET['route'] === 'listAdmins'){
+                elseif ($_GET['route'] === 'listAdmins') {
                     $this->userController->listAdmins();
                 }
-                elseif($_GET['route'] === 'listUsers'){
+                elseif ($_GET['route'] === 'listUsers') {
                     $this->userController->listUsers();
                 }
-                elseif($_GET['route'] === 'deleteAdmin'){
+                elseif ($_GET['route'] === 'deleteAdmin') {
                     $this->userController->deleteAdmin($_GET['id']);
                 }
-                elseif($_GET['route'] === 'deleteUser'){
+                elseif ($_GET['route'] === 'deleteUser') {
                     $this->userController->deleteUser($_GET['id']);
                 }
-                elseif($_GET['route'] === 'adminConnexion'){
+                elseif ($_GET['route'] === 'adminConnexion') {
                     $this->loginAdmin->adminConnect();
                 }
-                elseif($_GET['route'] === 'logoutAdmin'){
+                elseif ($_GET['route'] === 'logoutAdmin') {
                     $this->logoutAdmin->logoutAdmin();
                 }
-                elseif($_GET['route'] === 'logoutUser'){
+                elseif ($_GET['route'] === 'logoutUser') {
                     $this->logoutUser->logoutUser();
                 }
                 elseif ($_GET['route'] === 'confirmation') {
@@ -149,7 +148,7 @@ class Router implements RouterInterface
                 elseif ($_GET['route'] === 'resetUser') {
                     $this->resetUser->resetUser();
                 }
-                elseif($_GET['route'] === 'passUser'){
+                elseif ($_GET['route'] === 'passUser') {
                     $this->resetUser->resetUserInfo();
                 }
                 elseif ($_GET['route'] === 'passwordResetUser') {
@@ -161,17 +160,17 @@ class Router implements RouterInterface
                 elseif ($_GET['route'] === 'resetAdmin') {
                     $this->resetUser->resetAdmin();
                 }
-                elseif($_GET['route'] === 'passAdmin'){
+                elseif ($_GET['route'] === 'passAdmin') {
                     $this->resetUser->resetAdminInfo();
                 }
                 elseif ($_GET['route'] === 'passwordResetAdmin') {
                     $this->resetUser->passwordResetAdmin($_GET['id'], $_GET['token']);
                 }
-                else{
+                else {
                     $this->view->render('error', 'error', ['error'=>'Page introuvable']);
                 }
             }
-            else{
+            else {
                 $this->homeController->home();
             }
         }

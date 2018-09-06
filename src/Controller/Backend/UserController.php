@@ -28,14 +28,14 @@ class UserController implements UserControllerInterface
      {
          $users = $this->userRepository->allAdmins();
          $line = $this->userRepository->countAdmins();
-         $this->view->render('listAdmins','backend', ['users'=>$users, 'line'=>$line]);
+         $this->view->render('listAdmins', 'backend', ['users'=>$users, 'line'=>$line]);
      }
 
      public function listUsers()
      {
          $users = $this->userRepository->allUsers();
          $line = $this->userRepository->countMembers();
-         $this->view->render('listUsers','backend', ['users'=>$users, 'line'=>$line]);
+         $this->view->render('listUsers', 'backend', ['users'=>$users, 'line'=>$line]);
      }
 
      public function deleteAdmin()

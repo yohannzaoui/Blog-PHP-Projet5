@@ -15,10 +15,10 @@
           <a class="nav-link" href="index.php?route=all">Articles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" target="_blank" href="../doc/cv_web_yohann_zaoui.pdf">Mon Cv <span class="badge badge-secondary">PDF</span></a>
+          <a class="nav-link" href="../doc/cv_web_yohann_zaoui.pdf" target="_blank">Mon Cv <span class="badge badge-secondary">PDF</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php#contact_form">Contact</a>
+          <a class="nav-link" href="index.php#contact_form" target="_blank">Contact</a>
         </li>
       </ul>
     </div>
