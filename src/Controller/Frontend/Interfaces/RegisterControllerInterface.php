@@ -10,7 +10,7 @@ interface RegisterControllerInterface
 
     public function registrationPage();
 
-    public function adduser();
+    public function addUser();
 
-    public function confirmation($id,$token);
+    public function confirmation($id, $token);
 }

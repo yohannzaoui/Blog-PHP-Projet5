@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
-            <h3 class="title_footer">Blog Yohann Zaoui</h3>
+            <h3 class="title_footer"><a href="index.php">Blog Yohann Zaoui</a></h3>
         </div>
       <div class="col-lg-6 col-md-10 mx-auto">
         <ul class="list-inline text-center">
