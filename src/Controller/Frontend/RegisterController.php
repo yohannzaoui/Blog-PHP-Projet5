@@ -67,7 +67,8 @@ class RegisterController implements RegisterControllerInterface
             $id = $this->view->check($_GET['id']);
             $this->userRepository->confirme($id, $token);
             $this->view->render('confirmation', 'frontend');
-        }
+        } else {
             throw new Exception("Identifiant / Token incorrect");
+        }
     }
 }
