@@ -41,7 +41,7 @@
         </h4>
         <p>Membre depuis le :
           <?= $user->getCreationDate() ?>
-            <a href="index.php?route=deleteUser&id=<?=$user->getId()?>"><i class="fas fa-trash-alt"></i></a>
+            <a href="/deleteUser/<?=$user->getId()?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>
       <hr>

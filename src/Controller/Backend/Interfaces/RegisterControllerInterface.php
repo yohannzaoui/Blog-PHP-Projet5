@@ -8,7 +8,5 @@ interface RegisterControllerInterface
 {
     public function __construct();
 
-    public function registration();
-
     public function addAdmin();
 }

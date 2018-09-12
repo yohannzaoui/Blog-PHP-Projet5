@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=passUser" method="post">
+      <form action="" method="post">
         <div class="control-group">
           <label for="pseudo">Votre adresse Email</label>
           <input type="email" class="form-control" name="email">

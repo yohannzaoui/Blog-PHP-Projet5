@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
         <h4 class="title_center">Ajouter un article</h4>
-            <form method="post" action="index.php?route=savePost" enctype="multipart/form-data">
+            <form method="post" action="">
                 <div class="control-group">
                     <label for="author">Auteur</label>
                     <input type="text" class="form-control" name="author">

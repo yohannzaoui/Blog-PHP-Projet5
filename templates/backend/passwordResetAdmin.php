@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=changePassUser" method="post">
+      <form action="" method="post">
         <div class="control-group">
           <label for="pseudo">Votre nouveau mot de passe</label>
           <input type="password" class="form-control" name="pass1">
@@ -20,8 +20,8 @@
         </div>
         <br>
         <div class="form-group">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($_GET['id']) ?>"></input>
-            <input type="hidden" name="token" value="<?= htmlspecialchars($_GET['token']) ?>"></input>
+            <input type="hidden" name="id" value="<?=htmlspecialchars($_GET['id'])?>"></input>
+            <input type="hidden" name="token" value="<?=htmlspecialchars($_GET['token'])?>"></input>
           <button type="submit" name="submit" value="send" class="btn btn-primary">Envoyer</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>

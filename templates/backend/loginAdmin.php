@@ -13,7 +13,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <form action="index.php?route=adminConnexion" method="post">
+      <form action="/admin" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" class="form-control" name="pseudo">
@@ -35,10 +35,10 @@
         </div>
       </form>
       <p>Pas de compte ?
-        <a href="index.php?route=registerAdmin">Inscrivez vous !</a>
+        <a href="/registerAdmin">Inscrivez vous !</a>
       </p>
       <small><p>
-        <a href="index.php?route=resetAdmin">Mot de passe oublié ?</a>
+        <a href="/resetAdmin">Mot de passe oublié ?</a>
     </p></small>
     </div>
   </div>

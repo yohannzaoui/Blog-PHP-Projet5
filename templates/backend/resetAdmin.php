@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=passAdmin" method="post">
+      <form action="/passAdmin" method="post">
         <div class="control-group">
           <label for="pseudo">Votre adresse Email</label>
           <input type="email" class="form-control" name="email">
@@ -20,5 +20,10 @@
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
       </form>
+      <small><p class="title_center">
+          <?php if(isset($_SERVER['HTTP_REFERER'])) : ?>
+          <a href="<?=$_SERVER['HTTP_REFERER']?>"> <<<< RETOUR</a>
+          <?php endif; ?>
+      </p></small>
     </div>
   </div>

@@ -28,8 +28,10 @@ class View implements ViewInterface
             ob_start();
             require $file;
             return ob_get_clean();
-        }
+        } else {
             throw new Exception('Fichier vue inexistant');
+        }
+
     }
 
     public function check($data)

@@ -8,5 +8,5 @@ interface LogoutControllerInterface
 {
     public function __construct();
 
-    public function logoutAdmin();
+    public function __invoke();
 }

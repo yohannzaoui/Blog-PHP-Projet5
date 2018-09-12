@@ -35,7 +35,7 @@
           </p></small>
           <p>
             <small>
-              <a href="index.php?route=all">Retour à la liste d'articles</a>
+              <a href="/all">Retour à la liste d'articles</a>
             </small>
           </p>
         </div>
@@ -46,7 +46,7 @@
 
 <?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])):?>
 <p class="title_center">
-    <a href="../index.php?route=loginUser"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
+    <a href="../loginUser"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
 </p>
 <?php endif; ?>
 
@@ -56,7 +56,7 @@
   <div class="row">
     <div class="col-lg-12 col-md-10 mx-auto">
       <h2 class="title_center">Ecrire un commentaire</h2>
-      <form action="../index.php?route=saveComment" method="post">
+      <form action="" method="post">
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label for="pseudo">Auteur</label>

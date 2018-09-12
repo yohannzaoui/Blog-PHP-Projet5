@@ -1,6 +1,7 @@
 <?php
 namespace App\controller\backend\Interfaces;
 
+use Core\Request;
 /**
  *
  */
@@ -8,11 +9,13 @@ interface CommentControllerInterface
 {
     public function __construct();
 
-    public function listComments();
+    public function __invoke(request $request);
 
-    public function validateComment($id);
+    //public function listComments();
 
-    public function deleteComment($id);
+    //public function validateComment($id);
 
-    public function deleteComments($idPost);
+    //public function deleteComment($id);
+
+    //public function deleteComments($idPost);
 }

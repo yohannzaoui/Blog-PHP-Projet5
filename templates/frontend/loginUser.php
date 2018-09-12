@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=userConnexion" method="post">
+      <form action="" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" class="form-control" name="pseudo">
@@ -29,10 +29,10 @@
         </div>
       </form>
       <p>Pas de compte ?
-        <a href="index.php?route=registerUser">Inscrivez vous !</a>
+        <a href="/registerUser">Inscrivez vous !</a>
       </p>
       <small><p>
-        <a href="index.php?route=resetUser">Mot de passe oublié ?</a>
+        <a href="/resetUser">Mot de passe oublié ?</a>
     </p></small>
     </div>
   </div>

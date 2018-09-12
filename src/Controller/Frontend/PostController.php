@@ -6,7 +6,7 @@ use App\Repository\PostRepository;
 use App\Repository\CommentRepository;
 use Core\View;
 use Core\Session;
-use Exception;
+use Core\Request;
 
 /**
  *
@@ -27,26 +27,34 @@ class PostController implements PostControllerInterface
         $this->session = new Session;
     }
 
-    public function post($idPost)
+    public function __invoke(request $request)
     {
-        $post = $this->postRepository->getPost($idPost);
-        $comments = $this->commentRepository->getCommentsFromPost($idPost);
-        $this->view->render('post', 'frontend', ['post'=> $post, 'comments'=>$comments]);
-    }
-
-    public function saveComment()
-    {
-        if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
-            if (empty($_POST['pseudo']) && empty($_POST['content']) && empty($_POST['idPost'])) {
-                throw new Exception('Tous les champs doivent être remplis');
+        if ($request->isMethod('POST')) {
+            if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
+                if (empty($_POST['pseudo']) && empty($_POST['content']) && empty($_POST['idPost'])) {
+                    $this->view->render('error', 'error', ['error'=>'Tous les champs doivent être remplis']);
+                } else {
+                    $pseudo = $this->view->check($_POST['pseudo']);
+                    $content = $this->view->check($_POST['content']);
+                    $idPost = $this->view->check($_POST['idPost']);
+                    $this->commentRepository->addComment($idPost, $pseudo, $content);
+                    $this->session->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
+                    header('Location: ../post/'.$idPost);
+                }
+            } else {
+                $this->view->render('error', 'error', ['error'=>'Paramètre incorrect']);
             }
-                $pseudo = $this->view->check($_POST['pseudo']);
-                $content = $this->view->check($_POST['content']);
-                $idPost = $this->view->check($_POST['idPost']);
-                $this->commentRepository->addComment($idPost, $pseudo, $content);
-                $this->session->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
-                header('Location: ../index.php?route=post&id='.$idPost);
+            } else {
+                if (isset($_GET['id']) && !empty($_GET['id'])) {
+                    $id = $request->getParam('id');
+                    $idPost = $this->view->check($id);
+                    $post = $this->postRepository->getPost($idPost);
+                    $comments = $this->commentRepository->getCommentsFromPost($idPost);
+                    $this->view->render('post', 'frontend', ['post'=> $post, 'comments'=>$comments]);
+                } else {
+                    $this->view->render('error', 'error', ['error'=>'L\'ID de l\'article est absent']);
+                }
         }
-            throw new Exception('Paramètre incorrect');
-     }
+
+    }
 }

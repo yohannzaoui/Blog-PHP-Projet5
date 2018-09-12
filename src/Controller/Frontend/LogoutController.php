@@ -20,6 +20,6 @@ class LogoutController implements LogoutControllerInterface
     public function logoutUser()
     {
         $this->session->sessionDestroy();
-        header('Location: ../index.php?route=loginUser');
+        header('Location: ../loginUser');
     }
 }

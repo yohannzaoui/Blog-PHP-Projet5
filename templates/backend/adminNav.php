@@ -8,18 +8,18 @@
                                         Menu Administration
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="../index.php?route=savePost">Ajouter un article</a>
+                                        <a class="dropdown-item" href="../addPost">Ajouter un article</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="../index.php?route=listComments">Modération commentaire</a>
+                                        <a class="dropdown-item" href="../listComments">Modération commentaire</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="../index.php?route=listPosts">Modifier/Supprimer article</a>
+                                        <a class="dropdown-item" href="../listPosts">Modifier/Supprimer article</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="../index.php?route=listUsers">Membres</a>
+                                        <a class="dropdown-item" href="../listUsers">Membres</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="../index.php?route=listAdmins">Administrateurs</a>
+                                        <a class="dropdown-item" href="../listAdmins">Administrateurs</a>
                                         <div class="dropdown-divider"></div>
                                         <div class="title_center">
-                                        <a href="../index.php?route=logoutAdmin"><button type="button" class="btn btn-outline-danger">Déconnexion</button></a>
+                                        <a href="../logoutAdmin"><button type="button" class="btn btn-outline-danger">Déconnexion</button></a>
                                         </div>
                                 </div>
                         </div>

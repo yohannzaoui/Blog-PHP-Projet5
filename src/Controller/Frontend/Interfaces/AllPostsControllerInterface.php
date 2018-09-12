@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\Frontend\Interfaces;
 
+use Core\Request;
+
 /**
  *
  */
@@ -8,5 +10,5 @@ interface AllPostsControllerInterface
 {
     public function __construct();
 
-    public function all();
+    public function __invoke(request $request);
 }

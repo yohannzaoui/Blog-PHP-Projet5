@@ -87,7 +87,6 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         if ($count > 0) {
             $user = $req->fetch();
             if (password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
-                header('Location: ../index.php?route=savePost');
                 return $user;
             } else {
                 throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");

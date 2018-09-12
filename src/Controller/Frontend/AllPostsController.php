@@ -4,6 +4,7 @@ namespace App\Controller\Frontend;
 use App\Controller\Frontend\Interfaces\AllPostsControllerInterface;
 use App\Repository\PostRepository;
 use Core\View;
+use Core\Request;
 
 /**
  *
@@ -20,9 +21,11 @@ class AllPostsController implements AllPostsControllerInterface
         $this->view = new View;
     }
 
-    public function all()
+    public function __invoke(request $request)
     {
-        $posts = $this->postRepository->getAll();
-        $this->view->render('all', 'frontend', ['posts'=> $posts]);
+        if ($request->isMethod('GET')) {
+            $posts = $this->postRepository->getAll();
+            $this->view->render('all', 'frontend', ['posts'=> $posts]);
+        }
     }
 }

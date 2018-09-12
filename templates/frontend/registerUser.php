@@ -15,7 +15,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=addUser" method="post">
+      <form action="" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" name="pseudo" class="form-control" value="<?php if (isset($pseudo)) {
@@ -45,5 +45,5 @@
       </form>
 
       <p>Vous avez un compte ?
-        <a href="index.php?route=loginUser">Connectez vous !</a>
+        <a href="/loginUser">Connectez vous !</a>
       </p>

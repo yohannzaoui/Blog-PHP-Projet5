@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\Frontend\Interfaces;
 
+use Core\Request;
+
 /**
  *
  */
@@ -8,7 +10,9 @@ interface HomeControllerInterface
 {
     public function __construct();
 
-    public function home();
+    public function __invoke(request $request);
 
-    public function contact();
+    //public function home();
+
+    //public function contact();
 }

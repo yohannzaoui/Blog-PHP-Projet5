@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\Frontend\Interfaces;
 
+use Core\Request;
+
 /**
  *
  */
@@ -8,7 +10,5 @@ interface PostControllerInterface
 {
     public function __construct();
 
-    public function post($idPost);
-
-    public function saveComment();
+    public function __invoke(request $request);
 }

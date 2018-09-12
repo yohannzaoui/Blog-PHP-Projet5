@@ -7,9 +7,9 @@
         <div class="row">
             <div class="col-lg-12 col-md-10 mx-auto">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?=  $_SESSION['flash'] ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                    <?= $_SESSION['flash'] ?>
+                    <button type="button" class="close"             data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             </div>
@@ -36,9 +36,9 @@
       <?php foreach ($comments as $comment) : ?>
       <div class="container">
         <?php echo '<p><b>Pseudo</b> : '.$comment->getPseudo().'<b> - Le</b> '.$comment->getCreationDate().'<br> <b>Commentaire</b> : '.$comment->getContent().'</p>'?>
-        <a href="index.php?route=post&id=<?= $comment->getPostId() ?>"><i class="fas fa-eye"></i></a> |
-        <a  href="index.php?route=validateComment&id=<?=$comment->getId()?>"><i class="fas fa-check"></i></a> |
-        <a  href="index.php?route=deleteComment&id=<?=$comment->getId()?>"><i class="fas fa-trash-alt"></i></a>
+        <a href="/post/<?= $comment->getPostId() ?>"><i class="fas fa-eye"></i></a> |
+        <a  href="/validateComment/<?=$comment->getId()?>"><i class="fas fa-check"></i></a> |
+        <a  href="/deleteComment/<?=$comment->getId()?>"><i class="fas fa-trash-alt"></i></a>
         </p>
         <hr>
       </div>

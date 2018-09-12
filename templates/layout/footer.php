@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
-            <h3 class="title_footer"><a href="index.php">Blog Yohann Zaoui</a></h3>
+            <h3 class="title_footer"><a href="/">Blog Yohann Zaoui</a></h3>
         </div>
       <div class="col-lg-6 col-md-10 mx-auto">
         <ul class="list-inline text-center">
@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="index.php?#contact_form" target="_blank">
+            <a href="/#contact" target="_blank">
                 <span class="fa-stack">
                     <i class="fas fa-envelope fa-2x"></i>
                 </span>
@@ -51,7 +51,7 @@
                 <p class="copyright text-muted">Copyright &copy; Yohann Zaoui 2018</p>
             </div>
             <div class="col-lg-6 col-md-12 mx-12">
-                <p class="admin"><a href="index.php?route=loginAdmin">Administration</a></p>
+                <p class="admin"><a href="/admin">Administration</a></p>
             </div>
         </div>
         <br>

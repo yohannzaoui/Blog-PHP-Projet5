@@ -41,7 +41,7 @@
         </h4>
         <p>Administrateur depuis le :
           <?= $user->getCreationDate()?>
-            <a href="index.php?route=deleteAdmin&id=<?=htmlspecialchars($user->getId())?>"><i class="fas fa-trash-alt"></i></a>
+            <a href="/deleteAdmin/<?=htmlspecialchars($user->getId())?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>
       <hr>

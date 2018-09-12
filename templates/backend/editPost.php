@@ -19,7 +19,7 @@
     <h4 class="title_center">Modifier article</h4>
     <div class="row">
         <div class="col-lg-6 col-md-10 mx-auto">
-            <form action="../index.php?route=updatePost" method="post">
+            <form action="" method="post">
                 <div class="control-group">
                     <label for="author">Auteur</label>
                     <input type="text" class="form-control" name="author" value="<?=$post->getAuthor()?>">
@@ -42,7 +42,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($post->getId()) ?>" />
+                    <input type="hidden" name="id" value="<?=htmlspecialchars($post->getId())?>" />
                     <button type="submit" name="submit" value="send" class="btn btn-primary">Modifier l'article</button>
                 </div>
             </form>
