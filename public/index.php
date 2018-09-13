@@ -11,6 +11,6 @@ $session->sessionStart();
 $request = Request::createFromGlobals();
 $application = new Application();
 $application->boot($request);
-/*echo "<pre>";
+echo "<pre>";
 var_dump($request);
-echo "</pre>";*/
+echo "</pre>";

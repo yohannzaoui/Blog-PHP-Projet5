@@ -3,19 +3,22 @@ namespace Core;
 
 use Core\Interfaces\RequestInterface;
 
+
 class Request implements RequestInterface
 {
     const METHOD_GET = 'GET';
     const METHOD_POST = 'POST';
     const METHOD_DELETE = 'DELETE';
 
-    public $query = [];
+    public $query;
 
-    public $request = [];
+    public $request;
 
-    public $files = [];
+    public $files;
 
-    public $server = [];
+    public $server;
+
+    public $attributes;
 
     /**
      * Request constructor.
@@ -27,10 +30,11 @@ class Request implements RequestInterface
      */
     public function __construct(array $query = [], array $request = [], array $files = [], array $server = [])
     {
-        $this->query = $query;
-        $this->request = $request;
-        $this->files = $files;
-        $this->server = $server;
+        $this->query = new ParameterBag($query);
+        $this->request = new ParameterBag($request);
+        $this->files = new ParameterBag($files);
+        $this->server = new ParameterBag($server);
+        $this->attributes = new ParameterBag([]);
     }
 
     public static function createFromGlobals()
@@ -45,16 +49,16 @@ class Request implements RequestInterface
      */
     public function isMethod($method)
     {
-        return $method === $this->server['REQUEST_METHOD'];
+        return $method === $this->server->get('REQUEST_METHOD');
     }
 
     public function getRequestUri()
     {
-        return $this->server['REQUEST_URI'];
+        return $this->server->get('REQUEST_URI');
     }
 
     public function getParam($name)
     {
-        return $this->query[$name];
+        return $this->query->get($name);
     }
 }

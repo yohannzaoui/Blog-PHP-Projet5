@@ -9,12 +9,13 @@ return [
     'all' => [
         'path' => '/all',
         'methods' => ['GET'],
-        'action' => App\Controller\Frontend\AllPostsController::class
+        'action'  => App\Controller\Frontend\AllPostsController::class
     ],
     'post' => [
-        'path' => '/post/'.$_GET['id'],
+        'path' => '/post/{id}',
         'methods' => ['GET', 'POST'],
-        'action' => App\Controller\Frontend\PostController::class
+        'action' => App\Controller\Frontend\PostController::class,
+        'params' =>['id' => '\d+']
     ],
     'loginUser' => [
         'path' => '/loginUser',
@@ -63,8 +64,13 @@ return [
     ],
     'logoutAdmin' => [
         'path' => '/logoutAdmin',
-        'methods' => ['GET', 'POST'],
+        'methods' => ['GET'],
         'action' => App\Controller\Backend\LogoutController::class
+    ],
+    'logoutUser' => [
+        'path' => '/logoutUser',
+        'methods' => ['GET'],
+        'action' => App\Controller\Frontend\LogoutController::class
     ],
     'addPost' => [
         'path' => '/addPost',
@@ -87,33 +93,44 @@ return [
         'action' => App\Controller\Backend\AdminController::class
     ],
     'deleteAdmin' => [
-        'path' => '/deleteAdmin/'.$_GET['id'],
+        'path' => '/deleteAdmin/{id}',
         'methods' => ['GET'],
-        'action' => App\Controller\Backend\AdminController::class
+        'action' => App\Controller\Backend\AdminController::class,
+        'params' =>['id' => '\d+']
     ],
     'deleteUser' => [
-        'path' => '/deleteUser/'.$_GET['id'],
+        'path' => '/deleteUser/{id}',
         'methods' => ['GET'],
-        'action' => App\Controller\Backend\UserController::class
+        'action' => App\Controller\Backend\UserController::class,
+        'params' =>['id' => '\d+']
     ],
     'listPosts' => [
         'path' => '/listPosts',
-        'methods' => ['GET','POST'],
+        'methods' => ['GET'],
         'action' => App\Controller\Backend\ListPostsController::class
     ],
     'deletePost' => [
-        'path' => '/deletePost/'.$_GET['del'],
+        'path' => '/deletePost/{id}',
         'methods' => ['GET'],
-        'action' => App\Controller\Backend\ListPostsController::class
+        'action' => App\Controller\Backend\DeletePostController::class,
+        'params' =>['id' => '\d+']
     ],
     'editPost' => [
-        'path' => '/editPost/'.$_GET['id'],
+        'path' => '/editPost/{id}',
         'methods' => ['GET'],
-        'action' => App\Controller\Backend\EditPostController::class
+        'action' => App\Controller\Backend\EditPostController::class,
+        'params' =>['id' => '\d+']
     ],
     'validateComment' => [
-        'path' => '/validateComment/'.$_GET['id'],
+        'path' => '/validateComment/{id}',
         'methods' => ['GET'],
-        'action' => App\Controller\Backend\CommentController::class
+        'action' => App\Controller\Backend\ValidateCommentController::class,
+        'params' =>['id' => '\d+']
+    ],
+    'deleteComment' => [
+        'path' => '/deleteComment/{id}',
+        'methods' => ['GET'],
+        'action' => App\Controller\Backend\DeleteCommentController::class,
+        'params' =>['id' => '\d+']
     ]
 ];

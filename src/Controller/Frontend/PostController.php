@@ -27,7 +27,7 @@ class PostController implements PostControllerInterface
         $this->session = new Session;
     }
 
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
@@ -44,7 +44,7 @@ class PostController implements PostControllerInterface
             } else {
                 $this->view->render('error', 'error', ['error'=>'Paramètre incorrect']);
             }
-            } else {
+        } else {
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = $request->getParam('id');
                     $idPost = $this->view->check($id);

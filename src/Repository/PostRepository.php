@@ -56,7 +56,7 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
     public function deletePost($id)
     {
         $sql = 'DELETE FROM posts WHERE id = ?';
-        $this->sql($sql, [$id]);
+        $this->sql($sql, [$i]);
     }
 
     public function countPosts()
