@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="" method="post">
+      <form action="/loginUser" method="post">
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" class="form-control" name="pseudo">

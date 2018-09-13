@@ -78,7 +78,7 @@
           <input type="hidden" name="idPost" value="<?=$post->getId()?>" />
           <button type="submit" name="submit" value="send" class="btn btn-primary">Envoyer</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
-          <a href="../index.php?route=logoutUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
+          <a href="../logoutUser"><button type="button" class="btn btn-success">Déconnexion</button></a>
         </div>
       </form>
       <br>

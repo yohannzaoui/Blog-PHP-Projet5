@@ -49,7 +49,7 @@
         <p>
           <a href="/post/<?=$post->getId()?>"><i class="fas fa-eye"></i></a> |
           <a href="/editPost/<?=$post->getId()?>"><i class="fas fa-edit"></i></a> |
-          <a href="/deleteComments&idPost=<?=$post->getId()?>"><i class="fas fa-comment-slash"></i></a> |
+          <a href="/deleteComments/<?=$post->getId()?>"><i class="fas fa-comment-slash"></i></a> |
           <a href="/deletePost/<?=$post->getId()?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>
