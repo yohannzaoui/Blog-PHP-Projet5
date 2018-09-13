@@ -24,36 +24,25 @@ class CommentController implements CommentControllerInterface
         $this->session = new Session;
     }
 
-    public function __invoke(request $request)
-    {
-        if ($request->isMethod('GET')) {
-            $comments = $this->commentRepository->getCommentsNoValide();
-            $line = $this->commentRepository->countComments();
-            $this->view->render('listComments', 'backend', ['comments'=>$comments, 'line'=>$line]);
-        }
-    }
 
-    /*public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $request->getParam('id');
                 $idComment = $this->view->check($id);
-                $this->commentRepository->validateComment($idComment);
-                $this->session->flash('Commentaire validé');
+                $this->commentRepository->deleteComment($idComment);
+                $this->session->flash('Commentaire supprimé');
                 header('Location: ../listComments');
             } else {
-                throw new Exception('ID du commentaire à valider manquant');
+                $comments = $this->commentRepository->getCommentsNoValide();
+                $line = $this->commentRepository->countComments();
+                $this->view->render('listComments', 'backend', ['comments'=>$comments, 'line'=>$line]);
             }
         } else {
-            $comments = $this->commentRepository->getCommentsNoValide();
-            $line = $this->commentRepository->countComments();
-            $this->view->render('listComments', 'backend', ['comments'=>$comments, 'line'=>$line]);
+            $this->view->render('error', 'error', ['error' => 'System error']);
         }
-    }*/
-
-
-
+    }
 
      /*public function deleteComments($idPost)
      {

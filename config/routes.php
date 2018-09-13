@@ -130,7 +130,7 @@ return [
     'deleteComment' => [
         'path' => '/deleteComment/{id}',
         'methods' => ['GET'],
-        'action' => App\Controller\Backend\DeleteCommentController::class,
+        'action' => App\Controller\Backend\CommentController::class,
         'params' =>['id' => '\d+']
     ]
 ];
