@@ -36,8 +36,8 @@ class EditPostController implements EditPostControllerInterface
                     $this->view->render('error', 'error', ['error'=>'Article inconnu']);
                 }
             } elseif ($request->isMethod('GET')) {
-                if (isset($_GET['id']) && !empty($_GET['id'])) {
-                    $del = $request->getParam('id');
+                if (isset($_GET['del']) && !empty($_GET['del'])) {
+                    $del = $request->getParam('del');
                     $id = $this->view->check($del);
                     $this->postRepository->deletePost($id);
                     $this->session->flash("L'article à été supprimer");

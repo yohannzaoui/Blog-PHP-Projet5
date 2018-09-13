@@ -6,7 +6,6 @@ use App\Repository\UserRepository;
 use Core\View;
 use Core\Request;
 use Core\Session;
-use Exception;
 
 /**
  *

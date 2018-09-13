@@ -4,9 +4,10 @@ RewriteEngine On
 
 RewriteBase /
 
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule (.*)/(.*) index.php?route=$1&id=$2 [NC,L]
+RewriteRule ^(.*)/(.*)$ index.php?route=$1&id=$2 [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
