@@ -24,7 +24,7 @@ class ResetUserController implements ResetUserControllerInterface
         $this->mailer = new Mailer;
     }
 
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
@@ -34,7 +34,7 @@ class ResetUserController implements ResetUserControllerInterface
                     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
                     $user = $this->userRepository->resetUser($token);
-                    $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/index/passwordResetUser&id=".$user['id']."&token=$token");
+                    $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/passwordResetUser/".$user['id']."/$token");
                     $this->view->render('validation_reset', 'backend');
                 }
             } else {

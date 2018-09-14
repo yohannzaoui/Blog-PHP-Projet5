@@ -6,8 +6,8 @@ return [
         'methods' => ['GET', 'POST'],
         'action' => App\Controller\Frontend\HomeController::class
     ],
-    'all' => [
-        'path' => '/all',
+    'allPosts' => [
+        'path' => '/allPosts',
         'methods' => ['GET'],
         'action'  => App\Controller\Frontend\AllPostsController::class
     ],
@@ -138,5 +138,33 @@ return [
         'methods' => ['GET'],
         'action' => App\Controller\Backend\CommentController::class,
         'params' =>['id' => '\d+']
+    ],
+    'deleteComments' => [
+        'path' => '/deleteComments/{id}',
+        'methods' => ['GET'],
+        'action' => App\Controller\Backend\ListPostsController::class,
+        'params' =>['id' => '\d+']
+    ],
+    'passAdmin' => [
+        'path' => '/passAdmin',
+        'methods' => ['POST'],
+        'action' => App\Controller\Backend\ResetAdminController::class
+    ],
+    'passwordResetAdmin' => [
+        'path' => '/passwordResetAdmin/{id}/{token}',
+        'methods' => ['GET'],
+        'action' => App\Controller\Backend\PasswordAdminController::class,
+        'params' => ['id' => '\d+', 'token' => '[a-zA-Z0-9]{32}$']
+    ],
+    'passUser' => [
+        'path' => '/passUser',
+        'methods' => ['POST'],
+        'action' => App\Controller\Frontend\ResetUserController::class
+    ],
+    'passwordResetUser' => [
+        'path' => '/passwordResetUser/{id}/{token}',
+        'methods' => ['GET'],
+        'action' => App\Controller\Frontend\PasswordUserController::class,
+        'params' => ['id' => '\d+', 'token' => '[a-zA-Z0-9]{32}$']
     ]
 ];

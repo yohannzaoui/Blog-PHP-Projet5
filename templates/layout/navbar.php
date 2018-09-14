@@ -12,7 +12,7 @@
           <a class="nav-link" href="/">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/all">Articles</a>
+          <a class="nav-link" href="/allPosts">Articles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../doc/cv_web_yohann_zaoui.pdf" target="_blank">Mon Cv <span class="badge badge-secondary">PDF</span></a>

@@ -2,6 +2,7 @@
 namespace App\Controller\Backend;
 
 use App\Controller\Backend\Interfaces\PasswordAdminControllerInterface;
+use App\Repository\UserRepository;
 use Core\View;
 use Core\Request;
 
@@ -12,10 +13,12 @@ class PasswordAdminController implements PasswordAdminControllerInterface
 {
 
     private $view;
+    private $userRepository;
 
     public function __construct()
     {
         $this->view = new View;
+        $this->userRepository = new userRepository;
     }
 
     public function __invoke(request $request)

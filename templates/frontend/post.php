@@ -35,7 +35,7 @@
           </p></small>
           <p>
             <small>
-              <a href="/all">Retour à la liste d'articles</a>
+              <a href="/allPosts">Retour à la liste d'articles</a>
             </small>
           </p>
         </div>

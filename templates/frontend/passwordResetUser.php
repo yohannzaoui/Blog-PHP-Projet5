@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
-      <form action="index.php?route=changePassUser" method="post">
+      <form action="" method="post">
         <div class="control-group">
           <label for="pseudo">Votre nouveau mot de passe</label>
           <input type="password" class="form-control" name="pass1">
