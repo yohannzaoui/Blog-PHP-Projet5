@@ -43,15 +43,5 @@ class CommentController implements CommentControllerInterface
             $this->view->render('error', 'error', ['error' => 'System error']);
         }
     }
-
-     /*public function deleteComments($idPost)
-     {
-         if (isset($_GET['idPost']) && !empty($_GET['idPost'])) {
-             $id = $this->view->check($_GET['idPost']);
-             $this->commentRepository->deleteComments($idPost);
-             $this->session->flash("Tous les commentaires de l'article on été supprimer");
-             header('Location: ../index.php?route=listPosts');
-         }
-                 throw new Exception('ID de l\'article manquant');
-      }*/
+    
 }

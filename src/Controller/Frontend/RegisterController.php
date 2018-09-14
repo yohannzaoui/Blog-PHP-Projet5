@@ -47,7 +47,7 @@ class RegisterController implements RegisterControllerInterface
                     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
                     $userId = $this->userRepository->addUser($pseudo, $email, $passhash, $token);
-                    $this->mailer->send('Confirmez votre inscription', $pseudo, $email, "Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://blog/index.php?route=confirmation&id=$userId&token=$token");
+                    $this->mailer->send('Confirmez votre inscription', $pseudo, $email, "Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://siteweb/confirme/$userId/$token");
                     $this->view->render('validation', 'frontend');
                 }
             } else {

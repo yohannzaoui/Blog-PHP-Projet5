@@ -32,9 +32,7 @@ class UserController implements UserControllerInterface
                 $id = $this->view->check($idUser);
                 $this->userRepository->deleteUser($id);
                 $this->session->flash('Membre supprimé');
-                $users = $this->userRepository->allUsers();
-                $line = $this->userRepository->countMembers();
-                $this->view->render('listUsers', 'backend', ['users'=>$users, 'line'=>$line]);
+                header('location:..\listUsers');
         } else {
             $users = $this->userRepository->allUsers();
             $line = $this->userRepository->countMembers();
