@@ -9,7 +9,7 @@ class Route implements RouteInterface
     private $path;
     private $action;
     private $methods = [];
-    private $params =[];
+    private $params = [];
 
     public function __construct($path, $action, $methods = [], $params = [])
     {

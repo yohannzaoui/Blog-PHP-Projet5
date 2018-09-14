@@ -32,11 +32,6 @@ return [
         'methods' => ['GET', 'POST'],
         'action' => App\Controller\Frontend\ResetUserController::class
     ],
-    'confirmationUser' => [
-        'path' => '/confirmationUser',
-        'methods' => ['GET'],
-        'action' => App\Controller\Frontend\ConfirmationController::class
-    ],
     'passwordUser' => [
         'path' => '/passwordResetUser',
         'methods' => ['GET', 'POST'],
@@ -56,6 +51,17 @@ return [
         'path' => '/registerAdmin',
         'methods' => ['GET', 'POST'],
         'action' => App\Controller\Backend\RegisterAdminController::class
+    ],
+    'addAdmin' => [
+        'path' => '/addAdmin',
+        'methods' => ['POST'],
+        'action' => App\Controller\Backend\RegisterController::class
+    ],
+    'confirme' => [
+        'path' => '/confirme/{id}/{token}',
+        'methods' => ['GET'],
+        'action' => App\Controller\Frontend\ConfirmationController::class,
+        'params' => ['id' => '\d+', 'token' => '[a-zA-Z0-9]{32}$']
     ],
     'resetAdmin' => [
         'path' => '/resetAdmin',
