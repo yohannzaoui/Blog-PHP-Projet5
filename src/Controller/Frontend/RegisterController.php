@@ -29,7 +29,7 @@ class RegisterController implements RegisterControllerInterface
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === "send") {
                 if (empty($_POST['pseudo']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo'])) {
-                    $this->view->render('error', 'error', ['error'=>'Votre pseudo doit contenir seulement des lettres (miniscules et/ou majuscules), des chiffres et le signe _ "underscore".']);
+                    $this->view->render('error', 'error', ['error' => 'Votre pseudo doit contenir seulement des lettres (miniscules et/ou majuscules), des chiffres et le signe _ "underscore".']);
                 } else {
                     $pseudo = $this->view->check($_POST['pseudo']);
                 }
@@ -39,10 +39,10 @@ class RegisterController implements RegisterControllerInterface
                     $hash = $this->view->check($_POST['pass']);
                     $passhash = password_hash($hash, PASSWORD_BCRYPT);
                 } else {
-                    $this->view->render('error', 'error', ['error'=>'Les mots de passes ne sont pas identiques']);
+                    $this->view->render('error', 'error', ['error' => 'Les mots de passes ne sont pas identiques']);
                 }
                 if (empty($_POST['email'])) {
-                    $this->view->render('error', 'error', ['error'=>'Veuillez entrer votre adresse email']);
+                    $this->view->render('error', 'error', ['error' => 'Veuillez entrer votre adresse email']);
                 } else {
                     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
@@ -51,7 +51,7 @@ class RegisterController implements RegisterControllerInterface
                     $this->view->render('validation', 'frontend');
                 }
             } else {
-                $this->view->render('error', 'error', ['error'=>'Le paramétre d\'envoi est absent']);
+                $this->view->render('error', 'error', ['error' => 'Le paramétre d\'envoi est absent']);
             }
         } else {
             $this->view->render('registerUser', 'frontend');

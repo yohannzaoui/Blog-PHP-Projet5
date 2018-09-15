@@ -32,7 +32,7 @@ class HomeController implements HomeControllerInterface
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === "send") {
                 if (empty($_POST['name']) && empty($_POST['email']) && empty($_POST['message'])) {
-                    $this->view->render('error', 'error', ['error'=>'Les champs sont vides']);
+                    $this->view->render('error', 'error', ['error' => 'Les champs sont vides']);
                 }
                     $pseudo = $this->view->check($_POST['name']);
                     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
@@ -40,13 +40,13 @@ class HomeController implements HomeControllerInterface
                     $this->mailer->send('Message du Blog', $pseudo, $email, $body);
                     $this->session->flash('Votre message à bien été envoyé');
                     $posts = $this->postRepository->getRecentPosts();
-                    $this->view->render('home', 'frontend', ['posts'=>$posts]);
+                    $this->view->render('home', 'frontend', ['posts' => $posts]);
                 } else {
-                    $this->view->render('error', 'error', ['error'=>'Le paramétre envoyé est invalide']);
+                    $this->view->render('error', 'error', ['error' => 'Le paramétre envoyé est invalide']);
                 }
             } else {
                 $posts = $this->postRepository->getRecentPosts();
-                $this->view->render('home', 'frontend', ['posts'=>$posts]);
+                $this->view->render('home', 'frontend', ['posts' => $posts]);
             }
     }
 }

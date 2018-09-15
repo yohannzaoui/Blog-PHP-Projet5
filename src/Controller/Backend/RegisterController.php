@@ -39,21 +39,21 @@ class RegisterController implements RegisterControllerInterface
                     $hash = $this->view->check($_POST['pass']);
                     $passhash = password_hash($hash, PASSWORD_BCRYPT);
                 } else {
-                    $this->view->render('error', 'error', ['error'=>'Les mots de passes ne sont pas identiques']);
+                    $this->view->render('error', 'error', ['error' => 'Les mots de passes ne sont pas identiques']);
                 }
                 if(empty($_POST['email'])) {
-                    $this->view->render('error', 'error', ['error'=>'Veuillez entrer votre adresse email']);
+                    $this->view->render('error', 'error', ['error' => 'Veuillez entrer votre adresse email']);
                 } else {
                     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
-                    $userId = $this->userRepository->addAdmin($pseudo,$passhash,$email,$token);
-                    $this->mailer->send('Confirmez votre inscription',$pseudo, $email,"Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://siteweb/confirme/$userId/$token");
+                    $userId = $this->userRepository->addAdmin($pseudo, $passhash, $email, $token);
+                    $this->mailer->send('Confirmez votre inscription', $pseudo, $email, "Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://siteweb/confirme/$userId/$token");
                     $this->view->render('validation', 'frontend');
                 }
             }
         }
          else {
-            $this->view->render('error', 'error', ['error'=>'Le paramétre d\'envoi est absent']);
+            $this->view->render('error', 'error', ['error' => 'Le paramétre d\'envoi est absent']);
         }
     }
 }

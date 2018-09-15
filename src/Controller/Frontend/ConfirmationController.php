@@ -29,10 +29,10 @@ class ConfirmationController implements ConfirmationControllerInterface
                 $this->userRepository->confirme($id, $token);
                 $this->view->render('confirmation', 'frontend');
             } else {
-                $this->view->render('error', 'error', ['error'=>'Identifiant / Token incorrect']);
+                $this->view->render('error', 'error', ['error' => 'Identifiant / Token incorrect']);
             }
         } else {
-            $this->view->render('error', 'error', ['error'=>'System error']);
+            $this->view->render('error', 'error', ['error' => 'System error']);
         }
     }
 

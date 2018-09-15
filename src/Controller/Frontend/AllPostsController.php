@@ -25,7 +25,7 @@ class AllPostsController implements AllPostsControllerInterface
     {
         if ($request->isMethod('GET')) {
             $posts = $this->postRepository->getAll();
-            $this->view->render('all', 'frontend', ['posts'=> $posts]);
+            $this->view->render('all', 'frontend', ['posts' => $posts]);
         }
     }
 }

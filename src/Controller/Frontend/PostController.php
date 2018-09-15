@@ -32,7 +32,7 @@ class PostController implements PostControllerInterface
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
                 if (empty($_POST['pseudo']) && empty($_POST['content']) && empty($_POST['idPost'])) {
-                    $this->view->render('error', 'error', ['error'=>'Tous les champs doivent être remplis']);
+                    $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être remplis']);
                 } else {
                     $pseudo = $this->view->check($_POST['pseudo']);
                     $content = $this->view->check($_POST['content']);
@@ -42,7 +42,7 @@ class PostController implements PostControllerInterface
                     header('Location: ../post/'.$idPost);
                 }
             } else {
-                $this->view->render('error', 'error', ['error'=>'Paramètre incorrect']);
+                $this->view->render('error', 'error', ['error' => 'Paramètre incorrect']);
             }
         } else {
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -50,9 +50,9 @@ class PostController implements PostControllerInterface
                     $idPost = $this->view->check($id);
                     $post = $this->postRepository->getPost($idPost);
                     $comments = $this->commentRepository->getCommentsFromPost($idPost);
-                    $this->view->render('post', 'frontend', ['post'=> $post, 'comments'=>$comments]);
+                    $this->view->render('post', 'frontend', ['post' => $post, 'comments' => $comments]);
                 } else {
-                    $this->view->render('error', 'error', ['error'=>'L\'ID de l\'article est absent']);
+                    $this->view->render('error', 'error', ['error' => 'L\'ID de l\'article est absent']);
                 }
         }
 

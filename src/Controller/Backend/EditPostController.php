@@ -31,21 +31,9 @@ class EditPostController implements EditPostControllerInterface
                     $id = $request->getParam('id');
                     $idPost = $this->view->check($id);
                     $post = $this->postRepository->getPost($idPost);
-                    $this->view->render('editPost', 'backend', ['post'=>$post]);
+                    $this->view->render('editPost', 'backend', ['post' => $post]);
                 } else {
-                    $this->view->render('error', 'error', ['error'=>'Article inconnu']);
-                }
-            } elseif ($request->isMethod('GET')) {
-                if (isset($_GET['del']) && !empty($_GET['del'])) {
-                    $del = $request->getParam('del');
-                    $id = $this->view->check($del);
-                    $this->postRepository->deletePost($id);
-                    $this->session->flash("L'article à été supprimer");
-                    $posts = $this->postRepository->getAll();
-                    $line = $this->postRepository->countPosts();
-                    $this->view->render('listPosts', 'backend', ['posts'=>$posts, 'line'=>$line]);
-                } else {
-                    $this->view->render('error', 'error', ['error'=>'Identifiant d\'article manquant']);
+                    $this->view->render('error', 'error', ['error' => 'Article inconnu']);
                 }
             } else {
                 if (isset($_POST['submit']) && $_POST['submit'] === 'send' && !empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty(['content']) && !empty($_POST['id'])) {
@@ -57,7 +45,7 @@ class EditPostController implements EditPostControllerInterface
                         $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
                         header('Location: ../post/'.$id);
                     } else {
-                        $this->view->render('error', 'error', ['error'=>'Tous les champs doivent être completés']);
+                        $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être completés']);
                     }
             }
 

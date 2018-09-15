@@ -32,7 +32,7 @@ class LoginController implements LoginControllerInterface
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === "send") {
                 if (empty($_POST['pseudo']) && empty($_POST['pass'])) {
-                    $this->view->render('error', 'error', ['error'=>'Tous les champs doivent être complétés']);
+                    $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être complétés']);
                 } else {
                     $pseudo = $this->view->check($_POST['pseudo']);
                     $pass = $this->view->check($_POST['pass']);
@@ -45,7 +45,7 @@ class LoginController implements LoginControllerInterface
                 }
                 $this->view->render('addPost', 'backend');
             } else {
-                $this->view->render('error', 'error', ['error'=>'Le paramètre envoyé est incorrect']);
+                $this->view->render('error', 'error', ['error' => 'Le paramètre envoyé est incorrect']);
             }
         } else {
             if (!isset($_SESSION['pseudoAdmin'], $_SESSION['roleAdmin'])) {

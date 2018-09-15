@@ -25,7 +25,7 @@ class ResetAdminController implements ResetAdminControllerInterface
         if ($request->isMethod('POST')) {
             if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
                 if (empty($_POST['email'])) {
-                    $this->view->render('error', 'error', ['error'=>'Le champ adresse Email est vide']);
+                    $this->view->render('error', 'error', ['error' => 'Le champ adresse Email est vide']);
                 } else {
                     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
@@ -34,7 +34,7 @@ class ResetAdminController implements ResetAdminControllerInterface
                     $this->view->render('validation_reset', 'backend');
                 }
             } else {
-                $this->view->render('error', 'error', ['error'=>'Paramètre absent']);
+                $this->view->render('error', 'error', ['error' => 'Paramètre absent']);
             }
         } else {
             $this->view->render('resetAdmin', 'backend');

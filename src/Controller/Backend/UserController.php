@@ -36,7 +36,7 @@ class UserController implements UserControllerInterface
         } else {
             $users = $this->userRepository->allUsers();
             $line = $this->userRepository->countMembers();
-            $this->view->render('listUsers', 'backend', ['users'=>$users, 'line'=>$line]);
+            $this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]);
             }
         } else {
             $this->view->render('error', 'error', ['error' => 'System error']);

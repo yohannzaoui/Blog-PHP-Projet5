@@ -13,6 +13,10 @@ use Core\Session;
 class AdminController implements AdminControllerInterface
 {
 
+    private $view;
+    private $userRepository;
+    private $session;
+
     public function __construct()
     {
         $this->userRepository = new UserRepository;
@@ -28,13 +32,11 @@ class AdminController implements AdminControllerInterface
                 $id = $this->view->check($idAdmin);
                 $this->userRepository->deleteUser($idAdmin);
                 $this->session->flash('Administrateur supprimé');
-                $users = $this->userRepository->allAdmins();
-                $line = $this->userRepository->countAdmins();
-                $this->view->render('listAdmins', 'backend', ['users'=>$users, 'line'=>$line]);
+                header('location:../listAdmins');
         } else {
             $users = $this->userRepository->allAdmins();
             $line = $this->userRepository->countAdmins();
-            $this->view->render('listAdmins', 'backend', ['users'=>$users, 'line'=>$line]);
+            $this->view->render('listAdmins', 'backend', ['users' => $users, 'line' => $line]);
             }
         }
     }

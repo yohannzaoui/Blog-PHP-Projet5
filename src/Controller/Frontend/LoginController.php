@@ -48,7 +48,7 @@ class LoginController implements LoginControllerInterface
                 }
                 header('location:../allPosts');
             } else {
-                $this->view->render('error', 'error', ['error'=>'Le paramètre envoyé est incorrect']);
+                $this->view->render('error', 'error', ['error' => 'Le paramètre envoyé est incorrect']);
             }
         } else {
             $this->view->render('loginUser', 'frontend');

@@ -39,10 +39,10 @@ class ListPostsController implements ListPostsControllerInterface
             } else {
                 $posts = $this->postRepository->getAll();
                 $line = $this->postRepository->countPosts();
-                $this->view->render('listPosts', 'backend', ['posts'=>$posts, 'line'=>$line]);
+                $this->view->render('listPosts', 'backend', ['posts' => $posts, 'line' => $line]);
             }
         } else {
-            $this->view->render('error', 'error', ['error'=>'Erreur system']);
+            $this->view->render('error', 'error', ['error' => 'Erreur system']);
         }
     }
 

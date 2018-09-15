@@ -37,7 +37,7 @@ class CommentController implements CommentControllerInterface
             } else {
                 $comments = $this->commentRepository->getCommentsNoValide();
                 $line = $this->commentRepository->countComments();
-                $this->view->render('listComments', 'backend', ['comments'=>$comments, 'line'=>$line]);
+                $this->view->render('listComments', 'backend', ['comments' => $comments, 'line' => $line]);
             }
         } else {
             $this->view->render('error', 'error', ['error' => 'System error']);

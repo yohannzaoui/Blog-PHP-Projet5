@@ -33,7 +33,7 @@ class ValidateCommentController implements ValidateCommentControllerInterface
             $this->session->flash('Commentaire validé');
             header('Location: ../listComments');
         } else {
-            $this->view->render('error', 'error', ['error'=>'ID du commentaire à valider manquant']);
+            $this->view->render('error', 'error', ['error' => 'ID du commentaire à valider manquant']);
         }
     }
 
