@@ -2,7 +2,6 @@
 namespace App\Entity;
 
 use App\Entity\Interfaces\PostInterface;
-use Exception;
 
 /**
  *
