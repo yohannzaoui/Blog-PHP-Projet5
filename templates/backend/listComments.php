@@ -5,7 +5,7 @@
 <?php if (isset($_SESSION['flash'])) : ?>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-10 mx-auto">
+            <div class="col-lg-6 col-md-10 mx-auto">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?= $_SESSION['flash'] ?>
                     <button type="button" class="close"             data-dismiss="alert" aria-label="Close">

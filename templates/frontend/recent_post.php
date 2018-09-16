@@ -12,11 +12,9 @@
             <h3 class="post-subtitle">
               <?= $post->getSubtitle() ?>
             </h3></a>
-
-          <p class="post-meta">
-            <?php echo "Ecrit par " . $post->getAuthor() ?>
-            <?php echo "le " . $post->getCreationDate() ?>
-          </p>
+            <p class="post-meta">
+              <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != NULL) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
+            </p>
         </div>
         <hr>
         <?php endforeach; ?>

@@ -28,7 +28,7 @@
             <?=$post->getContent()?>
           </p>
           <p class="post-meta">
-            <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate().' -- Modifié le '.$post->getUpdateDate()?>
+            <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != NULL) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
           </p>
           <small><p>
               Partagez l'article : <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
