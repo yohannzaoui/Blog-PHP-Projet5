@@ -43,7 +43,8 @@ class EditPostController implements EditPostControllerInterface
                         $content = $this->view->check($_POST['content']);
                         $id = $this->view->check($_POST['id']);
                         $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
-                        header('Location: ../post/'.$id);
+                        $this->session->flash('Article modifié. <a href="/post/'.$id.'">Voir l\'article</a>');
+                        header('Location: ../listPosts');
                     } else {
                         $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être completés']);
                     }
