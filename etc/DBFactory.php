@@ -13,6 +13,9 @@ abstract class DBFactory implements DBFactoryInterface
 
     protected $db;
 
+    /**
+     * 
+     */
     private function checkDb()
     {
         if ($this->db === null) {
@@ -21,6 +24,9 @@ abstract class DBFactory implements DBFactoryInterface
         return $this->db;
     }
 
+    /**
+     * 
+     */
     private function getDb()
     {
         try
@@ -37,6 +43,9 @@ abstract class DBFactory implements DBFactoryInterface
         }
     }
 
+    /**
+     * 
+     */
     public function sql($sql, $parameters = null)
     {
         if ($parameters) {

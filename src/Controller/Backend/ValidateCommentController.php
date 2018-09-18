@@ -17,6 +17,9 @@ class ValidateCommentController implements ValidateCommentControllerInterface
     private $commentRepository;
     private $session;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->commentRepository = new CommentRepository;
@@ -24,17 +27,25 @@ class ValidateCommentController implements ValidateCommentControllerInterface
         $this->session = new Session;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
-        if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $id = $request->getParam('id');
-            $idComment = $this->view->check($id);
-            $this->commentRepository->validateComment($idComment);
-            $this->session->flash('Commentaire validé');
-            header('Location: ../listComments');
+        if ($request->isMethod('GET')) {
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $request->getParam('id');
+                $idComment = $this->view->check($id);
+                $this->commentRepository->validateComment($idComment);
+                $this->session->flash('Commentaire validé');
+                header('Location: ../listComments');
+            } else {
+                $this->view->render('error', 'error', ['error' => 'ID du commentaire à valider manquant']);
+            }
         } else {
-            $this->view->render('error', 'error', ['error' => 'ID du commentaire à valider manquant']);
+            $this->view->render('error', 'error', ['error' => 'System error']);
         }
+        
     }
 
 }

@@ -3,14 +3,25 @@ namespace Core;
 
 use Core\Interfaces\RouteInterface;
 
-
+/**
+ * 
+ */
 class Route implements RouteInterface
 {
     private $path;
     private $action;
+    /**
+     * @var array
+     */
     private $methods = [];
+    /**
+     * @var array
+     */
     private $params = [];
 
+    /**
+     * 
+     */
     public function __construct($path, $action, $methods = [], $params = [])
     {
         $this->path = $path;
@@ -43,11 +54,17 @@ class Route implements RouteInterface
         return $this->methods;
     }
 
+    /**
+     * 
+     */
     public function getParams()
     {
         return $this->params;
     }
 
+    /**
+     * 
+     */
     public function setPath($path)
     {
         $this->path = $path;

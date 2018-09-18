@@ -12,9 +12,12 @@ use Swift_Mailer;
 class Mailer implements MailerInterface
 {
 
+    /**
+     * 
+     */
     public function send($subject, $pseudo, $email, $body)
     {
-        $data = require __DIR__ . '/../config/mail.php';
+        $data = require __DIR__ . '/../config/mailweb.php';
         $transport = (new Swift_SmtpTransport($data['smtp'], $data['port'], $data['encryption']))
           ->setUsername($data['username'])
           ->setPassword($data['password'])
@@ -34,6 +37,10 @@ class Mailer implements MailerInterface
         $mailer->send($message);
     }
 
+    /**
+     * Create token for account validation and reset password
+     * @return string
+     */
     public function token($data)
     {
         return md5($data);

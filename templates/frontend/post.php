@@ -2,7 +2,7 @@
 
 
 
-<?php if(isset($_SESSION['flash'])) : ?>
+<?php if (isset($_SESSION['flash'])) : ?>
 <div class="container">
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <?=  $_SESSION['flash'] ?>
@@ -75,7 +75,7 @@
         </div>
         <br>
         <div class="form-group">
-          <input type="hidden" name="idPost" value="<?=$post->getId()?>" />
+          <input type="hidden" name="idPost" value="<?= $this->check($post->getId()) ?>" />
           <button type="submit" name="submit" value="send" class="btn btn-primary">Envoyer</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
           <a href="../logoutUser"><button type="button" class="btn btn-success">Déconnexion</button></a>

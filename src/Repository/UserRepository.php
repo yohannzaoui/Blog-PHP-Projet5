@@ -13,6 +13,9 @@ use Exception;
 class UserRepository extends DBFactory implements UserRepositoryInterface
 {
 
+    /**
+     * 
+     */
     public function addAdmin($pseudo, $passhash, $email, $token)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
@@ -34,6 +37,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $userId;
     }
 
+    /**
+     * 
+     */
     public function addUser($pseudo, $email, $passhash, $token)
     {
         $sql = 'SELECT pseudo FROM users WHERE role = "member" AND pseudo = ?';
@@ -55,6 +61,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $userId;
     }
 
+    /**
+     * 
+     */
     public function allAdmins()
     {
         $sql = 'SELECT id, pseudo, pass, role, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
@@ -64,6 +73,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $users;
     }
 
+    /**
+     * 
+     */
     public function allUsers()
     {
         $sql = 'SELECT id, pseudo, pass, role, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "member" ORDER BY creation_date DESC';
@@ -73,12 +85,18 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $users;
     }
 
+    /**
+     * 
+     */
     public function deleteUser($id)
     {
         $sql = 'DELETE FROM users WHERE id = ?';
         $this->sql($sql, [$id]);
     }
 
+    /**
+     * 
+     */
     public function adminConnect($pseudo, $pass)
     {
         $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "admin"';
@@ -96,6 +114,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
+    /**
+     * 
+     */
     public function userConnect($pseudo, $pass)
     {
         $sql = 'SELECT * FROM users WHERE pseudo = ? AND role = "member"';
@@ -114,6 +135,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
+    /**
+     * 
+     */
     public function confirme($id, $token)
     {
         $sql = 'SELECT id, token FROM users WHERE id = ? AND c_token = ?';
@@ -127,6 +151,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
+    /**
+     * 
+     */
     public function resetUser($token)
     {
         $sql = 'SELECT id, pseudo FROM users WHERE role = "member" AND token = ?';
@@ -140,6 +167,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $user;
     }
 
+    /**
+     * 
+     */
     public function resetAdmin($token)
     {
         $sql = 'SELECT id, pseudo FROM users WHERE role = "admin" AND token = ?';
@@ -153,12 +183,18 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $user;
     }
 
+    /**
+     * 
+     */
     public function resetUserPass($id, $passhash)
     {
         $sql = 'UPDATE users SET pass = ? WHERE id = ?';
         $this->sql($sql, [$passhash, $id]);
     }
 
+    /**
+     * 
+     */
     public function countAdmins()
     {
         $sql= 'SELECT COUNT(*) as nb FROM users WHERE role = "admin"';
@@ -166,6 +202,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $line['nb'];
     }
 
+    /**
+     * 
+     */
     public function countMembers()
     {
         $sql = 'SELECT COUNT(*) as nb FROM users WHERE role = "member"';

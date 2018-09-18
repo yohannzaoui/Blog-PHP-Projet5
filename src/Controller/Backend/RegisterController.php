@@ -50,10 +50,9 @@ class RegisterController implements RegisterControllerInterface
                     $this->mailer->send('Confirmez votre inscription', $pseudo, $email, "Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://siteweb/confirme/$userId/$token");
                     $this->view->render('validation', 'frontend');
                 }
+            } else {
+                $this->view->render('error', 'error', ['error' => 'Le paramétre d\'envoi est absent']);
             }
-        }
-         else {
-            $this->view->render('error', 'error', ['error' => 'Le paramétre d\'envoi est absent']);
         }
     }
 }

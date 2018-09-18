@@ -58,36 +58,49 @@ class User implements UserInterface
         $this->creationDateFr = $creationDateFr;
     }
 
+    /**
+     * @return string
+     */
     public function getPseudo()
     {
         return $this->pseudo;
     }
 
-    public function getPass()
-    {
-        return $this->pass;
-    }
-
+    /**
+     * @return string
+     */
     public function getEmail()
     {
         return $this->email;
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getRole()
     {
         return $this->role;
     }
 
+    /**
+     * @return string
+     */
     public function getCreationDate()
     {
         return $this->creationDateFr;
     }
 
+    /**
+     * @return string
+     */
     public function getToken()
     {
         return $this->token;
@@ -98,6 +111,9 @@ class User implements UserInterface
         $this->token = $token;
     }
 
+    /**
+     * @return string
+     */
     public function getCtoken()
     {
         return $this->ctoken;

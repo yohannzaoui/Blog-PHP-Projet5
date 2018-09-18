@@ -21,7 +21,7 @@
         </div>
       </form>
       <small><p class="title_center">
-          <?php if(isset($_SERVER['HTTP_REFERER'])) : ?>
+          <?php if (isset($_SERVER['HTTP_REFERER'])) : ?>
           <a href="<?=$_SERVER['HTTP_REFERER']?>"> <<<< RETOUR</a>
           <?php endif; ?>
       </p></small>

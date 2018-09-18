@@ -20,8 +20,8 @@
         </div>
         <br>
         <div class="form-group">
-            <input type="hidden" name="id" value="<?=htmlspecialchars($_GET['id'])?>"></input>
-            <input type="hidden" name="token" value="<?=htmlspecialchars($_GET['token'])?>"></input>
+            <input type="hidden" name="id" value="<?= $this->check($_GET['id'])?>"></input>
+            <input type="hidden" name="token" value="<?= $this->check($_GET['token'])?>"></input>
           <button type="submit" name="submit" value="send" class="btn btn-primary">Envoyer</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>

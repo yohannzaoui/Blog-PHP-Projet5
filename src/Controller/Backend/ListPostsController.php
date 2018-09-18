@@ -42,7 +42,7 @@ class ListPostsController implements ListPostsControllerInterface
                 $this->view->render('listPosts', 'backend', ['posts' => $posts, 'line' => $line]);
             }
         } else {
-            $this->view->render('error', 'error', ['error' => 'Erreur system']);
+            $this->view->render('error', 'error', ['error' => 'System error']);
         }
     }
 

@@ -3,12 +3,16 @@ namespace Core;
 
 use Core\Interfaces\RouterInterface;
 
+/**
+ * 
+ */
 class Router implements RouterInterface
 {
     /**
      * @var array
      */
     private $routes = [];
+    private $view;
 
     /**
      * Router constructor.
@@ -16,17 +20,24 @@ class Router implements RouterInterface
     public function __construct()
     {
         $this->loadRoutes();
+        $this->view = new View;
     }
 
+    /**
+     * 
+     */
     public function loadRoutes()
     {
         $routes = require_once __DIR__.'/../config/routes.php';
 
-                foreach ($routes as $route) {
+            foreach ($routes as $route) {
                     $this->routes[] = new Route($route['path'], $route['action'], $route['methods'] ?? [], $route['params'] ?? []);
                 }
     }
 
+    /**
+     * 
+     */
     public function handle(Request $request)
     {
         foreach ($this->routes as $route) {
@@ -35,10 +46,13 @@ class Router implements RouterInterface
                 $controller = $route->getAction();
                 $class = new $controller();
                 return $class($request);
-            }
+            } 
         }
     }
 
+    /**
+     * 
+     */
     private function catchParams(Request $request, Route &$route)
     {
         foreach ($route->getParams() as $key => $param) {

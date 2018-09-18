@@ -63,16 +63,25 @@ class Post implements PostInterface
         $this->updateDateFr = $updateDateFr;
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getAuthor()
     {
         return $this->author;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;
@@ -83,16 +92,25 @@ class Post implements PostInterface
         return $this->subtitle;
     }
 
+    /**
+     * @return string
+     */
     public function getContent()
     {
         return $this->content;
     }
 
+    /**
+     * @return string
+     */
     public function getCreationDate()
     {
         return $this->creationDateFr;
     }
 
+    /**
+     * @return string
+     */
     public function getUpdateDate()
     {
         return $this->updateDateFr;

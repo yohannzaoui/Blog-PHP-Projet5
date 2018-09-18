@@ -1,6 +1,6 @@
 <?php $this->title = "Les membres" ?>
 
-<?php if(isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin"):?>
+<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin"):?>
 
 <?php if (isset($_SESSION['flash'])) : ?>
     <div class="container">
@@ -37,11 +37,11 @@
       <?php foreach ($users as $user) :?>
       <div class="post-preview">
         <h4 class="post-title">Pseudo :
-          <?= htmlspecialchars($user->getPseudo()) ?>
+          <?= $user->getPseudo() ?>
         </h4>
         <p>Membre depuis le :
           <?= $user->getCreationDate() ?>
-            <a href="/deleteUser/<?=$user->getId()?>"><i class="fas fa-trash-alt"></i></a>
+            <a href="/deleteUser/<?= $user->getId() ?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>
       <hr>

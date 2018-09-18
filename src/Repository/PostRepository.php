@@ -12,6 +12,9 @@ use PDO;
 class PostRepository extends DBFactory implements PostRepositoryInterface
 {
 
+    /**
+     * 
+     */
     public function getRecentPosts()
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts ORDER BY creation_date DESC LIMIT 0,3';
@@ -21,6 +24,9 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $posts;
     }
 
+    /**
+     * 
+     */
     public function getAll()
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts ORDER BY creation_date DESC';
@@ -30,6 +36,9 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $posts;
     }
 
+    /**
+     * 
+     */
     public function getPost($id)
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts WHERE id = ?';
@@ -39,6 +48,9 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $post;
     }
 
+    /**
+     * 
+     */
     public function addPost($author, $title, $subtitle, $content)
     {
         $sql= 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
@@ -47,18 +59,27 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $id;
     }
 
+    /**
+     * 
+     */
     public function updatePost($id, $author, $title, $subtitle, $content)
     {
         $sql = 'UPDATE posts SET author=?, title=?, subtitle=?, content=?, update_date=NOW() WHERE id = ?';
         $this->sql($sql, [$author, $title, $subtitle, $content, $id]);
     }
 
+    /**
+     * 
+     */
     public function deletePost($id)
     {
         $sql = 'DELETE FROM posts WHERE id = ?';
         $this->sql($sql, [$id]);
     }
 
+    /**
+     * 
+     */
     public function countPosts()
     {
         $sql = 'SELECT COUNT(*) as nb FROM posts';

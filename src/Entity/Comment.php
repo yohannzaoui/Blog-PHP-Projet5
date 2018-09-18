@@ -58,31 +58,49 @@ class Comment implements CommentInterface
         }
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return int
+     */
     public function getPostId()
     {
         return $this->id_post;
     }
 
+    /**
+     * @return string
+     */
     public function getPseudo()
     {
         return $this->pseudo;
     }
 
+    /**
+     * @return string
+     */
     public function getContent()
     {
         return $this->content;
     }
 
+    /**
+     * @return string
+     */
     public function getCreationDate()
     {
         return $this->creationDateFr;
     }
 
+    /**
+     * @return int
+     */
     public function getPublication()
     {
         return $this->publication;

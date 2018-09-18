@@ -37,6 +37,9 @@ class Request implements RequestInterface
         $this->attributes = new ParameterBag([]);
     }
 
+    /**
+     * 
+     */
     public static function createFromGlobals()
     {
         return new static($_GET, $_POST, $_FILES, $_SERVER);
@@ -52,11 +55,17 @@ class Request implements RequestInterface
         return $method === $this->server->get('REQUEST_METHOD');
     }
 
+    /**
+     * 
+     */
     public function getRequestUri()
     {
         return $this->server->get('REQUEST_URI');
     }
 
+    /**
+     * 
+     */
     public function getParam($name)
     {
         return $this->query->get($name);
