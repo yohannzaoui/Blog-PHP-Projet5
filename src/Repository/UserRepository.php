@@ -211,4 +211,5 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $line = $this->sql($sql)->fetch();
         return $line['nb'];
     }
+
 }

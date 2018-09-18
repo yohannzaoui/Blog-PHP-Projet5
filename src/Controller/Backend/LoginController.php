@@ -48,7 +48,7 @@ class LoginController implements LoginControllerInterface
             if (!isset($_SESSION['pseudoAdmin'], $_SESSION['roleAdmin'])) {
                 $this->view->render('loginAdmin', 'backend');
             } else {
-                $this->view->render('addPost', 'backend');
+                header('location:../addPost');
                 }
             }
         }
