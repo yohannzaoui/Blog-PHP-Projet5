@@ -18,7 +18,6 @@ class LogoutController implements LogoutControllerInterface
      */
     public function __construct()
     {
-        $this->session = new Session;
         $this->view = new View;
     }
 

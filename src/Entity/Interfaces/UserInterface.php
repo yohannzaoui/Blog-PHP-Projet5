@@ -24,8 +24,6 @@ interface UserInterface
 
     public function getPseudo();
 
-    public function getPass();
-
     public function getEmail();
 
     public function getId();

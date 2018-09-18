@@ -1,6 +1,6 @@
 <?php $this->title = "Ajouter un article"; ?>
 
-<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") : ?>
+<?php if (isset($_SESSION['roleAdmin'], $_SESSION['pseudoAdmin']) && $_SESSION['roleAdmin'] == "admin") { ?>
 
 <?php require_once 'adminNav.php'; ?>
 
@@ -51,4 +51,8 @@
                 </div>
             </form>
 
-<?php endif; ?>
+<?php } else {
+    echo'<p class="title_center">
+    <a href="../admin"><button type="button" class="btn btn-success">Se connecter</button></a>
+</p>';
+} ?>
