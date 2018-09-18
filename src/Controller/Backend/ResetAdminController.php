@@ -13,6 +13,9 @@ class ResetAdminController implements ResetAdminControllerInterface
     private $mailer;
     private $userRepository;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->view = new View;
@@ -20,6 +23,9 @@ class ResetAdminController implements ResetAdminControllerInterface
         $this->userRepository = new userRepository;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {

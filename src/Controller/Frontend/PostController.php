@@ -5,7 +5,6 @@ use App\Controller\Frontend\Interfaces\PostControllerInterface;
 use App\Repository\PostRepository;
 use App\Repository\CommentRepository;
 use Core\View;
-use Core\Session;
 use Core\Request;
 
 /**
@@ -17,16 +16,20 @@ class PostController implements PostControllerInterface
     private $postRepository;
     private $commentRepository;
     private $view;
-    private $session;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->postRepository = new PostRepository;
         $this->commentRepository = new CommentRepository;
         $this->view = new View;
-        $this->session = new Session;
     }
 
+    /**
+     * 
+     */
     public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
@@ -38,7 +41,7 @@ class PostController implements PostControllerInterface
                     $content = $this->view->check($_POST['content']);
                     $idPost = $this->view->check($_POST['idPost']);
                     $this->commentRepository->addComment($idPost, $pseudo, $content);
-                    $this->session->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
+                    $request->getSession()->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
                     header('Location: ../post/'.$idPost);
                 }
             } else {

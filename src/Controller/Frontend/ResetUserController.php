@@ -17,6 +17,9 @@ class ResetUserController implements ResetUserControllerInterface
     private $view;
     private $mailer;
 
+    /**
+     * 
+     */
     function __construct()
     {
         $this->userRepository = new UserRepository;
@@ -24,6 +27,9 @@ class ResetUserController implements ResetUserControllerInterface
         $this->mailer = new Mailer;
     }
 
+    /**
+     * 
+     */
     public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {

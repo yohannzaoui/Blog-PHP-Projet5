@@ -4,7 +4,6 @@ namespace App\Controller\Backend;
 use App\Controller\Backend\Interfaces\UserControllerInterface;
 use App\Repository\UserRepository;
 use Core\View;
-use Core\Session;
 use Core\Request;
 
 /**
@@ -15,15 +14,19 @@ class UserController implements UserControllerInterface
 
     private $userRepository;
     private $view;
-    private $session;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->userRepository = new UserRepository;
         $this->view = new View;
-        $this->session = new Session;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('GET')) {
@@ -31,7 +34,7 @@ class UserController implements UserControllerInterface
                 $idUser = $request->getParam('id');
                 $id = $this->view->check($idUser);
                 $this->userRepository->deleteUser($id);
-                $this->session->flash('Membre supprimé');
+                $request->getSession()->flash('Membre supprimé');
                 header('location:..\listUsers');
         } else {
             $users = $this->userRepository->allUsers();

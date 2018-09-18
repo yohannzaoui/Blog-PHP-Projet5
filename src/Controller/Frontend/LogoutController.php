@@ -3,7 +3,7 @@ namespace App\Controller\Frontend;
 
 use App\Controller\Frontend\Interfaces\LogoutControllerInterface;
 use Core\View;
-use Core\Session;
+use Core\Request;
 
 /**
  *
@@ -11,18 +11,23 @@ use Core\Session;
 class LogoutController implements LogoutControllerInterface
 {
 
-    private $session;
     private $view;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->session = new Session;
         $this->view = new View;
     }
 
-    public function __invoke()
+    /**
+     * 
+     */
+    public function __invoke(Request $request)
     {
-        $this->session->sessionDestroy();
+        $request->getSession()->sessionDestroy();
         $this->view->render('loginUser', 'frontend');
     }
 }

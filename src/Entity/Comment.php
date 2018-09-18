@@ -16,6 +16,9 @@ class Comment implements CommentInterface
     private $creationDateFr;
     private $publication;
 
+    /**
+     * 
+     */
     public function setId($id)
     {
         $id = (int)$id;
@@ -24,6 +27,9 @@ class Comment implements CommentInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setPostId($id_post)
     {
         $id_post = (int)$id_post;
@@ -32,6 +38,9 @@ class Comment implements CommentInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setPseudo($pseudo)
     {
         if (is_string($pseudo)) {
@@ -39,6 +48,9 @@ class Comment implements CommentInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setContent($content)
     {
         if (is_string($content)) {
@@ -46,11 +58,17 @@ class Comment implements CommentInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setCreationDate($creationDate)
     {
         $this->creationDateFr = $creationDate;
     }
 
+    /**
+     * 
+     */
     public function setPublication($publication)
     {
         if ($publication >= 0 && $publication <= 1) {

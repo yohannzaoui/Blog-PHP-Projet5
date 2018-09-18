@@ -17,6 +17,9 @@ class Post implements PostInterface
     private $creationDateFr;
     private $updateDateFr;
 
+    /**
+     * 
+     */
     public function setId($id)
     {
         $id = (int)$id;
@@ -25,6 +28,9 @@ class Post implements PostInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setAuthor($author)
     {
         if (is_string($author) && strlen($author) <= 255) {
@@ -32,6 +38,9 @@ class Post implements PostInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setTitle($title)
     {
         if (is_string($title) && strlen($title) <= 255) {
@@ -39,6 +48,9 @@ class Post implements PostInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setSubtitle($subtitle)
     {
         if (is_string($subtitle) && strlen($subtitle) <= 255) {
@@ -46,6 +58,9 @@ class Post implements PostInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setContent($content)
     {
         if (is_string($content) && strlen($content) <= 10000) {
@@ -53,11 +68,17 @@ class Post implements PostInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setCreationDate($creationDateFr)
     {
         $this->creationDateFr = $creationDateFr;
     }
 
+    /**
+     * 
+     */
     public function setUpdateDate($updateDateFr)
     {
         $this->updateDateFr = $updateDateFr;

@@ -15,12 +15,18 @@ class AllPostsController implements AllPostsControllerInterface
     private $postRepository;
     private $view;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->postRepository = new PostRepository;
         $this->view = new View;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('GET')) {

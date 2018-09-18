@@ -3,7 +3,9 @@ namespace Core;
 
 use Core\Interfaces\RequestInterface;
 
-
+/**
+ * 
+ */
 class Request implements RequestInterface
 {
     const METHOD_GET = 'GET';
@@ -20,6 +22,8 @@ class Request implements RequestInterface
 
     public $attributes;
 
+    private $session;
+
     /**
      * Request constructor.
      *
@@ -35,6 +39,7 @@ class Request implements RequestInterface
         $this->files = new ParameterBag($files);
         $this->server = new ParameterBag($server);
         $this->attributes = new ParameterBag([]);
+        $this->session = new Session;
     }
 
     /**
@@ -69,5 +74,13 @@ class Request implements RequestInterface
     public function getParam($name)
     {
         return $this->query->get($name);
+    }
+
+    /**
+     * Session object
+     */
+    public function getSession()
+    {
+        return $this->session;
     }
 }

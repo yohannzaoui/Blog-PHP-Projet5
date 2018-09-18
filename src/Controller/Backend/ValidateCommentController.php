@@ -15,7 +15,6 @@ class ValidateCommentController implements ValidateCommentControllerInterface
 
     private $view;
     private $commentRepository;
-    private $session;
 
     /**
      * 
@@ -24,7 +23,6 @@ class ValidateCommentController implements ValidateCommentControllerInterface
     {
         $this->commentRepository = new CommentRepository;
         $this->view = new View;
-        $this->session = new Session;
     }
 
     /**
@@ -37,7 +35,7 @@ class ValidateCommentController implements ValidateCommentControllerInterface
                 $id = $request->getParam('id');
                 $idComment = $this->view->check($id);
                 $this->commentRepository->validateComment($idComment);
-                $this->session->flash('Commentaire validé');
+                $request->getSession()->flash('Commentaire validé');
                 header('Location: ../listComments');
             } else {
                 $this->view->render('error', 'error', ['error' => 'ID du commentaire à valider manquant']);

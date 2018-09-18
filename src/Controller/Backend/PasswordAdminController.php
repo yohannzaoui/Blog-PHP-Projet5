@@ -15,12 +15,18 @@ class PasswordAdminController implements PasswordAdminControllerInterface
     private $view;
     private $userRepository;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->view = new View;
         $this->userRepository = new userRepository;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {

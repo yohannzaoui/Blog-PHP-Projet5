@@ -6,7 +6,6 @@ use App\Repository\UserRepository;
 use App\Repository\PostRepository;
 use Core\View;
 use Core\Request;
-use Core\Session;
 use Core\Cookie;
 
 /**
@@ -18,18 +17,22 @@ class LoginController implements LoginControllerInterface
     private $view;
     private $postRepository;
     private $userRepository;
-    private $session;
     private $cookie;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->view = new View;
         $this->postRepository = new PostRepository;
         $this->userRepository = new UserRepository;
-        $this->session = new Session;
-        $this->cookie = new Cookie;
+        $this->cookie  = new Cookie;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {
@@ -40,8 +43,8 @@ class LoginController implements LoginControllerInterface
                     $pseudo = $this->view->check($_POST['pseudo']);
                     $pass = $this->view->check($_POST['pass']);
                     $user = $this->userRepository->userConnect($pseudo, $pass);
-                    $this->session->add('roleUser', $user['role']);
-                    $this->session->add('pseudoUser', $user['pseudo']);
+                    $request->getSession()->add('roleUser', $user['role']);
+                    $request->getSession()->add('pseudoUser', $user['pseudo']);
                 }
                 if (isset($_POST['remember'])) {
                     $this->cookie->set('pseudoUser', $pseudo);

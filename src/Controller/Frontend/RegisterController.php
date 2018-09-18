@@ -17,6 +17,9 @@ class RegisterController implements RegisterControllerInterface
     private $userRepository;
     private $mailer;
 
+    /**
+     * 
+     */
     public function __construct()
     {
         $this->view = new View;
@@ -24,6 +27,9 @@ class RegisterController implements RegisterControllerInterface
         $this->mailer = new Mailer;
     }
 
+    /**
+     * 
+     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {

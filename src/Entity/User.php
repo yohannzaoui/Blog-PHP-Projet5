@@ -19,6 +19,9 @@ class User implements UserInterface
     private $creationDateFr;
 
 
+    /**
+     * 
+     */
     public function setId($id)
     {
         $id = (int)$id;
@@ -27,6 +30,9 @@ class User implements UserInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setPseudo($pseudo)
     {
         if (is_string($pseudo) && strlen($pseudo) <= 255) {
@@ -34,6 +40,9 @@ class User implements UserInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setPass($pass)
     {
         if (is_string($pass) && strlen($pass) <= 255) {
@@ -41,11 +50,17 @@ class User implements UserInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setEmail($email)
     {
         $this->email = $email;
     }
 
+    /**
+     * 
+     */
     public function setRole($role)
     {
         if (is_string($role) && strlen($role) <= 10) {
@@ -53,6 +68,9 @@ class User implements UserInterface
         }
     }
 
+    /**
+     * 
+     */
     public function setCreationDate($creationDateFr)
     {
         $this->creationDateFr = $creationDateFr;
@@ -106,6 +124,9 @@ class User implements UserInterface
         return $this->token;
     }
 
+    /**
+     * 
+     */
     public function setToken($token)
     {
         $this->token = $token;
@@ -119,6 +140,9 @@ class User implements UserInterface
         return $this->ctoken;
     }
 
+    /**
+     * 
+     */
     public function setCtoken($ctoken)
     {
         $this->ctoken = $ctoken;

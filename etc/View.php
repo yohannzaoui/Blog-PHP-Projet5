@@ -13,6 +13,9 @@ class View implements ViewInterface
     private $file;
     private $title;
 
+    /**
+     * 
+     */
     public function render($template, $path, $data = [])
     {
         $this->file = '../templates/'.$path.'/'.$template.'.php';
@@ -21,6 +24,9 @@ class View implements ViewInterface
         echo $view;
     }
 
+    /**
+     * 
+     */
     private function renderFile($file, $data)
     {
         if (file_exists($file)) {
@@ -34,6 +40,9 @@ class View implements ViewInterface
 
     }
 
+    /**
+     * 
+     */
     public function check($data)
     {
         return htmlspecialchars($data, ENT_QUOTES, 'UTF-8', false);
