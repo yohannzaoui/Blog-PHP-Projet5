@@ -29,10 +29,6 @@
           <button type="submit" name="submit" value="send" class="btn btn-primary">Se connecter</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="remember">
-          <label class="form-check-label" for="remember">Se souvenir de moi</label>
-        </div>
       </form>
       <p>Pas de compte ?
         <a href="/registerAdmin">Inscrivez vous !</a>

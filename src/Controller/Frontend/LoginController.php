@@ -17,7 +17,6 @@ class LoginController implements LoginControllerInterface
     private $view;
     private $postRepository;
     private $userRepository;
-    private $cookie;
 
     /**
      * 
@@ -27,7 +26,6 @@ class LoginController implements LoginControllerInterface
         $this->view = new View;
         $this->postRepository = new PostRepository;
         $this->userRepository = new UserRepository;
-        $this->cookie  = new Cookie;
     }
 
     /**
@@ -45,9 +43,6 @@ class LoginController implements LoginControllerInterface
                     $user = $this->userRepository->userConnect($pseudo, $pass);
                     $request->getSession()->add('roleUser', $user['role']);
                     $request->getSession()->add('pseudoUser', $user['pseudo']);
-                }
-                if (isset($_POST['remember'])) {
-                    $this->cookie->set('pseudoUser', $pseudo);
                 }
                 header('location:../allPosts');
             } else {
