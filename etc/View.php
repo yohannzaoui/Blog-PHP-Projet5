@@ -21,7 +21,7 @@ class View implements ViewInterface
         $this->file = '../templates/'.$path.'/'.$template.'.php';
         $content = $this->renderFile($this->file, $data);
         $view = $this->renderFile('../templates/layout/base.php', ['title'=> $this->title, 'content'=> $content]);
-        return $view;
+        echo $view;
     }
 
     /**

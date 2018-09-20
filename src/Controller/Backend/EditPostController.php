@@ -24,9 +24,6 @@ class EditPostController implements EditPostControllerInterface
         $this->view = new View;
     }
 
-    /**
-     * 
-     */
     public function __invoke(request $request)
     {
         if ($request->isMethod('GET')) {

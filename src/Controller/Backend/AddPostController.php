@@ -4,7 +4,6 @@ namespace App\Controller\Backend;
 use App\Controller\Backend\Interfaces\AddPostControllerInterface;
 use Core\View;
 use Core\Request;
-use Core\Response;
 use App\Repository\PostRepository;
 
 /**
@@ -28,11 +27,10 @@ class AddPostController implements AddPostControllerInterface
     /**
      * 
      */
-    public function __invoke(Request $request, Response $response)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            //$this->view->render('addPost', 'backend');
-            return new Response(200, [], $this->view->render('addPost', 'backend'));
+            $this->view->render('addPost', 'backend');
         } else {
             if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
                 if (!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])) {
@@ -41,7 +39,7 @@ class AddPostController implements AddPostControllerInterface
                     $subtitle = $this->view->check($_POST['subtitle']);
                     $content = $this->view->check($_POST['content']);
                     $id = $this->postRepository->addPost($author, $title, $subtitle, $content);
-                    $request->getSession()->flash('Article ajouté.');
+                    $request->getSession()->flash('Article ajouté. <a href="/post/'.$id.'">Voir l\'article</a>');
                     $this->view->render('addPost', 'backend');
                 } else {
                     $this->view->render('error', 'error', ['error' => 'Les champs sont vides']);
