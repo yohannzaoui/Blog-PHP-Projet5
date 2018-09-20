@@ -57,7 +57,7 @@ class Router implements RouterInterface
     {
         foreach ($route->getParams() as $key => $param) {
             preg_match(sprintf('#%s#', $param), $request->getRequestUri(), $entry);
-            $request->attributes->set($key, $entry[0]);
+            $request->attributes->set($key, $entry[0] ?? null);
             $route->setPath(strtr($route->getPath(), [sprintf('{%s}', $key) => $request->attributes->get($key)]));
         }
     }

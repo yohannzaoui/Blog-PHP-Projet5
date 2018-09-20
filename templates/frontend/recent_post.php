@@ -13,7 +13,7 @@
               <?= $post->getSubtitle() ?>
             </h3></a>
             <p class="post-meta">
-              <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != NULL) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
+              <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != null) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
             </p>
         </div>
         <hr>

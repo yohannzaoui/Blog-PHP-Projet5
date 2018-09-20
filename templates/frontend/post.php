@@ -1,7 +1,5 @@
 <?php $this->title = "Blog Yohann Zaoui - " . $post->getTitle(); ?>
 
-
-
 <?php if (isset($_SESSION['flash'])) : ?>
 <div class="container">
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -28,7 +26,7 @@
             <?=$post->getContent()?>
           </p>
           <p class="post-meta">
-            <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != NULL) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
+            <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != null) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
           </p>
           <small><p>
               Partagez l'article : <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -44,13 +42,7 @@
   </div>
 </div>
 
-<?php if (!isset($_SESSION['roleUser'], $_SESSION['pseudoUser'])):?>
-<p class="title_center">
-    <a href="../loginUser"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
-</p>
-<?php endif; ?>
-
-<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member"):?>
+<?php if (isset($_SESSION['roleUser'], $_SESSION['pseudoUser']) && $_SESSION['roleUser'] == "member") { ?>
 
 <div class="container">
   <div class="row">
@@ -83,7 +75,11 @@
       </form>
       <br>
 
-<?php endif; ?>
+<?php } else {
+  echo'<p class="title_center">
+  <a href="../loginUser"><button type="button" class="btn btn-success">Connectez vous pour commenter</button></a>
+</p>';
+} ?>
 
 
       <div class="container">

@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 use Core\Interfaces\RequestInterface;
@@ -39,7 +40,7 @@ class Request implements RequestInterface
         $this->files = new ParameterBag($files);
         $this->server = new ParameterBag($server);
         $this->attributes = new ParameterBag([]);
-        $this->session = new Session;
+        $this->session = new Session();
     }
 
     /**
@@ -77,7 +78,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * Session object
+     *@return Session object
      */
     public function getSession()
     {
