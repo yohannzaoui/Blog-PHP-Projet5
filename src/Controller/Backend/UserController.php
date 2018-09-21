@@ -30,9 +30,8 @@ class UserController implements UserControllerInterface
     public function __invoke(request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $idUser = $request->getParam('id');
-                $id = $this->view->check($idUser);
+            if ($request->getQuery('id') && !empty($request->getQuery('id'))) {
+                $id = $this->view->check($request->getQuery('id'));
                 $this->userRepository->deleteUser($id);
                 $request->getSession()->flash('Membre supprimé');
                 header('location:..\listUsers');

@@ -15,5 +15,7 @@ interface RequestInterface
 
     public function getRequestUri();
 
-    public function getParam($name);
+    public function getQuery($name);
+
+    public function getRequest($name);
 }

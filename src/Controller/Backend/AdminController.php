@@ -27,13 +27,12 @@ class AdminController implements AdminControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $idAdmin = $request->getParam('id');
-                $id = $this->view->check($idAdmin);
-                $this->userRepository->deleteUser($idAdmin);
+            if (!empty($request->getQuery('id'))) {
+                $id = $this->view->check($request->getQuery('id'));
+                $this->userRepository->deleteUser($id);
                 $request->getSession()->flash('Administrateur supprimé');
                 header('location:../listAdmins');
         } else {

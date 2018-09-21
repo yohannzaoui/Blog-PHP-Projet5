@@ -29,11 +29,11 @@ class ResetAdminController implements ResetAdminControllerInterface
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {
-            if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
-                if (empty($_POST['email'])) {
+            if ($request->has('submit') && $request->request('submit') === 'send') {
+                if (empty($request->request('email'))) {
                     $this->view->render('error', 'error', ['error' => 'Le champ adresse Email est vide']);
                 } else {
-                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                    $email = filter_var($request->request('email'), FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
                     $user = $this->userRepository->resetAdmin($token);
                     $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/passwordResetAdmin/".$user['id']."/$token");

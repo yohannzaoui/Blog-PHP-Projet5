@@ -33,9 +33,8 @@ class ListPostsController implements ListPostsControllerInterface
     public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $idComments = $request->getParam('id');
-                $id = $this->view->check($idComments);
+            if (!empty($request->getQuery('id'))) {
+                $idComments = $this->view->check($request->getQuery('id'));
                 $this->commentRepository->deleteComments($idComments);
                 $request->getSession()->flash("Tous les commentaires de l'article on été supprimer");
                 header('Location: ../listPosts');

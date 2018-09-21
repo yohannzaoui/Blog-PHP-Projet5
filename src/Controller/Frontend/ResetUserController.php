@@ -33,15 +33,15 @@ class ResetUserController implements ResetUserControllerInterface
     public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
-            if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
-                if (empty($_POST['email'])) {
+            if ($request->has('submit') && $request->getRequest('submit') === 'send') {
+                if (empty($request->getRequest('email'))) {
                     $this->view->render('error', 'error', ['error' => 'Le champ adresse Email est vide']);
                 } else {
-                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                    $email = filter_var($request->getRequest('email'), FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
                     $user = $this->userRepository->resetUser($token);
                     $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/passwordResetUser/".$user['id']."/$token");
-                    $this->view->render('validation_reset', 'backend');
+                    $this->view->render('validation_reset', 'backend', ['email' => $email]);
                 }
             } else {
                 $this->view->render('error', 'error', ['error' => 'Paramètre absent']);

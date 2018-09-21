@@ -31,9 +31,8 @@ class ValidateCommentController implements ValidateCommentControllerInterface
     public function __invoke(request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $id = $request->getParam('id');
-                $idComment = $this->view->check($id);
+            if ($request->getQuery('id') && !empty($request->getQuery('id'))) {
+                $idComment = $this->view->check($request->getQuery('id'));
                 $this->commentRepository->validateComment($idComment);
                 $request->getSession()->flash('Commentaire validé');
                 header('Location: ../listComments');

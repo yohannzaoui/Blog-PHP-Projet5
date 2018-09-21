@@ -72,9 +72,22 @@ class Request implements RequestInterface
     /**
      * 
      */
-    public function getParam($name)
+    public function getQuery($name)
     {
         return $this->query->get($name);
+    }
+
+    /**
+     * 
+     */
+    public function getRequest($name)
+    {
+        return $this->request->get($name);
+    }
+
+    public function has($value)
+    {
+        return $this->request->has($value);
     }
 
     /**

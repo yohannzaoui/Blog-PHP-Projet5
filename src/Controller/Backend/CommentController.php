@@ -31,9 +31,8 @@ class CommentController implements CommentControllerInterface
     public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $id = $request->getParam('id');
-                $idComment = $this->view->check($id);
+            if (!empty($request->getQuery('id'))) {
+                $idComment = $this->view->check($request->getQuery('id'));
                 $this->commentRepository->deleteComment($idComment);
                 $request->getSession()->flash('Commentaire supprimé');
                 header('Location: ../listComments');

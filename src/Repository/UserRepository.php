@@ -21,7 +21,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $sql = 'SELECT pseudo FROM users WHERE role = "admin" AND pseudo = ?';
         $req = $this->sql($sql, [$pseudo]);
         $user = $req->rowCount();
-        if($user > 0) {
+        if ($user > 0) {
             throw new Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
         }
         $sql = 'SELECT email FROM users WHERE role = "admin" AND email = ?';
@@ -90,8 +90,16 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
      */
     public function deleteUser($id)
     {
-        $sql = 'DELETE FROM users WHERE id = ?';
-        $this->sql($sql, [$id]);
+        $sql = 'SELECT id FROM users WHERE id = ?';
+        $req = $this->sql($sql, [$id]);
+        $count = $req->rowCount();
+        if ($count > 0) {
+            $sql = 'DELETE FROM users WHERE id = ?';
+            $this->sql($sql, [$id]);  
+        } else {
+            throw new \Exception('L\'ID n\'éxiste pas ');
+        }
+        
     }
 
     /**
@@ -188,8 +196,16 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
      */
     public function resetUserPass($id, $passhash)
     {
-        $sql = 'UPDATE users SET pass = ? WHERE id = ?';
-        $this->sql($sql, [$passhash, $id]);
+        $sql = 'SELECT id FROM users WHERE id = ?';
+        $req = $this->sql($sql, [$id]);
+        $count = $req->rowCount();
+        if ($count > 0) {
+            $sql = 'UPDATE users SET pass = ? WHERE id = ?';
+            $this->sql($sql, [$passhash, $id]);
+        } else {
+            throw new Exception("ID du membre inconnu");
+        }
+        
     }
 
     /**

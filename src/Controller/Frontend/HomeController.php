@@ -30,16 +30,16 @@ class HomeController implements HomeControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
-            if (isset($_POST['submit']) && $_POST['submit'] === "send") {
-                if (empty($_POST['name']) && empty($_POST['email']) && empty($_POST['message'])) {
+            if ($request->has('submit') && $request->getRequest('submit') === "send") {
+                if (empty($request->getRequest('name')) && empty($request->getRequest('email')) && empty($request->getRequest('message'))) {
                     $this->view->render('error', 'error', ['error' => 'Les champs sont vides']);
                 }
-                    $pseudo = $this->view->check($_POST['name']);
-                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-                    $body = $this->view->check($_POST['message']);
+                    $pseudo = $this->view->check($request->getRequest('name'));
+                    $email = filter_var($request->getRequest('email'), FILTER_VALIDATE_EMAIL);
+                    $body = $this->view->check($request->getRequest('message'));
                     $this->mailer->send('Message du Blog', $pseudo, $email, $body);
                     $request->getSession()->flash('Votre message à bien été envoyé');
                     $posts = $this->postRepository->getRecentPosts();

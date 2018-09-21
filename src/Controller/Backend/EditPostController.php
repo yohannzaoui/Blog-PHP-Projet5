@@ -24,26 +24,25 @@ class EditPostController implements EditPostControllerInterface
         $this->view = new View;
     }
 
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id'])) {
-                $id = $request->getParam('id');
-                $idPost = $this->view->check($id);
+            if ($request->getQuery('id')) {
+                $idPost = $this->view->check($request->getQuery('id'));
                 $post = $this->postRepository->getPost($idPost);
                 $this->view->render('editPost', 'backend', ['post' => $post]);
                 } else {
                     $this->view->render('error', 'error', ['error' => 'Article inconnu']);
                 }
             } else {
-                if (isset($_POST['submit']) && $_POST['submit'] === 'send' && !empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty(['content']) && !empty($_POST['id'])) {
-                    $author = $this->view->check($_POST['author']);
-                    $title = $this->view->check($_POST['title']);
-                    $subtitle = $this->view->check($_POST['subtitle']);
-                    $content = $this->view->check($_POST['content']);
-                    $id = $this->view->check($_POST['id']);
+                if ($request->has('submit') && $request->getRequest('submit') === 'send' && !empty($request->getRequest('author')) && !empty($request->getRequest('title')) && !empty($request->getRequest('subtitle')) && !empty($request->getRequest('content')) && !empty($request->getRequest('id'))) {
+                    $author = $this->view->check($request->getRequest('author'));
+                    $title = $this->view->check($request->getRequest('title'));
+                    $subtitle = $this->view->check($request->getRequest('subtitle'));
+                    $content = $this->view->check($request->getRequest('content'));
+                    $id = $this->view->check($request->getRequest('id'));
                     $this->postRepository->updatePost($id, $author, $title, $subtitle, $content);
-                    $request->getSession()->flash('Article modifié. <a href="/post/'.$id.'">Voir l\'article</a>');
+                    $request->getSession()->flash('Article modifié.');
                     header('Location: ../listPosts');
                     } else {
                         $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être completés']);

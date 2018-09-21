@@ -17,7 +17,7 @@ class Mailer implements MailerInterface
      */
     public function send($subject, $pseudo, $email, $body)
     {
-        $data = require __DIR__ . '/../config/mailweb.php';
+        $data = require __DIR__ . '/../config/mail.php';
         $transport = (new Swift_SmtpTransport($data['smtp'], $data['port'], $data['encryption']))
           ->setUsername($data['username'])
           ->setPassword($data['password'])

@@ -43,9 +43,14 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts WHERE id = ?';
         $req = $this->sql($sql, [$id]);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
-        $post = $req->fetch();
-        return $post;
+        $count = $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
+        if ($count > 0) {
+            $post = $req->fetch();
+            return $post;
+        } else {
+            throw new \Exception('Article inconnu ');
+        }
+        
     }
 
     /**
@@ -73,8 +78,16 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
      */
     public function deletePost($id)
     {
-        $sql = 'DELETE FROM posts WHERE id = ?';
-        $this->sql($sql, [$id]);
+        $sql = 'SELECT id FROM posts WHERE id = ?';
+        $req = $this->sql($sql, [$id]);
+        $count = $req->rowCount();
+        if ($count > 0) {
+            $sql = 'DELETE FROM posts WHERE id = ?';
+            $this->sql($sql, [$id]);
+        } else {
+            throw new \Exception('L\'ID n\'éxiste pas ');
+        }
+        
     }
 
     /**

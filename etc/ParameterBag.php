@@ -37,4 +37,14 @@ class ParameterBag implements ParameterBagInterface
     {
         $this->parameters[$key] = $value;
     }
+
+    public function has($value)
+    {
+        if (array_key_exists($value, $this->parameters)) {
+            return $value;
+        } else {
+            throw new \Exception("Clé inconnue");
+            
+        }
+    }
 }

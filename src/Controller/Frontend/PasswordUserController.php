@@ -31,12 +31,12 @@ class PasswordUserController implements PasswordUserControllerInterface
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {
-            if (isset($_POST['submit']) && $_POST['submit'] === 'send' && !empty($_POST['id']) && !empty($_POST['token'])) {
-                if (empty($_POST['pass1']) && $_POST['pass2']) {
+            if ($request->has('submit') && $request->getRequest('submit') === 'send' && !empty($request->getRequest('id')) && !empty($request->getRequest('token'))) {
+                if (empty($request->getRequest('pass1')) && $request->getRequest('pass2')) {
                     $this->view->render('error', 'error', ['error' => 'Veuillez reseigner votre nouveau mot de passe']);
-                } elseif ($_POST['pass1'] === $_POST['pass2']) {
-                    $id = $this->view->check($_POST['id']);
-                    $pass = $this->view->check($_POST['pass1']);
+                } elseif ($request->getRequest('pass1') === $request->getRequest('pass2')) {
+                    $id = $this->view->check($request->getRequest('id'));
+                    $pass = $this->view->check($request->getRequest('pass1'));
                     $passhash = password_hash($pass, PASSWORD_BCRYPT);
                     $this->userRepository->resetUserPass($id, $passhash);
                     $this->view->render('confirmation_reset', 'backend');

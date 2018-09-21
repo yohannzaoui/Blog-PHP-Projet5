@@ -30,9 +30,8 @@ class DeletePostController implements DeletePostControllerInterface
     public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $id = $request->getParam('id');
-                $idPost = $this->view->check($id);
+            if (!empty($request->getQuery('id'))) {
+                $idPost = $this->view->check($request->getQuery('id'));
                 $this->postRepository->deletePost($idPost);
                 $request->getSession()->flash('Article supprimé');
                 header('location:..\listPosts');

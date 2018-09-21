@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Backend;
 
 use App\Controller\Backend\Interfaces\AddPostControllerInterface;
@@ -32,14 +33,14 @@ class AddPostController implements AddPostControllerInterface
         if ($request->isMethod('GET')) {
             $this->view->render('addPost', 'backend');
         } else {
-            if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
-                if (!empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])) {
-                    $author = $this->view->check($_POST['author']);
-                    $title = $this->view->check($_POST['title']);
-                    $subtitle = $this->view->check($_POST['subtitle']);
-                    $content = $this->view->check($_POST['content']);
+            if ($request->has('submit') && $request->getRequest('submit') === 'send') {
+                if (!empty($request->getRequest('author')) && !empty($request->getRequest('title')) && !empty($request->getRequest('subtitle')) && !empty($request->getRequest('content'))) {
+                    $author = $this->view->check($request->getRequest('author'));
+                    $title = $this->view->check($request->getRequest('title'));
+                    $subtitle = $this->view->check($request->getRequest('subtitle'));
+                    $content = $this->view->check($request->getRequest('content'));
                     $id = $this->postRepository->addPost($author, $title, $subtitle, $content);
-                    $request->getSession()->flash('Article ajouté. <a href="/post/'.$id.'">Voir l\'article</a>');
+                    $request->getSession()->flash('Article ajouté.');
                     $this->view->render('addPost', 'backend');
                 } else {
                     $this->view->render('error', 'error', ['error' => 'Les champs sont vides']);

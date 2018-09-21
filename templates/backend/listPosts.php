@@ -45,6 +45,7 @@
         <p class="post-meta">
           <?php echo "Auteur : ".$post->getAuthor()?>
           <?php echo " - Date : ".$post->getCreationDate()?>
+          <?php if ($post->getUpdateDate() != null) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
         </p>
         <p>
           <a href="/post/<?=$post->getId()?>"><i class="fas fa-eye"></i></a> |

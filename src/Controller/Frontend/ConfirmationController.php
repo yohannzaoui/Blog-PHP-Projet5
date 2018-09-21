@@ -26,12 +26,12 @@ class ConfirmationController implements ConfirmationControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            if (isset($_GET['token'], $_GET['id']) && !empty($_GET['token']) && !empty($_GET['id'])) {
-                $token = $this->view->check($_GET['token']);
-                $id = $this->view->check($_GET['id']);
+            if ($request->getQuery('token', 'id') && !empty($request->getQuery('token')) && !empty($request->getQuery('id'))) {
+                $token = $this->view->check($request->getQuery('token'));
+                $id = $this->view->check($request->getQuery('id'));
                 $this->userRepository->confirme($id, $token);
                 $this->view->render('confirmation', 'frontend');
             } else {

@@ -50,17 +50,29 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
      */
     public function validateComment($id)
     {
-        $sql = 'UPDATE comments SET publication = 1 WHERE id = ?';
-        $this->sql($sql, [$id]);
+        $sql = 'SELECT id FROM comments WHERE publication = 0 AND id = ?';
+        $req = $this->sql($sql, [$id]);
+        $count = $req->rowCount();
+        if ($count > 0) {
+            $sql = 'UPDATE comments SET publication = 1 WHERE id = ?';
+            $this->sql($sql, [$id]);
+        } else {
+            throw new \Exception('L\'ID n\'éxiste pas ');
+        }
+        
     }
 
-    /**
-     * 
-     */
     public function deleteComment($id)
     {
-        $sql = 'DELETE FROM comments WHERE id = ?';
-        $this->sql($sql, [$id]);
+        $sql = 'SELECT id FROM comments WHERE id = ?';
+        $req = $this->sql($sql, [$id]);
+        $count = $req->rowCount();
+        if ($count > 0) {
+            $sql = 'DELETE FROM comments WHERE id = ?';
+            $this->sql($sql, [$id]);
+        } else {
+            throw new \Exception('L\'ID n\'éxiste pas ');
+        }
     }
 
     /**
@@ -68,8 +80,16 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
      */
     public function deleteComments($idPost)
     {
-        $sql = 'DELETE FROM comments WHERE id_post = ?';
-        $this->sql($sql, [$idPost]);
+        $sql = 'SELECT id_post FROM comments WHERE id_post = ?';
+        $req = $this->sql($sql, [$idPost]);
+        $count = $req->rowCount();
+        if ($count > 0) {
+            $sql = 'DELETE FROM comments WHERE id_post = ?';
+            $this->sql($sql, [$idPost]);
+        } else {
+            throw new \Exception("Il n'y a pas de commentaire sur cet article");
+        }
+        
     }
 
     /**

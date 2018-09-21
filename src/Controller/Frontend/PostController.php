@@ -33,13 +33,13 @@ class PostController implements PostControllerInterface
     public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
-            if (isset($_POST['submit']) && $_POST['submit'] === 'send') {
-                if (empty($_POST['pseudo']) && empty($_POST['content']) && empty($_POST['idPost'])) {
+            if ($request->has('submit') && $request->getRequest('submit') === 'send') {
+                if (empty($request->getRequest('pseudo')) && empty($request->getRequest('content')) && empty($request->getRequest('idPost'))) {
                     $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être remplis']);
                 } else {
-                    $pseudo = $this->view->check($_POST['pseudo']);
-                    $content = $this->view->check($_POST['content']);
-                    $idPost = $this->view->check($_POST['idPost']);
+                    $pseudo = $this->view->check($request->getRequest('pseudo'));
+                    $content = $this->view->check($request->getRequest('content'));
+                    $idPost = $this->view->check($request->getRequest('idPost'));
                     $this->commentRepository->addComment($idPost, $pseudo, $content);
                     $request->getSession()->flash('Votre commentaire à été envoyé. Il sera affiché après validation.');
                     header('Location: ../post/'.$idPost);
@@ -49,7 +49,7 @@ class PostController implements PostControllerInterface
             }
         } else {
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
-                    $id = $request->getParam('id');
+                    $id = $request->getQuery('id');
                     $idPost = $this->view->check($id);
                     $post = $this->postRepository->getPost($idPost);
                     $comments = $this->commentRepository->getCommentsFromPost($idPost);

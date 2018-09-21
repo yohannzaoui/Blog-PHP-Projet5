@@ -34,12 +34,12 @@ class LoginController implements LoginControllerInterface
     public function __invoke(request $request)
     {
         if ($request->isMethod('POST')) {
-            if (isset($_POST['submit']) && $_POST['submit'] === "send") {
-                if (empty($_POST['pseudo']) && empty($_POST['pass'])) {
+            if ($request->has('submit') && $request->getRequest('submit') === "send") {
+                if (empty($request->getRequest('pseudo')) && empty($request->getRequest('pass'))) {
                     $this->view->render('error', 'error', ['error'=>'Tous les champs doivent être complétés']);
                 } else {
-                    $pseudo = $this->view->check($_POST['pseudo']);
-                    $pass = $this->view->check($_POST['pass']);
+                    $pseudo = $this->view->check($request->getRequest('pseudo'));
+                    $pass = $this->view->check($request->getRequest('pass'));
                     $user = $this->userRepository->userConnect($pseudo, $pass);
                     $request->getSession()->add('roleUser', $user['role']);
                     $request->getSession()->add('pseudoUser', $user['pseudo']);

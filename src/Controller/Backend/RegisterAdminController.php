@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Backend;
 
 use App\Controller\Backend\Interfaces\RegisterAdminControllerInterface;
