@@ -11,11 +11,27 @@ class Response
     const HTTP_OK = 200;
     const HTTP_NOT_FOUND = 404;
 
+    /**
+     * 
+     */
     private $statusCode;
+
+    /**
+     * 
+     */
     private $content;
-    private $headers = [];
+
+    /**
+     * 
+     */
+    public $headers = [];
+
+    /**
+     * 
+     */
     private $statusText = [
-        200 => 'Ok'
+        200 => 'Ok',
+        404 => 'Not Found'
     ];
     private $version = '1.0';
 
@@ -46,6 +62,9 @@ class Response
         $this->statusCode = $statusCode;
     }
 
+    /**
+     * 
+     */
     public function send()
     {
         $this->sendHeaders();
@@ -53,6 +72,9 @@ class Response
         return $this;
     }
 
+    /**
+     * 
+     */
     public function sendHeaders()
     {
         header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText[$this->statusCode]), true, $this->statusCode);
