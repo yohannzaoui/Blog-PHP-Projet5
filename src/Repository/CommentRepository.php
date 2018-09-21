@@ -4,7 +4,6 @@ namespace App\Repository;
 use App\Repository\Interfaces\CommentRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\Comment;
-use PDO;
 
 /**
  *
@@ -19,7 +18,7 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
     {
         $sql = 'SELECT id, id_post, pseudo, content, publication, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM comments WHERE publication = 1 AND id_post = ? ORDER BY creation_date DESC';
         $req = $this->sql($sql, [$idPost]);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Comment::CLASS);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Comment::CLASS);
         $comments = $req->fetchAll();
         return $comments;
     }
@@ -40,7 +39,7 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
     {
         $sql = 'SELECT id, id_post, pseudo, content, publication, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM comments WHERE publication = 0 ORDER BY creation_date DESC';
         $req = $this->sql($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Comment::CLASS);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Comment::CLASS);
         $comments = $req->fetchAll();
         return $comments;
     }

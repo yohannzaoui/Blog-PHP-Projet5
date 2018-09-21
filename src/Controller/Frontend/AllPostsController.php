@@ -12,7 +12,14 @@ use Core\Request;
 class AllPostsController implements AllPostsControllerInterface
 {
 
+    /**
+     * 
+     */
     private $postRepository;
+
+    /**
+     * 
+     */
     private $view;
 
     /**

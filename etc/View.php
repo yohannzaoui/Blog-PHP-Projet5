@@ -2,7 +2,6 @@
 namespace Core;
 
 use Core\Interfaces\ViewInterface;
-use Exception;
 
 /**
  *
@@ -10,7 +9,14 @@ use Exception;
 class View implements ViewInterface
 {
 
+    /**
+     * 
+     */
     private $file;
+    
+    /**
+     * 
+     */
     private $title;
 
     /**
@@ -35,7 +41,7 @@ class View implements ViewInterface
             require $file;
             return ob_get_clean();
         } else {
-            throw new Exception('Fichier vue inexistant');
+            throw new \Exception('Fichier vue inexistant');
         }
 
     }

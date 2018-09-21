@@ -12,7 +12,14 @@ use Core\Request;
 class UserController implements UserControllerInterface
 {
 
+    /**
+     * 
+     */
     private $userRepository;
+
+    /**
+     * 
+     */
     private $view;
 
     /**

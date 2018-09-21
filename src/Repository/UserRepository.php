@@ -4,8 +4,6 @@ namespace App\Repository;
 use App\Repository\Interfaces\UserRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\User;
-use PDO;
-use Exception;
 
 /**
  *
@@ -22,13 +20,13 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $req = $this->sql($sql, [$pseudo]);
         $user = $req->rowCount();
         if ($user > 0) {
-            throw new Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
+            throw new \Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
         }
         $sql = 'SELECT email FROM users WHERE role = "admin" AND email = ?';
         $req = $this->sql($sql, [$email]);
         $user = $req->rowCount();
         if ($user > 0) {
-            throw new Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
+            throw new \Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"admin",NOW())';
             $this->sql($sql, [$pseudo, $passhash, $email, $token]);
@@ -46,13 +44,13 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $req = $this->sql($sql, [$pseudo]);
         $user = $req->rowCount();
         if ($user > 0) {
-            throw new Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
+            throw new \Exception("Le pseudo est déja utilisé. Veuillez en choisir un autre.");
         }
         $sql = 'SELECT email FROM users WHERE role = "member" AND email = ?';
         $req = $this->sql($sql, [$email]);
         $user = $req->rowCount();
         if ($user > 0) {
-            throw new Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
+            throw new \Exception("L'adresse email est déja utilisée. Veuillez en choisir une autre.");
         } else {
             $sql = 'INSERT INTO users (pseudo, pass, email, token, role, creation_date) VALUES (?,?,?,?,"member",NOW())';
             $this->sql($sql, [$pseudo, $passhash, $email, $token]);
@@ -68,7 +66,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
     {
         $sql = 'SELECT id, pseudo, pass, role, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "admin" ORDER BY creation_date DESC';
         $req = $this->sql($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, User::CLASS);
         $users = $req->fetchAll();
         return $users;
     }
@@ -80,7 +78,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
     {
         $sql = 'SELECT id, pseudo, pass, role, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr FROM users WHERE role = "member" ORDER BY creation_date DESC';
         $req = $this->sql($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::CLASS);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, User::CLASS);
         $users = $req->fetchAll();
         return $users;
     }
@@ -115,10 +113,10 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
             if (password_verify($pass, $user['pass']) && !empty($user['token']) && !empty($user['c_token']) && $user['token'] === $user['c_token']) {
                 return $user;
             } else {
-                throw new Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
+                throw new \Exception("Les informations fournis sont incorrects / ou l'administrateur n'éxiste pas.");
             }
         } else {
-            throw new Exception("Ce compte n'éxiste pas");
+            throw new \Exception("Ce compte n'éxiste pas");
         }
     }
 
@@ -136,10 +134,10 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
                 header('Location: ../index.php?route=all');
                 return $user;
             } else {
-                throw new Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
+                throw new \Exception("Les informations fournis sont incorrects / ou le membre n'éxiste pas.");
             }
         } else {
-            throw new Exception("Ce compte n'éxiste pas");
+            throw new \Exception("Ce compte n'éxiste pas");
         }
     }
 
@@ -152,7 +150,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         $req = $this->sql($sql, [$id, $token]);
         $user = $req->rowCount();
         if ($user > 0) {
-            throw new Exception('Ce compte à déja été validé');
+            throw new \Exception('Ce compte à déja été validé');
         } else {
             $sql = 'UPDATE users SET c_token = ? WHERE id = ?';
             $this->sql($sql, [$token, $id]);
@@ -170,7 +168,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         if ($userExist > 0) {
             $user = $req->fetch();
         } else {
-            throw new Exception("Adresse Email inconnue");
+            throw new \Exception("Adresse Email inconnue");
         }
         return $user;
     }
@@ -186,7 +184,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         if ($userExist > 0) {
             $user = $req->fetch();
         } else {
-            throw new Exception("Adresse Email inconnue");
+            throw new \Exception("Adresse Email inconnue");
         }
         return $user;
     }
@@ -203,7 +201,7 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
             $sql = 'UPDATE users SET pass = ? WHERE id = ?';
             $this->sql($sql, [$passhash, $id]);
         } else {
-            throw new Exception("ID du membre inconnu");
+            throw new \Exception("ID du membre inconnu");
         }
         
     }

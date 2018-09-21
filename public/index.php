@@ -7,6 +7,7 @@ use Core\Request;
 use Core\View;
 
 try {
+    
     $request = Request::createFromGlobals();
     $request->getSession()->sessionStart();
     $application = new Application();

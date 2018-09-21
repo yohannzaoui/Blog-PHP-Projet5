@@ -13,8 +13,19 @@ use Core\Request;
 class ListPostsController implements ListPostsControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $postRepository;
+
+    /**
+     * 
+     */
     private $commentRepository;
 
     /**

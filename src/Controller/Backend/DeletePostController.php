@@ -12,7 +12,14 @@ use Core\Request;
 class DeletePostController implements DeletePostControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $postRepository;
 
     /**

@@ -9,8 +9,19 @@ use Core\Mailer;
 
 class ResetAdminController implements ResetAdminControllerInterface
 {
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $mailer;
+
+    /**
+     * 
+     */
     private $userRepository;
 
     /**

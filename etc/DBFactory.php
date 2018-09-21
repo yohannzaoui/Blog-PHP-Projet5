@@ -2,8 +2,6 @@
 namespace Core;
 
 use Core\Interfaces\DBFactoryInterface;
-use PDO;
-use Exception;
 
 /**
  *
@@ -32,12 +30,12 @@ abstract class DBFactory implements DBFactoryInterface
         try
         {
             $data = require __DIR__ .'/../config/database.php';
-            $this->db = new PDO($data['dsn'], $data['login'], $data['password']);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->db = new \PDO($data['dsn'], $data['login'], $data['password']);
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             return $this->db;
         }
 
-        catch (Exception $errorConnection)
+        catch (\Exception $errorConnection)
         {
             die('Erreur de connection : '.$errorConnection->getMessage());
         }

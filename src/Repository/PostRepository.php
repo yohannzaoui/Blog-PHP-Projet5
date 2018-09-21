@@ -4,7 +4,6 @@ namespace App\Repository;
 use App\Repository\Interfaces\PostRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\Post;
-use PDO;
 
 /**
  *
@@ -18,8 +17,8 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
     public function getRecentPosts()
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts ORDER BY creation_date DESC LIMIT 0,3';
-        $req=$this->sql($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
+        $req = $this->sql($sql);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Post::class);
         $posts = $req->fetchAll();
         return $posts;
     }
@@ -30,8 +29,8 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
     public function getAll()
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts ORDER BY creation_date DESC';
-        $req=$this->sql($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
+        $req = $this->sql($sql);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Post::CLASS);
         $posts = $req->fetchAll();
         return $posts;
     }
@@ -43,7 +42,7 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
     {
         $sql = 'SELECT id, author, title, subtitle, content, DATE_FORMAT(creation_date,"%d/%m/%Y à %Hh%imin") AS creationDateFr, DATE_FORMAT(update_date,"%d/%m/%Y à %Hh%imin") AS updateDateFr FROM posts WHERE id = ?';
         $req = $this->sql($sql, [$id]);
-        $count = $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::CLASS);
+        $count = $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Post::CLASS);
         if ($count > 0) {
             $post = $req->fetch();
             return $post;
@@ -58,7 +57,7 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
      */
     public function addPost($author, $title, $subtitle, $content)
     {
-        $sql= 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
+        $sql = 'INSERT INTO posts (title, subtitle, author, content, creation_date) VALUES (?,?,?,?,NOW())';
         $this->sql($sql, [$title, $subtitle, $author, $content]);
         $id = $this->db->lastInsertId();
         return $id;

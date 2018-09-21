@@ -13,7 +13,14 @@ use App\Repository\PostRepository;
 class AddPostController implements AddPostControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $postRepository;
 
     /**

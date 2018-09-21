@@ -3,7 +3,6 @@
 namespace Core;
 
 use Core\Interfaces\SessionInterface;
-use Exception;
 
 /**
  *
@@ -60,7 +59,7 @@ class Session implements SessionInterface
             return $_SESSION[$name];
         }
         else {
-            throw new Exception("Attribut '$name' absent de la session");
+            throw new \Exception("Attribut '$name' absent de la session");
         }
     }
 }

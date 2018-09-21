@@ -12,7 +12,14 @@ use Core\Request;
 class AdminController implements AdminControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $userRepository;
 
     /**

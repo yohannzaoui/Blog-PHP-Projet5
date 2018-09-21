@@ -13,8 +13,19 @@ use Core\Request;
 class ResetUserController implements ResetUserControllerInterface
 {
 
+    /**
+     * 
+     */
     private $userRepository;
+
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $mailer;
 
     /**

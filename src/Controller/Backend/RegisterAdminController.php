@@ -7,6 +7,10 @@ use Core\View;
 
 class RegisterAdminController implements RegisterAdminControllerInterface
 {
+    
+    /**
+     * 
+     */
     private $view;
 
     /**

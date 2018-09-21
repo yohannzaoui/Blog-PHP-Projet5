@@ -13,7 +13,14 @@ use Core\Request;
 class ValidateCommentController implements ValidateCommentControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $commentRepository;
 
     /**

@@ -11,7 +11,14 @@ use Core\Request;
  */
 class ConfirmationController implements ConfirmationControllerInterface
 {
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $userRepository;
 
     /**

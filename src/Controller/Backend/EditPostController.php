@@ -12,7 +12,14 @@ use Core\Request;
 class EditPostController implements EditPostControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $postRepository;
 
     /**

@@ -13,8 +13,19 @@ use App\Repository\PostRepository;
 class HomeController implements HomeControllerInterface
 {
 
+    /**
+     * 
+     */
     private $postRepository;
+
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $mailer;
 
     /**

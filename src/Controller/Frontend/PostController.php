@@ -13,8 +13,19 @@ use Core\Request;
 class PostController implements PostControllerInterface
 {
 
+    /**
+     * 
+     */
     private $postRepository;
+
+    /**
+     * 
+     */
     private $commentRepository;
+
+    /**
+     * 
+     */
     private $view;
 
     /**

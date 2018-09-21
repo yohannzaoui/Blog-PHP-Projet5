@@ -13,8 +13,19 @@ use Core\Mailer;
 class RegisterController implements RegisterControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $userRepository;
+
+    /**
+     * 
+     */
     private $mailer;
 
     /**

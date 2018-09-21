@@ -12,7 +12,14 @@ use Core\View;
 class LoginController implements LoginControllerInterface
 {
 
+    /**
+     * 
+     */
     private $userRepository;
+
+    /**
+     * 
+     */
     private $view;
 
     /**

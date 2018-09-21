@@ -11,6 +11,9 @@ use Core\Request;
 class LogoutController implements LogoutControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
 
     /**

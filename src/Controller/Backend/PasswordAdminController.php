@@ -13,7 +13,14 @@ use Core\Request;
 class PasswordAdminController implements PasswordAdminControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $userRepository;
 
     /**

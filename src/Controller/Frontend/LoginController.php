@@ -6,7 +6,6 @@ use App\Repository\UserRepository;
 use App\Repository\PostRepository;
 use Core\View;
 use Core\Request;
-use Core\Cookie;
 
 /**
  *
@@ -14,8 +13,19 @@ use Core\Cookie;
 class LoginController implements LoginControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $postRepository;
+
+    /**
+     * 
+     */
     private $userRepository;
 
     /**

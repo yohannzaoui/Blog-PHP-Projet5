@@ -12,7 +12,14 @@ use Core\Request;
 class CommentController implements CommentControllerInterface
 {
 
+    /**
+     * 
+     */
     private $view;
+
+    /**
+     * 
+     */
     private $commentRepository;
 
     /**
