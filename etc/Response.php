@@ -57,7 +57,7 @@ class Response
     /**
      * 
      */
-    public function statusCode($statuCode)
+    public function statusCode($statusCode)
     {
         $this->statusCode = $statusCode;
     }

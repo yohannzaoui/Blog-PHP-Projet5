@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\UserControllerInterface;
-use App\Repository\UserRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\UserRepository;
+use App\Controller\Backend\Interfaces\UserControllerInterface;
 
 /**
  *
@@ -45,10 +46,12 @@ class UserController implements UserControllerInterface
         } else {
             $users = $this->userRepository->allUsers();
             $line = $this->userRepository->countMembers();
-            $this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]);
+            return new Response(200, [], $this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]));
+            //$this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]);
             }
         } else {
-            $this->view->render('error', 'error', ['error' => 'System error']);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
+            //$this->view->render('error', 'error', ['error' => 'System error']);
         }
     }
  }

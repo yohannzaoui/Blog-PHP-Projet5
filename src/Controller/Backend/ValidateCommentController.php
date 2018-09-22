@@ -44,10 +44,10 @@ class ValidateCommentController implements ValidateCommentControllerInterface
                 $request->getSession()->flash('Commentaire validé');
                 header('Location: ../listComments');
             } else {
-                $this->view->render('error', 'error', ['error' => 'ID du commentaire à valider manquant']);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => 'ID du commentaire à valider manquant']));
             }
         } else {
-            $this->view->render('error', 'error', ['error' => 'System error']);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
         }
         
     }

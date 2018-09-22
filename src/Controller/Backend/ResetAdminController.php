@@ -42,19 +42,19 @@ class ResetAdminController implements ResetAdminControllerInterface
         if ($request->isMethod('POST')) {
             if ($request->has('submit') && $request->request('submit') === 'send') {
                 if (empty($request->request('email'))) {
-                    $this->view->render('error', 'error', ['error' => 'Le champ adresse Email est vide']);
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Le champ adresse Email est vide']));
                 } else {
                     $email = filter_var($request->request('email'), FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
                     $user = $this->userRepository->resetAdmin($token);
                     $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/passwordResetAdmin/".$user['id']."/$token");
-                    $this->view->render('validation_reset', 'backend');
+                    return new Response(200, [], $this->view->render('validation_reset', 'backend'));
                 }
             } else {
-                $this->view->render('error', 'error', ['error' => 'Paramètre absent']);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Paramètre absent']));
             }
         } else {
-            $this->view->render('resetAdmin', 'backend');
+            return new Response(200, [], $this->view->render('resetAdmin', 'backend'));
         }
     }
 }

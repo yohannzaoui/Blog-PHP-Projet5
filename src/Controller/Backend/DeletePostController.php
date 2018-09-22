@@ -43,10 +43,10 @@ class DeletePostController implements DeletePostControllerInterface
                 $request->getSession()->flash('Article supprimé');
                 header('location:..\listPosts');
             } else {
-                $this->view->render('error', 'error', ['error' => "Identifiant d'article manquant"]);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => "Identifiant d'article manquant"]));
             }
         } else {
-            $this->view->render('error', 'error', ['error' => "system error"]);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => "system error"]));
         }
 
     }

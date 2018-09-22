@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\EditPostControllerInterface;
-use App\Repository\PostRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\PostRepository;
+use App\Controller\Backend\Interfaces\EditPostControllerInterface;
 
 /**
  *
@@ -37,9 +38,9 @@ class EditPostController implements EditPostControllerInterface
             if ($request->getQuery('id')) {
                 $idPost = $this->view->check($request->getQuery('id'));
                 $post = $this->postRepository->getPost($idPost);
-                $this->view->render('editPost', 'backend', ['post' => $post]);
+                return new Response(200, [], $this->view->render('editPost', 'backend', ['post' => $post]));
                 } else {
-                    $this->view->render('error', 'error', ['error' => 'Article inconnu']);
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Article inconnu']));
                 }
             } else {
                 if ($request->has('submit') && $request->getRequest('submit') === 'send' && !empty($request->getRequest('author')) && !empty($request->getRequest('title')) && !empty($request->getRequest('subtitle')) && !empty($request->getRequest('content')) && !empty($request->getRequest('id'))) {
@@ -52,7 +53,7 @@ class EditPostController implements EditPostControllerInterface
                     $request->getSession()->flash('Article modifié.');
                     header('Location: ../listPosts');
                     } else {
-                        $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être completés']);
+                        return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être completés']));
                     }
             }
 

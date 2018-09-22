@@ -1,11 +1,12 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\ListPostsControllerInterface;
-use App\Repository\PostRepository;
-use App\Repository\CommentRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\PostRepository;
+use App\Repository\CommentRepository;
+use App\Controller\Backend\Interfaces\ListPostsControllerInterface;
 
 /**
  *
@@ -52,10 +53,10 @@ class ListPostsController implements ListPostsControllerInterface
             } else {
                 $posts = $this->postRepository->getAll();
                 $line = $this->postRepository->countPosts();
-                $this->view->render('listPosts', 'backend', ['posts' => $posts, 'line' => $line]);
+                return new Response(200, [], $this->view->render('listPosts', 'backend', ['posts' => $posts, 'line' => $line]));
             }
         } else {
-            $this->view->render('error', 'error', ['error' => 'System error']);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
         }
     }
 

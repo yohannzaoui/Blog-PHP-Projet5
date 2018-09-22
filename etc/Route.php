@@ -9,7 +9,14 @@ use Core\Interfaces\RouteInterface;
  */
 class Route implements RouteInterface
 {
+    /**
+     * 
+     */
     private $path;
+
+    /**
+     * 
+     */
     private $action;
     /**
      * @var array

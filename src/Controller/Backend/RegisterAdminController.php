@@ -2,8 +2,9 @@
 
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\RegisterAdminControllerInterface;
 use Core\View;
+use Core\Response;
+use App\Controller\Backend\Interfaces\RegisterAdminControllerInterface;
 
 class RegisterAdminController implements RegisterAdminControllerInterface
 {
@@ -26,6 +27,6 @@ class RegisterAdminController implements RegisterAdminControllerInterface
      */
     public function __invoke()
     {
-        $this->view->render('registerAdmin', 'backend');
+        return new Response(200, [], $this->view->render('registerAdmin', 'backend'));
     }
 }
