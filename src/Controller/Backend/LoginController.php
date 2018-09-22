@@ -44,7 +44,11 @@ class LoginController implements LoginControllerInterface
                 } else {
                     $pseudo = $this->view->check($request->getRequest('pseudo'));
                     $pass = $this->view->check($request->getRequest('pass'));
-                    $user = $this->userRepository->adminConnect($pseudo, $pass);
+                    try {
+                        $user = $this->userRepository->adminConnect($pseudo, $pass);
+                    } catch(\Exception $e) {
+                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    }
                     $request->getSession()->add('roleAdmin', $user['role']);
                     $request->getSession()->add('pseudoAdmin', $user['pseudo']);
                 }

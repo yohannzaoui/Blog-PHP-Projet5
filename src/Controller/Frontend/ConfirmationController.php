@@ -40,7 +40,11 @@ class ConfirmationController implements ConfirmationControllerInterface
             if ($request->getQuery('token', 'id') && !empty($request->getQuery('token')) && !empty($request->getQuery('id'))) {
                 $token = $this->view->check($request->getQuery('token'));
                 $id = $this->view->check($request->getQuery('id'));
-                $this->userRepository->confirme($id, $token);
+                try {
+                    $this->userRepository->confirme($id, $token);
+                } catch (\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 return new Response(200, [], $this->view->render('confirmation', 'frontend'));
             } else {
                 return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Identifiant / Token incorrect']));

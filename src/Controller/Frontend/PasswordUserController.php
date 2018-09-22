@@ -46,7 +46,11 @@ class PasswordUserController implements PasswordUserControllerInterface
                     $id = $this->view->check($request->getRequest('id'));
                     $pass = $this->view->check($request->getRequest('pass1'));
                     $passhash = password_hash($pass, PASSWORD_BCRYPT);
-                    $this->userRepository->resetUserPass($id, $passhash);
+                    try {
+                        $this->userRepository->resetUserPass($id, $passhash);
+                    } catch(\Exception $e) {
+                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    }
                     return new Response(200, [], $this->view->render('confirmation_reset', 'backend'));
                 } else {
                     return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Les mots de passe doivent être identique']));

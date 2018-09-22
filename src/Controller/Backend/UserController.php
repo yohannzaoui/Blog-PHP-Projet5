@@ -40,18 +40,20 @@ class UserController implements UserControllerInterface
         if ($request->isMethod('GET')) {
             if ($request->getQuery('id') && !empty($request->getQuery('id'))) {
                 $id = $this->view->check($request->getQuery('id'));
-                $this->userRepository->deleteUser($id);
+                try {
+                    $this->userRepository->deleteUser($id);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Membre supprimé');
                 header('location:..\listUsers');
         } else {
             $users = $this->userRepository->allUsers();
             $line = $this->userRepository->countMembers();
             return new Response(200, [], $this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]));
-            //$this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]);
             }
         } else {
             return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
-            //$this->view->render('error', 'error', ['error' => 'System error']);
         }
     }
  }

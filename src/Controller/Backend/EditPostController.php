@@ -37,7 +37,11 @@ class EditPostController implements EditPostControllerInterface
         if ($request->isMethod('GET')) {
             if ($request->getQuery('id')) {
                 $idPost = $this->view->check($request->getQuery('id'));
-                $post = $this->postRepository->getPost($idPost);
+                try {
+                    $post = $this->postRepository->getPost($idPost);
+                } catch(\Exception $request) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 return new Response(200, [], $this->view->render('editPost', 'backend', ['post' => $post]));
                 } else {
                     return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Article inconnu']));

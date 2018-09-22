@@ -40,7 +40,11 @@ class ValidateCommentController implements ValidateCommentControllerInterface
         if ($request->isMethod('GET')) {
             if ($request->getQuery('id') && !empty($request->getQuery('id'))) {
                 $idComment = $this->view->check($request->getQuery('id'));
-                $this->commentRepository->validateComment($idComment);
+                try {
+                    $this->commentRepository->validateComment($idComment);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Commentaire validé');
                 header('Location: ../listComments');
             } else {

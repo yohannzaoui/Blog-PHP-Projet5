@@ -63,7 +63,11 @@ class PostController implements PostControllerInterface
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = $request->getQuery('id');
                     $idPost = $this->view->check($id);
-                    $post = $this->postRepository->getPost($idPost);
+                    try {
+                        $post = $this->postRepository->getPost($idPost);
+                    } catch(\Exception $e) {
+                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    }
                     $comments = $this->commentRepository->getCommentsFromPost($idPost);
                     return new Response(200, [], $this->view->render('post', 'frontend', ['post' => $post, 'comments' => $comments]));
                 } else {

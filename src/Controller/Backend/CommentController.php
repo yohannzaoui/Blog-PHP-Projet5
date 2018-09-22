@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\CommentControllerInterface;
-use App\Repository\CommentRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\CommentRepository;
+use App\Controller\Backend\Interfaces\CommentControllerInterface;
 
 /**
  *
@@ -40,7 +41,11 @@ class CommentController implements CommentControllerInterface
         if ($request->isMethod('GET')) {
             if (!empty($request->getQuery('id'))) {
                 $idComment = $this->view->check($request->getQuery('id'));
-                $this->commentRepository->deleteComment($idComment);
+                try {
+                    $this->commentRepository->deleteComment($idComment);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Commentaire supprimé');
                 header('Location: ../listComments');
             } else {

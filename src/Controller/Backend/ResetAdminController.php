@@ -46,7 +46,11 @@ class ResetAdminController implements ResetAdminControllerInterface
                 } else {
                     $email = filter_var($request->request('email'), FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
-                    $user = $this->userRepository->resetAdmin($token);
+                    try {
+                        $user = $this->userRepository->resetAdmin($token);
+                    } catch(\Exception $e) {
+                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    }
                     $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/passwordResetAdmin/".$user['id']."/$token");
                     return new Response(200, [], $this->view->render('validation_reset', 'backend'));
                 }

@@ -51,7 +51,11 @@ class ResetUserController implements ResetUserControllerInterface
                 } else {
                     $email = filter_var($request->getRequest('email'), FILTER_VALIDATE_EMAIL);
                     $token = $this->mailer->token($email);
-                    $user = $this->userRepository->resetUser($token);
+                    try {
+                        $user = $this->userRepository->resetUser($token);
+                    } catch(\Exception $e) {
+                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    }
                     $this->mailer->send('Récuperation de votre mot de passe', $user['pseudo'], $email, "Pour réinitialiser votre mot de passe cliquez sur ce lien\n\n http://siteweb/passwordResetUser/".$user['id']."/$token");
                     return new Response(200, [], $this->view->render('validation_reset', 'backend', ['email' => $email]));
                 }

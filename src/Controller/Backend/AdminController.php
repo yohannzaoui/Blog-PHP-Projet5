@@ -40,7 +40,11 @@ class AdminController implements AdminControllerInterface
         if ($request->isMethod('GET')) {
             if (!empty($request->getQuery('id'))) {
                 $id = $this->view->check($request->getQuery('id'));
-                $this->userRepository->deleteUser($id);
+                try {
+                    $this->userRepository->deleteUser($id);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Administrateur supprimé');
                 header('location:../listAdmins');
         } else {
