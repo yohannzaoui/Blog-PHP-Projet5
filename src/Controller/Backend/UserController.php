@@ -35,7 +35,7 @@ class UserController implements UserControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
             if ($request->getQuery('id') && !empty($request->getQuery('id'))) {

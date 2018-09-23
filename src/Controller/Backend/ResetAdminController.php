@@ -1,11 +1,12 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\ResetAdminControllerInterface;
-use App\Repository\userRepository;
 use Core\View;
-use Core\Request;
 use Core\Mailer;
+use Core\Request;
+use Core\Response;
+use App\Repository\userRepository;
+use App\Controller\Backend\Interfaces\ResetAdminControllerInterface;
 
 class ResetAdminController implements ResetAdminControllerInterface
 {
@@ -37,7 +38,7 @@ class ResetAdminController implements ResetAdminControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('POST')) {
             if ($request->has('submit') && $request->request('submit') === 'send') {

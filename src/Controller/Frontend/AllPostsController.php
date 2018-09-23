@@ -35,7 +35,7 @@ class AllPostsController implements AllPostsControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
             $posts = $this->postRepository->getAll();

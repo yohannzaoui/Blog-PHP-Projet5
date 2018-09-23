@@ -42,7 +42,7 @@ class AddPostController implements AddPostControllerInterface
             return new Response(200, [], $this->view->render('addPost', 'backend'));
         } else {
             if ($request->has('submit') && $request->getRequest('submit') === 'send') {
-                if (!empty($request->getRequest('author')) || !empty($request->getRequest('title')) || !empty($request->getRequest('subtitle')) || !empty($request->getRequest('content'))) {
+                if (!empty($request->getRequest('author')) && !empty($request->getRequest('title')) && !empty($request->getRequest('subtitle')) && !empty($request->getRequest('content'))) {
                     $author = $this->view->check($request->getRequest('author'));
                     $title = $this->view->check($request->getRequest('title'));
                     $subtitle = $this->view->check($request->getRequest('subtitle'));

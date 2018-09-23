@@ -2,10 +2,13 @@
 
 namespace Core;
 
+use Core\Interfaces\ResponseInterface;
+
+
 /**
  * 
  */
-class Response
+class Response implements ResponseInterface
 {
 
     const HTTP_OK = 200;

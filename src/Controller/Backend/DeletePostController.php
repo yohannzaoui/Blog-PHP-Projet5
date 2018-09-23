@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\DeletePostControllerInterface;
-use App\Repository\PostRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\PostRepository;
+use App\Controller\Backend\Interfaces\DeletePostControllerInterface;
 
 /**
  *

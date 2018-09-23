@@ -1,11 +1,12 @@
 <?php
 namespace App\Controller\Frontend;
 
-use App\Controller\Frontend\Interfaces\RegisterControllerInterface;
-use App\Repository\UserRepository;
 use Core\View;
-use Core\Request;
 use Core\Mailer;
+use Core\Request;
+use Core\Response;
+use App\Repository\UserRepository;
+use App\Controller\Frontend\Interfaces\RegisterControllerInterface;
 
 /**
  *
