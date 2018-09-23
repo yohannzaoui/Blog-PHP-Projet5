@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Frontend;
 
-use App\Controller\Frontend\Interfaces\ConfirmationControllerInterface;
 use Core\View;
-use App\Repository\userRepository;
 use Core\Request;
+use Core\Response;
+use App\Repository\userRepository;
+use App\Controller\Frontend\Interfaces\ConfirmationControllerInterface;
 
 /**
  *
@@ -39,13 +40,17 @@ class ConfirmationController implements ConfirmationControllerInterface
             if ($request->getQuery('token', 'id') && !empty($request->getQuery('token')) && !empty($request->getQuery('id'))) {
                 $token = $this->view->check($request->getQuery('token'));
                 $id = $this->view->check($request->getQuery('id'));
-                $this->userRepository->confirme($id, $token);
-                $this->view->render('confirmation', 'frontend');
+                try {
+                    $this->userRepository->confirme($id, $token);
+                } catch (\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
+                return new Response(200, [], $this->view->render('confirmation', 'frontend'));
             } else {
-                $this->view->render('error', 'error', ['error' => 'Identifiant / Token incorrect']);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Identifiant / Token incorrect']));
             }
         } else {
-            $this->view->render('error', 'error', ['error' => 'System error']);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
         }
     }
 

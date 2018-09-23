@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Frontend;
 
-use App\Controller\Frontend\Interfaces\AllPostsControllerInterface;
-use App\Repository\PostRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\PostRepository;
+use App\Controller\Frontend\Interfaces\AllPostsControllerInterface;
 
 /**
  *
@@ -34,11 +35,13 @@ class AllPostsController implements AllPostsControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
             $posts = $this->postRepository->getAll();
-            $this->view->render('all', 'frontend', ['posts' => $posts]);
+            return new Response(200, [],  $this->view->render('all', 'frontend', ['posts' => $posts]));
+        } else {
+            throw new \Exception("Error system");
         }
     }
 }

@@ -13,16 +13,34 @@ class Request implements RequestInterface
     const METHOD_POST = 'POST';
     const METHOD_DELETE = 'DELETE';
 
+    /**
+     * 
+     */
     public $query;
 
+    /**
+     * 
+     */
     public $request;
 
+    /**
+     * 
+     */
     public $files;
 
+    /**
+     * 
+     */
     public $server;
 
+    /**
+     * 
+     */
     public $attributes;
 
+    /**
+     * @var session object
+     */
     private $session;
 
     /**

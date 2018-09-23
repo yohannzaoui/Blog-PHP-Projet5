@@ -6,6 +6,7 @@ use App\Controller\Backend\Interfaces\AddPostControllerInterface;
 use Core\View;
 use Core\Request;
 use App\Repository\PostRepository;
+use Core\Response;
 
 /**
  * 
@@ -38,7 +39,7 @@ class AddPostController implements AddPostControllerInterface
     public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
-            $this->view->render('addPost', 'backend');
+            return new Response(200, [], $this->view->render('addPost', 'backend'));
         } else {
             if ($request->has('submit') && $request->getRequest('submit') === 'send') {
                 if (!empty($request->getRequest('author')) && !empty($request->getRequest('title')) && !empty($request->getRequest('subtitle')) && !empty($request->getRequest('content'))) {
@@ -48,12 +49,12 @@ class AddPostController implements AddPostControllerInterface
                     $content = $this->view->check($request->getRequest('content'));
                     $id = $this->postRepository->addPost($author, $title, $subtitle, $content);
                     $request->getSession()->flash('Article ajouté.');
-                    $this->view->render('addPost', 'backend');
+                    return new Response(200, [], $this->view->render('addPost', 'backend'));
                 } else {
-                    $this->view->render('error', 'error', ['error' => 'Les champs sont vides']);
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Les champs sont vides']));
                 }
             } else {
-                $this->view->render('error', 'error', ['error' => 'Paramètre inconnu']);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Paramètre inconnu']));
             } 
         }
     }

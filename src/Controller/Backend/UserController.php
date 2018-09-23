@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\UserControllerInterface;
-use App\Repository\UserRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\UserRepository;
+use App\Controller\Backend\Interfaces\UserControllerInterface;
 
 /**
  *
@@ -34,21 +35,25 @@ class UserController implements UserControllerInterface
     /**
      * 
      */
-    public function __invoke(request $request)
+    public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {
             if ($request->getQuery('id') && !empty($request->getQuery('id'))) {
                 $id = $this->view->check($request->getQuery('id'));
-                $this->userRepository->deleteUser($id);
+                try {
+                    $this->userRepository->deleteUser($id);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Membre supprimé');
                 header('location:..\listUsers');
         } else {
             $users = $this->userRepository->allUsers();
             $line = $this->userRepository->countMembers();
-            $this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]);
+            return new Response(200, [], $this->view->render('listUsers', 'backend', ['users' => $users, 'line' => $line]));
             }
         } else {
-            $this->view->render('error', 'error', ['error' => 'System error']);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
         }
     }
  }

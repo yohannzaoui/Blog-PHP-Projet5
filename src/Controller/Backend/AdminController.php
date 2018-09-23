@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\AdminControllerInterface;
-use App\Repository\UserRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\UserRepository;
+use App\Controller\Backend\Interfaces\AdminControllerInterface;
 
 /**
  *
@@ -39,14 +40,20 @@ class AdminController implements AdminControllerInterface
         if ($request->isMethod('GET')) {
             if (!empty($request->getQuery('id'))) {
                 $id = $this->view->check($request->getQuery('id'));
-                $this->userRepository->deleteUser($id);
+                try {
+                    $this->userRepository->deleteUser($id);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Administrateur supprimé');
                 header('location:../listAdmins');
         } else {
             $users = $this->userRepository->allAdmins();
             $line = $this->userRepository->countAdmins();
-            $this->view->render('listAdmins', 'backend', ['users' => $users, 'line' => $line]);
+            return new Response(200, [], $this->view->render('listAdmins', 'backend', ['users' => $users, 'line' => $line]));
             }
+        } else {
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
         }
     }
  }

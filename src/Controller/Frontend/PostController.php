@@ -1,11 +1,12 @@
 <?php
 namespace App\Controller\Frontend;
 
-use App\Controller\Frontend\Interfaces\PostControllerInterface;
-use App\Repository\PostRepository;
-use App\Repository\CommentRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\PostRepository;
+use App\Repository\CommentRepository;
+use App\Controller\Frontend\Interfaces\PostControllerInterface;
 
 /**
  *
@@ -46,7 +47,7 @@ class PostController implements PostControllerInterface
         if ($request->isMethod('POST')) {
             if ($request->has('submit') && $request->getRequest('submit') === 'send') {
                 if (empty($request->getRequest('pseudo')) && empty($request->getRequest('content')) && empty($request->getRequest('idPost'))) {
-                    $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être remplis']);
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Tous les champs doivent être remplis']));
                 } else {
                     $pseudo = $this->view->check($request->getRequest('pseudo'));
                     $content = $this->view->check($request->getRequest('content'));
@@ -56,17 +57,21 @@ class PostController implements PostControllerInterface
                     header('Location: ../post/'.$idPost);
                 }
             } else {
-                $this->view->render('error', 'error', ['error' => 'Paramètre incorrect']);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Paramètre incorrect']));
             }
         } else {
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = $request->getQuery('id');
                     $idPost = $this->view->check($id);
-                    $post = $this->postRepository->getPost($idPost);
+                    try {
+                        $post = $this->postRepository->getPost($idPost);
+                    } catch(\Exception $e) {
+                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    }
                     $comments = $this->commentRepository->getCommentsFromPost($idPost);
-                    $this->view->render('post', 'frontend', ['post' => $post, 'comments' => $comments]);
+                    return new Response(200, [], $this->view->render('post', 'frontend', ['post' => $post, 'comments' => $comments]));
                 } else {
-                    $this->view->render('error', 'error', ['error' => 'L\'ID de l\'article est absent']);
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => 'L\'ID de l\'article est absent']));
                 }
         }
 

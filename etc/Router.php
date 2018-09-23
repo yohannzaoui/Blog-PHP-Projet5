@@ -13,6 +13,10 @@ class Router implements RouterInterface
      * @var array
      */
     private $routes = [];
+
+    /**
+     * 
+     */
     private $view;
 
     /**

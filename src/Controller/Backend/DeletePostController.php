@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\Interfaces\DeletePostControllerInterface;
-use App\Repository\PostRepository;
 use Core\View;
 use Core\Request;
+use Core\Response;
+use App\Repository\PostRepository;
+use App\Controller\Backend\Interfaces\DeletePostControllerInterface;
 
 /**
  *
@@ -39,14 +40,18 @@ class DeletePostController implements DeletePostControllerInterface
         if ($request->isMethod('GET')) {
             if (!empty($request->getQuery('id'))) {
                 $idPost = $this->view->check($request->getQuery('id'));
-                $this->postRepository->deletePost($idPost);
+                try {
+                    $this->postRepository->deletePost($idPost);
+                } catch(\Exception $e) {
+                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                }
                 $request->getSession()->flash('Article supprimé');
                 header('location:..\listPosts');
             } else {
-                $this->view->render('error', 'error', ['error' => "Identifiant d'article manquant"]);
+                return new Response(200, [], $this->view->render('error', 'error', ['error' => "Identifiant d'article manquant"]));
             }
         } else {
-            $this->view->render('error', 'error', ['error' => "system error"]);
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => "system error"]));
         }
 
     }
