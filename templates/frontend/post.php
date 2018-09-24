@@ -53,7 +53,7 @@
           <div class="form-group floating-label-form-group controls">
             <label for="pseudo">Auteur</label>
             <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" value="<?php if (isset($_SESSION['pseudoUser'])) {
-            echo htmlspecialchars($_SESSION['pseudoUser']);
+            echo $_SESSION['pseudoUser'];
         } ?>" id="pseudo" required data-validation-required-message="SVP Entrez votre pseudo.">
             <p class="help-block text-danger"></p>
           </div>

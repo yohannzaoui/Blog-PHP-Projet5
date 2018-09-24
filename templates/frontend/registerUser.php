@@ -19,7 +19,7 @@
         <div class="control-group">
           <label for="pseudo">Votre Pseudo</label>
           <input type="text" name="pseudo" class="form-control" value="<?php if (isset($pseudo)) {
-                  echo $pseudo; } ?>" <p class="help-block text-danger">
+                  echo htmlspecialchars($pseudo); } ?>" <p class="help-block text-danger">
           </p>
         </div>
         <div class="control-group">
