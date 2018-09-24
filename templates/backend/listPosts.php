@@ -37,21 +37,21 @@
       <?php foreach ($posts as $post) :?>
       <div class="post-preview">
         <h4 class="post-title">
-          <?=$post->getTitle()?>
+          <?= $this->check($post->getTitle()) ?>
         </h4>
         <h5 class="post-subtitle">
-          <?=$post->getSubtitle()?>
+          <?= $this->check($post->getSubtitle()) ?>
         </h5>
         <p class="post-meta">
-          <?php echo "Auteur : ".$post->getAuthor()?>
-          <?php echo " - Date : ".$post->getCreationDate()?>
-          <?php if ($post->getUpdateDate() != null) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
+          <?php echo "Auteur : ".$this->check($post->getAuthor()) ?>
+          <?php echo " - Date : ".$this->check($post->getCreationDate()) ?>
+          <?php if ($post->getUpdateDate() != null) {echo " -- Modifié le ". $this->check($post->getUpdateDate());} ?>
         </p>
         <p>
-          <a href="/post/<?=$post->getId()?>"><i class="fas fa-eye"></i></a> |
-          <a href="/editPost/<?=$post->getId()?>"><i class="fas fa-edit"></i></a> |
-          <a href="/deleteComments/<?=$post->getId()?>"><i class="fas fa-comment-slash"></i></a> |
-          <a href="/deletePost/<?=$post->getId()?>"><i class="fas fa-trash-alt"></i></a>
+          <a href="/post/<?= $this->check($post->getId()) ?>"><i class="fas fa-eye"></i></a> |
+          <a href="/editPost/<?= $this->check($post->getId()) ?>"><i class="fas fa-edit"></i></a> |
+          <a href="/deleteComments/<?= $this->check($post->getId()) ?>"><i class="fas fa-comment-slash"></i></a> |
+          <a href="/deletePost/<?= $this->check($post->getId()) ?>"><i class="fas fa-trash-alt"></i></a>
         </p>
       </div>
       <hr>

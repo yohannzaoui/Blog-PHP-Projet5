@@ -26,27 +26,27 @@
             <form action="" method="post">
                 <div class="control-group">
                     <label for="author">Auteur</label>
-                    <input type="text" class="form-control" name="author" value="<?=$post->getAuthor()?>">
+                    <input type="text" class="form-control" name="author" value="<?=$this->check($post->getAuthor())?>">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="title">Titre</label>
-                    <input type="text" class="form-control" name="title" value="<?=$post->getTitle()?>">
+                    <input type="text" class="form-control" name="title" value="<?=$this->check($post->getTitle())?>">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="subtitle">Sous titre</label>
-                    <input type="text" class="form-control" name="subtitle" value="<?=$post->getSubtitle()?>">
+                    <input type="text" class="form-control" name="subtitle" value="<?=$this->check($post->getSubtitle())?>">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="control-group">
                     <label for="content">Contenu de l'article</label>
-                    <textarea rows="5" class="form-control" name="content"><?=$post->getContent()?></textarea>
+                    <textarea rows="5" class="form-control" name="content"><?=$this->check($post->getContent())?></textarea>
                     <p class="help-block text-danger"></p>
                 </div>
                 <br>
                 <div class="form-group">
-                    <input type="hidden" name="id" value="<?=htmlspecialchars($post->getId())?>" />
+                    <input type="hidden" name="id" value="<?=$this->check($post->getId())?>" />
                     <button type="submit" name="submit" value="send" class="btn btn-primary">Modifier l'article</button>
                 </div>
             </form>

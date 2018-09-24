@@ -35,10 +35,10 @@
     <div class="col-lg-12 col-md-10 mx-auto">
       <?php foreach ($comments as $comment) : ?>
       <div class="container">
-        <?php echo '<p><b>Pseudo</b> : '.$comment->getPseudo().'<b> - Le</b> '.$comment->getCreationDate().'<br> <b>Commentaire</b> : '.$comment->getContent().'</p>'?>
-        <a href="/post/<?= $comment->getPostId() ?>"><i class="fas fa-eye"></i></a> |
-        <a  href="/validateComment/<?=$comment->getId()?>"><i class="fas fa-check"></i></a> |
-        <a  href="/deleteComment/<?=$comment->getId()?>"><i class="fas fa-trash-alt"></i></a>
+        <?php echo '<p><b>Pseudo</b> : '.$this->check($comment->getPseudo()).'<b> - Le</b> '.$this->check($comment->getCreationDate()).'<br> <b>Commentaire</b> : '.$this->check($comment->getContent()).'</p>'?>
+        <a href="/post/<?= $this->check($comment->getPostId()) ?>"><i class="fas fa-eye"></i></a> |
+        <a  href="/validateComment/<?= $this->check($comment->getId()) ?>"><i class="fas fa-check"></i></a> |
+        <a  href="/deleteComment/<?= $this->check($comment->getId()) ?>"><i class="fas fa-trash-alt"></i></a>
         </p>
         <hr>
       </div>
