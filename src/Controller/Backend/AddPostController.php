@@ -47,7 +47,7 @@ class AddPostController implements AddPostControllerInterface
                     $title = $this->view->check($request->getRequest('title'));
                     $subtitle = $this->view->check($request->getRequest('subtitle'));
                     $content = $this->view->check($request->getRequest('content'));
-                    $id = $this->postRepository->addPost($author, $title, $subtitle, $content);
+                    $this->postRepository->addPost($author, $title, $subtitle, $content);
                     $request->getSession()->flash('Article ajouté.');
                     return new Response(200, [], $this->view->render('addPost', 'backend'));
                 } else {
