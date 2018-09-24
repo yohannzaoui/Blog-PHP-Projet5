@@ -1,4 +1,4 @@
-<?php $this->title = "Blog Yohann Zaoui - " . $post->getTitle(); ?>
+<?php $this->title = "Blog Yohann Zaoui - " . $this->check($post->getTitle()); ?>
 
 <?php if (isset($_SESSION['flash'])) : ?>
 <div class="container">
@@ -17,13 +17,13 @@
       <div class="col-lg-12 col-md-10 mx-auto">
         <div class="post-preview">
             <a><h2 class="post-title">
-                <?=$post->getTitle()?>
+                <?=$this->check($post->getTitle())?>
             </h2>
             <h4 class="post-subtitle">
-              <?=$post->getSubtitle()?>
+              <?=$this->check($post->getSubtitle())?>
           </h4></a>
           <p>
-            <?=$post->getContent()?>
+            <?=$this->check($post->getContent())?>
           </p>
           <p class="post-meta">
             <?php echo 'Ecrit par '.$post->getAuthor().' le '.$post->getCreationDate(); if ($post->getUpdateDate() != null) {echo " -- Modifié le ". $post->getUpdateDate();} ?>
@@ -89,12 +89,12 @@
             <?php foreach ($comments as $comment) : ?>
             <p>
               <strong>
-                <?=$comment->getPseudo()?>
+                <?=$this->check($comment->getPseudo())?>
               </strong> le
-              <?=$comment->getCreationDate()?>
+              <?=$this->check($comment->getCreationDate())?>
             </p>
             <p>
-              <?=$comment->getContent()?>
+              <?=$this->check($comment->getContent())?>
             </p>
             <hr>
             <?php endforeach; ?>
