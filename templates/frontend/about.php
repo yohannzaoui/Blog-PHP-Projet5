@@ -8,7 +8,7 @@
         </div>
         <div class="col-lg-10 col-md-10 mx-auto">
           <h4>Bonjour et bienvenue sur mon blog</h4>
-          <p>Je m'appelle Yohann Zaoui, et je suit actuellement une formation pour devenir développeur d'application PHP/Symphony grâce à OpenclassRooms. J'ai débuté cette formation au mois de d'avril 2017.</p>
+          <p>Je m'appelle Yohann Zaoui, et je suit actuellement une formation pour devenir développeur d'application PHP/Symfony grâce à OpenclassRooms. J'ai débuté cette formation au mois de d'avril 2017.</p>
           <p>La formation débute par l'apprentissage des languages HTML et CSS 3 qui sont les bases à connaitre pour un developpeur.</p>
           <p> - Un premier projet : <strong>"Intégrez un thème Wordpress pour un client"</strong>. réaliser un site web  grace au CMS Wordpress pour une agence immobiliere de chalet de luxe à Couchevel. Le but savoir manipuler le CMS ainsi que les differents plug-in. <a href="http://yohannzaoui.com/" target="_blank">Cliquez pour voir le projet</a></p>
           <p> - Le second projet : <strong>"Analysez les besoins de votre client pour son Festival de films"</strong>. Création d'une maquette pour le site web de l'association "Les films de plein air".<br>

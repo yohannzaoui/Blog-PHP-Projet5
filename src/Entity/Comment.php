@@ -17,6 +17,8 @@ class Comment implements CommentInterface
     private $creationDateFr;
     private $publication;
 
+    
+   
     /**
      * 
      */
