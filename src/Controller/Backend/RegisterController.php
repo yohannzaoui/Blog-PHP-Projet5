@@ -53,7 +53,7 @@ class RegisterController implements RegisterControllerInterface
                     $pseudo = $this->view->check($request->getRequest('pseudo'));
                 }
                 if (empty($request->getRequest('pass')) && empty($request->getRequest('pass1'))) {
-                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>'Les champs mot de passe sont vide']));
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => 'Les champs mot de passe sont vide']));
                 } elseif ($request->getRequest('pass') === $request->getRequest('pass1')) {
                     $hash = $this->view->check($request->getRequest('pass'));
                     $passhash = password_hash($hash, PASSWORD_BCRYPT);
@@ -68,7 +68,7 @@ class RegisterController implements RegisterControllerInterface
                     try {
                         $userId = $this->userRepository->addAdmin($pseudo, $passhash, $email, $token);
                     } catch(\Exception $e) {
-                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                        return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                     }
                     $this->mailer->send('Confirmez votre inscription', $pseudo, $email, "Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://siteweb/confirme/$userId/$token");
                     return new Response(200, [], $this->view->render('validation', 'frontend', ['email' => $email]));

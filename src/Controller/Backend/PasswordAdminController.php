@@ -49,7 +49,7 @@ class PasswordAdminController implements PasswordAdminControllerInterface
                     try {
                         $this->userRepository->resetUserPass($id, $passhash);
                     } catch(\Exception $e) {
-                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                        return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                     }
                     return new Response(200, [], $this->view->render('confirmation_reset', 'backend'));
                 } else {

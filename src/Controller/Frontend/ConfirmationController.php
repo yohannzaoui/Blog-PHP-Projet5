@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Frontend;
 
 use Core\View;
@@ -43,7 +44,7 @@ class ConfirmationController implements ConfirmationControllerInterface
                 try {
                     $this->userRepository->confirme($id, $token);
                 } catch (\Exception $e) {
-                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                 }
                 return new Response(200, [], $this->view->render('confirmation', 'frontend'));
             } else {

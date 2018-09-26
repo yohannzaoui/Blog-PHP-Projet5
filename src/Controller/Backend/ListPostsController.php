@@ -50,7 +50,7 @@ class ListPostsController implements ListPostsControllerInterface
                 try {
                     $this->commentRepository->deleteComments($idComments);
                 } catch(\Exception $e) {
-                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                 }
                 $request->getSession()->flash("Tous les commentaires de l'article on été supprimer");
                 header('Location: ../listPosts');

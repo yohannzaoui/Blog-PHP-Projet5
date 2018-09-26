@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Frontend;
 
 use Core\View;
@@ -67,7 +68,7 @@ class RegisterController implements RegisterControllerInterface
                     try {
                         $userId = $this->userRepository->addUser($pseudo, $email, $passhash, $token);
                     } catch(\Exception $e) {
-                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                        return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                     }
                     $this->mailer->send('Confirmez votre inscription', $pseudo, $email, "Veuillez confirmez votre compte en cliquant sur ce lien\n\n http://siteweb/confirme/$userId/$token");
                     return new Response(200, [], $this->view->render('validation', 'frontend', ['email' => $email]));

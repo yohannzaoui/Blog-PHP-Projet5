@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Frontend;
 
 use Core\View;
@@ -66,7 +67,7 @@ class PostController implements PostControllerInterface
                     try {
                         $post = $this->postRepository->getPost($idPost);
                     } catch(\Exception $e) {
-                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                        return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                     }
                     $comments = $this->commentRepository->getCommentsFromPost($idPost);
                     return new Response(200, [], $this->view->render('post', 'frontend', ['post' => $post, 'comments' => $comments]));

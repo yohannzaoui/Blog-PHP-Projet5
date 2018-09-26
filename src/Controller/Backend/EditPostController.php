@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Backend;
 
 use Core\View;
@@ -40,7 +41,7 @@ class EditPostController implements EditPostControllerInterface
                 try {
                     $post = $this->postRepository->getPost($idPost);
                 } catch(\Exception $e) {
-                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                 }
                 return new Response(200, [], $this->view->render('editPost', 'backend', ['post' => $post]));
                 } else {

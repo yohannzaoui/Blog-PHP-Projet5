@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Backend;
 
 use Core\View;
@@ -44,7 +45,7 @@ class CommentController implements CommentControllerInterface
                 try {
                     $this->commentRepository->deleteComment($idComment);
                 } catch(\Exception $e) {
-                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                 }
                 $request->getSession()->flash('Commentaire supprimé');
                 header('Location: ../listComments');

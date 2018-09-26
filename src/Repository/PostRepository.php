@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repository;
 
 use App\Repository\Interfaces\PostRepositoryInterface;

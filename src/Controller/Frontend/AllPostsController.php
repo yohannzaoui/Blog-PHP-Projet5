@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Frontend;
 
 use Core\View;
@@ -41,7 +42,7 @@ class AllPostsController implements AllPostsControllerInterface
             $posts = $this->postRepository->getAll();
             return new Response(200, [],  $this->view->render('all', 'frontend', ['posts' => $posts]));
         } else {
-            throw new \Exception("Error system");
+            return new Response(200, [], $this->view->render('error', 'error', ['error' => 'System error']));
         }
     }
 }

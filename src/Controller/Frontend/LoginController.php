@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Frontend;
 
 use Core\View;
@@ -54,10 +55,10 @@ class LoginController implements LoginControllerInterface
                     try {
                         $user = $this->userRepository->userConnect($pseudo, $pass);
                     } catch (\Exception $e) {
-                        return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                        return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                     }
-                    $request->getSession()->add('roleUser', $user['role']);
-                    $request->getSession()->add('pseudoUser', $user['pseudo']);
+                    $request->getSession()->add('roleUser', $user['role'])
+                                          ->add('pseudoUser', $user['pseudo']);
                 }
                 header('location:../allPosts');
             } else {

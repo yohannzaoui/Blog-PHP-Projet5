@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Backend;
 
 use Core\View;
@@ -43,7 +44,7 @@ class UserController implements UserControllerInterface
                 try {
                     $this->userRepository->deleteUser($id);
                 } catch(\Exception $e) {
-                    return new Response(200, [], $this->view->render('error', 'error', ['error'=>$e->getMessage()]));
+                    return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                 }
                 $request->getSession()->flash('Membre supprimé');
                 header('location:..\listUsers');
