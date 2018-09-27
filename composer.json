@@ -1,4 +1,7 @@
 {
+  "name":"zaoui/blog",
+  "description": "projet 5 openclassrooms",
+
     "autoload": {
       "psr-4": {
         "App\\": "src/",
