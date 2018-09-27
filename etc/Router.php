@@ -3,6 +3,7 @@
 namespace Core;
 
 use Core\Interfaces\RouterInterface;
+use App\Controller\Frontend\Error404Controller;
 
 /**
  * 
@@ -25,7 +26,6 @@ class Router implements RouterInterface
     public function __construct()
     {
         $this->loadRoutes();
-        $this->view = new View;
     }
 
     /**
@@ -53,7 +53,7 @@ class Router implements RouterInterface
                 return $class($request);
             } 
         }
-        echo "not found";
+        header('location:/error404');
     }
 
     /**

@@ -166,5 +166,11 @@ return [
         'methods' => ['GET'],
         'action' => App\Controller\Frontend\PasswordUserController::class,
         'params' => ['id' => '\d+', 'token' => '[a-zA-Z0-9]{32}$']
+    ],
+    'error4O4' => [
+        'path' => '/error404',
+        'methods' => ['GET','POST'],
+        'action' => App\Controller\Frontend\Error404Controller::class
     ]
+
 ];
