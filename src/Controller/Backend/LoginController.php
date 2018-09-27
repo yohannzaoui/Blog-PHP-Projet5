@@ -50,8 +50,8 @@ class LoginController implements LoginControllerInterface
                     } catch(\Exception $e) {
                         return new Response(200, [], $this->view->render('error', 'error', ['error' => $e->getMessage()]));
                     }
-                    $request->getSession()->add('roleAdmin', $user['role'])
-                                          ->add('pseudoAdmin', $user['pseudo']);
+                    $request->getSession()->add('roleAdmin', $user['role']);
+                    $request->getSession()->add('pseudoAdmin', $user['pseudo']);
                 }
                 return new Response(200, [], $this->view->render('addPost', 'backend'));
             } else {
