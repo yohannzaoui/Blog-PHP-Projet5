@@ -51,9 +51,7 @@ class Router implements RouterInterface
                 $controller = $route->getAction();
                 $class = new $controller();
                 return $class($request);
-            }
-            
-            
+            } 
         }
         echo "not found";
     }
