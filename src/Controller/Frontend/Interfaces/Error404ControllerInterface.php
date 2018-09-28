@@ -6,5 +6,7 @@ interface Error404ControllerInterface
 {
     public function __construct();
     
-    public function __invoke();
+    //public function __invoke();
+
+    public function error();
 }

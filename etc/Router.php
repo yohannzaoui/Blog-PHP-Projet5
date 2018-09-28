@@ -53,7 +53,8 @@ class Router implements RouterInterface
                 return $class($request);
             } 
         }
-        header('location:/error404');
+        $error404 = new Error404Controller;
+        return $error404->error();
     }
 
     /**

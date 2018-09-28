@@ -16,7 +16,7 @@ class Error404Controller implements Error404ControllerInterface
         $this->view = new View;
     }
 
-    public function __invoke()
+    public function error()
     {     
         return new Response(200, [], $this->view->render('error404', 'error'));
     }
