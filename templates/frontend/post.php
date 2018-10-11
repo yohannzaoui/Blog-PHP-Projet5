@@ -85,7 +85,13 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-10 mx-auto">
-            <h2 class="title_center">Les commentaires</h2>
+          <h2 class="title_center">Les commentaires</h2>
+          <?php
+          if($comments == null) {
+            echo "<p>Pas de commentaires. Soyez le premier à commenter</p>";
+          }
+          ?>
+            
             <?php foreach ($comments as $comment) : ?>
             <p>
               <strong>
