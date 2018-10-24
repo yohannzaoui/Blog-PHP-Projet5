@@ -7,14 +7,20 @@ use Swift_Message;
 use Swift_SmtpTransport;
 use Swift_Mailer;
 
+
 /**
- *
+ * Class Mailer
+ * @package Core
  */
 class Mailer implements MailerInterface
 {
 
+
     /**
-     * 
+     * @param $subject
+     * @param $pseudo
+     * @param $email
+     * @param $body
      */
     public function send($subject, $pseudo, $email, $body)
     {

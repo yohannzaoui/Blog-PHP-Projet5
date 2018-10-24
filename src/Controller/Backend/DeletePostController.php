@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\PostRepository;
 use App\Controller\Backend\Interfaces\DeletePostControllerInterface;
 
+
 /**
- *
+ * Class DeletePostController
+ * @package App\Controller\Backend
  */
 class DeletePostController implements DeletePostControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * DeletePostController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class DeletePostController implements DeletePostControllerInterface
         $this->postRepository = new PostRepository;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

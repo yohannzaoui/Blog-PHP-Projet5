@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\PostRepository;
 use App\Controller\Frontend\Interfaces\AllPostsControllerInterface;
 
+
 /**
- *
+ * Class AllPostsController
+ * @package App\Controller\Frontend
  */
 class AllPostsController implements AllPostsControllerInterface
 {
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * AllPostsController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class AllPostsController implements AllPostsControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

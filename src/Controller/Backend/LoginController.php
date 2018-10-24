@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\UserRepository;
 use App\Controller\Backend\Interfaces\LoginControllerInterface;
 
+
 /**
- *
+ * Class LoginController
+ * @package App\Controller\Backend
  */
 class LoginController implements LoginControllerInterface
 {
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * LoginController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class LoginController implements LoginControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

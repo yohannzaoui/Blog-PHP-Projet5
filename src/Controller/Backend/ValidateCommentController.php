@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\CommentRepository;
 use App\Controller\Backend\Interfaces\ValidateCommentControllerInterface;
 
+
 /**
- *
+ * Class ValidateCommentController
+ * @package App\Controller\Backend
  */
 class ValidateCommentController implements ValidateCommentControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var CommentRepository
      */
     private $commentRepository;
 
+
     /**
-     * 
+     * ValidateCommentController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class ValidateCommentController implements ValidateCommentControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

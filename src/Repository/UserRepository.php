@@ -6,14 +6,22 @@ use App\Repository\Interfaces\UserRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\User;
 
+
 /**
- *
+ * Class UserRepository
+ * @package App\Repository
  */
 class UserRepository extends DBFactory implements UserRepositoryInterface
 {
 
+
     /**
-     * 
+     * @param $pseudo
+     * @param $passhash
+     * @param $email
+     * @param $token
+     * @return mixed
+     * @throws \Exception
      */
     public function addAdmin($pseudo, $passhash, $email, $token)
     {
@@ -36,8 +44,14 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $userId;
     }
 
+
     /**
-     * 
+     * @param $pseudo
+     * @param $email
+     * @param $passhash
+     * @param $token
+     * @return mixed
+     * @throws \Exception
      */
     public function addUser($pseudo, $email, $passhash, $token)
     {
@@ -60,8 +74,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $userId;
     }
 
+
     /**
-     * 
+     * @return array
      */
     public function allAdmins()
     {
@@ -72,8 +87,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $users;
     }
 
+
     /**
-     * 
+     * @return array
      */
     public function allUsers()
     {
@@ -84,8 +100,10 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $users;
     }
 
+
     /**
-     * 
+     * @param $id
+     * @throws \Exception
      */
     public function deleteUser($id)
     {
@@ -101,8 +119,12 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         
     }
 
+
     /**
-     * 
+     * @param $pseudo
+     * @param $pass
+     * @return mixed
+     * @throws \Exception
      */
     public function adminConnect($pseudo, $pass)
     {
@@ -121,8 +143,12 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
+
     /**
-     * 
+     * @param $pseudo
+     * @param $pass
+     * @return mixed
+     * @throws \Exception
      */
     public function userConnect($pseudo, $pass)
     {
@@ -142,8 +168,11 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
+
     /**
-     * 
+     * @param $id
+     * @param $token
+     * @throws \Exception
      */
     public function confirme($id, $token)
     {
@@ -158,8 +187,11 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         }
     }
 
+
     /**
-     * 
+     * @param $token
+     * @return mixed
+     * @throws \Exception
      */
     public function resetUser($token)
     {
@@ -174,8 +206,11 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $user;
     }
 
+
     /**
-     * 
+     * @param $token
+     * @return mixed
+     * @throws \Exception
      */
     public function resetAdmin($token)
     {
@@ -190,8 +225,11 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $user;
     }
 
+
     /**
-     * 
+     * @param $id
+     * @param $passhash
+     * @throws \Exception
      */
     public function resetUserPass($id, $passhash)
     {
@@ -207,8 +245,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         
     }
 
+
     /**
-     * 
+     * @return mixed
      */
     public function countAdmins()
     {
@@ -217,8 +256,9 @@ class UserRepository extends DBFactory implements UserRepositoryInterface
         return $line['nb'];
     }
 
+
     /**
-     * 
+     * @return mixed
      */
     public function countMembers()
     {

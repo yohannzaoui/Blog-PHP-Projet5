@@ -4,24 +4,33 @@ namespace Core;
 
 use Core\Interfaces\ViewInterface;
 
+
 /**
- *
+ * Class View
+ * @package Core
  */
 class View implements ViewInterface
 {
 
+
     /**
-     * 
+     * @var
      */
     private $file;
-    
+
+
     /**
-     * 
+     * @var
      */
     private $title;
 
+
     /**
-     * 
+     * @param $template
+     * @param $path
+     * @param array $data
+     * @return false|string
+     * @throws \Exception
      */
     public function render($template, $path, $data = [])
     {
@@ -31,8 +40,12 @@ class View implements ViewInterface
         return $view;
     }
 
+
     /**
-     * 
+     * @param $file
+     * @param $data
+     * @return false|string
+     * @throws \Exception
      */
     private function renderFile($file, $data)
     {
@@ -47,8 +60,10 @@ class View implements ViewInterface
 
     }
 
+
     /**
-     * 
+     * @param $data
+     * @return string
      */
     public function check($data)
     {

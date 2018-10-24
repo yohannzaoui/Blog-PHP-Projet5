@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\PostRepository;
 use App\Controller\Backend\Interfaces\EditPostControllerInterface;
 
+
 /**
- *
+ * Class EditPostController
+ * @package App\Controller\Backend
  */
 class EditPostController implements EditPostControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * EditPostController constructor.
      */
     public function __construct()
     {
@@ -33,6 +38,10 @@ class EditPostController implements EditPostControllerInterface
         $this->view = new View;
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function __invoke(Request $request)
     {
         if ($request->isMethod('GET')) {

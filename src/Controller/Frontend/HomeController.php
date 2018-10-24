@@ -9,29 +9,35 @@ use Core\Response;
 use App\Repository\PostRepository;
 use App\Controller\Frontend\Interfaces\HomeControllerInterface;
 
+
 /**
- *
+ * Class HomeController
+ * @package App\Controller\Frontend
  */
 class HomeController implements HomeControllerInterface
 {
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var Mailer
      */
     private $mailer;
 
+
     /**
-     * 
+     * HomeController constructor.
      */
     public function __construct()
     {
@@ -40,8 +46,10 @@ class HomeController implements HomeControllerInterface
         $this->mailer = new Mailer;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

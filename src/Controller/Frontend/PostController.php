@@ -9,29 +9,35 @@ use App\Repository\PostRepository;
 use App\Repository\CommentRepository;
 use App\Controller\Frontend\Interfaces\PostControllerInterface;
 
+
 /**
- *
+ * Class PostController
+ * @package App\Controller\Frontend
  */
 class PostController implements PostControllerInterface
 {
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * @var CommentRepository
      */
     private $commentRepository;
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * PostController constructor.
      */
     public function __construct()
     {
@@ -40,8 +46,10 @@ class PostController implements PostControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

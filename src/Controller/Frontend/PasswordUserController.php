@@ -10,23 +10,27 @@ use App\Controller\Frontend\Interfaces\PasswordUserControllerInterface;
 
 
 /**
- *
+ * Class PasswordUserController
+ * @package App\Controller\Frontend
  */
 class PasswordUserController implements PasswordUserControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * PasswordUserController constructor.
      */
     public function __construct()
     {
@@ -34,8 +38,10 @@ class PasswordUserController implements PasswordUserControllerInterface
         $this->userRepository = new UserRepository;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

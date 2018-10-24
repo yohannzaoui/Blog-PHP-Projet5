@@ -9,29 +9,35 @@ use App\Repository\PostRepository;
 use App\Repository\UserRepository;
 use App\Controller\Frontend\Interfaces\LoginControllerInterface;
 
+
 /**
- *
+ * Class LoginController
+ * @package App\Controller\Frontend
  */
 class LoginController implements LoginControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * LoginController constructor.
      */
     public function __construct()
     {
@@ -40,8 +46,10 @@ class LoginController implements LoginControllerInterface
         $this->userRepository = new UserRepository;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

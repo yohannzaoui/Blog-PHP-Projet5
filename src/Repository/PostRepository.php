@@ -6,14 +6,17 @@ use App\Repository\Interfaces\PostRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\Post;
 
+
 /**
- *
+ * Class PostRepository
+ * @package App\Repository
  */
 class PostRepository extends DBFactory implements PostRepositoryInterface
 {
 
+
     /**
-     * 
+     * @return array
      */
     public function getRecentPosts()
     {
@@ -24,8 +27,9 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $posts;
     }
 
+
     /**
-     * 
+     * @return array
      */
     public function getAll()
     {
@@ -36,8 +40,11 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $posts;
     }
 
+
     /**
-     * 
+     * @param $id
+     * @return mixed
+     * @throws \Exception
      */
     public function getPost($id)
     {
@@ -53,8 +60,13 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         
     }
 
+
     /**
-     * 
+     * @param $author
+     * @param $title
+     * @param $subtitle
+     * @param $content
+     * @return mixed
      */
     public function addPost($author, $title, $subtitle, $content)
     {
@@ -64,8 +76,13 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         return $id;
     }
 
+
     /**
-     * 
+     * @param $id
+     * @param $author
+     * @param $title
+     * @param $subtitle
+     * @param $content
      */
     public function updatePost($id, $author, $title, $subtitle, $content)
     {
@@ -73,8 +90,10 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         $this->sql($sql, [$author, $title, $subtitle, $content, $id]);
     }
 
+
     /**
-     * 
+     * @param $id
+     * @throws \Exception
      */
     public function deletePost($id)
     {
@@ -90,8 +109,9 @@ class PostRepository extends DBFactory implements PostRepositoryInterface
         
     }
 
+
     /**
-     * 
+     * @return mixed
      */
     public function countPosts()
     {

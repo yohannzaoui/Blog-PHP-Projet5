@@ -3,16 +3,22 @@ namespace Core;
 
 use Core\Interfaces\DBFactoryInterface;
 
+
 /**
- *
+ * Class DBFactory
+ * @package Core
  */
 abstract class DBFactory implements DBFactoryInterface
 {
 
+    /**
+     * @var
+     */
     protected $db;
 
+
     /**
-     * 
+     * @return \PDO
      */
     private function checkDb()
     {
@@ -22,8 +28,9 @@ abstract class DBFactory implements DBFactoryInterface
         return $this->db;
     }
 
+
     /**
-     * 
+     * @return \PDO
      */
     private function getDb()
     {
@@ -41,8 +48,11 @@ abstract class DBFactory implements DBFactoryInterface
         }
     }
 
+
     /**
-     * 
+     * @param $sql
+     * @param null $parameters
+     * @return bool|\PDOStatement
      */
     public function sql($sql, $parameters = null)
     {

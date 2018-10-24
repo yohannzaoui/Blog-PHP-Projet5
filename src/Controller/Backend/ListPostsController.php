@@ -9,29 +9,35 @@ use App\Repository\PostRepository;
 use App\Repository\CommentRepository;
 use App\Controller\Backend\Interfaces\ListPostsControllerInterface;
 
+
 /**
- *
+ * Class ListPostsController
+ * @package App\Controller\Backend
  */
 class ListPostsController implements ListPostsControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * @var CommentRepository
      */
     private $commentRepository;
 
+
     /**
-     * 
+     * ListPostsController constructor.
      */
     public function __construct()
     {
@@ -40,8 +46,10 @@ class ListPostsController implements ListPostsControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

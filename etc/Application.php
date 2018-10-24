@@ -3,8 +3,10 @@ namespace Core;
 
 use Core\Interfaces\ApplicationInterface;
 
+
 /**
- * 
+ * Class Application
+ * @package Core
  */
 class Application implements ApplicationInterface
 {
@@ -13,16 +15,19 @@ class Application implements ApplicationInterface
      */
     private $router;
 
+
     /**
-     * 
+     * Application constructor.
      */
     public function __construct()
     {
         $this->router = new Router();
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function boot(Request $request)
     {

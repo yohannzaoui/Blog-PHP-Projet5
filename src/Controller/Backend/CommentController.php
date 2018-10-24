@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\CommentRepository;
 use App\Controller\Backend\Interfaces\CommentControllerInterface;
 
+
 /**
- *
+ * Class CommentController
+ * @package App\Controller\Backend
  */
 class CommentController implements CommentControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var CommentRepository
      */
     private $commentRepository;
 
+
     /**
-     * 
+     * CommentController constructor.
      */
     public function __construct()
     {
@@ -35,7 +40,8 @@ class CommentController implements CommentControllerInterface
 
 
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

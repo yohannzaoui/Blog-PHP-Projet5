@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\UserRepository;
 use App\Controller\Backend\Interfaces\UserControllerInterface;
 
+
 /**
- *
+ * Class UserController
+ * @package App\Controller\Backend
  */
 class UserController implements UserControllerInterface
 {
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * UserController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class UserController implements UserControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

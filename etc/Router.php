@@ -5,20 +5,25 @@ namespace Core;
 use Core\Interfaces\RouterInterface;
 use App\Controller\Frontend\Error404Controller;
 
+
 /**
- * 
+ * Class Router
+ * @package Core
  */
 class Router implements RouterInterface
 {
+
     /**
      * @var array
      */
     private $routes = [];
 
+
     /**
-     * 
+     * @var
      */
     private $view;
+
 
     /**
      * Router constructor.
@@ -28,8 +33,9 @@ class Router implements RouterInterface
         $this->loadRoutes();
     }
 
+
     /**
-     * 
+     *
      */
     public function loadRoutes()
     {
@@ -40,8 +46,10 @@ class Router implements RouterInterface
                 }
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function handle(Request $request)
     {
@@ -57,8 +65,10 @@ class Router implements RouterInterface
         return $error404->error();
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @param Route $route
      */
     private function catchParams(Request $request, Route &$route)
     {

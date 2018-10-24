@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\UserRepository;
 use App\Controller\Backend\Interfaces\AdminControllerInterface;
 
+
 /**
- *
+ * Class AdminController
+ * @package App\Controller\Backend
  */
 class AdminController implements AdminControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * AdminController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class AdminController implements AdminControllerInterface
         $this->view = new View;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

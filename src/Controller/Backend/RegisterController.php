@@ -9,29 +9,35 @@ use Core\Response;
 use App\Repository\UserRepository;
 use App\Controller\Backend\Interfaces\RegisterControllerInterface;
 
+
 /**
- *
+ * Class RegisterController
+ * @package App\Controller\Backend
  */
 class RegisterController implements RegisterControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * @var Mailer
      */
     private $mailer;
 
+
     /**
-     * 
+     * RegisterController constructor.
      */
     public function __construct()
     {
@@ -40,8 +46,10 @@ class RegisterController implements RegisterControllerInterface
         $this->mailer = new Mailer;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

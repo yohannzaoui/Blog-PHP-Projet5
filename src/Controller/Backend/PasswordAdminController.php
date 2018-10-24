@@ -8,24 +8,29 @@ use Core\Response;
 use App\Repository\UserRepository;
 use App\Controller\Backend\Interfaces\PasswordAdminControllerInterface;
 
+
 /**
- *
+ * Class PasswordAdminController
+ * @package App\Controller\Backend
  */
 class PasswordAdminController implements PasswordAdminControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * PasswordAdminController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class PasswordAdminController implements PasswordAdminControllerInterface
         $this->userRepository = new userRepository;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

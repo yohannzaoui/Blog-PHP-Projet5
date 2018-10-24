@@ -8,23 +8,28 @@ use Core\Response;
 use App\Repository\userRepository;
 use App\Controller\Frontend\Interfaces\ConfirmationControllerInterface;
 
+
 /**
- *
+ * Class ConfirmationController
+ * @package App\Controller\Frontend
  */
 class ConfirmationController implements ConfirmationControllerInterface
 {
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var userRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * ConfirmationController constructor.
      */
     public function __construct()
     {
@@ -32,8 +37,10 @@ class ConfirmationController implements ConfirmationControllerInterface
         $this->userRepository = new userRepository;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

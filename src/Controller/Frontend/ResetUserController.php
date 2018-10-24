@@ -9,29 +9,35 @@ use Core\Response;
 use App\Repository\UserRepository;
 use App\Controller\Frontend\Interfaces\ResetUserControllerInterface;
 
+
 /**
- *
+ * Class ResetUserController
+ * @package App\Controller\Frontend
  */
 class ResetUserController implements ResetUserControllerInterface
 {
 
+
     /**
-     * 
+     * @var UserRepository
      */
     private $userRepository;
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var Mailer
      */
     private $mailer;
 
+
     /**
-     * 
+     * ResetUserController constructor.
      */
     function __construct()
     {
@@ -40,8 +46,10 @@ class ResetUserController implements ResetUserControllerInterface
         $this->mailer = new Mailer;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {

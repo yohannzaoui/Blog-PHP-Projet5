@@ -6,14 +6,18 @@ use App\Repository\Interfaces\CommentRepositoryInterface;
 use Core\DBFactory;
 use App\Entity\Comment;
 
+
 /**
- *
+ * Class CommentRepository
+ * @package App\Repository
  */
 class CommentRepository extends DBFactory implements CommentRepositoryInterface
 {
 
+
     /**
-     * 
+     * @param $idPost
+     * @return array
      */
     public function getCommentsFromPost($idPost)
     {
@@ -24,8 +28,11 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
         return $comments;
     }
 
+
     /**
-     * 
+     * @param $idPost
+     * @param $pseudo
+     * @param $content
      */
     public function addComment($idPost, $pseudo, $content)
     {
@@ -33,8 +40,9 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
         $this->sql($sql, [$idPost, $pseudo, $content]);
     }
 
+
     /**
-     * 
+     * @return array
      */
     public function getCommentsNoValide()
     {
@@ -45,8 +53,10 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
         return $comments;
     }
 
+
     /**
-     * 
+     * @param $id
+     * @throws \Exception
      */
     public function validateComment($id)
     {
@@ -62,6 +72,10 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
         
     }
 
+    /**
+     * @param $id
+     * @throws \Exception
+     */
     public function deleteComment($id)
     {
         $sql = 'SELECT id FROM comments WHERE id = ?';
@@ -75,8 +89,10 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
         }
     }
 
+
     /**
-     * 
+     * @param $idPost
+     * @throws \Exception
      */
     public function deleteComments($idPost)
     {
@@ -92,8 +108,9 @@ class CommentRepository extends DBFactory implements CommentRepositoryInterface
         
     }
 
+
     /**
-     * 
+     * @return mixed
      */
     public function countComments()
     {

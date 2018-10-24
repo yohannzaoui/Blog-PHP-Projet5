@@ -8,24 +8,29 @@ use Core\Request;
 use App\Repository\PostRepository;
 use Core\Response;
 
+
 /**
- * 
+ * Class AddPostController
+ * @package App\Controller\Backend
  */
 class AddPostController implements AddPostControllerInterface
 {
 
+
     /**
-     * 
+     * @var View
      */
     private $view;
 
+
     /**
-     * 
+     * @var PostRepository
      */
     private $postRepository;
 
+
     /**
-     * 
+     * AddPostController constructor.
      */
     public function __construct()
     {
@@ -33,8 +38,10 @@ class AddPostController implements AddPostControllerInterface
         $this->postRepository = new PostRepository;
     }
 
+
     /**
-     * 
+     * @param Request $request
+     * @return Response
      */
     public function __invoke(Request $request)
     {
