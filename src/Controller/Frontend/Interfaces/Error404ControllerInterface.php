@@ -2,11 +2,19 @@
 
 namespace App\Controller\Frontend\Interfaces;
 
+/**
+ * Interface Error404ControllerInterface
+ * @package App\Controller\Frontend\Interfaces
+ */
 interface Error404ControllerInterface
 {
+    /**
+     * Error404ControllerInterface constructor.
+     */
     public function __construct();
-    
-    //public function __invoke();
 
+    /**
+     * @return mixed
+     */
     public function error();
 }
