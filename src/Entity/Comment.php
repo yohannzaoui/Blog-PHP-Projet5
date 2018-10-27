@@ -4,23 +4,43 @@ namespace App\Entity;
 
 use App\Entity\Interfaces\CommentInterface;
 
+
 /**
- *
+ * Class Comment
+ * @package App\Entity
  */
 class Comment implements CommentInterface
 {
 
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $id_post;
+    /**
+     * @var
+     */
     private $pseudo;
+    /**
+     * @var
+     */
     private $content;
+    /**
+     * @var
+     */
     private $creationDateFr;
+    /**
+     * @var
+     */
     private $publication;
 
-    
-   
+
     /**
-     * 
+     * @param $id
+     * @return mixed|void
      */
     public function setId($id)
     {
@@ -30,8 +50,10 @@ class Comment implements CommentInterface
         }
     }
 
+
     /**
-     * 
+     * @param $id_post
+     * @return mixed|void
      */
     public function setPostId($id_post)
     {
@@ -41,8 +63,10 @@ class Comment implements CommentInterface
         }
     }
 
+
     /**
-     * 
+     * @param $pseudo
+     * @return mixed|void
      */
     public function setPseudo($pseudo)
     {
@@ -51,8 +75,10 @@ class Comment implements CommentInterface
         }
     }
 
+
     /**
-     * 
+     * @param $content
+     * @return mixed|void
      */
     public function setContent($content)
     {
@@ -61,16 +87,20 @@ class Comment implements CommentInterface
         }
     }
 
+
     /**
-     * 
+     * @param $creationDate
+     * @return mixed|void
      */
     public function setCreationDate($creationDate)
     {
         $this->creationDateFr = $creationDate;
     }
 
+
     /**
-     * 
+     * @param $publication
+     * @return mixed|void
      */
     public function setPublication($publication)
     {
@@ -79,48 +109,54 @@ class Comment implements CommentInterface
         }
     }
 
+
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
         return $this->id;
     }
 
+
     /**
-     * @return int
+     * @return mixed
      */
     public function getPostId()
     {
         return $this->id_post;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getPseudo()
     {
         return $this->pseudo;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getContent()
     {
         return $this->content;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getCreationDate()
     {
         return $this->creationDateFr;
     }
 
+
     /**
-     * @return int
+     * @return mixed
      */
     public function getPublication()
     {

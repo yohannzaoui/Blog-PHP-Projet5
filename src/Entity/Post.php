@@ -4,22 +4,47 @@ namespace App\Entity;
 
 use App\Entity\Interfaces\PostInterface;
 
+
 /**
- *
+ * Class Post
+ * @package App\Entity
  */
 class Post implements PostInterface
 {
 
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $author;
+    /**
+     * @var
+     */
     private $title;
+    /**
+     * @var
+     */
     private $subtitle;
+    /**
+     * @var
+     */
     private $content;
+    /**
+     * @var
+     */
     private $creationDateFr;
+    /**
+     * @var
+     */
     private $updateDateFr;
 
+
     /**
-     * 
+     * @param $id
+     * @return mixed|void
      */
     public function setId($id)
     {
@@ -29,8 +54,10 @@ class Post implements PostInterface
         }
     }
 
+
     /**
-     * 
+     * @param $author
+     * @return mixed|void
      */
     public function setAuthor($author)
     {
@@ -39,8 +66,10 @@ class Post implements PostInterface
         }
     }
 
+
     /**
-     * 
+     * @param $title
+     * @return mixed|void
      */
     public function setTitle($title)
     {
@@ -49,8 +78,10 @@ class Post implements PostInterface
         }
     }
 
+
     /**
-     * 
+     * @param $subtitle
+     * @return mixed|void
      */
     public function setSubtitle($subtitle)
     {
@@ -59,8 +90,10 @@ class Post implements PostInterface
         }
     }
 
+
     /**
-     * 
+     * @param $content
+     * @return mixed|void
      */
     public function setContent($content)
     {
@@ -69,69 +102,82 @@ class Post implements PostInterface
         }
     }
 
+
     /**
-     * 
+     * @param $creationDateFr
+     * @return mixed|void
      */
     public function setCreationDate($creationDateFr)
     {
         $this->creationDateFr = $creationDateFr;
     }
 
+
     /**
-     * 
+     * @param $updateDateFr
+     * @return mixed|void
      */
     public function setUpdateDate($updateDateFr)
     {
         $this->updateDateFr = $updateDateFr;
     }
 
+
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
         return $this->id;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getAuthor()
     {
         return $this->author;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSubtitle()
     {
         return $this->subtitle;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getContent()
     {
         return $this->content;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getCreationDate()
     {
         return $this->creationDateFr;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getUpdateDate()
     {

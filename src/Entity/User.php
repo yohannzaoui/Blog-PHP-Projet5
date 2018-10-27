@@ -4,24 +4,51 @@ namespace App\Entity;
 
 use App\Entity\Interfaces\UserInterface;
 
+
 /**
- *
+ * Class User
+ * @package App\Entity
  */
 class User implements UserInterface
 {
 
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $pseudo;
+    /**
+     * @var
+     */
     private $pass;
+    /**
+     * @var
+     */
     private $email;
+    /**
+     * @var
+     */
     private $role;
+    /**
+     * @var
+     */
     private $token;
+    /**
+     * @var
+     */
     private $ctoken;
+    /**
+     * @var
+     */
     private $creationDateFr;
 
 
     /**
-     * 
+     * @param $id
+     * @return mixed|void
      */
     public function setId($id)
     {
@@ -31,8 +58,10 @@ class User implements UserInterface
         }
     }
 
+
     /**
-     * 
+     * @param $pseudo
+     * @return mixed|void
      */
     public function setPseudo($pseudo)
     {
@@ -41,8 +70,10 @@ class User implements UserInterface
         }
     }
 
+
     /**
-     * 
+     * @param $pass
+     * @return mixed|void
      */
     public function setPass($pass)
     {
@@ -51,16 +82,20 @@ class User implements UserInterface
         }
     }
 
+
     /**
-     * 
+     * @param $email
+     * @return mixed|void
      */
     public function setEmail($email)
     {
         $this->email = $email;
     }
 
+
     /**
-     * 
+     * @param $role
+     * @return mixed|void
      */
     public function setRole($role)
     {
@@ -69,80 +104,93 @@ class User implements UserInterface
         }
     }
 
+
     /**
-     * 
+     * @param $creationDateFr
+     * @return mixed|void
      */
     public function setCreationDate($creationDateFr)
     {
         $this->creationDateFr = $creationDateFr;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getPseudo()
     {
         return $this->pseudo;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getEmail()
     {
         return $this->email;
     }
 
+
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
         return $this->id;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getRole()
     {
         return $this->role;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getCreationDate()
     {
         return $this->creationDateFr;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getToken()
     {
         return $this->token;
     }
 
+
     /**
-     * 
+     * @param $token
+     * @return mixed|void
      */
     public function setToken($token)
     {
         $this->token = $token;
     }
 
+
     /**
-     * @return string
+     * @return mixed
      */
     public function getCtoken()
     {
         return $this->ctoken;
     }
 
+
     /**
-     * 
+     * @param $ctoken
+     * @return mixed|void
      */
     public function setCtoken($ctoken)
     {
