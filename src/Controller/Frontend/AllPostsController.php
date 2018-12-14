@@ -41,7 +41,8 @@ class AllPostsController implements AllPostsControllerInterface
 
     /**
      * @param Request $request
-     * @return Response
+     * @return Response|mixed
+     * @throws \Exception
      */
     public function __invoke(Request $request)
     {

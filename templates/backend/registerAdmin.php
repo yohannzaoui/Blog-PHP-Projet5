@@ -31,7 +31,7 @@
         </div>
         <br>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" value="send" name="submit">S'inscrire</button>
+          <button type="submit" class="btn btn-primary" value="" name="submit">S'inscrire</button>
           <button type="reset" class="btn btn-danger">Effacer</button>
         </div>
       </form>

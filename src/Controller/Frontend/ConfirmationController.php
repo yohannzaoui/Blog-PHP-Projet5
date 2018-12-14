@@ -40,7 +40,8 @@ class ConfirmationController implements ConfirmationControllerInterface
 
     /**
      * @param Request $request
-     * @return Response
+     * @return Response|mixed
+     * @throws \Exception
      */
     public function __invoke(Request $request)
     {
